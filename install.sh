@@ -73,9 +73,26 @@ done
         fi
     clear
 
-if [[ $ansOS == "arch" ]]; then
+
         echo " ===================== pre installation ====================="
         echo -e " updating and upgrading \n git \n curl \n cmake"
+        read -p " dnsutils    :::::    [r]un : " ansDnsutils
+        if [[ $ansDnsutils == "r" ]] || [[ $ansDnsutils == "R" ]]; then
+            if [[ $ansOS == "arch" ]];then
+                echo -e "\n +++++ sudo pacman -S dnsutils \n"
+                sudo pacman -S dnsutils 
+            elif [[ $ansOS == "deb" ]];then
+                echo -e "\n +++++ sudo apt-get install dnsutils \n"
+                sudo apt-get install -y dnsutils
+            fi
+            echo -e "\n you can change dns address in resolv.conf and then run \n sudo chattr +i resolv.conf "
+            sleep 2
+        fi
+    clear
+
+if [[ $ansOS == "arch" ]]; then
+        echo " ===================== pre installation ====================="
+        echo -e " updating and upgrading \n git \n curl \n cmake \n dnsutils"
         read -p " yay    :::::    [r]un : " ansYay
         if [[ $ansYay == "r" ]] || [[ $ansYay == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S binutils \n"
