@@ -1,2 +1,3 @@
 Enjoy of install.sh file for installation My dot files.
-it work for debian and arch based linux.
+
+it work for _debian_ and _arch_ based linux.
