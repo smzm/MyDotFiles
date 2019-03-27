@@ -1,0 +1,51 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.editorLayoutSingle"
+    },
+    {
+        "key": "ctrl+shift+\\",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "workbench.action.splitEditorDown"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+shift+d g",
+        "command": "dictionary.google.translateSelected"
+    },
+    {
+        "key": "ctrl+shift+d b",
+        "command": "dictionary.bing.lookupSelected"
+    },
+    {
+        "key": "ctrl+shift+d t",
+        "command": "dictionary.thesaurus.lookupSelectedSynonyms"
+    },
+    {
+        "key": "ctrl+shift+d a",
+        "command": "dictionary.alterVista.replaceSelectedWithSynonyms"
+    }
+]
