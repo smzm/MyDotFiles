@@ -652,10 +652,31 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy"
+        read -p " redshift    :::::    r[un] : " ansI3Config
+        if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S redshift \n"
+            sudo pacman -S redshift
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift"
+        read -p " udevil    :::::    r[un] : " ansUdevil
+        if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S udevil \n"
+            sudo pacman -S udevil
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil"
         read -p " i3wm config file copy    :::::    r[un] : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
             cp $dotfiles/.config/i3  $HOME/.config/
         fi
     clear
+
 fi
