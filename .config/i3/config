@@ -272,3 +272,7 @@ exec_always feh --bg-scale ~/Pictures/nico-mksmc-1324405-unsplash.jpg
 exec_always xrandr --output VGA-0 --off --output DVI-0 --off --output HDMI-0 --primary --mode 1680x1050 --pos 0x0 --rotate normal
 
 exec compton -f
+
+exec_always redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
+
+exec_always exec --no-startup-id "devmon --no-gui"
