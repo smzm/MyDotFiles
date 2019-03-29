@@ -1,5 +1,3 @@
-;==========================================================
-;g
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -213,7 +211,7 @@ label-visible-padding = 4
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %name%
-label-urgent-foreground = #000000
+label-urgent-foreground = ##d83838
 label-urgent-background = ${colors.background-mod0}
 label-urgent-padding = 4
 

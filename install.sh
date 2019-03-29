@@ -264,17 +264,16 @@ fi
     clear
 
 
-        echo " ===================== npm , pip , gem  packages ====================="
-        read -p " [gem] colorls [https://github.com/athityakumar/colorls]    :::::    [r]un : " ansColorls
-        if [[ $ansColorls == "r" ]] || [[ $ansColorls == "R" ]]; then
-            echo -e "\n +++++ gem install colorls \n"
-            sudo gem install colorls
+    #     echo " ===================== npm , pip , gem  packages ====================="
+    #     read -p " [gem] colorls [https://github.com/athityakumar/colorls]    :::::    [r]un : " ansColorls
+    #     if [[ $ansColorls == "r" ]] || [[ $ansColorls == "R" ]]; then
+    #         echo -e "\n +++++ gem install colorls \n"
+    #         sudo gem install colorls
         
-        fi
-    clear 
+    #     fi
+    # clear 
 
         echo " ===================== npm , pip , gem  packages ====================="
-        echo -e " colorls"
         read -p " [npm] sass    :::::    [r]un : " ansSass
         if [[ $ansSass == "r" ]] || [[ $ansSass == "R" ]]; then
             echo -e "\n +++++ npm install -g sass \n"
@@ -283,7 +282,7 @@ fi
     clear
 
         echo " ===================== npm , pip , gem  packages ====================="
-        echo -e " colorls \n sass"
+        echo -e " sass"
         read -p " [npm] browser-sync    :::::    [r]un : " ansBrowserSync
         if [[ $ansBrowserSync == "r" ]] || [[ $ansBrowserSync == "R" ]]; then
             echo -e "\n +++++ npm install -g browser-sync \n"
@@ -292,7 +291,7 @@ fi
     clear
 
         echo " ===================== npm , pip , gem  packages ====================="
-        echo -e " colorls \n sass \n browser-sync"
+        echo -e " sass \n browser-sync"
         read -p " [npm] nodemon    :::::    [r]un : " ansNodemon
         if [[ $ansNodemon == "r" ]] || [[ $ansNodemon == "R" ]]; then
             echo -e "\n +++++ npm install -g nodemon \n"
@@ -349,6 +348,35 @@ fi
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display"
+        read -p " lsd    :::::    [r]un : " ansLSD
+        if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
+            if [[ $ansOS == "arch" ]]; then
+                echo -e "\n +++++ sudo pacman -S lsd \n"
+                sudo pacman -S lsd
+            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n +++++ sudo snap install lsd --classic \n"
+                sudo snap install lsd --classic
+            fi
+        fi
+    clear
+
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd"
+        read -p " MongoDB   :::::    [r]un : " ansVifm
+        if [[ $ansVifm == "r" ]] || [[ $ansVifm == "R" ]]; then
+            if [[ $ansOS == "arch" ]]; then
+                echo -e "\n +++++ sudo pacman -S vifm \n"
+                sudo pacman -S vifm
+            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n +++++ sudo apt install -y vifm \n"
+                sudo apt install -y vifm
+            fi
+        fi
+    clear
+
+
+    echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm"
         read -p " MongoDB   :::::    [r]un : " ansMongo
         if [[ $ansMongo == "r" ]] || [[ $ansMongo == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -362,8 +390,8 @@ fi
     clear
 
 
-    echo " ===================== terminal ====================="
-    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n MongoDB"
+    echo " ===================== Terminal ====================="
+    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n MongoDB"
     read -p " tmux    :::::    [r]un : " ansTmux
     if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
@@ -381,6 +409,9 @@ fi
         fi
     fi
 clear
+
+
+
 
 
 # Vim 
