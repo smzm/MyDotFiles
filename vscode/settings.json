@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "Night Rider",
-    "editor.fontFamily": "Lekton NF",
-    "editor.fontSize": 20,
+    "editor.fontFamily": "InconsolataLGC Nerd Font Mono",
+    "editor.fontSize": 18,
     "editor.lineHeight":30,
     "editor.renderWhitespace": "none",
     "files.autoSave": "onFocusChange",
@@ -13,7 +13,7 @@
     "terminal.integrated.fontFamily": "InconsolataLGC NF",
     "terminal.integrated.fontSize": 16,
     "editor.cursorBlinking": "smooth",
-    "vim.startInInsertMode": true,
+    "vim.startInInsertMode": false,
     "vim.statusBarColorControl": true,
     "vim.easymotion": true,
     "vim.sneak": true,
@@ -71,12 +71,14 @@
     "vim.statusBarColors.visualblock": "#aaf4ff",
     "vim.statusBarColors.visualline": "#00d0ff",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#261c42",
-        "statusBar.noFolderBackground": "#261c42",
-        "statusBar.debuggingBackground": "#261c42"
+        "statusBar.background": "#75ffcc",
+        "statusBar.noFolderBackground": "#75ffcc",
+        "statusBar.debuggingBackground": "#75ffcc"
     },
     "terminal.integrated.rendererType": "dom",
     "workbench.startupEditor": "newUntitledFile",
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
-    "window.title": "${activeEditorLong}${separator}${rootName}"
+    "window.title": "${activeEditorLong}${separator}${rootName}",
+    "workbench.iconTheme": "material-icon-theme",
+    "window.menuBarVisibility": "toggle"
 }

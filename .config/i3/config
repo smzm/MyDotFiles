@@ -41,7 +41,7 @@ set $mod Mod4
 assign [class = "urxvt|Hyper"] $workspace1
 assign [class = "Google-chrome|Firefox"] $workspace2 
 assign [class = "code-oss"] $workspace3
-assign [class = "Spotify"] $workspace4
+assign [class = "Spotify|kaffeine"] $workspace4
 
 
 
@@ -273,14 +273,16 @@ exec_always xrandr --output VGA-0 --off --output DVI-0 --off --output HDMI-0 --p
 
 exec compton -f
 
-exec_always redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
+exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 
 exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
+
 # start
 exec hyper 
-#exec google-chrome-stable
+exec google-chrome-stable
+
 
 

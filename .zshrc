@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/.npm/bin:$PATH
-export PATH=/usr/local/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/.npm/bin:$HOME/bin:$PATH
+export PATH=/usr/local/bin:/home/linuxbrew/.linuxbrew/bin/:$HOME/.npm/bin:$HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -111,18 +111,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='colorls --sd'
-alias la='colorls -a'
-alias lla='colorls -la'
-alias lcg='colorls --gs'
-
+alias ls='lsd --group-dirs=first'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lcg='lsd --gs'
 alias cl='clear'
+alias nordvpn='sudo openvpn /etc/openvpn/ovpn_udp/us1973*'
+alias cp='cp -i' #Confirm before overwriting
 
-weather(){
-    curl wttr.in/$1
-}
+
 
 cc(){
     cc.sh $1
 }
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.profile
+
