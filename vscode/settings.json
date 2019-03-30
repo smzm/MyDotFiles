@@ -80,5 +80,7 @@
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
     "window.title": "${activeEditorLong}${separator}${rootName}",
     "workbench.iconTheme": "material-icon-theme",
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.enablePreview": false
+
 }
