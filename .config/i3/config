@@ -41,7 +41,8 @@ set $mod Mod4
 assign [class = "urxvt|Hyper"] $workspace1
 assign [class = "Google-chrome|Firefox"] $workspace2 
 assign [class = "code-oss"] $workspace3
-assign [class = "Spotify|kaffeine"] $workspace4
+assign [class = "kaffeine"] $workspace4
+for_window [class="Spotify"] move to workspace $workspace4
 
 
 
