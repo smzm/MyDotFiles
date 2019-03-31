@@ -43,7 +43,7 @@ assign [class = "Google-chrome|Firefox"] $workspace2
 assign [class = "code-oss"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
-assign [class = "thunar"] $workspace5
+assign [class = "Thunar"] $workspace5
 
 workspace $workspace1 output HDMI-0
 workspace $workspace2 output HDMI-0
