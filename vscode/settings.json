@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Night Rider",
+    "workbench.colorTheme": "City Lights",
     "editor.fontFamily": "InconsolataLGC Nerd Font Mono",
     "editor.fontSize": 18,
     "editor.lineHeight":30,
@@ -61,19 +61,17 @@
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-z>": false,
-        "<C-c>": false,
-        "<C-v>": false
     },
-    "vim.statusBarColors.insert": "#261c42",
-    "vim.statusBarColors.normal": "#75ffcc",
-    "vim.statusBarColors.visual": "#f7f72a",
+    "vim.statusBarColors.insert": "#4c535e",
+    "vim.statusBarColors.normal": "#158e72",
+    "vim.statusBarColors.visual": "#5f2975",
     "vim.statusBarColors.replace": "#ff9696",
-    "vim.statusBarColors.visualblock": "#aaf4ff",
-    "vim.statusBarColors.visualline": "#00d0ff",
+    "vim.statusBarColors.visualblock": "#87064d",
+    "vim.statusBarColors.visualline": "#869124",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#75ffcc",
-        "statusBar.noFolderBackground": "#75ffcc",
-        "statusBar.debuggingBackground": "#75ffcc"
+        "statusBar.background": "#158e72",
+        "statusBar.noFolderBackground": "#158e72",
+        "statusBar.debuggingBackground": "#158e72"
     },
     "terminal.integrated.rendererType": "dom",
     "workbench.startupEditor": "newUntitledFile",

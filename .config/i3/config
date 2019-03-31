@@ -25,12 +25,12 @@ set $workspace1  ""
 set $workspace2  ""
 set $workspace3  ""
 set $workspace4  ""
-set $workspace5  "5"
+set $workspace5  ""
 set $workspace6  "6"
 set $workspace7  "7"
 set $workspace8  "8"
 set $workspace9  "9"
-set $workspace10 ""
+set $workspace10 "0"
 # }}}
 
 # i3 config file (v4)
@@ -41,9 +41,15 @@ set $mod Mod4
 assign [class = "urxvt|Hyper"] $workspace1
 assign [class = "Google-chrome|Firefox"] $workspace2 
 assign [class = "code-oss"] $workspace3
-assign [class = "kaffeine"] $workspace4
+assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
+assign [class = "thunar"] $workspace5
 
+workspace $workspace1 output HDMI-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output HDMI-0
+workspace $workspace4 output HDMI-0
+workspace $workspace5 output HDMI-0
 
 
 #------------#

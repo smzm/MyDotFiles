@@ -487,7 +487,6 @@ rm -rf ~/tmpInstall
             echo -e "\n +++++ Installing extensions \n"
             code --install-extension abusaidm.html-snippets
             code --install-extension adelphes.google-search-ext
-            code --install-extension auchenberg.vscode-browser-preview
             code --install-extension christian-kohler.npm-intellisense
             code --install-extension Compulim.compulim-vscode-dictionary
             code --install-extension dbaeumer.vscode-eslint
