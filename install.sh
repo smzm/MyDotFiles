@@ -362,7 +362,7 @@ fi
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd"
-        read -p " MongoDB   :::::    [r]un : " ansVifm
+        read -p " vifm   :::::    [r]un : " ansVifm
         if [[ $ansVifm == "r" ]] || [[ $ansVifm == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ sudo pacman -S vifm \n"
@@ -381,7 +381,7 @@ fi
         if [[ $ansMongo == "r" ]] || [[ $ansMongo == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ sudo aurman -S mongodb \n"
-                sudo aurman -S mongodb
+                yay -S mongodb-bin
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n +++++ sudo apt install -y mongodb \n"
                 sudo apt install -y mongodb
