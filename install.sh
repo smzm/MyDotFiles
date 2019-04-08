@@ -699,9 +699,28 @@ done
         fi
     clear
 
-
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil"
+        read -p " scrot (screenshot)   :::::    r[un] : " ansScrot
+        if [[ $ansScrot == "r" ]] || [[ $ansScrot == "R" ]]; then
+            echo -e "\n +++++ yay -S scrot \n"
+            mkdir screenshots
+            yay -S scrot
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot"
+        read -p " xclip (clipboard)   :::::    r[un] : " ansXclip
+        if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
+            echo -e "\n +++++ yay -S xclip \n"
+            yay -S xclip
+        fi
+    clear
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip"
         read -p " i3wm config file copy    :::::    r[un] : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
