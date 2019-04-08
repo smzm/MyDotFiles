@@ -10,11 +10,11 @@
 #-----------#
 
 # I use those colors at bar and window color settings
-set $bg-color 	         #172A47
-set $inactive-bg-color   #435E75
-set $text-color          #5A9857
-set $inactive-text-color #676E7D
-set $urgent-bg-color 	 #E53935
+set $bg-color 	         #2bbc85
+set $inactive-bg-color   #377566
+set $text-color          #c5ead7
+set $inactive-text-color #4a9b87
+set $urgent-bg-color 	 #255cd1
 
 # Color variables
 set $unfocused_border #72afff
@@ -38,7 +38,7 @@ set $workspace10 "0"
 set $mod Mod4
 
 #assign apps to workspaces	
-assign [class = "urxvt|Hyper"] $workspace1
+assign [class = "urxvt|Hyper|Gnome-terminal"] $workspace1
 assign [class = "Google-chrome|Firefox"] $workspace2 
 assign [class = "code-oss"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
@@ -103,7 +103,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec hyper 
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -287,8 +287,17 @@ exec_always exec --no-startup-id "devmon --no-gui"
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
 
+
+#====== screenshots bindings
+# Desktop screenshot ==> PrintScreen
+bindsym --release Print exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -m -e 'xclip -selection c -t image/png < $f'"
+# Choose window ==> Alt + PrintScreen
+bindsym --release Mod1+Sys_Req exec "import -window `xwininfo | awk '/.*Window id:.*/ {print $4}'` ~/screenshots/$(date --iso-8601='seconds').png"
+# Selection screenshot ==> Shift + PrintScreen
+bindsym --release Shift+Print exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
+
 # start
-exec hyper 
+exec gnome-terminal
 exec google-chrome-stable
 
 
