@@ -103,7 +103,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec hyper
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -297,8 +297,5 @@ bindsym --release Mod1+Sys_Req exec "import -window `xwininfo | awk '/.*Window i
 bindsym --release Shift+Print exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
 # start
-exec gnome-terminal
+exec hyper
 exec google-chrome-stable
-
-
-
