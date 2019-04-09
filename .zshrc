@@ -111,6 +111,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export TLDR_HEADER='magenta bold underline'
+export TLDR_QUOTE='italic'
+export TLDR_DESCRIPTION='green'
+export TLDR_CODE='red'
+export TLDR_PARAM='blue'
+
+
 alias ls='lsd --group-dirs=first'
 alias la='lsd -a'
 alias lla='lsd -la'
@@ -118,7 +125,6 @@ alias lcg='lsd --gs'
 alias cl='clear'
 alias nordvpn='sudo openvpn /etc/openvpn/ovpn_udp/us1973*'
 alias cp='cp -i' #Confirm before overwriting
-
 
 
 cc(){
