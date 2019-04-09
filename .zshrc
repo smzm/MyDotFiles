@@ -123,7 +123,6 @@ alias la='lsd -a'
 alias lla='lsd -la'
 alias lcg='lsd --gs'
 alias cl='clear'
-alias nordvpn='sudo openvpn /etc/openvpn/ovpn_udp/us1973*'
 alias cp='cp -i' #Confirm before overwriting
 
 
