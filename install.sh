@@ -213,7 +213,7 @@ fi
                 echo -e "\n +++++ sudo pacman -S ruby \n"
                 sudo pacman -S ruby 
                 echo "gem: --user-install" >> ~/.gemrc
-                cp $dotfiles/.profile ~/
+                #cp $dotfiles/.profile ~/
 
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n +++++ sudo apt install ruby-full \n"
@@ -479,6 +479,7 @@ rm -rf ~/tmpInstall
             code --install-extension robinbentley.sass-indented
             code --install-extension shyykoserhiy.vscode-spotify
             code --install-extension vscodevim.vim
+            code --install-extension yummygum.city-lights-theme
         fi
 
 
@@ -488,7 +489,7 @@ rm -rf ~/tmpInstall
             cp $dotfiles/vscode/settings.json $HOME/.config/Code*/User/
             cp $dotfiles/vscode/keybindings.json $HOME/.config/Code*/User/
             
-            mkdir $HOME/.config/Code*/User/snippets
+            mkdir -p $HOME/.config/Code*/User/snippets
             cp -r $dotfiles/vscode/snippets/ $HOME/.config/Code*/User/snippets/
         fi
         
@@ -549,7 +550,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc"
-        read -p " Feh (wallpaper)    :::::    r[un] : " ansFeh
+        read -p " Feh (wallpaper)    :::::    [r]un : " ansFeh
         if [[ $ansFeh == "r" ]] || [[ $ansFeh == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S feh \n"
             sudo pacman -S feh
@@ -558,7 +559,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh"
-        read -p " arandr (monitor configuration)    :::::    r[un] : " ansArandr
+        read -p " arandr (monitor configuration)    :::::    [r]un : " ansArandr
         if [[ $ansArandr == "r" ]] || [[ $ansArandr == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S arandr \n"
             sudo pacman -S arandr
@@ -568,7 +569,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr"
-        read -p " thunar (file manager)    :::::    r[un] : " ansThunar
+        read -p " thunar (file manager)    :::::    [r]un : " ansThunar
         if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S thunar \n"
             sudo pacman -S thunar
@@ -578,20 +579,20 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar"
-        read -p " rofi (launcher)    :::::    r[un] : " ansRofi
+        read -p " rofi (launcher)    :::::    [r]un : " ansRofi
         if [[ $ansRofi == "r" ]] || [[ $ansRofi == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S rofi \n"
             sudo pacman -S rofi
             
             echo -e " \n +++++ Copy polybar configuration "
-            cp $dotfiles/.config/rofi $HOME/.config/
+            cp -r $dotfiles/.config/rofi $HOME/.config/
         fi
     clear
 
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi"
-        read -p " compton (compositor)    :::::    r[un] : " ansCompton
+        read -p " compton (compositor)    :::::   [r]un : " ansCompton
         if [[ $ansCompton == "r" ]] || [[ $ansCompton == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S compton \n"
             sudo pacman -S compton
@@ -600,7 +601,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton"
-        read -p " lxappearance    :::::    r[un] : " ansLxappearance
+        read -p " lxappearance    :::::   [r]un : " ansLxappearance
         if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S lxappearance \n"
             sudo pacman -S lxappearance
@@ -609,7 +610,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance"
-        read -p " pavuControl    :::::    r[un] : " ansPavucontrol
+        read -p " pavuControl    :::::    [r]un : " ansPavucontrol
         if [[ $ansPavucontrol == "r" ]] || [[ $ansPacucontrol == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S pavucontrol \n"
             sudo pacman -S pavucontrol
@@ -619,7 +620,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl"
-        read -p " Font Awesome    :::::    r[un] : " ansFontawesome
+        read -p " Font Awesome    :::::    [r]un : " ansFontawesome
         if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
             echo -e "\n +++++ yay -S ttf-font-awesome \n"
             yay -S ttf-font-awesome
@@ -629,21 +630,21 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome"
-        read -p " polybar    :::::    r[un] : " ansPolybar
+        read -p " polybar    :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S polybar \n"
             sudo pacman -S polybar
 
             #copy files
             echo -e " \n +++++ Copy polybar configuration "
-            $dotfiles/.config/polybar $HOME/.config/
+            cp -r $dotfiles/.config/polybar $HOME/.config/
 
         fi
     clear
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar"
-        read -p " i3lock-fancy    :::::    r[un] : " ansI3lockFancy
+        read -p " i3lock-fancy    :::::    [r]un : " ansI3lockFancy
         if [[ $ansI3lockFancy == "r" ]] || [[ $ansI3lockFancy == "R" ]]; then
             echo -e "\n +++++ sudo yay -S i3lock-fancy-git \n"
             yay -S i3lock-fancy-git
@@ -653,7 +654,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy"
-        read -p " redshift    :::::    r[un] : " ansI3Config
+        read -p " redshift    :::::    [r]un : " ansRedshift
         if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S redshift \n"
             sudo pacman -S redshift
@@ -663,7 +664,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift"
-        read -p " udevil    :::::    r[un] : " ansUdevil
+        read -p " udevil    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S udevil \n"
             sudo pacman -S udevil
@@ -672,7 +673,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil"
-        read -p " scrot (screenshot)   :::::    r[un] : " ansScrot
+        read -p " scrot (screenshot)   :::::    [r]un : " ansScrot
         if [[ $ansScrot == "r" ]] || [[ $ansScrot == "R" ]]; then
             echo -e "\n +++++ yay -S scrot \n"
             mkdir screenshots
@@ -683,7 +684,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot"
-        read -p " xclip (clipboard)   :::::    r[un] : " ansXclip
+        read -p " xclip (clipboard)   :::::    [r]un : " ansXclip
         if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
             echo -e "\n +++++ yay -S xclip \n"
             yay -S xclip
@@ -693,20 +694,20 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip"
-        read -p " Background    :::::    r[un] : " ansBackground
+        read -p " Background    :::::    [r]un : " ansBackground
         if [[ $ansBackground == "r" ]] || [[ $ansBackground == "R" ]]; then
             echo -e "\n +++++ copy Background file to Picture ... \n"
-            cp $dotfiles/Background.jpg  $HOME/Picture/
+            cp $dotfiles/Background.jpg  $HOME/Pictures/
         fi
     clear
 
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture "
-        read -p " i3wm config file copy    :::::    r[un] : " ansI3Config
+        read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
-            cp $dotfiles/.config/i3  $HOME/.config/
+            cp -r $dotfiles/.config/i3  $HOME/.config/
         fi
     clear
 
