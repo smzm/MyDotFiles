@@ -181,30 +181,6 @@ fi
 
 
 
-    # brew configuration
-        echo " ===================== brew ====================="
-        read -p " brew installation : [https://linuxbrew.sh/]    :::::    [r]un: " ansBrew
-        if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
-            echo -e "\n +++++ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"  \n"
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-            test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-            test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-            echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> ~/.profile
-        fi
-
-    clear
-
-
-        echo " ===================== brew ====================="
-        echo -e " brew"
-        read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
-        if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
-            echo -e "\n +++++ brew install tldr \n"
-            brew install tldr
-        fi
-
-    clear
 
 
         echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) ====================="
@@ -263,15 +239,6 @@ fi
         fi
     clear
 
-
-    #     echo " ===================== npm , pip , gem  packages ====================="
-    #     read -p " [gem] colorls [https://github.com/athityakumar/colorls]    :::::    [r]un : " ansColorls
-    #     if [[ $ansColorls == "r" ]] || [[ $ansColorls == "R" ]]; then
-    #         echo -e "\n +++++ gem install colorls \n"
-    #         sudo gem install colorls
-        
-    #     fi
-    # clear 
 
         echo " ===================== npm , pip , gem  packages ====================="
         read -p " [npm] sass    :::::    [r]un : " ansSass
@@ -375,23 +342,9 @@ fi
     clear
 
 
-    echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm"
-        read -p " MongoDB   :::::    [r]un : " ansMongo
-        if [[ $ansMongo == "r" ]] || [[ $ansMongo == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo aurman -S mongodb \n"
-                yay -S mongodb-bin
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo apt install -y mongodb \n"
-                sudo apt install -y mongodb
-            fi
-        fi
-    clear
-
 
     echo " ===================== Terminal ====================="
-    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n MongoDB"
+    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n "
     read -p " tmux    :::::    [r]un : " ansTmux
     if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
@@ -412,15 +365,31 @@ clear
 
 
 
+        echo " ===================== terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n tmux"
+        read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
+        if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
+            echo -e "\n +++++ tldr installation \n"
+            mkdir -p ~/bin
+            curl -o ~/bin/tldr https://raw.githubusercontent.com/raylee/tldr/master/tldr
+            chmod +x ~/bin/tldr
+        fi
+    clear
 
 
 # Vim 
         echo " ===================== vim ====================="
         read -p " vim    :::::    [r]un : " ansVim
         if [[ $ansVim == "r" ]] || [[ $ansVim == "R" ]]; then
-            echo -e "\n +++++ brew install vim \n"
-            brew install vim
+        if [[ $ansOS == "arch" ]]; then
+            echo -e "\n +++++ sudo pacman -S install gvim  \n"
+            sudo pacman -S vim
+        elif [[ $ansOS == "deb" ]];then 
+            echo -e "\n +++++ sudo apt-get install tmux  \n"
+            sudo apt-get install -y vim
         fi
+
+    fi
     clear
 
         echo " ===================== vim ====================="
@@ -516,9 +485,11 @@ rm -rf ~/tmpInstall
         read -p " vscode configurations    :::::   [r]un : " ansVscodeConfig
         if [[ $ansVscodeConfig == "r"  ]] || [[ $ansVscodeConfig == "R" ]]; then
             echo -e "\n +++++ Copy setting file \n"
-            cp $dotfiles/vscode/settings.json ~/.config/Code*/User/settings.json
-            cp $dotfiles/vscode/keybindings.json ~/.config/Code*/User/keybindings.json
-            cp -r $dotfiles/vscode/snippets/ ~/.config/Code*/User/snippets/
+            cp $dotfiles/vscode/settings.json $HOME/.config/Code*/User/
+            cp $dotfiles/vscode/keybindings.json $HOME/.config/Code*/User/
+            
+            mkdir $HOME/.config/Code*/User/snippets
+            cp -r $dotfiles/vscode/snippets/ $HOME/.config/Code*/User/snippets/
         fi
         
         echo
