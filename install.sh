@@ -344,7 +344,7 @@ fi
 
 
     echo " ===================== Terminal ====================="
-    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n "
+    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm "
     read -p " tmux    :::::    [r]un : " ansTmux
     if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
