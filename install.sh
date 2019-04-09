@@ -488,9 +488,7 @@ rm -rf ~/tmpInstall
             echo -e "\n +++++ Copy setting file \n"
             cp $dotfiles/vscode/settings.json $HOME/.config/Code*/User/
             cp $dotfiles/vscode/keybindings.json $HOME/.config/Code*/User/
-            
-            mkdir -p $HOME/.config/Code*/User/snippets
-            cp -r $dotfiles/vscode/snippets/ $HOME/.config/Code*/User/snippets/
+            cp -r $dotfiles/vscode/snippets $HOME/.config/Code*/User/
         fi
         
         echo
