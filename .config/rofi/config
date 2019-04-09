@@ -5,10 +5,10 @@
 rofi.color-enabled: true
 
 ! Window:           'background',  'border', 'separator'
-rofi.color-window: argb:cc252936,  #9575cd, argb:ffffffff
+rofi.color-window: argb:CC0a1e16,  #9575cd, argb:ffffffff
 
 !   State:              'bg',       'fg',   'altbg',        'hlbg',         hlfg
-rofi.color-normal: argb:00252936, #ffffff, argb:00252936, argb:009575cd, #ff9575cd
+rofi.color-normal: argb:00252936, #ffffff, argb:00252936, argb:009575cd, #ff00ffd0
 rofi.color-active: argb:00252936, #252936, argb:00252936, argb:009575cd, #ffc000
 rofi.color-urgent: argb:00252936, #ff0000, argb:00252936, argb:00252936, #ff0000
 
