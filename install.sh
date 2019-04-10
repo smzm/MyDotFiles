@@ -612,7 +612,6 @@ done
         if [[ $ansPavucontrol == "r" ]] || [[ $ansPacucontrol == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S pavucontrol \n"
             sudo pacman -S pavucontrol
-            sudo pacman -S gnome-control-center
         fi
     clear
 
@@ -702,7 +701,20 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture "
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture"
+        read -p " Gnome packages    :::::    [r]un : " ansGnomeP
+        if [[ $ansGnomeP == "r" ]] || [[ $ansGnomeP == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S gnome-control-center  \n"
+            sudo pacman -S gnome-control-center
+            
+            echo -e "\n +++++ sudo pacman -S gnome-calculator  \n"
+            sudo pacman -S gnome-calculator
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome packages" 
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
