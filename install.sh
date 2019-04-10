@@ -702,7 +702,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture"
-        read -p " Gnome packages    :::::    [r]un : " ansGnomeP
+        read -p " Gnome Packages    :::::    [r]un : " ansGnomeP
         if [[ $ansGnomeP == "r" ]] || [[ $ansGnomeP == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S gnome-control-center  \n"
             sudo pacman -S gnome-control-center
@@ -711,6 +711,21 @@ done
             sudo pacman -S gnome-calculator
         fi
     clear
+
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages"
+        read -p " xfce4 packages    :::::    [r]un : " ansXfce4
+        if [[ $ansXfce4 == "r" ]] || [[ $ansXfce4 == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S xfce4-power-manager \n"
+            sudo pacman -S xfce4-power-manager
+            
+            echo -e "\n +++++ sudo pacman -S xfce4-settings  \n"
+            sudo pacman -S xfce4-settings
+        fi
+    clear
+
 
 
         echo " ===================== i3 installation ====================="

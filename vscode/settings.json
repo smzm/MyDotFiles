@@ -2,7 +2,7 @@
     "workbench.colorTheme": "City Lights",
     "editor.fontFamily": "InconsolataLGC Nerd Font Mono",
     "editor.fontSize": 18,
-    "editor.lineHeight":35,
+    "editor.lineHeight":30,
     "editor.renderWhitespace": "none",
     "files.autoSave": "onFocusChange",
     "emmet.includeLanguages": {
