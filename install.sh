@@ -612,6 +612,7 @@ done
         if [[ $ansPavucontrol == "r" ]] || [[ $ansPacucontrol == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S pavucontrol \n"
             sudo pacman -S pavucontrol
+            sudo pacman -S gnome-control-center
         fi
     clear
 
