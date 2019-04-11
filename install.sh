@@ -726,6 +726,35 @@ done
         fi
     clear
 
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock"
+        read -p " xautolock   :::::    [r]un : " ansXautolock
+        if [[ $ansXautolock == "r" ]] || [[ $ansXautolock == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S xautolock \n"
+            sudo pacman -S xautolock
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock \n xautolock"
+        read -p " hibernator   :::::    [r]un : " ansHibernator
+        if [[ $ansHibernator == "r" ]] || [[ $ansHibernator == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S hibernator \n"
+            sudo pacman -S hibernator
+            sudo hibernator
+        fi
+    clear
+
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock \n xautolock \n hibernator"
+        read -p " clipit   :::::    [r]un : " ansClipit
+        if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S clipit \n"
+            sudo pacman -S clipit
+        fi
+    clear
 
 
         echo " ===================== i3 installation ====================="

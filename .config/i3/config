@@ -4,6 +4,10 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+set $mod Mod4
+
 
 #-----------#
 # VARIABLES #
@@ -30,12 +34,9 @@ set $workspace6  "6"
 set $workspace7  "7"
 set $workspace8  "8"
 set $workspace9  "9"
-set $workspace10 "0"
 # }}}
 
-# i3 config file (v4)
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-set $mod Mod4
+
 
 #assign apps to workspaces	
 assign [class = "urxvt|Hyper|Gnome-terminal"] $workspace1
@@ -91,15 +92,11 @@ client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #
 #}
 
 
-
-
-
 #----------#
 # BINDINGS #
 #----------#
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -114,6 +111,9 @@ bindsym $mod+d exec rofi -show run
 
 hide_edge_borders vertical
 
+# change borders
+bindsym $mod+u border non
+bindsym $mod+n border normal
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -145,10 +145,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+c split h
+bindsym $mod+c split h; exec notify-send -t 2500 "Tile Horizontally" 
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split v; exec notify-send -t 2500 "Tile Vertically"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -183,7 +183,6 @@ bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7 
 bindsym $mod+8 workspace $workspace8 
 bindsym $mod+9 workspace $workspace9 
-bindsym $mod+0 workspace $workspace10  
 
 
 # move focused container to workspace
@@ -197,6 +196,12 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8 
 bindsym $mod+Shift+9 move container to workspace $workspace9 
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -232,7 +237,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Set shut down, restart and locking features
+ bindsym $mod+0 mode "$mode_system"
+ set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+ mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
+# exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+ }
 
 
 
@@ -245,9 +265,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
-# screen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+# Screen brightness controls
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'
 
 floating_maximum_size 1280 x 720
 floating_minimum_size -1 x -1
@@ -296,6 +316,15 @@ bindsym --release Mod1+Sys_Req exec "import -window `xwininfo | awk '/.*Window i
 # Selection screenshot ==> Shift + PrintScreen
 bindsym --release Shift+Print exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
+
+# Autostart applications
+exec --no-startup-id xautolock -time 60 -locker blurlock
+#exec --no-startup-id nm-applet
+#exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+
 # start
 exec hyper
 exec google-chrome-stable
+
