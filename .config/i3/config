@@ -112,7 +112,7 @@ bindsym $mod+d exec rofi -show run
 hide_edge_borders vertical
 
 # change borders
-bindsym $mod+u border non
+bindsym $mod+u border none
 bindsym $mod+n border normal
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -145,10 +145,12 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+c split h; exec notify-send -t 2500 "Tile Horizontally" 
+bindsym $mod+c split h
+#; exec notify-send -t 2500 "Tile Horizontally" 
 
 # split in vertical orientation
-bindsym $mod+v split v; exec notify-send -t 2500 "Tile Vertically"
+bindsym $mod+v split v
+#; exec notify-send -t 2500 "Tile Vertically"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
