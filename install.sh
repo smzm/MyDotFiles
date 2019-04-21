@@ -489,6 +489,9 @@ rm -rf ~/tmpInstall
             code --install-extension shyykoserhiy.vscode-spotify
             code --install-extension vscodevim.vim
             code --install-extension yummygum.city-lights-theme
+            code --install-extension lkytal.FlatUI
+            code --install-extension zhuangtongfa.Material-theme
+
         fi
 
 
