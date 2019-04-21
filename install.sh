@@ -309,6 +309,15 @@ fi
                 cd YosemiteSanFranciscoFont
                 sudo cp ./*.ttf /usr/share/fonts/SFNSDisplay
                 fc-cache -f -v
+                
+
+                echo -e " \n +++++ Install San Francisco Font \n"
+                sudo mkdir -p /usr/share/fonts/SF-Mono
+                cd ~/tmpInstall
+                git clone "https://github.com/ZulwiyozaPutra/SF-Mono-Font.git"
+                cd SF-Mono-Font-master
+                sudo cp ./SF* /usr/share/fonts/SF-Mono
+                fc-cache -f -v 
         fi
     clear
 
