@@ -481,7 +481,6 @@ rm -rf ~/tmpInstall
             code --install-extension ms-python.python
             code --install-extension ms-vscode.vscode-typescript-tslint-plugin
             code --install-extension naumovs.color-highlight
-            code --install-extension PKief.material-icon-theme
             code --install-extension remimarsal.prettier-now
             code --install-extension ritwickdey.live-sass
             code --install-extension ritwickdey.LiveServer
@@ -491,6 +490,8 @@ rm -rf ~/tmpInstall
             code --install-extension yummygum.city-lights-theme
             code --install-extension lkytal.FlatUI
             code --install-extension zhuangtongfa.Material-theme
+            code --install-extension emmanuelbeziat.vscode-great-icons
+
 
         fi
 
