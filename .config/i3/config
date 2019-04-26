@@ -46,11 +46,11 @@ assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
 assign [class = "Thunar"] $workspace5
 
-workspace $workspace1 output HDMI-0
-workspace $workspace2 output HDMI-0
-workspace $workspace3 output HDMI-0
-workspace $workspace4 output HDMI-0
-workspace $workspace5 output HDMI-0
+workspace $workspace1 output HDMI-1
+workspace $workspace2 output HDMI-1
+workspace $workspace3 output HDMI-1
+workspace $workspace4 output HDMI-1
+workspace $workspace5 output HDMI-1
 
 
 #------------#
@@ -297,9 +297,6 @@ bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
 exec_always feh --bg-scale ~/Pictures/Background.jpg
 
-#xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --off
-xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --mode 1360x768 --pos 141x0 --rotate normal
-
 exec compton -f
 
 exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
@@ -307,6 +304,8 @@ exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
+
+exec xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --mode 1360x768 --pos 160x0 --rotate normal
 
 
 
@@ -329,4 +328,3 @@ exec --no-startup-id clipit
 # start
 exec hyper
 #exec google-chrome-stable
-
