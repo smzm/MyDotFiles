@@ -297,8 +297,8 @@ bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
 exec_always feh --bg-scale ~/Pictures/Background.jpg
 
-#exec_always xrandr --output VGA-0 --mode 1360x768 --pos 144x0 --rotate normal --output DVI-0 --off --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal
-exec_always xrandr --output VGA-0 --off --output DVI-0 --off --output HDMI-0 --primary --mode 1680x1050 --pos 0x0 --rotate normal
+#xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --off
+xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --mode 1360x768 --pos 141x0 --rotate normal
 
 exec compton -f
 
@@ -328,5 +328,5 @@ exec --no-startup-id clipit
 
 # start
 exec hyper
-exec google-chrome-stable
+#exec google-chrome-stable
 
