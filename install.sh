@@ -307,7 +307,7 @@ fi
                 cd ~/tmpInstall
                 git clone "https://github.com/supermarin/YosemiteSanFranciscoFont.git"
                 cd YosemiteSanFranciscoFont
-                sudo cp ./*.ttf /usr/share/fonts/SFNSDisplay
+                sudo cp *.ttf /usr/share/fonts/SFNSDisplay
                 fc-cache -f -v
                 
 
@@ -315,8 +315,8 @@ fi
                 sudo mkdir -p /usr/share/fonts/SF-Mono
                 cd ~/tmpInstall
                 git clone "https://github.com/ZulwiyozaPutra/SF-Mono-Font.git"
-                cd SF-Mono-Font-master
-                sudo cp ./SF* /usr/share/fonts/SF-Mono
+                cd SF-Mono*
+                sudo cp SF* /usr/share/fonts/SF-Mono
                 fc-cache -f -v 
         fi
     clear
@@ -644,7 +644,7 @@ done
         read -p " polybar    :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S polybar \n"
-            sudo pacman -S polybar
+           yay -S polybar
 
             #copy files
             echo -e " \n +++++ Copy polybar configuration "
@@ -740,7 +740,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages"
         read -p " xautolock   :::::    [r]un : " ansXautolock
         if [[ $ansXautolock == "r" ]] || [[ $ansXautolock == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xautolock \n"
@@ -750,7 +750,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock \n xautolock"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock"
         read -p " hibernator   :::::    [r]un : " ansHibernator
         if [[ $ansHibernator == "r" ]] || [[ $ansHibernator == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S hibernator \n"
@@ -761,7 +761,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xautolock \n xautolock \n hibernator"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 packages \n xautolock \n hibernator"
         read -p " clipit   :::::    [r]un : " ansClipit
         if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S clipit \n"
@@ -771,7 +771,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome packages" 
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n FontAwesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome packages \n xfce4 packages \n xautolock \n hibernator \n clipit"  
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
