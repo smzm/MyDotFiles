@@ -30,7 +30,7 @@ set $workspace2  ""
 set $workspace3  ""
 set $workspace4  ""
 set $workspace5  ""
-set $workspace6  "6"
+set $workspace6  "UP"
 set $workspace7  "7"
 set $workspace8  "8"
 set $workspace9  "9"
@@ -40,7 +40,7 @@ set $workspace9  "9"
 
 #assign apps to workspaces	
 assign [class = "urxvt|Hyper|Gnome-terminal"] $workspace1
-assign [class = "Google-chrome|Firefox"] $workspace2 
+assign [class = "Google-chrome|Firefox|brave"] $workspace2 
 assign [class = "code-oss"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
@@ -239,23 +239,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Set shut down, restart and locking features
- bindsym $mod+0 mode "$mode_system"
- set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
- mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
 
-# exit system mode: "Enter" or "Escape"
+    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
- }
-
+}
+bindsym $mod+0 mode "$mode_system"
 
 
 #------------#
@@ -297,9 +294,6 @@ bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
 exec_always feh --bg-scale ~/Pictures/Background.jpg
 
-#exec_always xrandr --output VGA-0 --mode 1360x768 --pos 144x0 --rotate normal --output DVI-0 --off --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal
-exec_always xrandr --output VGA-0 --off --output DVI-0 --off --output HDMI-0 --primary --mode 1680x1050 --pos 0x0 --rotate normal
-
 exec compton -f
 
 exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
@@ -308,6 +302,7 @@ exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
+exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
 
 
 #====== screenshots bindings
@@ -325,8 +320,8 @@ exec --no-startup-id xautolock -time 20 -locker blurlock
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+exec unclutter
 
 # start
 exec hyper
-exec google-chrome-stable
-
+#exec google-chrome-stable
