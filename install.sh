@@ -607,6 +607,7 @@ done
         if [[ $ansCompton == "r" ]] || [[ $ansCompton == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S compton \n"
             sudo pacman -S compton
+            cp $dotfiles/.config/compton.conf $HOME/.config/
         fi
     clear
 
@@ -817,7 +818,7 @@ done
         if [[ $ansUberzug == "r" ]] || [[ $ansUberzug == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S python-ueberzug ... \n"
             sudo pacman -S python-ueberzug 
-        fi
+    fi
     clear
 
         echo " ===================== i3 installation ====================="
@@ -835,7 +836,7 @@ done
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
-            cp -r $dotfiles/.config/i3  $HOME/.config/
+            cp -r $dotfiles/.config/i3  $HOME/.config/i3
         fi
     clear
 
