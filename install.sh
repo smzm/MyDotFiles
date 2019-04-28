@@ -823,16 +823,15 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n Uberzug"  
-        read -p " NumlockOnTTY    :::::    [r]un : " ansNumlockontty
-        if [[ $ansNumlockontty == "r" ]] || [[ $ansNumlockontty == "R" ]]; then
+        read -p " numlockx    :::::    [r]un : " ansNumlockx
+        if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
-            yay -S systemd-numlockontty
-            sudo systemctl enable numLockOnTty.service
+            sudo pacman -S numlockx
         fi
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n Uberzug \n NumlockOnTTY"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n Uberzug \n numlockx"  
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"

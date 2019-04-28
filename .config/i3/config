@@ -46,11 +46,11 @@ assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
 assign [class = "Thunar"] $workspace5
 
-workspace $workspace1 output HDMI-1
-workspace $workspace2 output HDMI-1
-workspace $workspace3 output HDMI-1
-workspace $workspace4 output HDMI-1
-workspace $workspace5 output HDMI-1
+workspace $workspace1 output HDMI-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output HDMI-0
+workspace $workspace4 output HDMI-0
+workspace $workspace5 output HDMI-0
 
 
 #------------#
@@ -302,12 +302,7 @@ exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
-<<<<<<< HEAD
 exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
-=======
-exec xrandr --output HDMI-1 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-D-1 --off --output VGA-1 --mode 1360x768 --pos 160x0 --rotate normal
-
->>>>>>> 2b2cb78beb7737314a01b52c5ad73977bdfcb7b9
 
 
 #====== screenshots bindings
@@ -326,6 +321,7 @@ exec --no-startup-id xautolock -time 20 -locker blurlock
 #exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec unclutter
+exec numlockx &
 
 # start
 exec hyper
