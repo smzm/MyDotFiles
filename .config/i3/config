@@ -40,7 +40,7 @@ set $workspace9  "9"
 
 #assign apps to workspaces	
 assign [class = "urxvt|Hyper|Gnome-terminal"] $workspace1
-assign [class = "Google-chrome|Firefox|brave"] $workspace2 
+assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2 
 assign [class = "code-oss"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
@@ -246,7 +246,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -325,4 +325,4 @@ exec numlockx &
 
 # start
 exec hyper
-#exec google-chrome-stable
+exec brave
