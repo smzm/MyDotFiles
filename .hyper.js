@@ -4,6 +4,13 @@
 
 module.exports = {
   config: {
+    // hyper-startup Plugin for clearing terminal
+    // First Install : 
+    //      npm install -g hpm-cli
+    //      hpm install hyper-startup
+// commands: ['clear'], 
+
+
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
@@ -137,11 +144,9 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-//  "nova-hyperterm"
-//  "hyper-snazzy"
-  "hyper-firewatch",
-  ],
+  plugins: [//  "hyper-snazzy"
+  //  "hyper-firewatch",
+  "nova-hyperterm", "hyper-startup"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
