@@ -607,7 +607,7 @@ done
         if [[ $ansCompton == "r" ]] || [[ $ansCompton == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S compton \n"
             sudo pacman -S compton
-            cp $dotfiles/.config/compton.conf $HOME/.config/
+            cp $dotfiles/.config/.compton.conf $HOME/.config/
         fi
     clear
 
