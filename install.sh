@@ -709,6 +709,8 @@ done
         read -p " Background Picture   :::::    [r]un : " ansBackground
         if [[ $ansBackground == "r" ]] || [[ $ansBackground == "R" ]]; then
             echo -e "\n +++++ copy Background file to Picture ... \n"
+            cd ~
+            mkdir -p Pictures
             cp $dotfiles/Background.jpg  $HOME/Pictures/
         fi
     clear
@@ -835,7 +837,7 @@ done
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
-            cp -r $dotfiles/.config/i3  $HOME/.config/i3
+            cp -r $dotfiles/.config/i3  $HOME/.config/
         fi
     clear
 
