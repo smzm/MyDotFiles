@@ -644,7 +644,7 @@ done
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome"
         read -p " polybar    :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S polybar \n"
+            echo -e "\n +++++ yay -S polybar \n"
            yay -S polybar
 
             #copy files
@@ -658,7 +658,7 @@ done
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar"
         read -p " i3lock-fancy    :::::    [r]un : " ansI3lockFancy
         if [[ $ansI3lockFancy == "r" ]] || [[ $ansI3lockFancy == "R" ]]; then
-            echo -e "\n +++++ sudo yay -S i3lock-fancy-git \n"
+            echo -e "\n +++++ yay -S i3lock-fancy-git \n"
             yay -S i3lock-fancy-git
         fi
     clear
@@ -756,8 +756,8 @@ done
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock"
         read -p " hibernator   :::::    [r]un : " ansHibernator
         if [[ $ansHibernator == "r" ]] || [[ $ansHibernator == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S hibernator \n"
-            sudo pacman -S hibernator
+            echo -e "\n +++++ yay -S hibernator \n"
+            yay -S hibernator
             sudo hibernator
         fi
     clear
@@ -767,8 +767,8 @@ done
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator"
         read -p " clipit   :::::    [r]un : " ansClipit
         if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S clipit \n"
-            sudo pacman -S clipit
+            echo -e "\n +++++ yay -S clipit \n"
+            yay -S clipit
         fi
     clear
 
@@ -797,7 +797,7 @@ done
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo" 
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
-        if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
+        if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S unclutter ... \n"
             sudo pacman -S unclutter
         fi
