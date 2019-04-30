@@ -718,11 +718,8 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture"
-        read -p " Gnome Packages (gnome-control-center)(gnome-calculator)   :::::    [r]un : " ansGnomeP
-        if [[ $ansGnomeP == "r" ]] || [[ $ansGnomeP == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S gnome-control-center  \n"
-            sudo pacman -S gnome-control-center
-            
+        read -p " Gnome Calculator    :::::    [r]un : " ansGnomeCalc
+        if [[ $ansGnomeCalc == "r" ]] || [[ $ansGnomeCalc == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S gnome-calculator  \n"
             sudo pacman -S gnome-calculator
         fi
@@ -731,19 +728,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages"
-        read -p " xfce4 Packages (xfce4-power-manager)(xfce4-settings)    :::::    [r]un : " ansXfce4
-        if [[ $ansXfce4 == "r" ]] || [[ $ansXfce4 == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S xfce4-power-manager \n"
-            sudo pacman -S xfce4-power-manager
-            
-            echo -e "\n +++++ sudo pacman -S xfce4-settings  \n"
-            sudo pacman -S xfce4-settings
-        fi
-    clear
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator"
         read -p " xautolock   :::::    [r]un : " ansXautolock
         if [[ $ansXautolock == "r" ]] || [[ $ansXautolock == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xautolock \n"
@@ -753,7 +738,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock"
         read -p " hibernator   :::::    [r]un : " ansHibernator
         if [[ $ansHibernator == "r" ]] || [[ $ansHibernator == "R" ]]; then
             echo -e "\n +++++ yay -S hibernator \n"
@@ -764,7 +749,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator"
         read -p " clipit   :::::    [r]un : " ansClipit
         if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
             echo -e "\n +++++ yay -S clipit \n"
@@ -773,7 +758,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit"
         read -p " ntp (time)  :::::    [r]un : " ansNTP
         if [[ $ansNTP == "r" ]] || [[ $ansNTP == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S ntp \n"
@@ -785,7 +770,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp"
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp"
         read -p " mediainfo (audio and video information)  :::::    [r]un : " ansMediainfo
         if [[ $ansMediainfo == "r" ]] || [[ $ansMediainfo == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S mediainfo \n"
@@ -795,7 +780,7 @@ done
 
     
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo" 
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp \n mediainfo" 
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S unclutter ... \n"
@@ -805,7 +790,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter"  
         read -p " ntfs-3g (allows accessing NTFS partitions)    :::::    [r]un : " ansNtfs3g
         if [[ $ansNtfs3g == "r" ]] || [[ $ansNtfs3g == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S ntfs-3g ... \n"
@@ -815,7 +800,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g"  
         read -p " sxiv    :::::    [r]un : " ansSxiv
         if [[ $ansSxiv == "r" ]] || [[ $ansSxiv == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S sxiv ... \n"
@@ -824,7 +809,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n sxiv"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n sxiv"  
         read -p " numlockx    :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
@@ -833,7 +818,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Packages \n xfce4 Packages \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n sxiv \n numlockx"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n sxiv \n numlockx"  
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
