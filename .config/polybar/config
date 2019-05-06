@@ -86,7 +86,7 @@ font-1 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3
-modules-center = date weather
+modules-center = pomobar date weather
 modules-right = xbacklight pulseaudio xkeyboard powermenu
     
 tray-position = right
@@ -527,8 +527,13 @@ label-song-maxlen = 25
 label-song-ellipsis = true
 
 
-
-
+[module/pomobar]
+type=custom/ipc
+hook-0 = cat ~/.pomobaroutput
+initial=1
+click-left = ~/.config/polybar/scripts/pomobar.py --action=new &
+click-middle= ~/.config/polybar/scripts/pomobar.py --action=kill &
+click-right = ~/.config/polybar/scripts/pomobar.py --action=break &
 
 
 
