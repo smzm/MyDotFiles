@@ -386,6 +386,20 @@ clear
     clear
 
 
+        echo " ===================== terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n tmux \n tldr"
+        read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
+        if [[ $ansAria@ == "r" ]] || [[ $ansAria2 == "R" ]]; then
+                echo -e "\n +++++ aria2 installation \n"
+            if [[ $ansOS == "arch" ]]; then
+                sudo pacman -S aria2
+            elif [[ $ansOS == "deb" ]]; then
+                sudo apt-get install aria2
+            fi
+        fi
+    clear
+
+
 # Vim 
         echo " ===================== vim ====================="
         read -p " vim    :::::    [r]un : " ansVim
