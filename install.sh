@@ -405,10 +405,10 @@ clear
         read -p " vim    :::::    [r]un : " ansVim
         if [[ $ansVim == "r" ]] || [[ $ansVim == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
-            echo -e "\n +++++ sudo pacman -S install gvim  \n"
+            echo -e "\n +++++ sudo pacman -S install vim  \n"
             sudo pacman -S vim
         elif [[ $ansOS == "deb" ]];then 
-            echo -e "\n +++++ sudo apt-get install tmux  \n"
+            echo -e "\n +++++ sudo apt-get install vim  \n"
             sudo apt-get install -y vim
         fi
 
@@ -537,6 +537,19 @@ rm -rf ~/tmpInstall
                 sudo snap install spotify
             fi
         fi
+        
+        read -p " Persepolis    :::::   [r]un : " ansPersepolis
+        if [[ $ansPersepolis == "r"  ]] || [[ $ansPersepolis == "R" ]]; then
+            echo -e "\n +++++ persepolis (download manager based on aria2) \n"
+            if [[ $ansOS == "arch" ]];then
+                yay -S persepolis
+            elif [[ $ansOS == "deb" ]];then
+                sudo add-apt-repository ppa:persepolis/ppa
+                sudo apt update
+                sudo apt install persepolis
+            fi
+        fi
+
 
         if [[ $ansOS == "arch" ]]; then
             echo
@@ -849,6 +862,33 @@ done
             sudo pacman -S numlockx
         fi
     clear
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx"  
+        read -p " zathura (PDF)    :::::    [r]un : " ansZathura
+        if [[ $ansZathura == "r" ]] || [[ $ansZathura == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S zathura ... \n"
+            sudo pacman -S zathura
+            sudo pacman -S zathura-pdf-mupdf
+            sudo pacman -S zathura-djvu
+            sudo pacman -S zathura-cb
+            sudo pacman -S zathura-pdf-poppler
+            sudo pacman -S zathura-ps 
+        fi
+    clear
+
+        echo " ===================== i3 installation ====================="
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx \n zathura"   
+        read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
+        if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
+            echo -e "\n +++++ copy i3wm configuration file ... \n"
+            cp -r $dotfiles/.config/i3  $HOME/.config/
+        fi
+    clear
+
+
+
+fi
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx"  
