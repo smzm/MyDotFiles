@@ -433,21 +433,19 @@ clear
     clear
 
 
-        echo " ===================== tweak (just for gnome) ====================="
-        read -p " gnome-tweak    :::::    [r]un : " ansTweak
-        if [[ $ansTweak == "r" ]] || [[ $ansTweak == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo apt-get install gnome-tweak-tool \n +++++ sudo add-apt-repository ppa:webupd8team/gnome3 \n +++++ sudo apt-get update  \n +++++ apt-get install gnome-shell-extensions \n +++++ firefox https://extensions.gnome.org/extension/19/user-themes/ \n"       
-                sudo pacman -S gnome-tweaks
-                sudo pacman -S chrome-gnome-shell
+        echo " ===================== Gnome Theme and icon ====================="
+        read -p " gnome theme and icon    :::::    [r]un : " ansGTI
+        if [[ $ansGTI == "r" ]] || [[ $ansGTI == "R" ]]; then
+            if [[ $ansOS == "arch" ]]; then
+                yay -S sweet-theme-git
+                yay -S paper-icon-theme-git
             elif [[ $ansOS == "deb" ]];then 
-                echo -e "\n +++++ sudo apt-get install gnome-tweak-tool \n +++++ sudo add-apt-repository ppa:webupd8team/gnome3 \n +++++ sudo apt-get update  \n +++++ apt-get install gnome-shell-extensions \n +++++ firefox https://extensions.gnome.org/extension/19/user-themes/ \n"       
-                sudo apt-get install gnome-tweak-tool
-                sudo add-apt-repository ppa:webupd8team/gnome3
-                sudo apt-get update 
-                apt-get install gnome-shell-extensions
-                sudo apt-get install chrome-gnome-shell
-                firefox "https://extensions.gnome.org/extension/19/user-themes/"
+                sudo add-apt-repository -u ppa:snwh/ppa
+                sudo apt install paper-icon-theme
+                
+                cd ~/tmpInstall
+                git clone https://github.com/EliverLara/Sweet.git
+                sudo mv ./Sweet /usr/share/theme/
             fi
         fi
     clear
@@ -538,18 +536,6 @@ rm -rf ~/tmpInstall
             fi
         fi
         
-        read -p " Persepolis    :::::   [r]un : " ansPersepolis
-        if [[ $ansPersepolis == "r"  ]] || [[ $ansPersepolis == "R" ]]; then
-            echo -e "\n +++++ persepolis (download manager based on aria2) \n"
-            if [[ $ansOS == "arch" ]];then
-                yay -S persepolis
-            elif [[ $ansOS == "deb" ]];then
-                sudo add-apt-repository ppa:persepolis/ppa
-                sudo apt update
-                sudo apt install persepolis
-            fi
-        fi
-
 
         if [[ $ansOS == "arch" ]]; then
             echo
