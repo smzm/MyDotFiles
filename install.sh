@@ -100,9 +100,9 @@ if [[ $ansOS == "arch" ]]; then
 
             echo -e "\n +++++ installing yay \n"
             cd ~/tmpInstall
-            git clone https://aur.archlinux.org/yay-bin.git
-            cd yay-bin
-            makepkg -sri
+            git clone https://aur.archlinux.org/yay.git
+            cd yay
+            makepkg -si
         fi
 fi
 
