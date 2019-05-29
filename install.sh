@@ -10,7 +10,7 @@ done
 
     clear
     echo " ===================== pre installation ====================="
-        read -p " updating and upgrading    :::::    r[un] : " ansUU
+        read -p " updating and upgrading    :::::    [r]un : " ansUU
         if [[ $ansUU == "r" ]]||[[ $ansUU == "R" ]]; then
             if [[ $ansOS == "arch" ]];then
                 echo -e "\n +++++ sudo pacman -Syu \n"
@@ -168,7 +168,7 @@ fi
     clear
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n syntax-highlighting \n auto-suggestions"
-        read -p " Copy .zshrc to home directory    :::::    r[un] : " ansZshrc
+        read -p " Copy .zshrc to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
             echo "+++++ Copy .zshrc file to home"
             cp $dotfiles/.zshrc ~
@@ -389,7 +389,7 @@ clear
         echo " ===================== terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n tmux \n tldr"
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
-        if [[ $ansAria@ == "r" ]] || [[ $ansAria2 == "R" ]]; then
+        if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
                 echo -e "\n +++++ aria2 installation \n"
             if [[ $ansOS == "arch" ]]; then
                 sudo pacman -S aria2
