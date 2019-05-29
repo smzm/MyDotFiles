@@ -14,7 +14,7 @@ set $mod Mod4
 #-----------#
 
 # I use those colors at bar and window color settings
-set $bg-color 	         #2bbc85
+set $bg-color 	         #77e5c9
 set $inactive-bg-color   #377566
 set $text-color          #c5ead7
 set $inactive-text-color #4a9b87
@@ -22,7 +22,7 @@ set $urgent-bg-color 	 #255cd1
 
 # Color variables
 set $unfocused_border #72afff
-set $focused_border #82ff80
+set $focused_border #00ffae
 
 # Variables {{{
 set $workspace1  ""
@@ -100,7 +100,7 @@ client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec hyper
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -120,7 +120,8 @@ bindsym $mod+n border pixel 3
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus bindsym $mod+h focus left
+# change focus
+bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
@@ -323,5 +324,5 @@ exec unclutter
 exec numlockx &
 
 # start
-exec hyper
+exec urxvt
 exec brave
