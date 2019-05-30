@@ -52,7 +52,7 @@ Xft.hinting: true
 
 ! 2
 *.color1:       #7575c6
-*.color9:       #6666cc
+*.color9:       #4ea06e
 
 ! 3 - Green 
 *.color2: 		#82ff80
