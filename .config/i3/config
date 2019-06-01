@@ -16,7 +16,7 @@ set $mod Mod4
 # I use those colors at bar and window color settings
 set $bg-color 	         #77e5c9
 set $inactive-bg-color   #377566
-set $text-color          #c5ead7
+set $text-color          #3d894e
 set $inactive-text-color #4a9b87
 set $urgent-bg-color 	 #255cd1
 
