@@ -14,7 +14,7 @@ set $mod Mod4
 #-----------#
 
 # I use those colors at bar and window color settings
-set $bg-color 	         #77e5c9
+set $bg-color 	         #15efbc
 set $inactive-bg-color   #377566
 set $text-color          #3d894e
 set $inactive-text-color #4a9b87
@@ -41,10 +41,13 @@ set $workspace9  "9"
 #assign apps to workspaces	
 assign [class = "URxvt|Hyper|Gnome-terminal"] $workspace1
 assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2 
-assign [class = "code-oss"] $workspace3
+assign [class = "code-oss|Atom|Spyder"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
 assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
+
+for_window [class="Gnome-calculator"] floating enable
+
 
 workspace $workspace1 output HDMI-0
 workspace $workspace2 output HDMI-0
@@ -100,7 +103,7 @@ client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec hyper
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -324,5 +327,5 @@ exec unclutter
 exec numlockx &
 
 # start
-exec urxvt
+exec hyper
 exec brave
