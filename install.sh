@@ -338,11 +338,11 @@ fi
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd"
-        read -p " vifm   :::::    [r]un : " ansVifm
-        if [[ $ansVifm == "r" ]] || [[ $ansVifm == "R" ]]; then
+        read -p " lf (arch)  or vifm (deb) :::::    [r]un : " anslf
+        if [[ $anslf == "r" ]] || [[ $anslf == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo pacman -S vifm \n"
-                sudo pacman -S vifm
+                echo -e "\n +++++ yay -S lf \n"
+                yay -S lf
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n +++++ sudo apt install -y vifm \n"
                 sudo apt install -y vifm
