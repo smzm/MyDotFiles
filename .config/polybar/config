@@ -86,7 +86,7 @@ font-1 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3
-modules-center = pomobar date weather
+modules-center = date weather
 modules-right = xbacklight pulseaudio xkeyboard powermenu
     
 tray-position = right
