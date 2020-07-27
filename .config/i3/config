@@ -38,9 +38,9 @@ set $workspace9  "9"
 
 
 
-#assign apps to workspaces	
+#assign apps to workspaces
 assign [class = "URxvt|Hyper|Gnome-terminal"] $workspace1
-assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2 
+assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2
 assign [class = "code-oss|Atom|Spyder"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
@@ -49,10 +49,10 @@ assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
 for_window [class="Gnome-calculator"] floating enable
 
 
-workspace $workspace1 output HDMI-0
-workspace $workspace2 output HDMI-0
-workspace $workspace3 output HDMI-0
-workspace $workspace4 output HDMI-0
+workspace $workspace1 output HDMI-1
+workspace $workspace2 output HDMI-1
+workspace $workspace3 output HDMI-1
+workspace $workspace4 output HDMI-1
 workspace $workspace5 output HDMI-0
 
 
@@ -149,7 +149,7 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+c split h
-#; exec notify-send -t 2500 "Tile Horizontally" 
+#; exec notify-send -t 2500 "Tile Horizontally"
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -183,23 +183,23 @@ bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5 
-bindsym $mod+6 workspace $workspace6 
-bindsym $mod+7 workspace $workspace7 
-bindsym $mod+8 workspace $workspace8 
-bindsym $mod+9 workspace $workspace9 
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1 
+bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3 
-bindsym $mod+Shift+4 move container to workspace $workspace4 
-bindsym $mod+Shift+5 move container to workspace $workspace5 
-bindsym $mod+Shift+6 move container to workspace $workspace6 
-bindsym $mod+Shift+7 move container to workspace $workspace7 
-bindsym $mod+Shift+8 move container to workspace $workspace8 
-bindsym $mod+Shift+9 move container to workspace $workspace9 
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 
@@ -224,7 +224,7 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt        
+        bindsym j resize shrink height 5 px or 5 ppt
 		bindsym k resize grow height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
 
@@ -277,7 +277,7 @@ floating_minimum_size -1 x -1
 
 # I use spotify as music player, so I had to setup play/pause keys too
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 
@@ -295,7 +295,7 @@ bindsym $mod+shift+x exec i3lock-fancy --greyscale --text " "
 
 bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
-exec_always feh --bg-scale ~/Pictures/Background.jpg
+exec_always feh --bg-scale ~/.config/wall.jpg
 
 exec compton -f
 
@@ -305,8 +305,10 @@ exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
-exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
+# exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
 
+# or
+exec ~/.screenlayout/def.sh
 
 #====== screenshots bindings
 # Desktop screenshot ==> PrintScreen
@@ -327,5 +329,5 @@ exec unclutter
 exec numlockx &
 
 # start
-exec hyper
-exec brave
+#exec hyper
+#exec brave
