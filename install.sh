@@ -343,6 +343,7 @@ fi
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ yay -S lf \n"
                 yay -S lf
+                sudo cp $dotfiles/.config/lf ~/.config/
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n install lf manually \n"
                 sleep 2
@@ -405,6 +406,7 @@ clear
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 yay -S broot
+                sudo cp $dotfiles/.config/broot ~/.config/
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n install broot manually from https://dystroy.org/broot/ \n"
                 sleep 3
