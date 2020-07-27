@@ -5,7 +5,7 @@ mkdir -p ~/tmpInstall
 
 while ! [[ ( "$ansOS" == "arch" ) || ( "$ansOS" == "deb" ) ]]; do
     echo "For proper installation, type one ? "
-    read -p " [arch]    -    [deb]  : " ansOS 
+    read -p " [arch]    -    [deb]  : " ansOS
 done
 
     clear
@@ -16,9 +16,9 @@ done
                 echo -e "\n +++++ sudo pacman -Syu \n"
                 sudo pacman -Syu
 
-            elif [[ $ansOS == "deb" ]];then 
+            elif [[ $ansOS == "deb" ]];then
                 echo -e "\n +++++ sudo apt-get update \n +++++ sudo apt-get upgrade \n"
-                sudo apt-get update 
+                sudo apt-get update
                 sudo apt-get upgrade
 
                 echo -e "\n sudo apt-get install -y build-essential \n"
@@ -50,7 +50,7 @@ done
         if [[ $ansCurl == "r" ]] || [[ $ansCurl == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ sudo pacman -S curl \n"
-                sudo pacman -S curl 
+                sudo pacman -S curl
             elif [[ $ansOS == "deb" ]];then
                 echo -e "\n +++++ sudo apt-get install -y curl \n"
                 sudo apt-get install -y curl
@@ -146,12 +146,12 @@ fi
         fi
     clear
 
-        
+
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh"
         read -p " zsh-syntax-highlighting : [https://github.com/zsh-users/zsh-syntax-highlighting]    :::::    r[un] : " ansSyntaxH
-        if [[ $ansSyntaxH == "r"  ]] || [[ $ansSyntaxH == "R" ]]; then 
+        if [[ $ansSyntaxH == "r"  ]] || [[ $ansSyntaxH == "R" ]]; then
             echo -r "\n +++++ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \n"
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         fi
@@ -160,7 +160,7 @@ fi
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n syntax-highlighting"
         read -p " zsh-autosuggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansAutoS
-        if [[ $ansAutoS == "r"  ]] || [[ $ansAutoS == "R" ]]; then 
+        if [[ $ansAutoS == "r"  ]] || [[ $ansAutoS == "R" ]]; then
             echo -e " \n +++++ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \n"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         fi
@@ -168,10 +168,10 @@ fi
     clear
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n syntax-highlighting \n auto-suggestions"
-        read -p " Copy .zshrc to home directory    :::::    [r]un : " ansZshrc
+        read -p " Copy .zshrc and .zshenv to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
             echo "+++++ Copy .zshrc file to home"
-            cp $dotfiles/.zshrc ~
+            cp $dotfiles/.zshrc $dotfiles/.zshenv ~
             source ~/.zshrc
 
             echo -e "\n Restart terminal and continue installation."
@@ -192,7 +192,7 @@ fi
                 sudo pacman -S npm
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n +++++ Add node to repository and install \n"
-                cd ~ 
+                cd ~
                 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
                 sudo apt install -y nodejs
             fi
@@ -211,7 +211,7 @@ fi
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ sudo pacman -S ruby \n"
-                sudo pacman -S ruby 
+                sudo pacman -S ruby
                 echo "gem: --user-install" >> ~/.gemrc
                 #cp $dotfiles/.profile ~/
 
@@ -268,7 +268,7 @@ fi
 
 
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== terminal ====================="
         read -p " NerdFont(InconsolataLGC) : https://nerdfonts.com   :::::    [r]un : " ansNFontInconsolata
         if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
@@ -279,11 +279,11 @@ fi
                 sudo unzip InconsolataLGC.zip -d /usr/share/fonts/InconsolataLGC
                 sudo rm -rf /usr/share/fonts/InconsolataLGC/*Windwos*.ttf
                 fc-cache -f -v
-        fi 
+        fi
     clear
 
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== terminal ====================="
         echo -e " NerdFont(InconsolataLGC) "
         read -p " NerdFont(Lekton) : https://nerdfonts.com   :::::    [r]un : " ansNFontLekton
         if [[ $ansNFontLekton == "r" ]] || [[ $ansNFontLekton == "R" ]]; then
@@ -298,7 +298,7 @@ fi
     clear
 
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) "
         read -p " Yosemite San Francisco Font : (https://github.com/supermarin/YosemiteSanFranciscoFont)  :::::    [r]un : " ansSFNS
         if [[ $ansSFNS == "r" ]] || [[ $ansSFNS == "R" ]]; then
@@ -309,7 +309,7 @@ fi
                 cd YosemiteSanFranciscoFont
                 sudo cp *.ttf /usr/share/fonts/SFNSDisplay
                 fc-cache -f -v
-                
+
 
                 echo -e " \n +++++ Install San Francisco Font \n"
                 sudo mkdir -p /usr/share/fonts/SF-Mono
@@ -317,12 +317,12 @@ fi
                 git clone "https://github.com/ZulwiyozaPutra/SF-Mono-Font.git"
                 cd SF-Mono*
                 sudo cp SF* /usr/share/fonts/SF-Mono
-                fc-cache -f -v 
+                fc-cache -f -v
         fi
     clear
 
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display"
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
@@ -336,34 +336,34 @@ fi
         fi
     clear
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== terminal ====================="
         echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd"
-        read -p " lf (arch)  or vifm (deb) :::::    [r]un : " anslf
-        if [[ $anslf == "r" ]] || [[ $anslf == "R" ]]; then
+        read -p " lf   :::::    [r]un : " ansLf
+        if [[ $ansLf == "r" ]] || [[ $ansLf == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ yay -S lf \n"
                 yay -S lf
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo apt install -y vifm \n"
-                sudo apt install -y vifm
+                echo -e "\n install lf manually \n"
+                sleep 2
             fi
         fi
     clear
 
 
 
-    echo " ===================== Terminal ====================="
-    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm "
+    echo " ===================== terminal ====================="
+    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf "
     read -p " tmux    :::::    [r]un : " ansTmux
     if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
             echo -e "\n +++++ sudo pacman -S install tmux  \n"
             sudo pacman -S tmux
-        elif [[ $ansOS == "deb" ]];then 
+        elif [[ $ansOS == "deb" ]];then
             echo -e "\n +++++ sudo apt-get install tmux  \n"
             sudo apt-get install -y tmux
         fi
-           
+
         read -p " Copy .tmux.conf to Home ?    :::::    [r]un : " ansCopyTmux
         if [[ $ansCopyTmux == "r" ]] || [[ $ansCopyTmux == "R" ]]; then
             echo "\n +++++ Copy .tmux.conf file to home \n"
@@ -375,7 +375,7 @@ clear
 
 
         echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n tmux"
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux"
         read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
         if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
             echo -e "\n +++++ tldr installation \n"
@@ -387,7 +387,7 @@ clear
 
 
         echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n vifm \n tmux \n tldr"
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux \n tldr"
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
                 echo -e "\n +++++ aria2 installation \n"
@@ -399,36 +399,59 @@ clear
         fi
     clear
 
+        echo " ===================== terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux \n tldr \n aria2"
+        read -p " broot  :::::    [r]un: " ansBroot
+        if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
+            if [[ $ansOS == "arch" ]]; then
+                yay -S broot
+            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n install broot manually from https://dystroy.org/broot/ \n"
+                sleep 3
+            fi
+        fi
+    clear
 
-# Vim 
-        echo " ===================== vim ====================="
-        read -p " vim    :::::    [r]un : " ansVim
-        if [[ $ansVim == "r" ]] || [[ $ansVim == "R" ]]; then
+# Vim
+        echo " ===================== nvim ====================="
+        read -p " nvim    :::::    [r]un : " ansNvim
+        if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
         if [[ $ansOS == "arch" ]]; then
-            echo -e "\n +++++ sudo pacman -S install vim  \n"
-            sudo pacman -S vim
-        elif [[ $ansOS == "deb" ]];then 
-            echo -e "\n +++++ sudo apt-get install vim  \n"
-            sudo apt-get install -y vim
+            echo -e "\n +++++ sudo pacman -S install nvim  \n"
+            sudo pacman -S nvim
+        elif [[ $ansOS == "deb" ]];then
+            echo -e "\n +++++ sudo apt-get install nvim  \n"
+            sudo apt-get install -y nvim
         fi
 
     fi
     clear
 
-        echo " ===================== vim ====================="
+        echo " ===================== nvim ====================="
         echo " vim"
         read -p " Vim-plug : [https://github.com/junegunn/vim-plug]   :::::    [r]un : " ansVimPlug
         if [[ $ansVimPlug == "r" ]] || [[ $ansVimPlug == "R" ]]; then
             echo -e "\n +++++ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \n"
-            curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim    
-            
-            echo "\n +++++ Copy .vimrc file to home \n"
-            sudo cp $dotfiles/.vimrc ~
+                sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+                       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+            echo "\n +++++ Copy .nvim file \n"
+            sudo cp $dotfiles/.config/nvim ~/.config/
 
             clear
             echo  -e "\n run (:PlugInstall) in vim"
             sleep 2
-            vim
+            nvim
+            clear
+             echo "Install CoC extensions"
+                mkdir -p ~/.config/coc/extensions
+                cd ~/.config/coc/extensions
+                if [ ! -f package.json ]
+                then
+                  echo '{"dependencies":{}}'> package.json
+                fi
+                # Change extension names to the extensions you need
+                npm install coc-snippets coc-python coc-html coc-css coc-json --global-style --ignore-scripts --no-bin-links --no-package-lock --only=pro
         fi
     clear
 
@@ -439,10 +462,10 @@ clear
             if [[ $ansOS == "arch" ]]; then
                 yay -S sweet-theme-git
                 yay -S paper-icon-theme-git
-            elif [[ $ansOS == "deb" ]];then 
+            elif [[ $ansOS == "deb" ]];then
                 sudo add-apt-repository -u ppa:snwh/ppa
                 sudo apt install paper-icon-theme
-                
+
                 cd ~/tmpInstall
                 git clone https://github.com/EliverLara/Sweet.git
                 sudo mv ./Sweet /usr/share/theme/
@@ -458,22 +481,22 @@ clear
         fi
     clear
 
-rm -rf ~/tmpInstall 
+rm -rf ~/tmpInstall
 
 
 
         echo " ===================== app ====================="
         read -p " vscode    :::::   [r]un : " ansVscode
-        if [[ $ansVscode == "r"  ]] || [[ $ansVscode == "R" ]]; then   
-            if [[ $ansOS == "arch" ]];then 
+        if [[ $ansVscode == "r"  ]] || [[ $ansVscode == "R" ]]; then
+            if [[ $ansOS == "arch" ]];then
                 sudo pacman -S code
             elif [[ $ansOS == "deb" ]];then
                 sudo snap install vscode --classic
             fi
         fi
-        
+
         read -p " vscode extensions   :::::   [r]un : " ansVscodeExt
-        if [[ $ansVscodeExt == "r"  ]] || [[ $ansVscodeExt == "R" ]]; then   
+        if [[ $ansVscodeExt == "r"  ]] || [[ $ansVscodeExt == "R" ]]; then
             echo -e "\n +++++ Installing extensions \n"
             code --install-extension abusaidm.html-snippets
             code --install-extension adelphes.google-search-ext
@@ -515,7 +538,7 @@ rm -rf ~/tmpInstall
             cp $dotfiles/vscode/keybindings.json $HOME/.config/Code*/User/
             cp -r $dotfiles/vscode/snippets $HOME/.config/Code*/User/
         fi
-        
+
         echo
         read -p " VLC    :::::   [r]un : " ansVLC
         if [[ $ansVLC == "r"  ]] || [[ $ansVLC == "R" ]]; then
@@ -530,12 +553,12 @@ rm -rf ~/tmpInstall
         read -p " Spotify    :::::   [r]un : " ansSpotify
         if [[ $ansSpotify == "r"  ]] || [[ $ansSpotify == "R" ]]; then
             if [[ $ansOS == "arch" ]];then
-                yay -S spotify 
+                yay -S spotify
             elif [[ $ansOS == "deb" ]];then
                 sudo snap install spotify
             fi
         fi
-        
+
 
         if [[ $ansOS == "arch" ]]; then
             echo
@@ -547,7 +570,7 @@ rm -rf ~/tmpInstall
                 cp $dotfiles/.hyper.js $HOME/
             fi
 
-            echo 
+            echo
             read -p " Google-chrome    :::::    [r]un : " ansGoogleChrome
             if [[ $ansGoogleChrome == "r" ]] || [[ $ansGoogleChrome == "R" ]]; then
                 yay -S google-chrome
@@ -563,7 +586,7 @@ while ! [[ ( "$ansI3" == "y" ) || ( "$ansI3" == "n" ) ]]; do
 done
 
     if [[ $ansI3 == "y" ]]; then
-        
+
         echo " ===================== i3 installation ====================="
         read -p " [pip] i3ipc (needed for polybar)    :::::    [r]un : " ansI3ipc
         if [[ $ansI3ipc == "r" ]] || [[ $ansI3ipc == "R" ]]; then
@@ -607,7 +630,7 @@ done
         if [[ $ansRofi == "r" ]] || [[ $ansRofi == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S rofi \n"
             sudo pacman -S rofi
-            
+
             echo -e " \n +++++ Copy polybar configuration "
             cp -r $dotfiles/.config/rofi $HOME/.config/
         fi
@@ -724,7 +747,7 @@ done
             echo -e "\n +++++ copy Background file to Picture ... \n"
             cd ~
             mkdir -p Pictures
-            cp $dotfiles/Background.jpg  $HOME/Pictures/
+            cp $dotfiles/wall.jpg  $HOME/.config/
         fi
     clear
 
@@ -744,7 +767,7 @@ done
         read -p " xfce4 Manager    :::::    [r]un : " ansXfce4Manager
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
-            sudo pacman -S xfce4-power-manager 
+            sudo pacman -S xfce4-power-manager
             sudo pacman -S xfce4-settings
         fi
     clear
@@ -800,9 +823,9 @@ done
         fi
     clear
 
-    
+
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo" 
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S unclutter ... \n"
@@ -812,17 +835,17 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter"
         read -p " ntfs-3g (allows accessing NTFS partitions)    :::::    [r]un : " ansNtfs3g
         if [[ $ansNtfs3g == "r" ]] || [[ $ansNtfs3g == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S ntfs-3g ... \n"
-            sudo pacman -S ntfs-3g 
+            sudo pacman -S ntfs-3g
         fi
     clear
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g"
         read -p " exfat-utils (allows management of FAT drives)    :::::    [r]un : " ansExfat
         if [[ $ansExfat == "r" ]] || [[ $ansExfat == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S exfat-utils ... \n"
@@ -830,9 +853,9 @@ done
         fi
     clear
 
-    
+
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils"
         read -p " sxiv    :::::    [r]un : " ansSxiv
         if [[ $ansSxiv == "r" ]] || [[ $ansSxiv == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S sxiv ... \n"
@@ -841,7 +864,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv"
         read -p " numlockx    :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
@@ -850,7 +873,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx"  
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx"
         read -p " okular (PDF)    :::::    [r]un : " ansOkular
         if [[ $ansOkular == "r" ]] || [[ $ansOkular == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S okular ... \n"
@@ -859,7 +882,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx \n okular"   
+        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n compton \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx \n okular"
         read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
         if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
             echo -e "\n +++++ copy i3wm configuration file ... \n"
