@@ -266,13 +266,11 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 
 " ---------- Goyo ----------
-
 function! s:goyo_enter()
 	let b:quitting = 0
 	let b:quitting_bang = 0
 	autocmd QuitPre <buffer> let b:quitting = 1
 	cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-
 "	if executable('tmux') && strlen($TMUX)
 "		silent !tmux set status off
 "		silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
@@ -283,7 +281,6 @@ function! s:goyo_enter()
     "Limelight
      " ...
 endfunction
-
 function! s:goyo_leave()
 	  " Quit Vim if this is the only remaining buffer
 	  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
@@ -303,6 +300,8 @@ function! s:goyo_leave()
 	  "Limelight!
 	  " ... 
 endfunction
-
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+nnoremap <f8> :Goyo<CR>
+
+
