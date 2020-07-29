@@ -10,6 +10,8 @@ call plug#begin('~/local/share/nvim/plugged')
         Plug 'ryanoasis/vim-devicons'                   " Cool Icons
         Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
         Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
+        Plug 'junegunn/goyo.vim'			" Distraction-free writing in Vim
+	Plug 'junegunn/limelight.vim'                   " Hyperfocus-writing in Vim
 
 
 call plug#end()
@@ -261,3 +263,46 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 " the amount of space to use after the glyph character (default ' ')
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
+
+
+" ---------- Goyo ----------
+
+function! s:goyo_enter()
+	let b:quitting = 0
+	let b:quitting_bang = 0
+	autocmd QuitPre <buffer> let b:quitting = 1
+	cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+
+"	if executable('tmux') && strlen($TMUX)
+"		silent !tmux set status off
+"		silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+"	endif
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    "Limelight
+     " ...
+endfunction
+
+function! s:goyo_leave()
+	  " Quit Vim if this is the only remaining buffer
+	  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+	       if b:quitting_bang
+	         qa!
+	       else
+	         qa
+	       endif
+	  endif
+"	  if executable('tmux') && strlen($TMUX)
+"		  silent !tmux set status on
+"	          silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+"	  endif
+	  set showmode
+	  set showcmd
+	  set scrolloff=5
+	  "Limelight!
+	  " ... 
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
