@@ -66,3 +66,11 @@ nnoremap ; :
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
+
+" easily move a line up or down
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+
