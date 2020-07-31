@@ -353,9 +353,10 @@ fi
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ yay -S lf \n"
                 yay -S lf
-                sudo cp $dotfiles/.config/lf ~/.config/
+                sudo cp -r $dotfiles/.config/lf ~/.config/
             elif [[ $ansOS == "deb" ]]; then
                 brew install lf
+                sudo cp -r $dotfiles/.config/lf ~/.config/
             fi
         fi
     clear
@@ -415,9 +416,10 @@ clear
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 yay -S broot
-                sudo cp $dotfiles/.config/broot ~/.config/
+                sudo cp -r $dotfiles/.config/broot ~/.config/
             elif [[ $ansOS == "deb" ]]; then
                 brew install broot               
+                sudo cp -r $dotfiles/.config/broot ~/.config/
             fi
         fi
     clear
