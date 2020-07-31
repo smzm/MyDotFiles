@@ -183,7 +183,7 @@ fi
 
 
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) ====================="
+        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
         read -p " node(npm) installation    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -195,6 +195,7 @@ fi
                 cd ~
                 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
                 sudo apt install -y nodejs
+                sudo apt-get install npm
             fi
 
             echo "\n +++++ Some changes for installing npm packages without sudo ... \n"
@@ -205,7 +206,7 @@ fi
 
     clear
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) ====================="
+        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
         echo -e " node "
         read -p " ruby(gem) installation    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
@@ -225,7 +226,7 @@ fi
     clear
 
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) ====================="
+        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
         echo -e " node \n ruby "
         read -p " pip installation    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
@@ -239,7 +240,16 @@ fi
         fi
     clear
 
-
+        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
+        echo -e " node \n ruby \n pip "
+        read -p " Brew installation    :::::    [r]un : " ansBrew
+        if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
+            brew install gcc
+        fi
+        
+        
+    clear
         echo " ===================== npm , pip , gem  packages ====================="
         read -p " [npm] sass    :::::    [r]un : " ansSass
         if [[ $ansSass == "r" ]] || [[ $ansSass == "R" ]]; then
@@ -330,8 +340,8 @@ fi
                 echo -e "\n +++++ sudo pacman -S lsd \n"
                 sudo pacman -S lsd
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo snap install lsd --classic \n"
-                sudo snap install lsd --classic
+                echo -e "\n +++++ brew install lsd \n"
+                brew install lsd
             fi
         fi
     clear
@@ -345,8 +355,7 @@ fi
                 yay -S lf
                 sudo cp $dotfiles/.config/lf ~/.config/
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n install lf manually \n"
-                sleep 2
+                brew install lf
             fi
         fi
     clear
@@ -408,8 +417,7 @@ clear
                 yay -S broot
                 sudo cp $dotfiles/.config/broot ~/.config/
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n install broot manually from https://dystroy.org/broot/ \n"
-                sleep 3
+                brew install broot               
             fi
         fi
     clear
@@ -423,7 +431,7 @@ clear
             sudo pacman -S nvim
         elif [[ $ansOS == "deb" ]];then
             echo -e "\n +++++ sudo apt-get install nvim  \n"
-            sudo apt-get install -y nvim
+            sudo apt-get install -y neovim
         fi
 
     fi
@@ -438,7 +446,7 @@ clear
                        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
             echo "\n +++++ Copy .nvim file \n"
-            sudo cp $dotfiles/.config/nvim ~/.config/
+            sudo cp -r $dotfiles/.config/nvim ~/.config/
 
             clear
             echo  -e "\n run (:PlugInstall) in vim"
