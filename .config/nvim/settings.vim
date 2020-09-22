@@ -20,7 +20,7 @@ set smarttab                            " Makes tabbing smarter will realize you
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set smartcase
-set number relativenumber               " Show numbers relative to current line
+set number "relativenumber               " Show numbers
 set autoindent                          " Good auto indent
 set laststatus=2                        " Always display the status line
 set cursorline                          " Enable highlighting of the current line
@@ -30,7 +30,8 @@ set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch
-let mapleader = " " 
+let mapleader = " "
+
 :highlight LineNr ctermfg=grey          " Change color of line numbers to grey
 
 
@@ -76,3 +77,14 @@ inoremap <S-Down> <Esc>:m+<CR>
 " Vim highlight line
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
+
+" Line number
+:highlight LineNr guifg=grey
+
+" For jumping to the end of prantheses and quotes when write a string just
+" with C+e
+inoremap <C-e> <C-o>A
+
+"turn off highlighting after search with esc esc
+nnoremap <esc><esc> :silent! nohls<cr>
+
