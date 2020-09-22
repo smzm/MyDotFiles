@@ -3,8 +3,8 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
  	Plug 'vim-airline/vim-airline'	 	        " status/tabline for vim
  	Plug 'vim-airline/vim-airline-themes'
-        Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense
-        Plug 'justinmk/vim-sneak'                       " Text Navigation
+	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense
+	"Plug 'neovim/nvim-lspconfig'
         Plug 'norcalli/nvim-colorizer.lua'              " Color highlighter
         Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
         Plug 'ryanoasis/vim-devicons'                   " Cool Icons
@@ -12,6 +12,9 @@ call plug#begin('~/local/share/nvim/plugged')
         Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
         Plug 'junegunn/goyo.vim'			" Distraction-free writing in Vim
 	Plug 'junegunn/limelight.vim'                   " Hyperfocus-writing in Vim
+	Plug 'easymotion/vim-easymotion'
+	Plug 'tpope/vim-repeat'
+
 
 
 call plug#end()
@@ -308,3 +311,45 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 nnoremap <F8> :Goyo<CR>
 
+" ------------- Easymotion --------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" " `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" Search with / using easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to
+" EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" Require tpope/vim-repeat to enable dot repeat support
+" Jump to anywhere with only `s{char}{target}`
+" `s<CR>` repeat last find motion.
+nmap s <Plug>(easymotion-s)
+" Bidirectional & within line 't' motion
+omap t <Plug>(easymotion-bd-tl)
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+"  " type `l` and match `l`&`L`
+let g:EasyMotion_smartcase = 1
+" Smartsign (type `3` and match `3`&`#`)
+let g:EasyMotion_use_smartsign_us = 1
