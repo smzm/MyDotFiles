@@ -182,7 +182,6 @@ fi
 
 
         echo " ===================== Brew ====================="
-        echo -e " Brew \n node \n ruby \n pip \n"
         read -p " Brew installation    :::::    [r]un : " ansBrew
         if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
