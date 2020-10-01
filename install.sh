@@ -181,10 +181,8 @@ fi
 
 
 
-
-
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
-        echo -e " node \n ruby \n pip "
+        echo " ===================== Brew ====================="
+        echo -e " Brew \n node \n ruby \n pip \n"
         read -p " Brew installation    :::::    [r]un : " ansBrew
         if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
@@ -196,11 +194,11 @@ fi
 
             echo -e "\n +++++ Brew install gcc... \n"
             brew install gcc
-            
         fi
         clear
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
+        echo " ===================== Brew ====================="
+        echo -e "Brew \n "
         read -p " node(npm) installation    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -215,8 +213,8 @@ fi
 
     clear
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
-        echo -e " node "
+        echo " ===================== Brew ====================="
+        echo -e "Brew \n node \n "
         read -p " ruby(gem) installation    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -235,8 +233,8 @@ fi
     clear
 
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
-        echo -e " node \n ruby "
+        echo " ===================== Brew ====================="
+        echo -e " Brew \n node \n ruby \n"
         read -p " pip installation    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
             if [[ $ansOS == "arch" ]];then
