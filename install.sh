@@ -184,6 +184,23 @@ fi
 
 
         echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
+        echo -e " node \n ruby \n pip "
+        read -p " Brew installation    :::::    [r]un : " ansBrew
+        if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
+            echo -e "\n +++++ add Homebrew’s location to your $PATH... \n"
+            export PATH="/usr/local/bin:$PATH"
+            
+            echo -e "\n +++++  run brew update to make sure Homebrew is up to date... \n"
+            brew update
+
+            echo -e "\n +++++ Brew install gcc... \n"
+            brew install gcc
+            
+        fi
+        clear
+
+        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
         read -p " node(npm) installation    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -191,17 +208,9 @@ fi
                 sudo pacman -S nodejs
                 sudo pacman -S npm
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ Add node to repository and install \n"
-                cd ~
-                curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-                sudo apt install -y nodejs
-                sudo apt-get install npm
+                echo -e "\n +++++ brew install node \n"
+                brew install node
             fi
-
-            echo "\n +++++ Some changes for installing npm packages without sudo ... \n"
-            mkdir -p ~/.npm
-            sudo chown -R $(whoami) ~/.npm
-            npm config set prefix ~/.npm
         fi
 
     clear
@@ -234,19 +243,14 @@ fi
                 echo -e "\n +++++ sudo pacman -S python-pip \n"
                 sudo pacman -S python-pip
             elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo apt-get install python3-pip \n"
-                sudo apt install python3-pip
+                echo -e "\n +++++ brew install python \n"
+                brew install python
+                echo -e "\n +++++  \n"
+                brew unlink python && brew link python
             fi
         fi
     clear
 
-        echo " ===================== Nodejs(npm)  Ruby(gem)  Python(pip) Brew ====================="
-        echo -e " node \n ruby \n pip "
-        read -p " Brew installation    :::::    [r]un : " ansBrew
-        if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
-            brew install gcc
-        fi
         
         
     clear
