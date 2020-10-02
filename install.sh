@@ -895,7 +895,4 @@ done
             cp -r $dotfiles/.config/i3  $HOME/.config/
         fi
     clear
-
-
-
 fi
