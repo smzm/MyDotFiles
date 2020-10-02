@@ -3,288 +3,266 @@
 dotfiles=`echo $PWD`
 mkdir -p ~/tmpInstall
 
-while ! [[ ( "$ansOS" == "arch" ) || ( "$ansOS" == "deb" ) ]]; do
-    echo "For proper installation, type one ? "
-    read -p " [arch]    -    [deb]  : " ansOS
-done
+
 
     clear
     echo " ===================== pre installation ====================="
+    while ! [[ ( "$ansOS" == "arch" ) || ( "$ansOS" == "deb" ) ]]; do
+        echo "For proper installation, type one ? "
+        read -p " [arch]    -    [deb]  : " ansOS
+    done
+        echo 
         read -p " updating and upgrading    :::::    [r]un : " ansUU
         if [[ $ansUU == "r" ]]||[[ $ansUU == "R" ]]; then
             if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo pacman -Syu \n"
+                echo -e "\n +++++ sudo pacman -Syu +++++ \n"
                 sudo pacman -Syu
 
             elif [[ $ansOS == "deb" ]];then
-                echo -e "\n +++++ sudo apt-get update \n +++++ sudo apt-get upgrade \n"
-                sudo apt-get update
+                echo -e "\n +++++ sudo apt-get upgrade +++++ \n +++++ sudo apt-get update +++++ \n"
                 sudo apt-get upgrade
+                sudo apt-get update
 
-               echo -e "\n sudo apt-get install -y build-essential \n"
+               echo -e "\n +++++ sudo apt-get install -y build-essential +++++ \n"
                 sudo apt-get install -y build-essential
-
-            fi
-        fi
-    clear
-
-        echo " ===================== pre installation ====================="
-        echo -e " updating and upgrading "
-        read -p " git    :::::    [r]un : " ansGit
-        if [[ $ansGit == "r" ]] || [[ $ansGit == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo pacman -S git \n"
-                sudo pacman -S git
-
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo apt-get install -y git \n"
-                sudo apt-get install -y git
-            fi
-        fi
-
-    clear
-
-        echo " ===================== pre installation ====================="
-        echo -e " updating and upgrading \n git"
-        read -p " curl    :::::    [r]un : " ansCurl
-        if [[ $ansCurl == "r" ]] || [[ $ansCurl == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo pacman -S curl \n"
-                sudo pacman -S curl
-            elif [[ $ansOS == "deb" ]];then
-                echo -e "\n +++++ sudo apt-get install -y curl \n"
-                sudo apt-get install -y curl
-            fi
-        fi
-
-    clear
-
-        echo " ===================== pre installation ====================="
-        echo -e " updating and upgrading \n git \n curl"
-        read -p " cmake    :::::    [r]un : " ansCmake
-        if [[ $ansCmake == "r" ]] || [[ $ansCmake == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo pacman -S cmake \n"
-                sudo pacman -S cmake
-            elif [[ $ansOS == "deb" ]];then
-                echo -e "\n +++++ sudo apt-get install cmake \n"
-                sudo apt-get install -y cmake
             fi
         fi
     clear
 
 
-        echo " ===================== pre installation ====================="
-        echo -e " updating and upgrading \n git \n curl \n cmake"
-        read -p " unzip    :::::    [r]un : " ansUnzip
-        if [[ $ansUnzip == "r" ]] || [[ $ansUnzip == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo pacman -S unzip \n"
-                sudo pacman -S unzip
-            elif [[ $ansOS == "deb" ]];then
-                echo -e "\n +++++ sudo apt-get install unzip \n"
-                sudo apt-get install -y unzip
+    if [[ $ansOS == "arch" ]]; then
+            echo " ===================== pre installation ====================="
+            echo -e " updating and upgrading "
+            read -p " yay    :::::    [r]un : " ansYay
+            if [[ $ansYay == "r" ]] || [[ $ansYay == "R" ]]; then
+                echo -e "\n +++++ sudo pacman -S binutils +++++ \n"
+                sudo pacman -S binutils
+
+                echo -e "\n +++++ installing yay +++++ \n"
+                cd ~/tmpInstall
+                git clone https://aur.archlinux.org/yay.git
+                cd yay
+                makepkg -si
             fi
-        fi
-    clear
+    fi
+        clear
 
 
 
-if [[ $ansOS == "arch" ]]; then
-        echo " ===================== pre installation ====================="
-        echo -e " updating and upgrading \n git \n curl \n cmake \n unzip"
-        read -p " yay    :::::    [r]un : " ansYay
-        if [[ $ansYay == "r" ]] || [[ $ansYay == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S binutils \n"
-            sudo pacman -S binutils
-
-            echo -e "\n +++++ installing yay \n"
-            cd ~/tmpInstall
-            git clone https://aur.archlinux.org/yay.git
-            cd yay
-            makepkg -si
-        fi
-fi
-
-
-    clear
-    # ZSH configuration
+ # ZSH configuration
         echo " ===================== ZSH ====================="
-        read -p " zsh installation    :::::    [r]un: " ansZSH
+        read -p " zsh    :::::    [r]un: " ansZSH
         if [[ $ansZSH == "r" ]] || [[ $ansZSH == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
-                echo -e " \n +++++ sudo pacman -S zsh \n"
+                echo -e " \n +++++ sudo pacman -S zsh +++++ \n"
                 sudo pacman -S zsh
 
                 echo -e "\n Make zsh default shell \n"
-                echo -e " +++++ sudo usermod -s /usr/bin/zsh $(whoami) \n "
+                echo -e " +++++ sudo usermod -s /usr/bin/zsh $(whoami) +++++ \n "
                 sudo usermod -s /usr/bin/zsh $(whoami)
                 sudo chsh -s $(which zsh)
                 read -p " Please reboot system and continue installation in zsh " notImportant
 
             elif [[ $ansOS == "deb" ]]; then
-                echo -e " \n +++++ sudo apt-get install zsh \n"
+                echo -e " \n +++++ sudo apt-get install zsh +++++ \n"
                 sudo apt-get install -y zsh
 
                 echo -e "\n Make zsh default shell \n"
-                echo -e " +++++ sudo usermod -s /usr/bin/zsh $(whoami) \n "
+                echo -e " +++++ sudo usermod -s /usr/bin/zsh $(whoami) +++++ \n "
                 sudo usermod -s /usr/bin/zsh $(whoami)
                 sudo chsh -s $(which zsh)
                 read -p " Please reboot system and continue installation in zsh " notImportant
             fi
         fi
     clear
-
-
 
         echo " ===================== ZSH ====================="
         echo -e " zsh"
         read -p " oh-my-zsh : [https://github.com/robbyrussell/oh-my-zsh]    :::::    [r]un : " ansOMZ
         if [[ $ansOMZ == "r" ]] || [[ $ansOMZ == "R" ]]; then
-                echo -e "\n +++++ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \n"
+                echo -e "\n +++++ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" +++++ \n"
                 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         fi
     clear
-
-
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh"
         read -p " zsh-syntax-highlighting : [https://github.com/zsh-users/zsh-syntax-highlighting]    :::::    r[un] : " ansSyntaxH
         if [[ $ansSyntaxH == "r"  ]] || [[ $ansSyntaxH == "R" ]]; then
-            echo -r "\n +++++ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \n"
+            echo -r "\n +++++ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting +++++ \n"
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         fi
     clear
 
         echo " ===================== ZSH ====================="
-        echo -e " zsh \n oh-my-zsh \n syntax-highlighting"
-        read -p " zsh-autosuggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansAutoS
+        echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting"
+        read -p " zsh-auto-suggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansAutoS
         if [[ $ansAutoS == "r"  ]] || [[ $ansAutoS == "R" ]]; then
-            echo -e " \n +++++ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \n"
+            echo -e " \n +++++ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions +++++ \n"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         fi
-
     clear
+
         echo " ===================== ZSH ====================="
-        echo -e " zsh \n oh-my-zsh \n syntax-highlighting \n auto-suggestions"
+        echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
         read -p " Copy .zshrc and .zshenv to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
-            echo "+++++ Copy .zshrc file to home"
+            echo "+++++ Copy .zshrc file to home +++++ "
             cp $dotfiles/.zshrc $dotfiles/.zshenv ~
             source ~/.zshrc
-
             echo -e "\n Restart terminal and continue installation."
+            sleep 2
         fi
-
     clear
-
-
 
         echo " ===================== Brew ====================="
         read -p " Brew installation    :::::    [r]un : " ansBrew
         if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
-            echo -e "\n +++++ add Homebrew’s location to your $PATH... \n"
+            echo -e "\n +++++ add Homebrew’s location to your $PATH... +++++ \n"
             export PATH="/usr/local/bin:$PATH"
             
-            echo -e "\n +++++  run brew update to make sure Homebrew is up to date... \n"
+            echo -e "\n +++++  run brew update to make sure Homebrew is up to date... +++++ \n"
             brew update
 
-            echo -e "\n +++++ Brew install gcc... \n"
+            echo -e "\n +++++ Brew install gcc... +++++ \n"
             brew install gcc
         fi
         clear
 
-        echo " ===================== Brew ====================="
-        echo -e "Brew \n "
-        read -p " node(npm) installation    :::::    [r]un: " ansNode
-        if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n sudo pacman -S nodejs npm \n"
-                sudo pacman -S nodejs
-                sudo pacman -S npm
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ brew install node \n"
-                brew install node
-            fi
-        fi
 
+        echo " ===================== CMD App ====================="
+        read -p " curl    :::::    [r]un : " ansCurl
+        if [[ $ansCurl == "r" ]] || [[ $ansCurl == "R" ]]; then
+                echo -e "\n +++++ brew install curl +++++ \n"
+                brew install curl
+        fi
     clear
 
-        echo " ===================== Brew ====================="
-        echo -e "Brew \n node \n "
-        read -p " ruby(gem) installation    :::::    [r]un : " ansRuby
+        echo " ===================== CMD App ====================="
+        echo -e " curl"
+        read -p " cmake    :::::    [r]un : " ansCmake
+        if [[ $ansCmake == "r" ]] || [[ $ansCmake == "R" ]]; then
+                echo -e "\n +++++ brew install cmake +++++ \n"
+                brew install cmake
+        fi
+    clear
+
+        echo " ===================== CMD App ====================="
+        echo -e " curl \n cmake"
+        read -p " unzip    :::::    [r]un : " ansUnzip
+        if [[ $ansUnzip == "r" ]] || [[ $ansUnzip == "R" ]]; then
+                echo -e "\n +++++ brew install unzip +++++ \n"
+                brew install unzip
+        fi
+    clear
+
+# Vim
+        echo " ===================== nvim ====================="
+        read -p " nvim    :::::    [r]un : " ansNvim
+        if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
+            echo -e "\n +++++ brew install --HEAD nvim +++++  \n"
+            brew install --HEAD neovim
+        fi
+    clear
+
+        echo " ===================== nvim ====================="
+        echo " nvim"
+        read -p " Vim-plug : [https://github.com/junegunn/vim-plug]   :::::    [r]un : " ansVimPlug
+        if [[ $ansVimPlug == "r" ]] || [[ $ansVimPlug == "R" ]]; then
+            echo -e "\n +++++ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \n"
+                sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+                       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+            echo "\n +++++ Copy .nvim file +++++ \n"
+            sudo cp -r $dotfiles/.config/nvim ~/.config/
+
+            clear
+            echo  -e "\n run (:PlugInstall) in vim"
+            sleep 2
+            nvim
+            clear
+        fi
+    clear
+
+
+        echo " ===================== Development ====================="
+        read -p " node(npm)    :::::    [r]un: " ansNode
+        if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
+                echo -e "\n +++++ brew install node +++++ \n"
+                brew install node
+        fi
+    clear
+    
+        echo " ===================== Development ====================="
+        echo -e " node(npm) "
+        read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
                 echo -e "\n +++++ sudo pacman -S ruby \n"
                 sudo pacman -S ruby
                 echo "gem: --user-install" >> ~/.gemrc
                 #cp $dotfiles/.profile ~/
-
             elif [[ $ansOS == "deb" ]]; then
                 echo -e "\n +++++ sudo apt install ruby-full \n"
                 sudo apt install -y ruby-full
             fi
-
         sudo gem update
         fi
     clear
 
-
-        echo " ===================== Brew ====================="
-        echo -e " Brew \n node \n ruby \n"
-        read -p " pip installation    :::::    [r]un : " ansPip
+        echo " ===================== Development ====================="
+        echo -e " node(npm) \n ruby(gem) "
+        read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                echo -e "\n +++++ sudo pacman -S python-pip \n"
-                sudo pacman -S python-pip
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ brew install python \n"
+                echo -e "\n +++++ brew install python +++++ \n"
                 brew install python
                 echo -e "\n +++++  \n"
                 brew unlink python && brew link python
-            fi
         fi
     clear
 
-        
-        
-    clear
-        echo " ===================== npm , pip , gem  packages ====================="
+        echo " ===================== NPM ====================="
         read -p " [npm] sass    :::::    [r]un : " ansSass
         if [[ $ansSass == "r" ]] || [[ $ansSass == "R" ]]; then
-            echo -e "\n +++++ npm install -g sass \n"
+            echo -e "\n +++++ npm install -g sass +++++ \n"
             npm install -g sass
         fi
     clear
 
-        echo " ===================== npm , pip , gem  packages ====================="
+        echo " ===================== NPM ====================="
         echo -e " sass"
         read -p " [npm] browser-sync    :::::    [r]un : " ansBrowserSync
         if [[ $ansBrowserSync == "r" ]] || [[ $ansBrowserSync == "R" ]]; then
-            echo -e "\n +++++ npm install -g browser-sync \n"
+            echo -e "\n +++++ npm install -g browser-sync +++++ \n"
             npm install -g browser-sync
         fi
     clear
 
-        echo " ===================== npm , pip , gem  packages ====================="
+        echo " ===================== NPM ====================="
         echo -e " sass \n browser-sync"
         read -p " [npm] nodemon    :::::    [r]un : " ansNodemon
         if [[ $ansNodemon == "r" ]] || [[ $ansNodemon == "R" ]]; then
-            echo -e "\n +++++ npm install -g nodemon \n"
+            echo -e "\n +++++ npm install -g nodemon +++++ \n"
             npm install -g nodemon
         fi
     clear
 
 
+        echo " ===================== PIP ====================="
+        read -p " [pip] Python Language Server    :::::    [r]un : " ansPLS
+        if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
+            echo -e "\n +++++ pip install python-language-server[all] ++++ \n"
+            pip install python-language-server[all]
+        fi
+    clear
 
-        echo " ===================== terminal ====================="
+
+        echo " ===================== Terminal ====================="
         read -p " NerdFont(InconsolataLGC) : https://nerdfonts.com   :::::    [r]un : " ansNFontInconsolata
         if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
                 sudo mkdir -p /usr/share/fonts/InconsolataLGC
-
                 cd ~/tmpInstall
                 wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/InconsolataLGC.zip"
                 sudo unzip InconsolataLGC.zip -d /usr/share/fonts/InconsolataLGC
@@ -293,35 +271,10 @@ fi
         fi
     clear
 
-
-        echo " ===================== terminal ====================="
+        echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) "
-        read -p " NerdFont(Lekton) : https://nerdfonts.com   :::::    [r]un : " ansNFontLekton
-        if [[ $ansNFontLekton == "r" ]] || [[ $ansNFontLekton == "R" ]]; then
-                echo -e " \n +++++ Install Lekton Font \n"
-                sudo mkdir -p /usr/share/fonts/Lekton
-                cd ~/tmpInstall
-                wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Lekton.zip"
-                sudo unzip Lekton.zip -d /usr/share/fonts/Lekton
-                sudo rm -rf /usr/share/fonts/Lekton/*Windwos*.ttf
-                fc-cache -f -v
-        fi
-    clear
-
-
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) "
-        read -p " Yosemite San Francisco Font : (https://github.com/supermarin/YosemiteSanFranciscoFont)  :::::    [r]un : " ansSFNS
+        read -p " SF Mono Font  :::::    [r]un : " ansSFNS
         if [[ $ansSFNS == "r" ]] || [[ $ansSFNS == "R" ]]; then
-                echo -e " \n +++++ Install San Francisco Font \n"
-                sudo mkdir -p /usr/share/fonts/SFNSDisplay
-                cd ~/tmpInstall
-                git clone "https://github.com/supermarin/YosemiteSanFranciscoFont.git"
-                cd YosemiteSanFranciscoFont
-                sudo cp *.ttf /usr/share/fonts/SFNSDisplay
-                fc-cache -f -v
-
-
                 echo -e " \n +++++ Install San Francisco Font \n"
                 sudo mkdir -p /usr/share/fonts/SF-Mono
                 cd ~/tmpInstall
@@ -332,163 +285,102 @@ fi
         fi
     clear
 
-
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display"
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font"
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo pacman -S lsd \n"
-                sudo pacman -S lsd
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ brew install lsd \n"
+                echo -e "\n +++++ brew install lsd +++++ \n"
                 brew install lsd
-            fi
         fi
     clear
 
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd"
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd"
         read -p " lf   :::::    [r]un : " ansLf
         if [[ $ansLf == "r" ]] || [[ $ansLf == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ yay -S lf \n"
-                yay -S lf
-                sudo cp -r $dotfiles/.config/lf ~/.config/
-            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n +++++ brew install lf +++++ \n"
                 brew install lf
+                echo -e "\n +++++ Copy Config files ... +++++ \n"
                 sudo cp -r $dotfiles/.config/lf ~/.config/
+        fi
+    clear
+
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd \n lf "
+        read -p " tmux    :::::    [r]un : " ansTmux
+        if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
+            echo -e "\n +++++ brew install tmux +++++ \n"
+            brew install tmux
+
+            read -p " Copy .tmux.conf to Home ?    :::::    [r]un : " ansCopyTmux
+            if [[ $ansCopyTmux == "r" ]] || [[ $ansCopyTmux == "R" ]]; then
+                echo "\n +++++ Copy .tmux.conf file to home +++++ \n"
+                sudo cp $dotfiles/.tmux.conf ~
             fi
         fi
     clear
 
-
-
-    echo " ===================== terminal ====================="
-    echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf "
-    read -p " tmux    :::::    [r]un : " ansTmux
-    if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
-        if [[ $ansOS == "arch" ]]; then
-            echo -e "\n +++++ sudo pacman -S install tmux  \n"
-            sudo pacman -S tmux
-        elif [[ $ansOS == "deb" ]];then
-            echo -e "\n +++++ sudo apt-get install tmux  \n"
-            sudo apt-get install -y tmux
-        fi
-
-        read -p " Copy .tmux.conf to Home ?    :::::    [r]un : " ansCopyTmux
-        if [[ $ansCopyTmux == "r" ]] || [[ $ansCopyTmux == "R" ]]; then
-            echo "\n +++++ Copy .tmux.conf file to home \n"
-            sudo cp $dotfiles/.tmux.conf ~
-        fi
-    fi
-clear
-
-
-
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux"
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux"
         read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
         if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
-            echo -e "\n +++++ tldr installation \n"
+            echo -e "\n +++++ tldr installation +++++ \n"
             mkdir -p ~/bin
             curl -o ~/bin/tldr https://raw.githubusercontent.com/raylee/tldr/master/tldr
             chmod +x ~/bin/tldr
         fi
     clear
 
-
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux \n tldr"
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR"
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
-                echo -e "\n +++++ aria2 installation \n"
-            if [[ $ansOS == "arch" ]]; then
-                sudo pacman -S aria2
-            elif [[ $ansOS == "deb" ]]; then
-                sudo apt-get install aria2
-            fi
+                echo -e "\n +++++ brew install aria2 +++++ \n"
+                brew install aria2 
         fi
     clear
 
-        echo " ===================== terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n NerdFont(Lekton) \n Yosemite San Francisco Display \n lsd \n lf \n tmux \n tldr \n aria2"
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2"
         read -p " broot  :::::    [r]un: " ansBroot
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                yay -S broot
-                sudo cp -r $dotfiles/.config/broot ~/.config/
-            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n +++++ brew install broot +++++ \n"
                 brew install broot               
+                echo -e "\n +++++ copy config files ... +++++ \n"
+                sleep 2
                 sudo cp -r $dotfiles/.config/broot ~/.config/
-            fi
-        fi
-    clear
-
-# Vim
-        echo " ===================== nvim ====================="
-        read -p " nvim    :::::    [r]un : " ansNvim
-        if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
-        if [[ $ansOS == "arch" ]]; then
-            echo -e "\n +++++ sudo pacman -S install nvim  \n"
-            sudo pacman -S neovim-nightly
-        elif [[ $ansOS == "deb" ]];then
-            echo -e "\n +++++ brew install --HEAD nvim  \n"
-            brew install --HEAD neovim
-        fi
-        pip install 'python-language-server[all]'
-    fi
-    clear
-
-        echo " ===================== nvim ====================="
-        echo " vim"
-        read -p " Vim-plug : [https://github.com/junegunn/vim-plug]   :::::    [r]un : " ansVimPlug
-        if [[ $ansVimPlug == "r" ]] || [[ $ansVimPlug == "R" ]]; then
-            echo -e "\n +++++ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \n"
-                sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-                       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-            echo "\n +++++ Copy .nvim file \n"
-            sudo cp -r $dotfiles/.config/nvim ~/.config/
-
-            clear
-            echo  -e "\n run (:PlugInstall) in vim"
-            sleep 2
-            nvim
-            clear
-            pip install 'python-language-server[all]'
-            sudo apt-get install ctags
         fi
     clear
 
 
-        echo " ===================== Gnome Theme and icon ====================="
-        read -p " gnome theme and icon    :::::    [r]un : " ansGTI
-        if [[ $ansGTI == "r" ]] || [[ $ansGTI == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                yay -S sweet-theme-git
-                yay -S paper-icon-theme-git
-            elif [[ $ansOS == "deb" ]];then
-                sudo add-apt-repository -u ppa:snwh/ppa
-                sudo apt install paper-icon-theme
-
-                cd ~/tmpInstall
-                git clone https://github.com/EliverLara/Sweet.git
-                sudo mv ./Sweet /usr/share/theme/
-            fi
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2 \n broot"
+        read -p " ctags  :::::    [r]un: " ansCtags
+        if [[ $ansCtags == "r" ]] || [[ $ansCtags == "R" ]]; then
+                echo -e "\n +++++ brew install ctags +++++ \n"
+                brew install ctags
         fi
     clear
+
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2 \n broot \n ctags"
+        read -p " ack  :::::    [r]un: " ansAck
+        if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
+                echo -e "\n +++++ brew install ack +++++ \n"
+                brew install ack
+        fi
+    clear
+
 
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
         if [[ $ansCheatSheet == "r" ]] || [[ $ansCheatSheet == "R" ]]; then
-            echo -e "\n +++++ copy /bin to home"
+            echo -e "\n +++++ copy /bin to home +++++"
             cp -r $dotfiles/bin ~
         fi
     clear
 
 rm -rf ~/tmpInstall
-
 
 
         echo " ===================== app ====================="
@@ -499,50 +391,6 @@ rm -rf ~/tmpInstall
             elif [[ $ansOS == "deb" ]];then
                 sudo snap install vscode --classic
             fi
-        fi
-
-        read -p " vscode extensions   :::::   [r]un : " ansVscodeExt
-        if [[ $ansVscodeExt == "r"  ]] || [[ $ansVscodeExt == "R" ]]; then
-            echo -e "\n +++++ Installing extensions \n"
-            code --install-extension abusaidm.html-snippets
-            code --install-extension adelphes.google-search-ext
-            code --install-extension christian-kohler.npm-intellisense
-            code --install-extension Compulim.compulim-vscode-dictionary
-            code --install-extension dbaeumer.vscode-eslint
-            code --install-extension DigitalBrainstem.javascript-ejs-support
-            code --install-extension ecmel.vscode-html-css
-            code --install-extension eg2.vscode-npm-script
-            code --install-extension esbenp.prettier-vscode
-            code --install-extension fisheva.eva-theme
-            code --install-extension kyleerickson.night-rider
-            code --install-extension leizongmin.node-module-intellisense
-            code --install-extension lihui.vs-color-picker
-            code --install-extension mgmcdermott.vscode-language-babel
-            code --install-extension mrmlnc.vscode-scss
-            code --install-extension ms-python.python
-            code --install-extension ms-vscode.vscode-typescript-tslint-plugin
-            code --install-extension naumovs.color-highlight
-            code --install-extension remimarsal.prettier-now
-            code --install-extension ritwickdey.live-sass
-            code --install-extension ritwickdey.LiveServer
-            code --install-extension robinbentley.sass-indented
-            code --install-extension shyykoserhiy.vscode-spotify
-            code --install-extension vscodevim.vim
-            code --install-extension yummygum.city-lights-theme
-            code --install-extension wavebeem.theme-unoduetre
-            code --install-extension zhuangtongfa.Material-theme
-            code --install-extension emmanuelbeziat.vscode-great-icons
-
-
-        fi
-
-
-        read -p " vscode configurations    :::::   [r]un : " ansVscodeConfig
-        if [[ $ansVscodeConfig == "r"  ]] || [[ $ansVscodeConfig == "R" ]]; then
-            echo -e "\n +++++ Copy setting file \n"
-            cp $dotfiles/vscode/settings.json $HOME/.config/Code*/User/
-            cp $dotfiles/vscode/keybindings.json $HOME/.config/Code*/User/
-            cp -r $dotfiles/vscode/snippets $HOME/.config/Code*/User/
         fi
 
         echo
