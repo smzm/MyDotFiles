@@ -252,8 +252,8 @@ mkdir -p ~/tmpInstall
         echo " ===================== PIP ====================="
         read -p " [pip] Python Language Server    :::::    [r]un : " ansPLS
         if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
-            echo -e "\n +++++ pip install python-language-server[all] ++++ \n"
-            pip install python-language-server[all]
+            echo -e "\n +++++ pip3 install python-language-server[all] +++++ \n"
+            pip3 install python-language-server[all]
         fi
     clear
 
@@ -324,10 +324,8 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux"
         read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
         if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
-            echo -e "\n +++++ tldr installation +++++ \n"
-            mkdir -p ~/bin
-            curl -o ~/bin/tldr https://raw.githubusercontent.com/raylee/tldr/master/tldr
-            chmod +x ~/bin/tldr
+            echo -e "\n +++++ brew install tldr +++++ \n"
+            brew install tldr
         fi
     clear
 
@@ -382,54 +380,6 @@ mkdir -p ~/tmpInstall
 
 rm -rf ~/tmpInstall
 
-
-        echo " ===================== app ====================="
-        read -p " vscode    :::::   [r]un : " ansVscode
-        if [[ $ansVscode == "r"  ]] || [[ $ansVscode == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                sudo pacman -S code
-            elif [[ $ansOS == "deb" ]];then
-                sudo snap install vscode --classic
-            fi
-        fi
-
-        echo
-        read -p " VLC    :::::   [r]un : " ansVLC
-        if [[ $ansVLC == "r"  ]] || [[ $ansVLC == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                sudo pacman -S vlc
-            elif [[ $ansOS == "deb" ]];then
-                sudo snap install vlc
-            fi
-        fi
-
-        echo
-        read -p " Spotify    :::::   [r]un : " ansSpotify
-        if [[ $ansSpotify == "r"  ]] || [[ $ansSpotify == "R" ]]; then
-            if [[ $ansOS == "arch" ]];then
-                yay -S spotify
-            elif [[ $ansOS == "deb" ]];then
-                sudo snap install spotify
-            fi
-        fi
-
-
-        if [[ $ansOS == "arch" ]]; then
-            echo
-            read -p " Hyper    :::::    [r]un : " ansHyper
-            if [[ $ansHyper == "r" ]] || [[ $ansHyper == "R" ]]; then
-                yay -S hyper
-
-                echo -e "copy configuration file"
-                cp $dotfiles/.hyper.js $HOME/
-            fi
-
-            echo
-            read -p " Google-chrome    :::::    [r]un : " ansGoogleChrome
-            if [[ $ansGoogleChrome == "r" ]] || [[ $ansGoogleChrome == "R" ]]; then
-                yay -S google-chrome
-            fi
-        fi
 clear
 
 
@@ -449,7 +399,7 @@ done
         fi
     clear
 
-        echo " ===================== i3 installation ====================="
+        ECHO " ===================== i3 installation ====================="
         echo -e " i3ipc"
         read -p " Feh (wallpaper)    :::::    [r]un : " ansFeh
         if [[ $ansFeh == "r" ]] || [[ $ansFeh == "R" ]]; then
