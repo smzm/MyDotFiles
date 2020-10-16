@@ -103,8 +103,18 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
+
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
+        read -p " chroma (syntax highlighter)    :::::    r[un] : " ansChroma
+        if [[ $ansChroma == "r"  ]] || [[ $ansChroma == "R" ]]; then
+            echo -e " \n +++++ sudo apt install chroma +++++ \n"
+            sudo apt install chroma
+        fi
+    clear
+
+        echo " ===================== ZSH ====================="
+        echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions \n chroma"
         read -p " Copy .zshrc and .zshenv to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
             echo "+++++ Copy .zshrc file to home +++++ "
@@ -114,6 +124,8 @@ mkdir -p ~/tmpInstall
             sleep 2
         fi
     clear
+
+
 
         echo " ===================== Brew ====================="
         read -p " Brew installation    :::::    [r]un : " ansBrew
