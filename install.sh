@@ -105,15 +105,6 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== ZSH ====================="
-        echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
-        read -p " chroma (syntax highlighter)    :::::    r[un] : " ansChroma
-        if [[ $ansChroma == "r"  ]] || [[ $ansChroma == "R" ]]; then
-            echo -e " \n +++++ sudo apt install chroma +++++ \n"
-            sudo apt install chroma
-        fi
-    clear
-
-        echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions \n chroma"
         read -p " Copy .zshrc and .zshenv to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
@@ -146,8 +137,12 @@ mkdir -p ~/tmpInstall
         echo " ===================== CMD App ====================="
         read -p " curl    :::::    [r]un : " ansCurl
         if [[ $ansCurl == "r" ]] || [[ $ansCurl == "R" ]]; then
-                echo -e "\n +++++ brew install curl +++++ \n"
-                brew install curl
+                echo -e "\n +++++ install curl +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S curl
+                else
+                    brew install curl
+                fi
         fi
     clear
 
@@ -155,8 +150,12 @@ mkdir -p ~/tmpInstall
         echo -e " curl"
         read -p " cmake    :::::    [r]un : " ansCmake
         if [[ $ansCmake == "r" ]] || [[ $ansCmake == "R" ]]; then
-                echo -e "\n +++++ brew install cmake +++++ \n"
-                brew install cmake
+                echo -e "\n +++++  install cmake +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S cmake
+                else
+                    brew install cmake
+                fi
         fi
     clear
 
@@ -164,8 +163,12 @@ mkdir -p ~/tmpInstall
         echo -e " curl \n cmake"
         read -p " unzip    :::::    [r]un : " ansUnzip
         if [[ $ansUnzip == "r" ]] || [[ $ansUnzip == "R" ]]; then
-                echo -e "\n +++++ brew install unzip +++++ \n"
-                brew install unzip
+                echo -e "\n +++++ install unzip +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S unzip
+                else
+                    brew install unzip
+                fi
         fi
     clear
 
@@ -173,8 +176,12 @@ mkdir -p ~/tmpInstall
         echo " ===================== nvim ====================="
         read -p " nvim    :::::    [r]un : " ansNvim
         if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
-            echo -e "\n +++++ brew install --HEAD nvim +++++  \n"
-            brew install --HEAD neovim
+            echo -e "\n +++++ install neovim nightly +++++  \n"
+            if [[ $ansOS == "arch" ]];then
+                yay -S neovim-nightly
+            else
+                brew install --HEAD neovim
+            fi
         fi
     clear
 
@@ -190,7 +197,7 @@ mkdir -p ~/tmpInstall
             sudo cp -r $dotfiles/.config/nvim ~/.config/
 
             clear
-            echo  -e "\n run (:PlugInstall) in vim"
+            echo  -e "\n run (:PlugInstall) in nvim"
             sleep 2
             nvim
             clear
@@ -201,8 +208,12 @@ mkdir -p ~/tmpInstall
         echo " ===================== Development ====================="
         read -p " node(npm)    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
-                echo -e "\n +++++ brew install node +++++ \n"
-                brew install node
+                echo -e "\n +++++ install node +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S nodejs
+                else
+                    brew install node
+                fi
         fi
     clear
     
@@ -227,10 +238,15 @@ mkdir -p ~/tmpInstall
         echo -e " node(npm) \n ruby(gem) "
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
-                echo -e "\n +++++ brew install python +++++ \n"
-                brew install python
-                echo -e "\n +++++  \n"
-                brew unlink python && brew link python
+                echo -e "\n +++++ install python +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S python
+                    sudo pacman -S python-pip
+                else
+                    brew install python
+                    echo -e "\n +++++  \n"
+                    brew unlink python && brew link python
+                fi
         fi
     clear
 
@@ -301,8 +317,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono Font"
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
-                echo -e "\n +++++ brew install lsd +++++ \n"
-                brew install lsd
+                echo -e "\n +++++ install lsd +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S lsd
+                else
+                    brew install lsd
+                fi
         fi
     clear
 
@@ -310,10 +330,14 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd"
         read -p " lf   :::::    [r]un : " ansLf
         if [[ $ansLf == "r" ]] || [[ $ansLf == "R" ]]; then
-                echo -e "\n +++++ brew install lf +++++ \n"
+            echo -e "\n +++++ install lf +++++ \n"
+            if [[ $ansOS == "arch" ]];then
+                yay -S lf
+            else
                 brew install lf
-                echo -e "\n +++++ Copy Config files ... +++++ \n"
-                sudo cp -r $dotfiles/.config/lf ~/.config/
+            fi
+            echo -e "\n +++++ Copy Config files ... +++++ \n"
+            sudo cp -r $dotfiles/.config/lf ~/.config/
         fi
     clear
 
@@ -321,8 +345,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd \n lf "
         read -p " tmux    :::::    [r]un : " ansTmux
         if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
-            echo -e "\n +++++ brew install tmux +++++ \n"
-            brew install tmux
+            echo -e "\n +++++ install tmux +++++ \n"
+            if [[ $ansOS == "arch" ]];then
+                sudo pacman -S tmux
+            else
+                brew install tmux
+            fi
 
             read -p " Copy .tmux.conf to Home ?    :::::    [r]un : " ansCopyTmux
             if [[ $ansCopyTmux == "r" ]] || [[ $ansCopyTmux == "R" ]]; then
@@ -336,8 +364,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux"
         read -p " TLDR installation : [https://github.com/tldr-pages/tldr]   :::::    [r]un: " ansTLDR
         if [[ $ansTLDR == "r" ]] || [[ $ansTLDR == "R" ]]; then
-            echo -e "\n +++++ brew install tldr +++++ \n"
-            brew install tldr
+            echo -e "\n +++++ install tldr +++++ \n"
+            if [[ $ansOS == "arch" ]];then
+                sudo pacman -S tldr
+            else
+                brew install tldr
+            fi
         fi
     clear
 
@@ -345,8 +377,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR"
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
-                echo -e "\n +++++ brew install aria2 +++++ \n"
-                brew install aria2 
+                echo -e "\n +++++ install aria2 +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S aria2
+                else
+                    brew install aria2 
+                fi
         fi
     clear
 
@@ -354,8 +390,13 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2"
         read -p " broot  :::::    [r]un: " ansBroot
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
-                echo -e "\n +++++ brew install broot +++++ \n"
-                brew install broot               
+                echo -e "\n +++++ install broot +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S broot
+                else
+                    brew install broot               
+                fi
+
                 echo -e "\n +++++ copy config files ... +++++ \n"
                 sleep 2
                 sudo cp -r $dotfiles/.config/broot ~/.config/
@@ -367,8 +408,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2 \n broot"
         read -p " ctags  :::::    [r]un: " ansCtags
         if [[ $ansCtags == "r" ]] || [[ $ansCtags == "R" ]]; then
-                echo -e "\n +++++ brew install ctags +++++ \n"
-                brew install ctags
+                echo -e "\n +++++ install ctags +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S ctags
+                else
+                    brew install ctags
+                fi
         fi
     clear
 
@@ -376,8 +421,12 @@ mkdir -p ~/tmpInstall
         echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n TLDR \n aria2 \n broot \n ctags"
         read -p " ack  :::::    [r]un: " ansAck
         if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
-                echo -e "\n +++++ brew install ack +++++ \n"
-                brew install ack
+                echo -e "\n +++++ install ack +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S ack
+                else
+                    brew install ack
+                fi
         fi
     clear
 
