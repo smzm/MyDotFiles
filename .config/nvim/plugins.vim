@@ -26,6 +26,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'arzg/vim-colors-xcode'
 
 
+
 call plug#end()
 
 "------------- Theme ----------
@@ -50,6 +51,15 @@ let g:vimArguments = execute("args")
 if len(g:vimArguments) == 0
 	autocmd VimEnter * FloatermNew lf  
 endif
+
+" Binding F5 to save and run python code inside floaterm window
+:function RunPython()
+	:execute "w"
+	:FloatermNew clear && python3 %:p
+:endfunction
+
+nnoremap <F5> :call RunPython()<CR>
+
 
  " ---------- Vim-:airline ----------
 let g:airline#extensions#wordcount#enabled = 1
