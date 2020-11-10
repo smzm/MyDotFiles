@@ -59,6 +59,7 @@ endif
 :endfunction
 
 nnoremap <F5> :call RunPython()<CR>
+inoremap <F5> <esc> :call RunPython()<CR>
 
 
  " ---------- Vim-:airline ----------
