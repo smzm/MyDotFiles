@@ -143,6 +143,5 @@ cc(){
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.profile
 
 export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
