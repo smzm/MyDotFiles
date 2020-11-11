@@ -281,7 +281,11 @@ mkdir -p ~/tmpInstall
         read -p " [pip] Python Language Server    :::::    [r]un : " ansPLS
         if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
             echo -e "\n +++++ pip3 install python-language-server[all] +++++ \n"
-            pip3 install python-language-server[all]
+              if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S python-language-server 
+                else
+                    pip3 install python-language-server[all]
+              fi
         fi
     clear
 
