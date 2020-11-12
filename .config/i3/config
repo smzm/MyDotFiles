@@ -39,9 +39,9 @@ set $workspace9  "9"
 
 
 #assign apps to workspaces
-assign [class = "URxvt|Hyper|Gnome-terminal"] $workspace1
+assign [class = "URxvt|Hyper|Gnome-terminal|Alacritty"] $workspace1
 assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2
-assign [class = "code-oss|Atom|Spyder"] $workspace3
+assign [class = "Code|code|code-oss|Atom|Spyder"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
 assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
