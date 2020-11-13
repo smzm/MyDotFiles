@@ -7,16 +7,16 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'nvim-lua/completion-nvim'		        	" A async completion to neovim's built in LSP
 	Plug 'nvim-lua/diagnostic-nvim'			        " A wrapper for neovim built in LSP diagnosis config
 	Plug 'vuciv/vim-bujo'				            " A minimalist task manager for vim
-    Plug 'norcalli/nvim-colorizer.lua'              " Color highlighter
-    Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
-    Plug 'ryanoasis/vim-devicons'                   " Cool Icons
-    Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-    Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
-    Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
+  	Plug 'norcalli/nvim-colorizer.lua'              " Color highlighter
+    	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
+    	Plug 'ryanoasis/vim-devicons'                   " Cool Icons
+    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
+    	Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
+    	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
 	Plug 'junegunn/limelight.vim'                   " Hyperfocus-writing in Vim
-    Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
-    Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
-    Plug 'haya14busa/incsearch-easymotion.vim'      
+    	Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
+    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
+    	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
 	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
@@ -24,11 +24,10 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'lifepillar/vim-gruvbox8'			        " gruvbox Theme
 	Plug 'wadackel/vim-dogrun'
 	Plug 'arzg/vim-colors-xcode'
-    Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-
-
-
+    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
 call plug#end()
+
+
 
 "------------- Theme ----------
 colorscheme dogrun
@@ -38,6 +37,7 @@ let g:airline_theme = "hybrid"
 
 "Highlight search color 
 hi Search cterm=NONE ctermfg=black ctermbg=yellow
+
 
 
 " ---------- Floaterm ----------
@@ -61,6 +61,7 @@ endif
 
 nnoremap <F5> :call RunPython()<CR>
 inoremap <F5> <esc> :call RunPython()<CR>
+
 
 
  " ---------- Vim-:airline ----------
@@ -111,6 +112,7 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
 
 
 "---------- Devicon ----------
@@ -181,6 +183,8 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 nnoremap <F8> :Goyo<CR>
 
+
+
 " ------------- Easymotion --------------
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -225,6 +229,7 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
 
+
 " --------------------- LSP ------------------------
 lua << EOF
 require'nvim_lsp'.pyls.setup{}
@@ -255,6 +260,7 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 
+
 "---------------- Completion-nvim ------------------
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -272,8 +278,9 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 "specify keyword length for triggering completion
 let g:completion_trigger_keyword_length = 3
 
-"------------------ Diagnostic-nvim ------------------
 
+
+"------------------ Diagnostic-nvim ------------------
 lua << EOF
 local on_attach_vim = function(client)
   require'completion'.on_attach(client)
@@ -287,8 +294,12 @@ let g:space_before_virtual_text = 5
 let g:diagnostic_insert_delay = 1
 let g:diagnostic_auto_popup_while_jump = 1
 
+
+
 "------------------ indentLine ------------------------
 let g:indentLine_color_term = 239
+
+
 
 
 "----------------------- Bujo --------------------------
@@ -307,6 +318,8 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
 
 
 "---------------------- Commentary ---------------------
