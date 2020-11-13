@@ -133,9 +133,3 @@ augroup END
 " map Leader+" for wraping a sentences inside () in " == usefull for python
 nnoremap <Leader>' vi)<esc>a"<esc>l%a"<esc>
 
-" map ? ==> to python comment
-augroup pythoncomment 
-  autocmd!
-  autocmd FileType python nnoremap <buffer> ? <esc>I#<space><esc>
-augroup END
-

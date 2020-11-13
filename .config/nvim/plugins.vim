@@ -24,6 +24,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'lifepillar/vim-gruvbox8'			        " gruvbox Theme
 	Plug 'wadackel/vim-dogrun'
 	Plug 'arzg/vim-colors-xcode'
+    Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
 
 
 
@@ -306,4 +307,10 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
+"---------------------- Commentary ---------------------
+" map ctrl + / to comment and uncomment with commantary
+map <C-_> gc
+
 
