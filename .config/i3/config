@@ -49,10 +49,10 @@ assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
 for_window [class="Gnome-calculator"] floating enable
 
 
-workspace $workspace1 output HDMI-1
-workspace $workspace2 output HDMI-1
-workspace $workspace3 output HDMI-1
-workspace $workspace4 output HDMI-1
+workspace $workspace1 output HDMI-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output HDMI-0
+workspace $workspace4 output HDMI-0
 workspace $workspace5 output HDMI-0
 
 
@@ -103,7 +103,7 @@ client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec hyper
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -305,7 +305,7 @@ exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
-# exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
+exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 117x1050 --rotate normal
 
 # or
 exec ~/.screenlayout/def.sh
@@ -329,5 +329,5 @@ exec unclutter
 exec numlockx &
 
 # start
-#exec hyper
-#exec brave
+exec alacritty
+exec brave
