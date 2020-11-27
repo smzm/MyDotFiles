@@ -128,8 +128,6 @@ mkdir -p ~/tmpInstall
             echo -e "\n +++++  run brew update to make sure Homebrew is up to date... +++++ \n"
             brew update
 
-            echo -e "\n +++++ Brew install gcc... +++++ \n"
-            brew install gcc
         fi
         clear
 
