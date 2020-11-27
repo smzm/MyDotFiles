@@ -135,7 +135,7 @@ alias lla='lsd -la'
 alias lcg='lsd --gs'
 alias cl='clear'
 alias cp='cp -i' #Confirm before overwriting
-
+alias aria='aria2c -x16 -c -k1M -j10 -m16'
 
 cc(){
     cc.sh $1
