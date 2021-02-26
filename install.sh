@@ -225,6 +225,7 @@ mkdir -p ~/tmpInstall
                     brew install python
                     echo -e "\n +++++  \n"
                     brew unlink python && brew link python
+                    pip3 install pynvim jedi
                 fi
         fi
     clear
