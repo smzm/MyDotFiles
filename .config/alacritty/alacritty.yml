@@ -1,7 +1,7 @@
 # Font configuration (changes require restart)
 font:
   # The size to use.
-  size: 13
+  size: 14
 
 
   # The normal (roman) font face to use.
@@ -30,7 +30,7 @@ font:
 
 window:
   padding:
-    x: 0
+    x: 30
     y: 0
 
 
@@ -38,7 +38,7 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#263238'
+    background: '#262626'
     foreground: '#eeffff'
 
   # Normal colors
