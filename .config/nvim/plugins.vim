@@ -321,5 +321,3 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:Hexokinase_highlighters = ['backgroundfull']
 "let g:Hexokinase_highlighters = ['foregroundfull']
 
-
-
