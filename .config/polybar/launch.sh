@@ -19,6 +19,6 @@ fi
 # Launch bar1 and bar2
 #polybar bar1 &
 #polybar bar2 &
-polybar example -r & 
+#polybar example -r & 
 
 echo "Bars launched..."
