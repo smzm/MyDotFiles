@@ -1,7 +1,11 @@
+env:
+  TERM: xterm-256color
+
 # Font configuration (changes require restart)
 font:
   # The size to use.
   size: 14
+
 
 
   # The normal (roman) font face to use.
@@ -38,14 +42,14 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#262626'
+    background: '#1c2022'
     foreground: '#eeffff'
 
   # Normal colors
   normal:
     black:   '#000000'  # Arbitrary
     red:     '#e53935'
-    green:   '#91b859'
+    green:   '#3cb025'
     yellow:  '#ffb62c'
     blue:    '#6182b8'
     magenta: '#ff5370'  # Dark pink of the original material theme
@@ -62,3 +66,4 @@ colors:
     magenta: '#f07178'  # Pink of the original material theme
     cyan:    '#89ddff'
     white:   '#ffffff'  # Arbitrary
+
