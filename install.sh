@@ -33,16 +33,25 @@ mkdir -p ~/tmpInstall
     if [[ $ansOS == "arch" ]]; then
             echo " ===================== pre installation ====================="
             echo -e " updating and upgrading "
-            read -p " yay    :::::    [r]un : " ansYay
+            read -p " install yaourt and yay    :::::    [r]un : " ansYay
             if [[ $ansYay == "r" ]] || [[ $ansYay == "R" ]]; then
                 echo -e "\n +++++ sudo pacman -S binutils +++++ \n"
                 sudo pacman -S binutils
 
-                echo -e "\n +++++ installing yay +++++ \n"
-                cd ~/tmpInstall
-                git clone https://aur.archlinux.org/yay.git
-                cd yay
+                echo -e "\n +++++ installing yaourt +++++\n"
+                sudo pacman -S --needed base-devel git wget yajl
+                cd ~/tmpInstall 
+                git clone https://aur.archlinux.org/package-query.git
+                cd package-query/
                 makepkg -si
+
+                cd ~/tmpInstall
+                git clone https://aur.archlinux.org/yaourt.git
+                cd yaourt/
+                makepkg -si
+
+                echo -e "\n +++++ installing yay-bin +++++ \n"
+                yaourt -S yay
             fi
     fi
         clear
