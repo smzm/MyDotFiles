@@ -3,20 +3,17 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
  	Plug 'vim-airline/vim-airline'	 	            " status/tabline for vim
  	Plug 'vim-airline/vim-airline-themes'
-	Plug 'neovim/nvim-lspconfig'			        " Nvim LSP client
-	Plug 'nvim-lua/completion-nvim'		        	" A async completion to neovim's built in LSP
-	Plug 'nvim-lua/diagnostic-nvim'			        " A wrapper for neovim built in LSP diagnosis config
 	Plug 'vuciv/vim-bujo'				            " A minimalist task manager for vim
   	Plug 'norcalli/nvim-colorizer.lua'              " Color highlighter
-    	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
-    	Plug 'ryanoasis/vim-devicons'                   " Cool Icons
-    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-    	Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
-    	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
+  	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
+   	Plug 'ryanoasis/vim-devicons'                   " Cool Icons
+   	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
+   	Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
+   	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
 	Plug 'junegunn/limelight.vim'                   " Hyperfocus-writing in Vim
-    	Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
-    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
-    	Plug 'haya14busa/incsearch-easymotion.vim'      
+   	Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
+   	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
+   	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
 	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
@@ -24,23 +21,57 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'lifepillar/vim-gruvbox8'			        " gruvbox Theme
 	Plug 'wadackel/vim-dogrun'
 	Plug 'arzg/vim-colors-xcode'
-    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
+   	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'zchee/deoplete-jedi'
+    Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+	Plug 'davidhalter/jedi-vim'						" jump to the definition of class and method to check their implementation
+	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
+	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+	Plug 'arcticicestudio/nord-vim'
+
 call plug#end()
 
 
 
 "------------- Theme ----------
+set termguicolors
 colorscheme dogrun
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 "colorscheme xcodedarkhc
 
 let g:airline_theme = "hybrid"
 
 "Highlight search color 
-hi Search cterm=NONE ctermfg=black ctermbg=yellow
-
-
-
-" ---------- Floaterm ----------
+hi Search guibg=#c7ac00
+hi Normal guibg=#1c2022
+hi LineNr guifg=#383838
+hi CursorLineNr guifg=#808080
+hi CursorLine guibg=#292929
+hi Comment guifg=#454545
+hi Comment cterm=italic gui=italic
+hi Function guifg=#51cedf
+hi PythonOperator guifg=#ddcb83
+hi PythonStatement guifg=#c15fe1
+hi PythonBuiltin guifg = #bd863d
+hi Float guifg=#bd863d 
+hi Boolean guifg=#bd863d
+hi Conditional guifg=#c15fe1
+hi String guifg=#89b866
+hi Repeat guifg=#c15fe1
+hi Exception guifg=#c15fe1
+hi Constant guifg=#bd863d
+hi Number guifg=#bd863d
+hi Statement guifg=#bdbdbd
+hi Label guifg=#bdbdbd
+hi PreProc guifg=#c15fe1
+hi ClsasStorage guifg=#bd863d
+hi Structure guifg=#bd863d
+hi Floaterm guifg=#bdbdbd
+hi FloatermBorder guifg=#1f9638 guibg=#1c2022
+"---------- Floaterm ----------
 nnoremap <A-r> :FloatermNew lf<CR>
 nnoremap <A-t> :FloatermNew<CR>
 let g:floaterm_keymap_prev   = '<F9>'
@@ -230,72 +261,6 @@ let g:EasyMotion_use_smartsign_us = 1
 
 
 
-" --------------------- LSP ------------------------
-lua << EOF
-require'nvim_lsp'.pyls.setup{}
-EOF
-
-set completeopt-=preview
-
-" use omni completion provided by lsp
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-let g:gruvbox_contrast_dark = 'hard'
-if exists('+termguicolors')
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-let g:gruvbox_invert_selection='0'
-
-lua require'nvim_lsp'.pyls.setup{on_attach=require'completion'.on_attach}
-
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-
-
-
-"---------------- Completion-nvim ------------------
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-
-"specify keyword length for triggering completion
-let g:completion_trigger_keyword_length = 3
-
-
-
-"------------------ Diagnostic-nvim ------------------
-lua << EOF
-local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
-end
-require'nvim_lsp'.pyls.setup{on_attach=on_attach_vim}
-EOF
-
-let g:diagnostic_enable_virtual_text = 1
-let g:space_before_virtual_text = 5
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_auto_popup_while_jump = 1
-
-
-
 "------------------ indentLine ------------------------
 let g:indentLine_color_term = 239
 
@@ -320,10 +285,41 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 
-
-
 "---------------------- Commentary ---------------------
 " map ctrl + / to comment and uncomment with commantary
 map <C-_> gc
+
+
+"----------------------  Deoplete ----------------------
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\   'ignore_case': v:true,
+\   'smart_case': v:true,
+\})
+" complete with words from any opened file
+let g:context_filetype#same_filetypes = {}
+let g:context_filetype#same_filetypes._ = '_'
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+set splitbelow
+
+" maximum candidate window length
+call deoplete#custom#source('_', 'max_menu_width', 80)
+
+"------------------------- jedi-vim ------------------------
+" disable autocompletion, because we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+
+"--------------------- vim-hexokinase ----------------------
+let g:Hexokinase_highlighters = ['backgroundfull']
+"let g:Hexokinase_highlighters = ['foregroundfull']
+
 
 
