@@ -14,15 +14,15 @@ set $mod Mod4
 #-----------#
 
 # I use those colors at bar and window color settings
-set $bg-color 	         #15efbc
-set $inactive-bg-color   #377566
+set $bg-color 	         #005200
+set $inactive-bg-color   #162b00
 set $text-color          #3d894e
-set $inactive-text-color #4a9b87
+set $inactive-text-color #006300
 set $urgent-bg-color 	 #255cd1
 
 # Color variables
 set $unfocused_border #72afff
-set $focused_border #00ffae
+set $focused_border #254a00
 
 # Variables {{{
 set $workspace1  ""
@@ -49,11 +49,11 @@ assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
 for_window [class="Gnome-calculator"] floating enable
 
 
-workspace $workspace1 output HDMI-0
-workspace $workspace2 output HDMI-0
-workspace $workspace3 output HDMI-0
-workspace $workspace4 output HDMI-0
-workspace $workspace5 output HDMI-0
+workspace $workspace1 output HDMI-1
+workspace $workspace2 output HDMI-1
+workspace $workspace3 output HDMI-1
+workspace $workspace4 output HDMI-1
+workspace $workspace5 output HDMI-1
 
 
 #------------#
@@ -72,10 +72,10 @@ gaps inner 8
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color          $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #00ff00
+client.focused          $bg-color          $bg-color          $text-color          #3b7500
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #3b7500
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #3b7500
+client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #3b7500
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -295,9 +295,8 @@ bindsym $mod+shift+x exec i3lock-fancy --greyscale --text " "
 
 bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
-exec_always feh --bg-scale ~/.config/wall.jpg
-
-exec compton -f
+#exec_always feh --bg-scale ~/Downloads/wall.jpg
+exec --no-startup-id hsetroot -solid '#373737'
 
 exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 
@@ -305,10 +304,9 @@ exec_always exec --no-startup-id "devmon --no-gui"
 
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 
-exec xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 117x1050 --rotate normal
+exec ~/.screenlayout/screen.sh
 
-# or
-exec ~/.screenlayout/def.sh
+exec compton -f
 
 #====== screenshots bindings
 # Desktop screenshot ==> PrintScreen
