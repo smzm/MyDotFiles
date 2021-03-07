@@ -112,7 +112,6 @@ vnoremap <S-UP> :m '<-2<CR>gv=gv
 set cursorline
 
 " Line number
-:highlight LineNr guifg=grey
 
 " For jumping to the end of prantheses and quotes when write a string just
 " with C+e
@@ -132,4 +131,9 @@ augroup END
 
 " map Leader+" for wraping a sentences inside () in " == usefull for python
 nnoremap <Leader>' vi)<esc>a"<esc>l%a"<esc>
+
+
+let fancy_symbols_enabled = 0
+
+
 
