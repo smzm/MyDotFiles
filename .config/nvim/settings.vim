@@ -1,10 +1,10 @@
-set nocompatible       "Use Vim settings, rather then Vi settings. It’s important to have this onthe top of your file, as it influences other options
+set nocompatible      			 "Use Vim settings, rather then Vi settings. It’s important to have this onthe top of your file, as it influences other options
 set lazyredraw
-set history=1000	" Set bigger history of executed commands
-set showcmd		" Show incomplete commands at the bottom
+set history=1000			" Set bigger history of executed commands
+set showcmd				" Show incomplete commands at the bottom
 set noswapfile
-set laststatus=2 	" Always display the status bar 
-set backspace=indent,eol,start    " Allow backspacing over indention
+set laststatus=2 			" Always display the status bar 
+set backspace=indent,eol,start    	" Allow backspacing over indention
 set hlsearch 
 set autoindent
 set title
