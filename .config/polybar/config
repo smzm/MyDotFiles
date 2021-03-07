@@ -16,38 +16,39 @@
 ;==========================================================
 
 [colors]
-background = #0a9b8c
-;background = #cf172a47
+background = #222222
+
+;background = #610000
 ;
 ;it's ARGB so "cfl" is for transparency
-background-alt = #4bc6a1
+background-alt = #373737
 ;background-alt = #cf3C5A46
 
-background-unf = #377566
+background-unf = #535353
 ;background-unf = #cf2E463E
 
-background-mod0 = #377566
+background-mod0 = #222222
 ;background-mod0 = #cf3C5A46
 
-background-mod1 = #0cad9c
+background-mod1 = #222222
 ;background-mod1 = #cf546E53
 
-background-mod2 = #377566
+background-mod2 = #454545
 ;background-mod2 = #cf708963
 
-background-alrt = #377566
+background-alrt = #454545
 ;background-alrt = #cfA1BB76
 
-foreground = #ceffdd
+foreground = #499100
 ;foreground = #F3F3BA
 
-foreground-alt = ##ceffdd
+foreground-alt = #499100
 ;foreground-alt = #F3F3BA
 
-primary = #ceffdd
+primary = #499100
 ;primary = #F3F3BA
 
-secondary = #ceffdd
+secondary = #499100
 ;secondary = #F3F3BA
 
 alert = #bd2c40
@@ -175,7 +176,7 @@ format = <label-state> <label-mode>
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #e60053
+label-mode-background = #001691
 
 ; Available tokens:
 ;   %name%
@@ -184,7 +185,7 @@ label-mode-background = #e60053
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %name%
-label-focused-foreground = #ffffff
+label-focused-foreground = #7cf700
 label-focused-background = ${colors.background-alt}
 label-focused-underline = #fba922
 label-focused-padding = 4
