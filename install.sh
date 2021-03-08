@@ -4,7 +4,6 @@ dotfiles=`echo $PWD`
 mkdir -p ~/tmpInstall
 
 
-
     clear
     echo " ===================== pre installation ====================="
     while ! [[ ( "$ansOS" == "arch" ) || ( "$ansOS" == "deb" ) ]]; do
@@ -396,6 +395,7 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S alacritty
             echo -e "\n +++++ copy /alacritty to ~/.config/ +++++"
                     sudo cp -r $dotfiles/.config/alacritty ~/.config/
+                    sleep 3
         fi
     clear
 
@@ -406,6 +406,19 @@ mkdir -p ~/tmpInstall
         if [[ $ansBrave == "r" ]] || [[ $ansBrave == "R" ]]; then
             echo -e "\n +++++ install Brave +++++ \n"
                     yay -S brave
+        fi
+    clear
+
+
+        echo " ===================== GUI APP ====================="
+        echo -e " alacritty \n Brave"
+        read -p " MPlayer    :::::    [r]un : " ansMplayer
+        if [[ $ansMplayer == "r" ]] || [[ $ansMplayer == "R" ]]; then
+            echo -e "\n +++++ install MPlayer +++++ \n"
+                    sudo pacman -S mplayer
+            echo -e "\n copy input.conf file to the ~/.mplayer"
+                    sudo cp -r $dotfiles/.mplayer/input.conf ~/.mplayer/
+                    sleep 3
         fi
     clear
     fi
