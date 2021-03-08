@@ -10,6 +10,7 @@ set color256 true
 set drawbox true
 set ignorecase true
 set icons true
+set mouse true
 
 # Custom Functions
 cmd open ${{
@@ -199,3 +200,8 @@ map U unselect
 map gD cd ~/Downloads
 map gc cd ~/.config
 map gE cd /etc
+
+
+map <m-down> down
+map <m-up> up
+map <m-1> open
