@@ -3,8 +3,6 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
  	Plug 'vim-airline/vim-airline'	 	            " status/tabline for vim
  	Plug 'vim-airline/vim-airline-themes'
-	Plug 'vuciv/vim-bujo'				            " A minimalist task manager for vim
-  	Plug 'norcalli/nvim-colorizer.lua'              " Color highlighter
   	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
    	Plug 'ryanoasis/vim-devicons'                   " Cool Icons
    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
@@ -18,17 +16,16 @@ call plug#begin('~/local/share/nvim/plugged')
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
 	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
 	Plug 'tpope/vim-fugitive'                       " Git plugin for vim
-	Plug 'lifepillar/vim-gruvbox8'			        " gruvbox Theme
-	Plug 'wadackel/vim-dogrun'
-	Plug 'arzg/vim-colors-xcode'
+	Plug 'arcticicestudio/nord-vim'				    " nord theme
+	Plug 'wadackel/vim-dogrun'						" dogrun theme
    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'zchee/deoplete-jedi'
     Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
 	Plug 'davidhalter/jedi-vim'						" jump to the definition of class and method to check their implementation
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
-	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-	Plug 'arcticicestudio/nord-vim'
+	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
@@ -50,8 +47,8 @@ hi Normal guibg=#1c2022
 hi LineNr guifg=#383838
 hi CursorLineNr guifg=#808080
 hi CursorLine guibg=#292929
-hi Comment guifg=#454545
-hi Comment cterm=italic gui=italic
+hi Comment guifg=#626262
+hi Comment gui=italic
 hi Function guifg=#51cedf
 hi PythonOperator guifg=#ddcb83
 hi PythonStatement guifg=#c15fe1
@@ -71,6 +68,14 @@ hi ClsasStorage guifg=#bd863d
 hi Structure guifg=#bd863d
 hi Floaterm guifg=#bdbdbd
 hi FloatermBorder guifg=#1f9638 guibg=#1c2022
+hi EasyMotionShade guibg=#1c2022
+hi EasyMotionTarget guifg=#69c924
+hi PMenu guibg=#24292b
+hi DiffText guibg=#00660a guifg=black
+hi DiffAdd guibg=#34464f
+hi DiffDelete guibg=#db2e4e guifg=#000000
+
+
 "---------- Floaterm ----------
 nnoremap <A-r> :FloatermNew lf<CR>
 nnoremap <A-t> :FloatermNew<CR>
@@ -212,7 +217,7 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
-nnoremap <F8> :Goyo<CR>
+"nnoremap <F6> :Goyo <CR>
 
 
 
@@ -262,7 +267,9 @@ let g:EasyMotion_use_smartsign_us = 1
 
 
 "------------------ indentLine ------------------------
-let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#282828'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 
 
 
@@ -321,3 +328,22 @@ let g:jedi#use_splits_not_buffers = "right"
 let g:Hexokinase_highlighters = ['backgroundfull']
 "let g:Hexokinase_highlighters = ['foregroundfull']
 
+"--------------------- Semshi ------------------------------
+hi semshiSelected guifg=#8ff500 guibg=#262b2e gui=bold
+hi semshiLocal           ctermfg=209 guifg=#ff875f
+hi semshiGlobal          ctermfg=214 guifg=#b2b2b2
+hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+hi semshiParameter       ctermfg=75  guifg=#ffaf00
+hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+hi semshiFree            ctermfg=218 guifg=#ffafd7
+hi semshiBuiltin         ctermfg=207 guifg=#5fafff
+hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+hi semshiUnresolved      ctermfg=226 guifg=#f5005e cterm=underline gui=underline
+
+hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+sign define semshiError text=E> texthl=semshiErrorSign
+
+nmap <silent> <Tab> :Semshi goto name next<CR>
+nmap <silent> <S-Tab> :Semshi goto name prev<CR>
