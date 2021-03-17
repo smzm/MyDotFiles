@@ -65,6 +65,7 @@ workspace $workspace5 output HDMI-1
 font pango:SFNS Display 12
 
 
+
 #Gaps and Window
 for_window [class="^.*"] border pixel 0
 gaps outer 0
