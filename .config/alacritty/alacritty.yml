@@ -34,7 +34,7 @@ font:
 window:
   padding:
     x: 30
-    y: 0
+    y: 30
 
 
     # Colors (Material Theme)
@@ -76,4 +76,5 @@ colors:
 
 # Mouse bindings
 mouse_bindings:
-  - { mouse: Right, action: PasteSelection }
+  - { mouse: Right, action: Copy }
+    
