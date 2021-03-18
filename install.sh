@@ -167,7 +167,7 @@ mkdir -p ~/tmpInstall
             if [[ $ansOS == "arch" ]];then
                 yay -S neovim-nightly
             else
-                brew install --HEAD neovim
+                brew install neovim --HEAD
             fi
         fi
     clear
