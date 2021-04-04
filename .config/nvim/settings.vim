@@ -137,3 +137,4 @@ let fancy_symbols_enabled = 0
 
 
 
+set undofile " Maintain undo history between sessions
