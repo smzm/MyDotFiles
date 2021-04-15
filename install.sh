@@ -159,6 +159,67 @@ mkdir -p ~/tmpInstall
     clear
 
 
+        echo " ===================== Development ====================="
+        read -p " node(npm)    :::::    [r]un: " ansNode
+        if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
+                echo -e "\n +++++ install node +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S nodejs
+                else
+                    sudo apt-get install nodejs
+                    sudo apt-get install npm
+                fi
+        fi
+    clear
+    
+        echo " ===================== Development ====================="
+        echo -e " node(npm) "
+        read -p " ruby(gem)    :::::    [r]un : " ansRuby
+        if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
+            if [[ $ansOS == "arch" ]]; then
+                echo -e "\n +++++ sudo pacman -S ruby \n"
+                sudo pacman -S ruby
+                echo "gem: --user-install" >> ~/.gemrc
+                #cp $dotfiles/.profile ~/
+            elif [[ $ansOS == "deb" ]]; then
+                echo -e "\n +++++ sudo apt install ruby-full \n"
+                sudo apt install -y ruby-full
+            fi
+        sudo gem update
+        fi
+    clear
+
+        echo " ===================== Development ====================="
+        echo -e " node(npm) \n ruby(gem) "
+        read -p " python3(pip)    :::::    [r]un : " ansPip
+        if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
+                echo -e "\n +++++ install python +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S python
+                    sudo pacman -S python-pip
+                else
+                    brew install python
+                    echo -e "\n +++++  \n"
+                    brew unlink python && brew link python
+                    pip3 install pynvim jedi
+                fi
+        fi
+    clear
+
+       echo " ===================== Development Packages ====================="
+        read -p " [pip] : jedi | pyenv | python-language-server[all]    :::::    [r]un : " ansPLS
+        if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
+            echo -e "\n +++++ pip3 install jedi pyenv python-language-server[all]  +++++ \n"
+                    pip install jedi pyenv python-language-server[all]
+        fi
+        read -p " [pip] : numpy | pandas | scipy | matplotlib | opencv-python ::::: [r]un : " ansPLS2
+        if [[ $ansPLS2 == 'r' ]] || [[ $ansPLS2 == "R" ]]; then
+            echo -e "+++++ pip3 install numpy pandas scipy matplotlib opencv-python"
+                pip install numpy pandas scipy matplotlib opencv-python
+        fi
+    clear
+
+
 # Vim
         echo " ===================== nvim ====================="
         read -p " nvim    :::::    [r]un : " ansNvim
@@ -208,62 +269,6 @@ mkdir -p ~/tmpInstall
             npm install coc-python coc-tsserver coc-html coc-css coc-json coc-snippets coc-html-css-support coc-markdownlint coc-sh coc-stylelint coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
         fi  
      clear
-
-
-        echo " ===================== Development ====================="
-        read -p " node(npm)    :::::    [r]un: " ansNode
-        if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
-                echo -e "\n +++++ install node +++++ \n"
-                if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S nodejs
-                else
-                    brew install node
-                fi
-        fi
-    clear
-    
-        echo " ===================== Development ====================="
-        echo -e " node(npm) "
-        read -p " ruby(gem)    :::::    [r]un : " ansRuby
-        if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
-            if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo pacman -S ruby \n"
-                sudo pacman -S ruby
-                echo "gem: --user-install" >> ~/.gemrc
-                #cp $dotfiles/.profile ~/
-            elif [[ $ansOS == "deb" ]]; then
-                echo -e "\n +++++ sudo apt install ruby-full \n"
-                sudo apt install -y ruby-full
-            fi
-        sudo gem update
-        fi
-    clear
-
-        echo " ===================== Development ====================="
-        echo -e " node(npm) \n ruby(gem) "
-        read -p " python3(pip)    :::::    [r]un : " ansPip
-        if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
-                echo -e "\n +++++ install python +++++ \n"
-                if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S python
-                    sudo pacman -S python-pip
-                else
-                    brew install python
-                    echo -e "\n +++++  \n"
-                    brew unlink python && brew link python
-                    pip3 install pynvim jedi
-                fi
-        fi
-    clear
-
-        echo " ===================== PIP ====================="
-        read -p " [pip] Python Language Server jedi pyenv  :::::    [r]un : " ansPLS
-        if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
-            echo -e "\n +++++ pip3 install python-language-server[all] jedi pyenv +++++ \n"
-                    pip install jedi pyenv python-language-server[all]
-
-        fi
-    clear
 
 
         echo " ===================== Terminal ====================="
