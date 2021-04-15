@@ -137,20 +137,11 @@ mkdir -p ~/tmpInstall
             brew update
 
         fi
-        clear
-
-
-        echo " ===================== Brew App ====================="
-        echo -e " brew "
         read -p " gcc    :::::    [r]un : " ansGcc
         if [[ $ansGcc == "r" ]] || [[ $ansGcc == "R" ]]; then
                 echo -e "\n +++++ brew install gcc +++++ \n"
                     brew install gcc
         fi
-    clear
-
-        echo " ===================== Brew App ====================="
-        echo -e " brew \n gcc"
         read -p " tldr    :::::    [r]un : " ansTldr
         if [[ $ansTldr == "r" ]] || [[ $ansTldr == "R" ]]; then
                 echo -e "\n +++++  brew install tldr +++++ \n"
@@ -170,10 +161,6 @@ mkdir -p ~/tmpInstall
                     sudo apt-get install npm
                 fi
         fi
-    clear
-    
-        echo " ===================== Development ====================="
-        echo -e " node(npm) "
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -187,10 +174,6 @@ mkdir -p ~/tmpInstall
             fi
         sudo gem update
         fi
-    clear
-
-        echo " ===================== Development ====================="
-        echo -e " node(npm) \n ruby(gem) "
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
                 echo -e "\n +++++ install python +++++ \n"
@@ -206,7 +189,7 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-       echo " ===================== Development Packages ====================="
+        echo " ===================== Development Packages ====================="
         read -p " [pip] : jedi | pyenv | python-language-server[all]    :::::    [r]un : " ansPLS
         if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
             echo -e "\n +++++ pip3 install jedi pyenv python-language-server[all]  +++++ \n"
@@ -254,10 +237,14 @@ mkdir -p ~/tmpInstall
 
 
   echo " ===================== nvim ====================="
-        echo " nvim"
+        echo -e " nvim \n Vim-plug"
         read -p " Coc : [https://github.com/neoclide/coc.nvim]   :::::    [r]un : " ansCoc
-        echo "it Need to installed Node and npm before."
+        echo "Node and npm must installed before."
         if [[ $ansCoc == "r" ]] || [[ $ansCoc == "R" ]]; then
+            # create coc.vim file in nvim/plug-config/
+            mkdir ~/.config/nvim/plug-config
+            touch ~/.config/nvim/plug-config/coc.vim
+
             # Install extensions
             mkdir -p ~/.config/coc/extensions
             cd ~/.config/coc/extensions
@@ -265,7 +252,8 @@ mkdir -p ~/tmpInstall
             then
               echo '{"dependencies":{}}'> package.json
             fi
-            # extension 
+
+            # extensions 
             npm install coc-python coc-tsserver coc-html coc-css coc-json coc-snippets coc-html-css-support coc-markdownlint coc-sh coc-stylelint coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
         fi  
      clear
@@ -772,3 +760,4 @@ done
         fi
     clear
 fi
+
