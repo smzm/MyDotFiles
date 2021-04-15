@@ -192,6 +192,24 @@ mkdir -p ~/tmpInstall
     clear
 
 
+  echo " ===================== nvim ====================="
+        echo " nvim"
+        read -p " Coc : [https://github.com/neoclide/coc.nvim]   :::::    [r]un : " ansCoc
+        echo "it Need to installed Node and npm before."
+        if [[ $ansCoc == "r" ]] || [[ $ansCoc == "R" ]]; then
+            # Install extensions
+            mkdir -p ~/.config/coc/extensions
+            cd ~/.config/coc/extensions
+            if [ ! -f package.json ]
+            then
+              echo '{"dependencies":{}}'> package.json
+            fi
+            # extension 
+            npm install coc-python coc-tsserver coc-html coc-css coc-json coc-snippets coc-html-css-support coc-markdownlint coc-sh coc-stylelint coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+        fi  
+     clear
+
+
         echo " ===================== Development ====================="
         read -p " node(npm)    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
