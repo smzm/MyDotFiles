@@ -29,6 +29,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense
 	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
 	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
+	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 
 call plug#end()
 
