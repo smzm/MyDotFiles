@@ -81,7 +81,7 @@ hi DiffDelete guibg=#db2e4e guifg=#000000
 
 
 "---------- Floaterm ----------
-nnoremap <A-r> :FloatermNew lf<CR>
+nnoremap <A-f> :FloatermNew lf<CR>
 nnoremap <A-t> :FloatermNew<CR>
 let g:floaterm_keymap_prev   = '<F9>'
 let g:floaterm_keymap_next   = '<F10>'
