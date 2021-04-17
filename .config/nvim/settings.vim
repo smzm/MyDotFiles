@@ -136,5 +136,9 @@ nnoremap <Leader>' vi)<esc>a"<esc>l%a"<esc>
 let fancy_symbols_enabled = 0
 
 
+" Maintain undo history between sessions
+set undofile 
 
-set undofile " Maintain undo history between sessions
+
+" copy (write) highlighted text to clipboard
+autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' |  clip.exe')
