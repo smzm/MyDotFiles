@@ -91,6 +91,7 @@ nnoremap ; :
 
 "Quicker Escaping
 :inoremap jk <esc>
+:inoremap kj <esc>
 
 
 
