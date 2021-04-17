@@ -492,7 +492,7 @@ done
             echo -e "\n +++++ sudo pacman -S rofi \n"
             sudo pacman -S rofi
 
-            echo -e " \n +++++ Copy polybar configuration "
+            echo -e " \n +++++ Copy rofi configuration files "
             cp -r $dotfiles/.config/rofi $HOME/.config/
         fi
     clear
