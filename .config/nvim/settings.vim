@@ -90,9 +90,10 @@ nnoremap ; :
 :au FocusLost * silent! wa
 
 "Quicker Escaping
-:inoremap jk <esc>
-:inoremap kj <esc>
-
+:inoremap jj <esc>
+:inoremap kk <esc>
+:inoremap hh <esc>
+:inoremap ll <esc>
 
 
 " Turn spellcheck on for markdown files
