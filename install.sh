@@ -242,11 +242,11 @@ mkdir -p ~/tmpInstall
         echo "Node and npm must installed before."
         if [[ $ansCoc == "r" ]] || [[ $ansCoc == "R" ]]; then
             # create coc.vim file in nvim/plug-config/
-            mkdir ~/.config/nvim/plug-config
-            touch ~/.config/nvim/plug-config/coc.vim
+            sudo mkdir ~/.config/nvim/plug-config
+            sudo touch ~/.config/nvim/plug-config/coc.vim
 
             # Install extensions
-            mkdir -p ~/.config/coc/extensions
+            sudo mkdir -p ~/.config/coc/extensions
             cd ~/.config/coc/extensions
             if [ ! -f package.json ]
             then
