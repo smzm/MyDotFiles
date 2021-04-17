@@ -247,6 +247,7 @@ mkdir -p ~/tmpInstall
 
             # Install extensions
             sudo mkdir -p ~/.config/coc/extensions
+            sudo chmod -R u+wrx ~/.config/coc/
             cd ~/.config/coc/extensions
             if [ ! -f package.json ]
             then
