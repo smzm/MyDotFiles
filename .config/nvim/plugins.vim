@@ -20,16 +20,19 @@ call plug#begin('~/local/share/nvim/plugged')
    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
 	"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	"Plug 'zchee/deoplete-jedi'
-    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+  	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    	Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
 	Plug 'mattn/emmet-vim' 							" emmet for vim
 	"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
 	Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
 	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense
+	" :CocInstall coc-css coc-cssmodules coc-emmet coc-eslint coc-explorer coc-floaterm coc-graphql coc-highlight coc-html coc-htmlhint coc-html-css-support coc-json coc-markdownlint coc-prettier coc-python coc-sh coc-stylelintplus coc-stylelint coc-just-complete coc-lists coc-snippets coc-diagnostic coc-browser coc-sql coc-tailwindcss coc-tsserver coc-vimlsp coc-pydocstring coc-git coc-tabnine coc-calc coc-pairs
+
 	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
 	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
+	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
 
 call plug#end()
 
@@ -499,3 +502,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+"------------------------------- vim-auto-save ------------------------------------
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1  " do not display the auto-save notification
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
