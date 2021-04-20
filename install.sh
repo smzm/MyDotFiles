@@ -254,7 +254,9 @@ mkdir -p ~/tmpInstall
               echo '{"dependencies":{}}'> package.json
             fi
 
-            # extensions 
+            python3 -m pip install --user --upgrade pynvim
+
+            # extensions
             npm install coc-python coc-tsserver coc-html coc-css coc-json coc-snippets coc-html-css-support coc-markdownlint coc-sh coc-stylelint coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
         fi  
      clear
