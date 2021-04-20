@@ -426,13 +426,13 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== GUI APP ====================="
         echo -e " alacritty \n Brave"
-        read -p " MPlayer    :::::    [r]un : " ansMplayer
-        if [[ $ansMplayer == "r" ]] || [[ $ansMplayer == "R" ]]; then
-            echo -e "\n +++++ install MPlayer +++++ \n"
-                    sudo pacman -S mplayer
-            echo -e "\n copy input.conf file to the ~/.mplayer"
-                    mkdir ~/.mplayer
-                    sudo cp -r $dotfiles/.mplayer/input.conf ~/.mplayer/
+        read -p " MPV    :::::    [r]un : " ansMpv
+        if [[ $ansMpv == "r" ]] || [[ $ansMpv == "R" ]]; then
+            echo -e "\n +++++ install MPV +++++ \n"
+                    sudo pacman -S mpv
+            echo -e "\n copy input.conf file to the ~/.mpv"
+                    mkdir ~/.config/mpv/
+                    sudo cp -r $dotfiles/.config/mpv/ ~/.config/mpv
                     sleep 3
         fi
     clear
