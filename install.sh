@@ -274,7 +274,7 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) "
-        read -p " SF Mono Font  :::::    [r]un : " ansSFNS
+        read -p " SF Mono Font and Yosemite Sanfrancisco  :::::    [r]un : " ansSFNS
         if [[ $ansSFNS == "r" ]] || [[ $ansSFNS == "R" ]]; then
                 echo -e " \n +++++ Install SF Mono font \n"
                 sudo mkdir -p /usr/share/fonts/SF-Mono/
@@ -282,6 +282,8 @@ mkdir -p ~/tmpInstall
                 git clone "https://github.com/Twixes/SF-Mono-Powerline.git"
                 cd SF-Mono-Powerline
                 sudo cp -r * /usr/share/fonts/SF-Mono/
+                # installing Yosemite San francisco
+                ruby -e "$(curl -fsSL https://raw.github.com/supermarin/YosemiteSanFranciscoFont/master/install)"
                 fc-cache -f -v
         fi
     clear
