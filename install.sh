@@ -274,8 +274,8 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) "
-        read -p " SF Mono Font and Yosemite Sanfrancisco  :::::    [r]un : " ansSFNS
-        if [[ $ansSFNS == "r" ]] || [[ $ansSFNS == "R" ]]; then
+        read -p " SF Mono Font  :::::    [r]un : " ansSFMono
+        if [[ $ansSFMono == "r" ]] || [[ $ansSFMono == "R" ]]; then
                 echo -e " \n +++++ Install SF Mono font \n"
                 sudo mkdir -p /usr/share/fonts/SF-Mono/
                 cd ~/tmpInstall/
@@ -430,7 +430,7 @@ mkdir -p ~/tmpInstall
         if [[ $ansMpv == "r" ]] || [[ $ansMpv == "R" ]]; then
             echo -e "\n +++++ install MPV +++++ \n"
                     sudo pacman -S mpv
-            echo -e "\n copy input.conf file to the ~/.mpv"
+            echo -e "\n copy input.conf file to the ~/.config/mpv"
                     mkdir ~/.config/mpv/
                     sudo cp -r $dotfiles/.config/mpv/ ~/.config/mpv
                     sleep 3
