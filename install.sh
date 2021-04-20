@@ -50,7 +50,7 @@ mkdir -p ~/tmpInstall
                 makepkg -si
 
                 echo -e "\n +++++ installing yay-bin +++++ \n"
-                yaourt -S yay
+                yaourt -S yay-bin
             fi
     fi
         clear
@@ -282,8 +282,6 @@ mkdir -p ~/tmpInstall
                 git clone "https://github.com/Twixes/SF-Mono-Powerline.git"
                 cd SF-Mono-Powerline
                 sudo cp -r * /usr/share/fonts/SF-Mono/
-                # installing Yosemite San francisco
-                ruby -e "$(curl -fsSL https://raw.github.com/supermarin/YosemiteSanFranciscoFont/master/install)"
                 fc-cache -f -v
         fi
     clear
@@ -421,7 +419,7 @@ mkdir -p ~/tmpInstall
         read -p " Brave    :::::    [r]un : " ansBrave
         if [[ $ansBrave == "r" ]] || [[ $ansBrave == "R" ]]; then
             echo -e "\n +++++ install Brave +++++ \n"
-                    yay -S brave
+                    yay -S brave-bin
         fi
     clear
 
@@ -433,6 +431,7 @@ mkdir -p ~/tmpInstall
             echo -e "\n +++++ install MPlayer +++++ \n"
                     sudo pacman -S mplayer
             echo -e "\n copy input.conf file to the ~/.mplayer"
+                    mkdir ~/.mplayer
                     sudo cp -r $dotfiles/.mplayer/input.conf ~/.mplayer/
                     sleep 3
         fi
