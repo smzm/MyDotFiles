@@ -21,7 +21,7 @@
   "suggest.noselect": false,
   "suggest.echodocSupport": true,
   "codeLens.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "javascriptreact", "typescriptreact", "css"],
+  "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "javascriptreact", "typescriptreact", "css", "html"],
   "coc.preferences.jumpCommand": "drop",
   "signature.enable": true
 }
