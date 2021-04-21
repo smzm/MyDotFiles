@@ -432,7 +432,7 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S mpv
             echo -e "\n copy input.conf file to the ~/.config/mpv"
                     mkdir ~/.config/mpv/
-                    sudo cp -r $dotfiles/.config/mpv/ ~/.config/mpv
+                    sudo cp -r $dotfiles/.config/mpv/ ~/.config/
                     sleep 3
         fi
     clear
