@@ -176,7 +176,7 @@ format = <label-state> <label-mode>
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #001691
+label-mode-background = #9e9e9e
 
 ; Available tokens:
 ;   %name%
