@@ -39,13 +39,9 @@ call plug#begin('~/local/share/nvim/plugged')
 call plug#end()
 
 
-
-"------------- Theme ----------
-set termguicolors     " enable true colors support
-set t_Co=256   " This is may or may not needed.
-
+"------------------------- Theme
 set background=light
-"set laststatus=2
+
 let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default.light': {
@@ -62,7 +58,10 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
-colorscheme PaperColor
+
+"------------- Theme ----------
+let g:airline_theme = "atomic"
+set termguicolors     " enable true colors support
 
 
 " IndentLine {{
@@ -72,8 +71,7 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 " }}
 
-"colorscheme xcodedarkhc
-let g:airline_theme = "hybrid"
+colorscheme PaperColor
 
 "Highlight search color 
 " General
@@ -126,6 +124,12 @@ hi MatchWord guibg=#e3e3e3 guifg=blue gui=underline
 hi MatchWordCur guibg=#e3e3e3 guifg=blue gui=underline
 hi MatchParen guibg=#e3e3e3 guifg=blue gui=underline
 hi MatchParenCur guibg=#e3e3e3 guifg=blue gui=underline
+
+" VIM Tabs
+hi TabLineFill guibg=#cfcfcf guifg=white
+hi TabLine guibg=#cfcfcf guifg=white
+hi TabLineSel guibg=#b3b3b3 guifg=white gui=bold
+
 
 
 "---------- Floaterm ----------
@@ -548,7 +552,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"------------------------------- 
 
 "------------------------------- vim-auto-save ------------------------------------
 let g:auto_save = 1  " enable AutoSave on Vim startup
