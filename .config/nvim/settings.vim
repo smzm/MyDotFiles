@@ -90,10 +90,8 @@ nnoremap ; :
 :au FocusLost * silent! wa
 
 "Quicker Escaping
-:inoremap jj <esc>
-:inoremap kk <esc>
-:inoremap hh <esc>
-:inoremap ll <esc>
+:inoremap jk <esc>
+:inoremap kj <esc>
 
 
 " Turn spellcheck on for markdown files
@@ -144,3 +142,9 @@ set undofile
 
 " copy (write) highlighted text to clipboard
 autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' |  clip.exe')
+
+" Switch between tabs with ctrl 
+nnoremap <C-Left> :tabprevious<CR>                                                                            
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-j> :tabprevious<CR>                                                                            
+nnoremap <C-k> :tabnext<CR>
