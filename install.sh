@@ -204,6 +204,18 @@ mkdir -p ~/tmpInstall
             echo -e "+++++ pip3 install numpy pandas scipy matplotlib opencv-python"
                 pip install numpy pandas scipy matplotlib opencv-python
         fi
+        read -p " [npm] : pyright | bash-language-server |  ::::: [r]un : " ansPLS2
+        if [[ $ansPLS2 == 'r' ]] || [[ $ansPLS2 == "R" ]]; then
+            echo -e "+++++ npm i -g pyright | bash-language-server | "
+                npm install -g pyright
+                npm install -g bash-language-server
+                npm install -g typescript typescript-language-server
+                npm install -g vim-language-server
+                npm install -g vscode-html-languageserver
+                npm install -g vscode-css-languageserver-bin
+                npm install -g vscode-json-languageserver
+
+        fi
     clear
 
 
