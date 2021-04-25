@@ -160,6 +160,10 @@ mkdir -p ~/tmpInstall
                     sudo apt-get install nodejs
                     sudo apt-get install npm
                 fi
+                echo "config npm to install without sudo "
+                mkdir ~/.npm
+                npm config set prefix ~/.np
+
         fi
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
