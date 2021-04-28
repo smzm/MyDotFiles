@@ -12,7 +12,7 @@ require'lspconfig'.vimls.setup {}
 
 -- ======== Python
 -- npm i -g pyright
-require'lspconfig'.pyright.setup{
+require'lspconfig'.pyright.setup{}
   
 -- ======== json
 -- npm install -g vscode-json-languageserver
