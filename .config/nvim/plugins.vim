@@ -335,7 +335,7 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 "===== LSP Load files and servers
 luafile ~/.config/nvim/lua/plugins/compe-config.lua
-luafile ~/.config/nvim/lua/lsp/ls.lua
+luafile ~/.config/nvim/lua/lsp.lua
 
 
 "---------------------------- LSP Configuration
