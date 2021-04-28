@@ -39,16 +39,16 @@ background-mod2 = #8f8f8f
 background-alrt = #454545
 ;background-alrt = #cfA1BB76
 
-foreground = #404040
+foreground = #828282
 ;foreground = #F3F3BA
 
-foreground-alt = #404040
+foreground-alt = #828282
 ;foreground-alt = #F3F3BA
 
-primary = #404040
+primary = #828282
 ;primary = #F3F3BA
 
-secondary = #404040
+secondary = #454545
 ;secondary = #F3F3BA
 
 alert = #bd2c40
