@@ -50,15 +50,7 @@ call plug#end()
 "===== LSP Plugin Config 
 source ~/.config/nvim/plug-config/lsp-config.vim
 luafile ~/.config/nvim/lua/plugins/compe-config.lua
-luafile ~/.config/nvim/lua/lsp/python-ls.lua
-luafile ~/.config/nvim/lua/lsp/lua-ls.lua
-luafile ~/.config/nvim/lua/lsp/html-ls.lua
-luafile ~/.config/nvim/lua/lsp/css-ls.lua
-luafile ~/.config/nvim/lua/lsp/tsserver-ls.lua
-luafile ~/.config/nvim/lua/lsp/vim-ls.lua
-luafile ~/.config/nvim/lua/lsp/json-ls.lua
-luafile ~/.config/nvim/lua/lsp/emmet-ls.lua
-
+luafile ~/.config/nvim/lua/lsp/ls.lua
 
 
 "------------------------- Theme
