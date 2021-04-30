@@ -1,5 +1,3 @@
-;
-;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 ;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
@@ -15,45 +13,41 @@
 ;
 ;==========================================================
 
-[colors]
-background = #d4d4d4
-
-;background = #610000
-;
 ;it's ARGB so "cfl" is for transparency
-background-alt = #adadad
-;background-alt = #cf3C5A46
+[colors]
 
-background-unf = #8f8f8f
-;background-unf = #cf2E463E
+;====== Background of polybar
+background-light = #d4d4d4
+background-dark = #222222
 
-background-mod0 = #bfbfbf
-;background-mod0 = #cf3C5A46
+second-background-light = #8f8f8f
+second-background-dark = #535353
 
-background-mod1 = #d4d4d4
-;background-mod1 = #cf546E53
+third-background-light = #dbdbdb
+third-background-dark = #222222
 
-background-mod2 = #8f8f8f
-;background-mod2 = #cf708963
 
-background-alrt = #454545
-;background-alrt = #cfA1BB76
+;====== Color of text and icon
+foreground-light = #828282
+foreground-dark = #499100
 
-foreground = #828282
-;foreground = #F3F3BA
 
-foreground-alt = #828282
-;foreground-alt = #F3F3BA
+;====== Background of focused workspace
+background-focused-light = #adadad
+background-focused-dark = #373737
 
-primary = #828282
-;primary = #F3F3BA
 
-secondary = #454545
-;secondary = #F3F3BA
+;====== Foreground of focused workspace
+foreground-focused-light = #f2f2f2
+foreground-focused-dark = #499100
+
+
 
 alert = #bd2c40
+secondary = #499100
 
 
+;==========================================================
 
 
 [bar/example]
@@ -67,14 +61,14 @@ offset-x = 1%
 radius = 0.0
 fixed-center = true 
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.background-light}
+foreground = ${colors.foreground-light}
 
 line-size = 0
 line-color = #8e8e8e 
 
 border-size = 0 0 0 0 0 0 0 0 0 
-border-color = #00000000
+border-color = #000000
 
 padding-left = 0
 padding-right = 0
@@ -83,24 +77,24 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = InconsolataLGC Nerd Font:pixelsize=10:antialias=true;1
-font-1 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;3
+font-1 = SF Mono:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
-modules-left = i3
-modules-center = date weather
-modules-right = xbacklight pulseaudio xkeyboard powermenu
+modules-left = i3 
+modules-center = date weather pomobar
+modules-right = vpn pulseaudio xkeyboard powermenu 
     
 tray-position = right
 tray-padding = 11
-tray-transparent = true
+;tray-transparent = true
 tray-offset-y = 22
-tray-offset-x = -0
+tray-offset-x = -10
 tray-maxsize = 18
 tray-detached = true
-;tray-background = #0063ff
+tray-background = ${colors.background-light}
 
 ;wm-restack = bspwm
-wm-restack = i3
+;wm-restack = i3
 
 override-redirect = false
 enable-ipc = true
@@ -176,7 +170,10 @@ format = <label-state> <label-mode>
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #9e9e9e
+
+; ================== Background of $mod+0
+label-mode-background = #000000   
+;label-mode-background = #001691
 
 ; Available tokens:
 ;   %name%
@@ -185,9 +182,9 @@ label-mode-background = #9e9e9e
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %name%
-label-focused-foreground = #ffffff
-label-focused-background = ${colors.background-alt}
-label-focused-underline = #fba922
+label-focused-foreground = ${colors.foreground-focused-light}
+label-focused-background = ${colors.background-focused-light}
+label-focused-underline = #ffffff
 label-focused-padding = 4
 
 ; Available tokens:
@@ -197,7 +194,7 @@ label-focused-padding = 4
 ; Default: %icon%  %name%
 label-unfocused = %name%
 label-unfocused-padding = 4
-label-unfocused-background = ${colors.background-mod1}
+label-unfocused-background = ${colors.background-light}
 
 ; Available tokens:
 ;   %name%
@@ -205,7 +202,7 @@ label-unfocused-background = ${colors.background-mod1}
 ;   %index%
 ; Default: %icon%  %name%
 label-visible = %name%
-label-visible-underline = #555555
+label-visible-underline = #ffffff
 label-visible-padding = 4
 
 ; Available tokens:
@@ -214,16 +211,15 @@ label-visible-padding = 4
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %name%
-label-urgent-foreground = ##d83838
-label-urgent-background = ${colors.background-mod0}
+label-urgent-foreground = #d83838
+label-urgent-background = ${colors.third-background-light}
 label-urgent-padding = 4
 
 
 ; Separator in between workspaces
 ;label-separator = |
 ;label-separator-padding = 2
-;label-separator-foreground = #ffb52a
-
+;label-separator-foreground = ${colors.second-background-light}
 
 
 
@@ -233,17 +229,16 @@ label = %title:0:30:...%
 
 
 
-
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = "     "
 format-suffix = "    "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-light}
 format-prefix-underline = ${colors.secondary}
 
-format-background = ${colors.background-mod0}
+format-background = ${colors.background-light}
 
 label-layout = %layout%
 label-layout-underline = ${colors.secondary}
@@ -264,7 +259,7 @@ interval = 60
 format = <label>
 format-prefix = "    "
 format-suffix = "   "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-light}
 exec = python ~/.config/polybar/scripts/weather.py
 
 
@@ -289,18 +284,17 @@ format-connected-underline = #9f78e1
 label-connected =
 
 format-disconnected = " no wifi :( "
-format-disconnected-background = ${colors.background-unf}
+format-disconnected-background = ${colors.second-background-light}
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.foreground-light}
 
 ramp-signal-0 = "    0%"
 ramp-signal-1 = "    25%"
 ramp-signal-2 = "    50%"
 ramp-signal-3 = "    75%"
 ramp-signal-4 = "    100%"
-ramp-signal-foreground = ${colors.foreground-alt}
-
+ramp-signal-foreground = ${colors.foreground-light}
 
 
 
@@ -335,7 +329,7 @@ interface = enp4s0
 interval = 5
 label-connected = "        "
 label-disconnected =  Not Connected
-format-connected-background = ${colors.background-mod0}
+format-connected-background = ${colors.background-light}
 
 
 
@@ -346,14 +340,14 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground-light}
 label-connected = %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${colors.foreground-light}
 
 
 
@@ -368,7 +362,7 @@ date-alt = " %Y-%m-%d"
 time = "   %a %b %d     %I:%M %p  "
 time-alt = %H:%M:%S
 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-light}
 format-underline = #0a6cf5
 
 label = %date% %time%
@@ -382,15 +376,16 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = " <ramp-volume> <label-volume>  "
-format-volume-background = ${colors.background-mod0}
+format-volume-background = ${colors.background-light}
 format-volume-prefix = "    "
-format-muted-background = ${colors.background-unf}
-format-muted-foreground = ${colors.background-mod1}
+format-muted-background = ${colors.second-background-light}
+format-muted-foreground = ${colors.background-light}
 label-muted = "          "
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
 ramp-volume-1 = 
+
 
 
 [module/volume]
@@ -401,7 +396,7 @@ label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.foreground-light}
 label-muted = sound muted
 
 bar-volume-width = 10
@@ -419,7 +414,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.foreground-light}
 
 
 
@@ -429,8 +424,8 @@ battery = BAT0
 adapter = AC
 full-at = 97
 
-format-full-background = ${colors.background-mod2}
-format-charging-background = ${colors.background-mod1}
+format-full-background = ${colors.second-background-light}
+format-charging-background = ${colors.background-light}
 format-charging = "⁣   <animation-charging> <label-charging>"
 format-charging-underline = #ffb52a
 
@@ -441,7 +436,7 @@ format-discharging = "⁣  <ramp-capacity> <label-discharging>  "
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full = 
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground-light}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -450,14 +445,14 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground-light}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground-light}
 animation-charging-framerate = 750
 
 
@@ -480,7 +475,7 @@ label-warn-foreground = ${colors.secondary}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground-light}
 
 
 
@@ -491,28 +486,30 @@ type = custom/menu
 format-spacing = 1
 
 label-open = "      "
-label-open-background = ${colors.background-mod0}
-label-open-foreground = ${colors.secondary}
+label-open-background = ${colors.background-light}
+label-open-foreground = ${colors.foreground-light}
 label-close = "    cancel   "
-label-close-background = ${colors.background-mod2}
-label-close-foreground = ${colors.secondary}
-label-separator = " "
-label-separator-foreground = ${colors.foreground-alt}
+label-close-background = ${colors.background-focused-light}
+label-close-foreground = ${colors.alert}
+label-close-padding = 4
+
+label-separator = " | "
+label-separator-foreground = ${colors.foreground-light}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = menu-open-1-1
 menu-0-1 = "power off   "
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot 
+menu-1-0 = "  reboot "
+menu-1-0-exec = systemctl reboot 
+menu-1-1 = " "
+menu-1-1-exec = 
 
 menu-2-0 = power off
 menu-2-0-exec = systemctl poweroff 
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-1 = " "
+menu-2-1-exec =
 
 [module/mpd]
 type = internal/mpd
@@ -553,3 +550,10 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
+[module/vpn]
+type = custom/script
+exec = ~/.config/vpnstatus.sh
+click-left = ~/.config/vpntoggle.sh &
+interval = 5
+
