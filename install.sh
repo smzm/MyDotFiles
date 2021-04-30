@@ -190,6 +190,9 @@ mkdir -p ~/tmpInstall
                 if [[ $ansOS == "arch" ]];then
                     sudo pacman -S python
                     sudo pacman -S python-pip
+                    
+                    sudo pacman -S python2
+                    sudo pacman -S python2-pip
                 else
                     brew install python
                     echo -e "\n +++++  \n"
@@ -237,8 +240,6 @@ mkdir -p ~/tmpInstall
             fi
             python3 -m pip install --user --upgrade pynvim
             sudo pip3 install pynvim --upgrade
-            sudo pacman -S python2
-            sudo pacman -S python2-pip
             npm install -g neovim
             gem install neovim
         fi
