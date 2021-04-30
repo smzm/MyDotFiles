@@ -231,7 +231,7 @@ mkdir -p ~/tmpInstall
         if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
             echo -e "\n +++++ install neovim nightly +++++  \n"
             if [[ $ansOS == "arch" ]];then
-                yay -S neovim-nightly
+                yay -S neovim-nightly-bin
             else
                 brew install neovim --HEAD
             fi
