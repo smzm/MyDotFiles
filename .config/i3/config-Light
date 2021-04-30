@@ -44,9 +44,10 @@ assign [class = "Google-chrome|Firefox|Brave-browser"] $workspace2
 assign [class = "Code|code|code-oss|Atom|Spyder"] $workspace3
 assign [class = "kaffeine|vlc"] $workspace4
 for_window [class="Spotify"] move to workspace $workspace4
-assign [class = "Thunar|Org.gnome.Nautilus"] $workspace5
-
+assign [class = "Thunar|Org.gnome.Nautilus|Pcmanfm"] $workspace5
+for_window [class="Xfburn"] floating enable
 for_window [class="Gnome-calculator"] floating enable
+
 
 
 workspace $workspace1 output HDMI-1
@@ -66,6 +67,8 @@ font pango:Roboto 12
 # font pango:SFNS Display 12
 
 
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
 #Gaps and Window
 for_window [class="^.*"] border pixel 0
@@ -209,6 +212,13 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -246,12 +256,12 @@ bindsym $mod+r mode "resize"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -298,7 +308,6 @@ bindsym $mod+shift+x exec i3lock-fancy --greyscale --text " "
 bindsym $mod+Shift+d exec i3-msg move workspace to output down
 
 #exec_always feh --bg-scale ~/Downloads/wall.jpg
-exec --no-startup-id hsetroot -solid '#e0e0e0'
 
 exec redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 
@@ -329,6 +338,14 @@ exec --no-startup-id clipit
 exec unclutter
 exec numlockx &
 
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec_always --no-startup-id fix_xcursor
+exec --no-startup-id hsetroot -solid '#e0e0e0'
+
+
+
 # start
 exec alacritty
 exec brave
+
