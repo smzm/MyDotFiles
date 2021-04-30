@@ -18,7 +18,7 @@ rofi.line-margin: 15
 rofi.lines: 3
 rofi.separator-style: none
 rofi.columns: 1
-rofi.font: Lekton Nerd Font 32
+rofi.font: Roboto 32
 rofi.bw: 0
 rofi.eh: 2
 rofi.hide-scrollbar: true
