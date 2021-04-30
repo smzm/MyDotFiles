@@ -142,10 +142,14 @@ mkdir -p ~/tmpInstall
                 echo -e "\n +++++ brew install gcc +++++ \n"
                     brew install gcc
         fi
+        
         read -p " tldr    :::::    [r]un : " ansTldr
         if [[ $ansTldr == "r" ]] || [[ $ansTldr == "R" ]]; then
-                echo -e "\n +++++  brew install tldr +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S tldr
+                else
                     brew install tldr
+                fi
         fi
     clear
 
@@ -156,6 +160,7 @@ mkdir -p ~/tmpInstall
                 echo -e "\n +++++ install node +++++ \n"
                 if [[ $ansOS == "arch" ]];then
                     sudo pacman -S nodejs
+                    sudo pacman -S npm
                 else
                     sudo apt-get install nodejs
                     sudo apt-get install npm
@@ -165,6 +170,7 @@ mkdir -p ~/tmpInstall
                 npm config set prefix ~/.np
 
         fi
+        echo -e "\n"
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
