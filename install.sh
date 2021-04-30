@@ -235,6 +235,12 @@ mkdir -p ~/tmpInstall
             else
                 brew install neovim --HEAD
             fi
+            python3 -m pip install --user --upgrade pynvim
+            sudo pacman -S python2
+            sudo pacman -S python2-pip
+            npm install -g neovim
+            gem install neovim
+            
         fi
     clear
 
