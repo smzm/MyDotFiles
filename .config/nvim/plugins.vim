@@ -21,7 +21,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	"Plug 'zchee/deoplete-jedi'
   	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+        Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
 	Plug 'mattn/emmet-vim' 							" emmet for vim
 	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
@@ -31,24 +31,24 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
 	Plug 'NLKNguyen/papercolor-theme' 
-    Plug 'Valloric/MatchTagAlways' " A Vim plugin that always highlights the enclosing html/xml tags
+        Plug 'Valloric/MatchTagAlways' " A Vim plugin that always highlights the enclosing html/xml tags
     
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/nvim-compe'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'nvim-lua/completion-nvim'
-    Plug 'nvim-lua/lsp-status.nvim'
-    Plug 'nvim-lua/diagnostic-nvim'
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'hrsh7th/nvim-compe'
+        Plug 'glepnir/lspsaga.nvim'
+        Plug 'nvim-lua/completion-nvim'
+        Plug 'nvim-lua/lsp-status.nvim'
+        Plug 'nvim-lua/diagnostic-nvim'
     
-    " Set of preconfigured snippets for different languages. 
-   Plug 'rafamadriz/friendly-snippets'
-    Plug 'hrsh7th/vim-vsnip'
+        " Set of preconfigured snippets for different languages. 
+        Plug 'rafamadriz/friendly-snippets'
+        Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 
 " ========== Theme ==========
-source ~/.config/nvim/lightTheme.vim
-"source ~/.config/nvim/darkTheme.vim
+source ~/.config/nvim/theme/lightTheme.vim
+"source ~/.config/nvim/theme/darkTheme.vim
 
 
 "---------- Floaterm ----------
