@@ -82,7 +82,7 @@ font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3 
 modules-center = date weather 
-modules-right = vpn pulseaudio xkeyboard powermenu 
+modules-right = pulseaudio xkeyboard powermenu 
     
 tray-position = right
 tray-padding = 11
@@ -553,7 +553,7 @@ margin-bottom = 5
 ; vim:ft=dosini
 
 
-[module/vpn]
+[module/openconnectVPN]
 type = custom/script
 exec = ~/.config/polybar/scripts/vpnstatus.sh
 interval = 5
