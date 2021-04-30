@@ -81,8 +81,8 @@ font-1 = SF Mono:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3 
-modules-center = date weather pomobar
-modules-right = vpn pulseaudio xkeyboard powermenu 
+modules-center = date weather 
+modules-right = pulseaudio xkeyboard powermenu 
     
 tray-position = right
 tray-padding = 11
@@ -173,6 +173,7 @@ label-mode-padding = 2
 
 ; ================== Background of $mod+0
 label-mode-background = #000000   
+label-mode-foreground = #ffffff
 ;label-mode-background = #001691
 
 ; Available tokens:
@@ -550,10 +551,3 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
-
-[module/vpn]
-type = custom/script
-exec = ~/.config/vpnstatus.sh
-click-left = ~/.config/vpntoggle.sh &
-interval = 5
-
