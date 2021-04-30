@@ -4,6 +4,4 @@
 
 if [[ $VPNStatus == "yes" ]]; then
     echo "賓"
-else
-    echo "VPN Not Connected !"
 fi
