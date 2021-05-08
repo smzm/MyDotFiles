@@ -1,10 +1,9 @@
 call plug#begin('~/local/share/nvim/plugged')
 	Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
 	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
- 	Plug 'vim-airline/vim-airline'	 	            " status/tabline for vim
- 	Plug 'vim-airline/vim-airline-themes'
+ 	"Plug 'vim-airline/vim-airline'	 	            " status/tabline for vim
+ 	"Plug 'vim-airline/vim-airline-themes'
   	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
-   	Plug 'ryanoasis/vim-devicons'                   " Cool Icons
    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
    	Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
    	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
@@ -18,10 +17,8 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'tpope/vim-fugitive'                       " Git plugin for vim
 	Plug 'wadackel/vim-dogrun'						" dogrun theme
    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-	"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	"Plug 'zchee/deoplete-jedi'
   	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-        Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+    Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
 	Plug 'mattn/emmet-vim' 							" emmet for vim
 	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
@@ -31,24 +28,34 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
 	Plug 'NLKNguyen/papercolor-theme' 
-        Plug 'Valloric/MatchTagAlways' " A Vim plugin that always highlights the enclosing html/xml tags
-    
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'hrsh7th/nvim-compe'
-        Plug 'glepnir/lspsaga.nvim'
-        Plug 'nvim-lua/completion-nvim'
-        Plug 'nvim-lua/lsp-status.nvim'
-        Plug 'nvim-lua/diagnostic-nvim'
-    
-        " Set of preconfigured snippets for different languages. 
-        Plug 'rafamadriz/friendly-snippets'
-        Plug 'hrsh7th/vim-vsnip'
+    Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
+    Plug 'sindrets/diffview.nvim'                   "  diff mode 
+    Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'glepnir/lspsaga.nvim'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'nvim-lua/lsp-status.nvim'
+    Plug 'nvim-lua/diagnostic-nvim'
+    Plug 'folke/lsp-trouble.nvim' " A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+    Plug 'folke/tokyonight.nvim'  " Tokyonight Theme
+    Plug 'hoob3rt/lualine.nvim'  " A blazing fast and easy to configure neovim statusline written in pure lua.
+    Plug 'ray-x/lsp_signature.nvim'
+
+
+
+
+    " Set of preconfigured snippets for different languages. 
+   Plug 'rafamadriz/friendly-snippets'
+    Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 
+let g:python3_host_prog = expand('/usr/bin/python3.9')
+
 " ========== Theme ==========
-source ~/.config/nvim/theme/lightTheme.vim
-"source ~/.config/nvim/theme/darkTheme.vim
+"source ~/.config/nvim/theme/lightTheme.vim
+source ~/.config/nvim/theme/darkTheme.vim
 
 
 "---------- Floaterm ----------
@@ -74,8 +81,14 @@ nnoremap <F5> :call RunPython()<CR>
 inoremap <F5> <esc> :call RunPython()<CR>
 
 
+" ----------- auto-pair -------------
+" Jump outside '"({
+if !exists('g:AutoPairsShortcutJump')
+  let g:AutoPairsShortcutJump = ',,'
+endif
 
- " ---------- Vim-:airline ----------
+
+" ---------- Vim-:airline ----------
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline_powerline_fonts = 1
@@ -293,26 +306,6 @@ nmap <silent> <Tab> :Semshi goto name next<CR>
 nmap <silent> <S-Tab> :Semshi goto name prev<CR>
 
 
-"----------------------  Deoplete ----------------------
-
-"" Use deoplete.
-"let g:deoplete#enable_at_startup = 1
-"call deoplete#custom#option({
-"\   'ignore_case': v:true,
-"\   'smart_case': v:true,
-"\})
-"" complete with words from any opened file
-"let g:context_filetype#same_filetypes = {}
-"let g:context_filetype#same_filetypes._ = '_'
-
-"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"set splitbelow
-
-"" maximum candidate window length
-"call deoplete#custom#source('_', 'max_menu_width', 80)
-
-
 "--------------------- vim-hexokinase ----------------------
 let g:Hexokinase_highlighters = ['backgroundfull']
 "let g:Hexokinase_highlighters = ['foregroundfull']
@@ -331,12 +324,17 @@ let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 
-" -------------------------------------- LSP ---------------------------------------
+" -------------------------------------- Lua ---------------------------------------
 
 "===== LSP Load files and servers
-
-luafile ~/.config/nvim/lua/plugins/come-config.lua
 luafile ~/.config/nvim/lua/lsp.lua
+luafile ~/.config/nvim/lua/plugins/come-config.lua
+luafile ~/.config/nvim/lua/plugins/diffview.lua
+luafile ~/.config/nvim/lua/plugins/nvim-web-devicons.lua
+luafile ~/.config/nvim/lua/plugins/lsp-trouble.lua
+luafile ~/.config/nvim/lua/plugins/lualine.lua
+luafile ~/.config/nvim/lua/plugins/lsp-signature.lua
+
 
 
 "---------------------------- LSP Configuration
@@ -351,10 +349,55 @@ nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Auto format:
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+"autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
+"autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
+"autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 
+
+" Misc settings I like
+let g:diagnostic_insert_delay = 1
+let g:diagnostic_show_sign = 1
+let g:diagnostic_enable_virtual_text = 1
+" Complete parentheses for functions
+let g:completion_enable_auto_paren = 1
+" Work with vim-endwise
+let g:completion_confirm_key = "\<C-y>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+let g:completion_enable_snippet = 'UltiSnips'
+
+
+"----------------------------- Compe 
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 
 
@@ -397,4 +440,5 @@ nnoremap <silent>gr :Lspsaga rename<CR>
 nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 "-- or use command
 nnoremap <silent> gd :Lspsaga preview_definition<CR>
+
 
