@@ -37,17 +37,17 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
-    Plug 'folke/lsp-trouble.nvim' " A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-    Plug 'folke/tokyonight.nvim'  " Tokyonight Theme
-    Plug 'hoob3rt/lualine.nvim'  " A blazing fast and easy to configure neovim statusline written in pure lua.
+    Plug 'folke/lsp-trouble.nvim'                   " A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+    Plug 'folke/tokyonight.nvim'                    " Tokyonight Theme
+    Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'ray-x/lsp_signature.nvim'
 
-
-
-
     " Set of preconfigured snippets for different languages. 
-   Plug 'rafamadriz/friendly-snippets'
+    Plug 'rafamadriz/friendly-snippets'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'vimwiki/vimwiki'                        " Personal Wiki for Vim
+
+
 call plug#end()
 
 
@@ -59,16 +59,24 @@ source ~/.config/nvim/theme/darkTheme.vim
 
 
 "---------- Floaterm ----------
-nnoremap <A-f> :FloatermNew lf<CR>
+let g:floaterm_title='Terminal($1|$2)'
+let g:floaterm_wintype='float'
+let g:floaterm_width=0.5
+let g:floaterm_height=1.0
+let g:floaterm_position='topright'
+
+nnoremap <A-f> :FloatermNew --position=center lf <CR>
 nnoremap <A-t> :FloatermNew<CR>
 let g:floaterm_keymap_prev   = '<F9>'
 let g:floaterm_keymap_next   = '<F10>'
 let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
 
+
+
 " run <Floaterm lf> just if ran nvim without any argument
 let g:vimArguments = execute("args")
 if len(g:vimArguments) == 0
-	autocmd VimEnter * FloatermNew lf  
+	autocmd VimEnter * FloatermNew --position=center lf  
 endif
 
 " Binding F5 to save and run python code inside floaterm window
@@ -312,7 +320,7 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 
 "-------------------------- Emmet --------------------------
 " Redefine trigger key : remap the default <C-Y> leader
-let g:user_emmet_leader_key=','  " >>> (,) still needs to be entered
+let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered
 
 "Enable just for html/css
 let g:user_emmet_install_global = 0
