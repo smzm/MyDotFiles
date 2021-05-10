@@ -32,6 +32,7 @@ set smartindent                         " Makes indenting smart
 set smartcase
 set wildmenu
 set wildmode=list:longest,full
+filetype plugin on
 
 " Show relative numbers only in normal mode and absolute number in insert mode
 augroup toggle_relative_number
@@ -148,3 +149,9 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>                                                                            
 nnoremap <C-k> :tabnext<CR>
+
+
+" Disable continuation of comments to the next line
+:set formatoptions-=cro
+
+
