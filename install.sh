@@ -463,6 +463,11 @@ mkdir -p ~/tmpInstall
                     mkdir ~/.config/mpv/
                     sudo cp -r $dotfiles/.config/mpv/ ~/.config/
                     sleep 3
+                    if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S xdotool
+                    sudo pacman -S xbindkeys
+                    yay -S xbindkeys_config-gtk2
+                    sudo cp  $dotfiles/.xbindkeysrc ~/.xbindkeysrc 
         fi
     clear
     fi
