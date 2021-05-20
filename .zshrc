@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/.npm/bin:$PATH
-export PATH=/usr/local/bin:/home/linuxbrew/.linuxbrew/bin/:$HOME/.npm/bin:$HOME/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$HOME/.local/bin:/.local/lib:/usr/local/bin:/home/linuxbrew/.linuxbrew/bin/:$HOME/.npm/bin:$HOME/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -161,18 +164,27 @@ alias lcg='lsd --gs'
 alias cl='clear'
 alias cp='cp -i' #Confirm before overwriting
 alias aria='aria2c -x16 -c -k1M -j10 -m16'
+alias vpnup='nmcli connection up de938.nordvpn.com.udp1194'
+alias vpndown='nmcli connection down de938.nordvpn.com.udp1194'
+
+cs(){
+    cheat_directory="$HOME/cheatsheets"
+    if [ -d $cheat_directory ]; then
+        ~/cheatsheets/wikiScript.sh
+    else
+        echo "Please clone cheatsheets repository in $HOME"
+        echo "      https -->   git clone https://github.com/smzm/cheatsheets.git" 
+        echo "      ssh   -->   ssh git@github.com:smzm/cheatsheets.git"
+        
+    fi
+}
+
 
 cc(){
     cc.sh $1
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-cs(){
-    cheat_directory="~/cheatsheets"
-    cheat_arg="$1"
-    ack -l $cheat_arg $cheat_directory | xargs nvim -c 'noremap q :qa<cr>' +Goyo
-}
 
 
 
