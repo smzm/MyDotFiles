@@ -168,6 +168,11 @@ cc(){
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+cs(){
+    cheat_directory="~/cheatsheets"
+    cheat_arg="$1"
+    ack -l $cheat_arg $cheat_directory | xargs nvim -c 'noremap q :qa<cr>' +Goyo
+}
 
 
 
