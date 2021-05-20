@@ -29,36 +29,41 @@
 
 
 
-#keystate_numlock = enable
-#keystate_scrolllock = enable
-#keystate_capslock = enable
+keystate_numlock = enable
+keystate_scrolllock = enable
+keystate_capslock = enable
 
 
 
 #seekForward
 "xdotool search --class mpv key Right"
-    m:0x10 + c:85
-    Mod2 + KP_Right 
+    m:0x14 + c:85
+    Control+Mod2 + KP_Right 
 
 #seekBackward
 "xdotool search --class mpv key Left"
-    m:0x10 + c:83
-    Mod2 + KP_Left 
+    m:0x14 + c:83
+    Control+Mod2 + KP_Left 
 
 #volumeUp
 "xdotool search --class mpv key k"
-    m:0x10 + c:80
-    Mod2 + KP_Up 
+    m:0x14 + c:80
+    Control+Mod2 + KP_Up 
 
 #volumeDown
 "xdotool search --class mpv key j"
-    m:0x10 + c:88
-    Mod2 + KP_Down 
+    m:0x14 + c:88
+    Control+Mod2 + KP_Down 
 
 #pause
 "xdotool search --class mpv key space"
-    m:0x10 + c:84
-    Mod2 + KP_Begin 
+    m:0x14 + c:84
+    Control+Mod2 + KP_Begin 
+
+#Fullscreen
+"xdotool search --class mpv key f"
+    m:0x14 + c:104
+    Control+Mod2 + KP_Enter 
 
 #
 # End of xbindkeys configuration
