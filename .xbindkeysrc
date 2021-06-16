@@ -1,3 +1,11 @@
+xbindkeys : https://wiki.archlinux.org/title/Xbindkeys
+sudo pacman -S xbindkeys
+commands :     
+            xbindkeys
+            xbindkeys_config
+            
+            
+
 ###########################
 # xbindkeys configuration #
 ###########################
