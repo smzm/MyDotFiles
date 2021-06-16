@@ -1,8 +1,8 @@
-xbindkeys : https://wiki.archlinux.org/title/Xbindkeys
-sudo pacman -S xbindkeys
-commands :     
-            xbindkeys
-            xbindkeys_config
+#           xbindkeys :   https://wiki.archlinux.org/title/Xbindkeys
+#           install   :   sudo pacman -S xbindkeys
+#           commands  :     
+#                         xbindkeys
+#                         xbindkeys_config
             
             
 
