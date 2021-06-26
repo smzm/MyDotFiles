@@ -13,8 +13,8 @@ set $mod Mod4
 # VARIABLES #
 #-----------#
 # I use those colors at bar and window color setti
-set $bg-color 	         #7db3a5
-set $inactive-bg-color   #dbdbdb
+set $bg-color 	         #3c7a6c
+set $inactive-bg-color   #4c575c
 set $text-color          #ffffff
 set $inactive-text-color #a2a3a3
 set $urgent-bg-color 	 #254cd1
@@ -51,7 +51,6 @@ for_window [class="telegram_desktop|TelegramDesktop"] floating enable
 
 
 
-
 workspace $workspace1 output HDMI-1
 workspace $workspace2 output HDMI-1
 workspace $workspace3 output HDMI-1
@@ -70,7 +69,7 @@ font pango:Inter 12
 
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+#for_window [urgent=latest] focus
 
 #Gaps and Window
 for_window [class="^.*"] border pixel 0
@@ -330,24 +329,23 @@ bindsym --release Mod1+Sys_Req exec "import -window `xwininfo | awk '/.*Window i
 # Selection screenshot ==> Shift + PrintScreen
 bindsym --release Shift+Print exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
+bindsym --release $mod+b exec "xdotools"
 
 # Autostart applications
 exec --no-startup-id xautolock -time 20 -locker blurlock
-#exec --no-startup-id nm-applet
-#exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec unclutter
 exec numlockx &
-
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id hsetroot -solid '#e0e0e0'
+# exec --no-startup-id hsetroot -solid '#e0e0e0'
+exec --no-startup-id hsetroot -solid '#1c2022'
 
 
 
 # start
 exec alacritty
 exec brave
-
+exec xbindkeys
