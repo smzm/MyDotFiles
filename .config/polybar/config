@@ -29,7 +29,7 @@ third-background-dark = #222222
 
 ;====== Color of text and icon
 foreground-light = #828282
-foreground-dark = #499100
+foreground-dark = #00a881
 
 
 ;====== Background of focused workspace
@@ -39,7 +39,7 @@ background-focused-dark = #373737
 
 ;====== Foreground of focused workspace
 foreground-focused-light = #f2f2f2
-foreground-focused-dark = #499100
+foreground-focused-dark = #00a881
 
 
 
