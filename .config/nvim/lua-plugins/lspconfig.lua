@@ -80,7 +80,9 @@ nvim_lsp.flow.setup {
 -- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  root_dir = function() return vim.loop.cwd() end
+
 }
 
 
@@ -94,15 +96,19 @@ require'lspconfig'.vimls.setup {}
 
 -- ======== Python
 -- npm i -g pyright
-require'lspconfig'.pyright.setup{}
--- require'lspconfig'.jedi_language_server.setup{}
+require'lspconfig'.pyright.setup{
+   filetypes = { "python" },
+   root_dir = function() return vim.loop.cwd() end
+
+
+}
   
 -- ======== json
 -- npm i -g vscode-langservers-extracted
 require'lspconfig'.jsonls.setup {}
   
 -- ======== HTML
--- npm i -g vscode-langservers-extracted
+--npm i -g vscode-langservers-extracted
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
