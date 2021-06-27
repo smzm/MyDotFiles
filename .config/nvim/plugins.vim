@@ -1,13 +1,8 @@
 call plug#begin('~/local/share/nvim/plugged')
 	Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
 	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
- 	"Plug 'vim-airline/vim-airline'	 	            " status/tabline for vim
- 	"Plug 'vim-airline/vim-airline-themes'
-  	Plug 'sheerun/vim-polyglot'                     " Better Syntax Support
    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-   	Plug 'terryma/vim-multiple-cursors'             " Multiple curosr selections for Vim
    	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
-	Plug 'junegunn/limelight.vim'                   " Hyperfocus-writing in Vim - markdown
    	Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
    	Plug 'haya14busa/incsearch-easymotion.vim'      
@@ -27,26 +22,29 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
-	Plug 'NLKNguyen/papercolor-theme' 
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
     Plug 'sindrets/diffview.nvim'                   "  diff mode 
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
+    Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
     Plug 'glepnir/lspsaga.nvim'
+    Plug 'folke/lsp-colors.nvim'
+	Plug 'onsails/lspkind-nvim'
     Plug 'nvim-lua/completion-nvim'
-    Plug 'nvim-lua/lsp-status.nvim'
-    Plug 'nvim-lua/diagnostic-nvim'
-    Plug 'folke/lsp-trouble.nvim'                   " A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-    Plug 'folke/tokyonight.nvim'                    " Tokyonight Theme
-    Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
-    Plug 'ray-x/lsp_signature.nvim'
+    Plug 'kristijanhusak/defx-git'
+    Plug 'kristijanhusak/defx-icons'
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    " Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
     " Set of preconfigured snippets for different languages. 
     Plug 'rafamadriz/friendly-snippets'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'vimwiki/vimwiki'                        " Personal Wiki for Vim
-
+    Plug 'groenewege/vim-less', { 'for': 'less' }
 
 call plug#end()
 
@@ -54,7 +52,6 @@ call plug#end()
 let g:python3_host_prog = expand('/usr/bin/python3.9')
 
 " ========== Theme ==========
-"source ~/.config/nvim/theme/lightTheme.vim
 source ~/.config/nvim/theme/darkTheme.vim
 
 
@@ -94,13 +91,6 @@ inoremap <F5> <esc> :call RunPython()<CR>
 if !exists('g:AutoPairsShortcutJump')
   let g:AutoPairsShortcutJump = ',,'
 endif
-
-
-" ---------- Vim-:airline ----------
-let g:airline#extensions#wordcount#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline_powerline_fonts = 1
-
 
 
 " ---------- CloseTag ----------
@@ -173,7 +163,6 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 
 " ---------- Goyo ----------
-
 function! s:goyo_enter()
 	let b:quitting = 0
 	let b:quitting_bang = 0
@@ -262,18 +251,6 @@ let g:EasyMotion_use_smartsign_us = 1
 
 
 
-"------------------ indentLine ------------------------
-let g:indentLine_color_gui = '#282828'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-
-
-
-
-"----------------------- Bujo --------------------------
-let g:bujo#window_width = 40
-
-
 "-------  fuzzy-search with EasyMotion+incsearch -------
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
@@ -286,6 +263,13 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+
+
+"------------------ indentLine ------------------------
+let g:indentLine_color_gui = '#282828'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 
 
 "---------------------- Commentary ---------------------
@@ -318,6 +302,7 @@ nmap <silent> <S-Tab> :Semshi goto name prev<CR>
 let g:Hexokinase_highlighters = ['backgroundfull']
 "let g:Hexokinase_highlighters = ['foregroundfull']
 
+
 "-------------------------- Emmet --------------------------
 " Redefine trigger key : remap the default <C-Y> leader
 let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered
@@ -326,127 +311,147 @@ let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
+
 "------------------------------- vim-auto-save ------------------------------------
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 
-" -------------------------------------- Lua ---------------------------------------
 
-"===== LSP Load files and servers
-luafile ~/.config/nvim/lua/lsp.lua
-luafile ~/.config/nvim/lua/plugins/come-config.lua
-luafile ~/.config/nvim/lua/plugins/diffview.lua
-luafile ~/.config/nvim/lua/plugins/nvim-web-devicons.lua
-luafile ~/.config/nvim/lua/plugins/lsp-trouble.lua
-luafile ~/.config/nvim/lua/plugins/lualine.lua
-luafile ~/.config/nvim/lua/plugins/lsp-signature.lua
-
-
-
-"---------------------------- LSP Configuration
-" LSP config (the mappings used in the default file don't quite work right)
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-
-" Auto format:
-"autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-"autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-"autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
-
-
-" Misc settings I like
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_show_sign = 1
-let g:diagnostic_enable_virtual_text = 1
-" Complete parentheses for functions
-let g:completion_enable_auto_paren = 1
-" Work with vim-endwise
-let g:completion_confirm_key = "\<C-y>"
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-" Avoid showing message extra message when using completion
-set shortmess+=c
-let g:completion_enable_snippet = 'UltiSnips'
-
-
-"----------------------------- Compe 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.ultisnips = v:true
-
+"--------------------------------------- Compe -------------------------------------
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+set completeopt=menuone,noselect
 
 
-
-"----------------------------- LSP SAGA
-" lsp provider to find the cursor word definition and reference
-nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-"  or use command LspSagaFinder
-nnoremap <silent> gh :Lspsaga lsp_finder<CR>
-
-"-- code action
-nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-"-- or use command
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+"--------------------------------------- LSPSaga------------------------------------
+nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
 
-"-- show hover doc
-nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-"-- or use command
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-
-"-- scroll down hover doc or scroll in definition preview
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-"-- scroll up hover doc
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-
-"-- show signature help
-nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-"-- or command
-nnoremap <silent> gs :Lspsaga signature_help<CR>
-
-"-- rename
-nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
-"-- or command
-nnoremap <silent>gr :Lspsaga rename<CR>
-"-- close rename win use <C-c> in insert mode or `q` in noremal mode or `:q`
-
-"-- preview definition
-nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-"-- or use command
-nnoremap <silent> gd :Lspsaga preview_definition<CR>
+" ---------------------------------- Telescope ------------------------------------
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 
+" ---------------------------------- Fugitive --------------------------------------
+" Status line
+if !exists('*fugitive#statusline')
+  set statusline=%F\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[L%l/%L,C%03v]
+  set statusline+=%=
+  set statusline+=%{fugitive#statusline()}
+endif
+
+cnoreabbrev g Git
+cnoreabbrev gopen GBrowse
+
+" ----------------------------------- defx ----------------------------------------- 
+" Define mappings
+"cnoreabbrev sf Defx -listed -new
+"      \ -columns=indent:mark:icon:icons:filename:git:size
+"      \ -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <silent>sf :<C-u>Defx -listed -resume
+      \ -columns=indent:mark:icon:icons:filename:git:size
+      \ -buffer-name=tab`tabpagenr()`
+      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+autocmd FileType defx call s:defx_my_settings()
+	function! s:defx_my_settings() abort
+	  " Define mappings
+	  nnoremap <silent><buffer><expr> <CR>
+	  \ defx#do_action('open')
+	  nnoremap <silent><buffer><expr> c
+	  \ defx#do_action('copy')
+	  nnoremap <silent><buffer><expr> m
+	  \ defx#do_action('move')
+	  nnoremap <silent><buffer><expr> p
+	  \ defx#do_action('paste')
+	  nnoremap <silent><buffer><expr> l
+	  \ defx#do_action('open')
+	  nnoremap <silent><buffer><expr> E
+	  \ defx#do_action('open', 'vsplit')
+	  nnoremap <silent><buffer><expr> P
+	  \ defx#do_action('open', 'pedit')
+	  nnoremap <silent><buffer><expr> o
+	  \ defx#do_action('open_or_close_tree')
+	  nnoremap <silent><buffer><expr> K
+	  \ defx#do_action('new_directory')
+	  nnoremap <silent><buffer><expr> N
+	  \ defx#do_action('new_file')
+	  nnoremap <silent><buffer><expr> M
+	  \ defx#do_action('new_multiple_files')
+	  nnoremap <silent><buffer><expr> C
+	  \ defx#do_action('toggle_columns',
+	  \                'mark:indent:icon:filename:type:size:time')
+	  nnoremap <silent><buffer><expr> S
+	  \ defx#do_action('toggle_sort', 'time')
+	  nnoremap <silent><buffer><expr> d
+	  \ defx#do_action('remove')
+	  nnoremap <silent><buffer><expr> r
+	  \ defx#do_action('rename')
+	  nnoremap <silent><buffer><expr> !
+	  \ defx#do_action('execute_command')
+	  nnoremap <silent><buffer><expr> x
+	  \ defx#do_action('execute_system')
+	  nnoremap <silent><buffer><expr> yy
+	  \ defx#do_action('yank_path')
+	  nnoremap <silent><buffer><expr> .
+	  \ defx#do_action('toggle_ignored_files')
+	  nnoremap <silent><buffer><expr> ;
+	  \ defx#do_action('repeat')
+	  nnoremap <silent><buffer><expr> h
+	  \ defx#do_action('cd', ['..'])
+	  nnoremap <silent><buffer><expr> ~
+	  \ defx#do_action('cd')
+	  nnoremap <silent><buffer><expr> q
+	  \ defx#do_action('quit')
+	  nnoremap <silent><buffer><expr> <Space>
+	  \ defx#do_action('toggle_select') . 'j'
+	  nnoremap <silent><buffer><expr> *
+	  \ defx#do_action('toggle_select_all')
+	  nnoremap <silent><buffer><expr> j
+	  \ line('.') == line('$') ? 'gg' : 'j'
+	  nnoremap <silent><buffer><expr> k
+	  \ line('.') == 1 ? 'G' : 'k'
+	  nnoremap <silent><buffer><expr> <C-l>
+	  \ defx#do_action('redraw')
+	  nnoremap <silent><buffer><expr> <C-g>
+	  \ defx#do_action('print')
+	  nnoremap <silent><buffer><expr> cd
+	  \ defx#do_action('change_vim_cwd')
+	endfunction
+
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▸',
+      \ 'opened_icon': '▾',
+      \ 'root_icon': ' ',
+      \ })
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : 'M',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
+
+" -------------------------------------- Lua ---------------------------------------
+luafile ~/.config/nvim/lua-plugins/lspconfig.lua
+luafile ~/.config/nvim/lua-plugins/lualine.lua
+luafile ~/.config/nvim/lua-plugins/compe.lua
+luafile ~/.config/nvim/lua-plugins/lspsaga.lua
+luafile ~/.config/nvim/lua-plugins/telescope.lua
+luafile ~/.config/nvim/lua-plugins/lspcolors.lua
+" luafile ~/.config/nvim/lua-plugins/treesitter.lua		" it has problem with semshi
+luafile ~/.config/nvim/lua-plugins/webdevicons.lua

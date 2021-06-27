@@ -1,22 +1,20 @@
+" ================================================ Basic Setting
+syntax on                               " Enables syntax highlighing
 set nocompatible      			 "Use Vim settings, rather then Vi settings. It’s important to have this onthe top of your file, as it influences other options
 set lazyredraw
-set history=1000			" Set bigger history of executed commands
-set showcmd				" Show incomplete commands at the bottom
+set history=1000		         " Set bigger history of executed commands
+set showcmd			             " Show incomplete commands at the bottom
 set noswapfile
-set laststatus=2 			" Always display the status bar 
-set backspace=indent,eol,start    	" Allow backspacing over indention
+set laststatus=2 			     " Always display the status bar 
+set backspace=indent,eol,start   " Allow backspacing over indention
 set hlsearch 
-set autoindent
 set title
 set showmatch
 set ignorecase
-set formatoptions-=cro                  " Stop newline continution of comments
-syntax on                               " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
 set fileencoding=utf-8                  " The encoding written to file
-"set ruler     		                " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -33,17 +31,8 @@ set smartcase
 set wildmenu
 set wildmode=list:longest,full
 filetype plugin on
-
-" Show relative numbers only in normal mode and absolute number in insert mode
-augroup toggle_relative_number
-  autocmd!
-  autocmd InsertEnter * :setlocal norelativenumber
-  autocmd InsertLeave * :setlocal relativenumber
-augroup END
-
 set number
 set autoindent                          " Good auto indent
-set laststatus=2                        " Always display the status line
 set cursorline                          " Enable highlighting of the current line
 "set showtabline=2                       " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
@@ -52,21 +41,69 @@ set nowritebackup                       " This is recommended by coc
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch
 let mapleader = "\<Space>"
-nnoremap <Leader><Leader>w :w<CR> 	" Save file just by <Leaedr>w
 set foldenable
 set foldnestmax=1
 set foldmethod=manual
 set foldcolumn=2
+set undofile                             " Maintain undo history between sessions
+set path+=**                             " Finding files - Search down into subfolders
+set exrc
+
 augroup remember_folds
 	autocmd!
 	autocmd BufWinLeave * mkview
 	autocmd BufWinEnter * silent! loadview
 augroup END
 
+" Show relative numbers only in normal mode and absolute number in insert mode
+augroup toggle_relative_number
+  autocmd!
+  autocmd InsertEnter * :setlocal norelativenumber
+  autocmd InsertLeave * :setlocal relativenumber
+augroup END
 
 :highlight LineNr ctermfg=grey          " Change color of line numbers to grey
 
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
 
+if &term =~ "screen"
+  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+endif
+
+let fancy_symbols_enabled = 0
+
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
+
+
+" Suppress appending <PasteStart> and <PasteEnd> when pasting
+set t_BE=
+
+" File types -------------------------------
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Python
+au BufNewFile,BufRead *.py set filetype=python
+
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+
+
+
+
+" ====================================================== KeyMap
 " Fix indenting visual block
  vmap < <gv
  vmap > >gv
@@ -87,19 +124,10 @@ nnoremap ; :
  nnoremap <A-p> :tabp<CR>
  nnoremap <A-n> :tabn<CR>
 
-"Save file when focus changed
-:au FocusLost * silent! wa
-
 "Quicker Escaping
 :inoremap jk <esc>
 :inoremap kj <esc>
 
-
-" Turn spellcheck on for markdown files
-augroup auto_spellcheck
-  autocmd!
-  autocmd BufNewFile,BufRead *.md setlocal spell
-augroup END
 
 " easily move a line up or down
 nnoremap <S-Up> :m-2<CR>
@@ -109,10 +137,6 @@ inoremap <S-Down> <Esc>:m+<CR>
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 vnoremap <S-UP> :m '<-2<CR>gv=gv
 
-" Vim highlight line
-set cursorline
-
-" Line number
 
 " For jumping to the end of prantheses and quotes when write a string just
 " with C+e
@@ -123,7 +147,7 @@ nnoremap <esc><esc> :silent! nohls<cr>
 
 " work properly with ctags
 set tags=tags;
-" Regenerate tags when saving Python files.
+  " Regenerate tags when saving Python files.
 augroup Retags
   autocmd!
   autocmd BufWritePost *.py silent! !ctags -R &
@@ -134,15 +158,9 @@ augroup END
 nnoremap <Leader>' vi)<esc>a"<esc>l%a"<esc>
 
 
-let fancy_symbols_enabled = 0
 
-
-" Maintain undo history between sessions
-set undofile 
-
-
-" copy (write) highlighted text to clipboard
-autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' |  clip.exe')
+  " copy (write) highlighted text to clipboard
+autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' |  clip.exe')           
 
 " Switch between tabs with ctrl 
 nnoremap <C-Left> :tabprevious<CR>                                                                            
@@ -150,8 +168,47 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>                                                                            
 nnoremap <C-k> :tabnext<CR>
 
-
 " Disable continuation of comments to the next line
 :set formatoptions-=cro
+nnoremap <Leader><Leader>w :w<CR> 	" Save file just by <Leaedr>w
+
+nnoremap x "_x
+
+" Increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Delete a word backwards
+nnoremap dw vb"_d
+
+" Select all
+nmap <C-a> gg<S-v>G
+
+" Save with root permission
+command! W w !sudo tee > /dev/null %
+
+" Open current directory
+nmap te :tabedit 
+nmap <S-Tab> :tabprev<Return>
+nmap <Tab> :tabnext<Return>
 
 
+
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+" Resize window
+nmap <C-s><left> <C-w><
+nmap <C-s><right> <C-w>>
+nmap <C-s><up> <C-w>+
+nmap <C-s><down> <C-w>-
