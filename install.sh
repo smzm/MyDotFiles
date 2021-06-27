@@ -235,6 +235,9 @@ mkdir -p ~/tmpInstall
             echo -e "\n +++++ install neovim nightly +++++  \n"
             if [[ $ansOS == "arch" ]];then
                 yay -S neovim-nightly-bin
+                sudo pacman -S python-pynvim 
+                sudo pacman -S luajit
+                sudo pacman -S tree-sitter
             else
                 brew install neovim --HEAD
             fi
