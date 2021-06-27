@@ -20,6 +20,11 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
 	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
 	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
+	" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
@@ -40,8 +45,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     " Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-    " Set of preconfigured snippets for different languages. 
-    Plug 'rafamadriz/friendly-snippets'
+    Plug 'rafamadriz/friendly-snippets'	            " Set of preconfigured snippets for different languages. 
     Plug 'hrsh7th/vim-vsnip'
     Plug 'vimwiki/vimwiki'                        " Personal Wiki for Vim
     Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -310,6 +314,10 @@ let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered
 "Enable just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+
+"-------------------------------- Pretier -----------------------------------------
+let g:prettier#autoformat = 1
 
 
 "------------------------------- vim-auto-save ------------------------------------
