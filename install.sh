@@ -265,33 +265,7 @@ mkdir -p ~/tmpInstall
     clear
 
 
-  echo " ===================== nvim ====================="
-        echo -e " nvim \n Vim-plug"
-        read -p " Coc : [https://github.com/neoclide/coc.nvim]   :::::    [r]un : " ansCoc
-        echo "Node and npm must installed before."
-        if [[ $ansCoc == "r" ]] || [[ $ansCoc == "R" ]]; then
-            # create coc.vim file in nvim/plug-config/
-            sudo mkdir ~/.config/nvim/plug-config
-            sudo touch ~/.config/nvim/plug-config/coc.vim
-
-            # Install extensions
-            sudo mkdir -p ~/.config/coc/extensions
-            sudo chmod -R u+wrx ~/.config/coc/
-            cd ~/.config/coc/extensions
-            if [ ! -f package.json ]
-            then
-              echo '{"dependencies":{}}'> package.json
-            fi
-
-            python3 -m pip install --user --upgrade pynvim
-
-            # extensions
-            npm install coc-python coc-tsserver coc-html coc-css coc-json coc-snippets coc-html-css-support coc-markdownlint coc-sh coc-stylelint coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-        fi  
-     clear
-
-
-        echo " ===================== Terminal ====================="
+         echo " ===================== Terminal ====================="
         read -p " NerdFont(InconsolataLGC)   :::::    [r]un : " ansNFontInconsolata
         if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
