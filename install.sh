@@ -203,27 +203,25 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Development Packages ====================="
-        read -p " [pip] : jedi | pyenv | python-language-server[all]    :::::    [r]un : " ansPLS
-        if [[ $ansPLS == "r" ]] || [[ $ansPLS == "R" ]]; then
-            echo -e "\n +++++ pip3 install jedi pyenv python-language-server[all]  +++++ \n"
-                    pip install jedi pyenv python-language-server[all]
-        fi
         read -p " [pip] : numpy | pandas | scipy | matplotlib | opencv-python ::::: [r]un : " ansPLS2
         if [[ $ansPLS2 == 'r' ]] || [[ $ansPLS2 == "R" ]]; then
             echo -e "+++++ pip3 install numpy pandas scipy matplotlib opencv-python"
                 pip install numpy pandas scipy matplotlib opencv-python
         fi
-        read -p " [npm] : pyright | bash-language-server |  ::::: [r]un : " ansPLS2
-        if [[ $ansPLS2 == 'r' ]] || [[ $ansPLS2 == "R" ]]; then
-            echo -e "+++++ npm i -g pyright | bash-language-server | "
+        
+        if [[ $ansOS == "arch" ]]; then
+        read -p " [npm][pip] : language-servers |  ::::: [r]un : " ansLS
+          if [[ $ansLS == 'r' ]] || [[ $ansLS == "R" ]]; then
+            echo -e "+++++ language-servers | "
                 npm install -g pyright
                 npm install -g bash-language-server
                 npm install -g typescript typescript-language-server
-                npm install -g vim-language-server
-                npm install -g vscode-html-languageserver
-                npm install -g vscode-css-languageserver-bin
-                npm install -g vscode-json-languageserver
-
+                npm i -g vscode-langservers-extracted
+                npm install -g vim-language-server               
+                pip install jedi  pyenv python-language-server[all]
+                yay -S tailwind-css
+                yay -S vscode-tailwindcss-language-server-bin
+          fi
         fi
     clear
 
