@@ -1,4 +1,4 @@
 # . FILES
-Enjoy of install.sh file for installing Mydotfiles.
+Use ```install.sh``` file for installing programms and dotfiles.
 
-it work for _debian_ and _arch_ based linux.
+Support _debian_ and _arch_ based linux.
