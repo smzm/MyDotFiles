@@ -101,7 +101,7 @@ au BufNewFile,BufRead *.py set filetype=python
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 
-
+set shortmess+=c 
 
 " ====================================================== KeyMap
 " Fix indenting visual block
@@ -193,8 +193,11 @@ nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
 
+" open splitted tab to a new window
+nnoremap sw <C-w>T 
 
-" Split window
+
+"Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 " Move window
@@ -212,3 +215,5 @@ nmap <C-s><left> <C-w><
 nmap <C-s><right> <C-w>>
 nmap <C-s><up> <C-w>+
 nmap <C-s><down> <C-w>-
+
+

@@ -49,6 +49,8 @@ Plug 'prettier/vim-prettier', {
     Plug 'hrsh7th/vim-vsnip'
     Plug 'vimwiki/vimwiki'                        " Personal Wiki for Vim
     Plug 'groenewege/vim-less', { 'for': 'less' }
+    Plug 'kabouzeid/nvim-lspinstall'
+
 
 call plug#end()
 
