@@ -273,14 +273,14 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 
 "------------------ indentLine ------------------------
-let g:indentLine_color_gui = '#282828'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_gui = '#323640'
+let g:indentLine_char_list = ['.']
 
 
 
 "---------------------- Commentary ---------------------
 " map ctrl + / to comment and uncomment with commantary
-map <C-_> gc
+ map <C-_> gc
 
 
 "----------------------- Semshi -------------------------
@@ -319,7 +319,7 @@ autocmd FileType html,css EmmetInstall
 
 
 "-------------------------------- Pretier -----------------------------------------
-let g:prettier#autoformat = 1
+" let g:prettier#autoformat = 1
 
 
 "------------------------------- vim-auto-save ------------------------------------
