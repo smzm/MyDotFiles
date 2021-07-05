@@ -34,7 +34,7 @@ foreground-dark = #00a881
 
 ;====== Background of focused workspace
 background-focused-light = #adadad
-background-focused-dark = #373737
+background-focused-dark = #002e2d
 
 
 ;====== Foreground of focused workspace
@@ -44,7 +44,7 @@ foreground-focused-dark = #00a881
 
 
 alert = #bd2c40
-secondary = #499100
+secondary = #002e2d
 
 
 ;==========================================================
