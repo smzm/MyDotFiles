@@ -194,26 +194,25 @@ nmap <Tab> :tabnext<Return>
 
 
 " open splitted tab to a new window
-nnoremap sw <C-w>T 
+nnoremap ww <C-w>T 
 
 
 "Split window
-nmap ss :split<Return><C-w>w
-nmap sv :vsplit<Return><C-w>w
+nmap s- :split<Return><C-w>w
+nmap s\| :vsplit<Return><C-w>w
 " Move window
-nmap <Space> <C-w>w
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
+map w<left> <C-w>h
+map w<up> <C-w>k
+map w<down> <C-w>j
+map w<right> <C-w>l
+map wh <C-w>h
+map wk <C-w>k
+map wj <C-w>j
+map wl <C-w>l
 " Resize window
-nmap <C-s><left> <C-w><
-nmap <C-s><right> <C-w>>
-nmap <C-s><up> <C-w>+
-nmap <C-s><down> <C-w>-
+nmap <C-w><right> :vertical resize +4<CR>
+nmap <C-w><left> :vertical resize -4<CR>
+nmap <C-w><up> :resize +2<CR>
+nmap <C-w><down> :resize -2<CR>
 
 
