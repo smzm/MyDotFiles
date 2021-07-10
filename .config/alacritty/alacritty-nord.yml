@@ -5,7 +5,7 @@ env:
 # Font configuration (changes require restart)
 font:
   # The size to use.
-  size: 12
+  size: 13
 
   # The normal (roman) font face to use.
   normal:
@@ -41,16 +41,16 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#e3e3e3'
-    foreground: '#707070'
+    background: '#2e3440'
+    foreground: '#eeffff'
 
   # Normal colors
   normal:
     black:   '#000000'  # Arbitrary
-    red:     '#f74545'
-    green:   '#008734'
+    red:     '#e53935'
+    green:   '#3cb025'
     yellow:  '#ffb62c'
-    blue:    '#5145f7'
+    blue:    '#6182b8'
     magenta: '#ff5370'  # Dark pink of the original material theme
     cyan:    '#39adb5'
     white:   '#a0a0a0'  # Arbitrary
