@@ -17,34 +17,36 @@
 [colors]
 
 ; ====== Background of polybar
-background-light = #d4d4d4
-background-dark = #1c2022
+;background-light = #d4d4d4
+background-dark = #2e3440
 
-second-background-light = #8f8f8f
+;second-background-light = #8f8f8f
 second-background-dark = #535353
 
-third-background-light = #dbdbdb
-third-background-dark = #222222
+;third-background-light = #dbdbdb
+third-background-dark = #29303b
 
 
 ;====== Color of text and icon
 foreground-light = #828282
-foreground-dark = #00a881
+foreground-dark = #6a7a96
+
 
 
 ;====== Background of focused workspace
-background-focused-light = #adadad
-background-focused-dark = #002e2d
+;background-focused-light = #adadad
+background-focused-dark = #252a34
+
 
 
 ;====== Foreground of focused workspace
-foreground-focused-light = #f2f2f2
-foreground-focused-dark = #00a881
+;foreground-focused-light = #f2f2f2
+foreground-focused-dark = #Abc4ef
 
 
 
 alert = #bd2c40
-secondary = #002e2d
+secondary = #4c595d
 
 
 ;==========================================================
@@ -562,3 +564,5 @@ interval = 5
 type = custom/script
 exec = ~/.config/polybar/scripts/ticker-crypto.py
 interval = 300
+
+
