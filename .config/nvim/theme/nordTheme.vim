@@ -6,8 +6,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 "Highlight search color 
 hi Search guibg=#c7ac00
-hi Normal guibg=#2e3541 guifg=#C2D3E7
-hi LineNr guifg=#434954
+hi Normal guibg=#22262e guifg=#C2D3E7
+hi LineNr guifg=#2f333b
 hi CursorLineNr guifg=#585d67
 hi CursorLine guibg=#29303b
 hi Comment gui=italic
@@ -36,9 +36,9 @@ hi PmenuThumb guifg=#000000
 " hi DiffDelete guibg=#db2e4e guifg=#000000
 hi SpellBad guibg=#ba9e9e
 hi Floaterm guifg=#6a7a96
-hi FloatermBorder guifg=#758ba9 guibg=#2e3541
-hi EasyMotionShade guibg=#2e3541
-hi EasyMotionTarget guibg=#2e3541 guifg=#Be8500 gui=bold
+hi FloatermBorder guifg=#758ba9 guibg=#22262
+hi EasyMotionShade guibg=#22262
+hi EasyMotionTarget guibg=#22262 guifg=#Be8500 gui=bold
 
 " HTML
 hi htmlTagName guifg=#9ba2af
@@ -50,46 +50,13 @@ hi htmlString guifg=#7ccab8
 
 " CSS 
 " Matchup plugin
-hi MatchWord guibg=#2e3541 guifg=#7c7eca gui=underline
-hi MatchWordCur guibg=#29303b guifg=#7c7eca gui=underline
-hi MatchParen guibg=#2e3541 guifg=#7c7eca gui=underline
-hi MatchParenCur guibg=#29303b guifg=#7c7eca gui=underline
+hi MatchWord guibg=#22262 guifg=#7c7eca gui=underline
+hi MatchWordCur guibg=#22262 guifg=#7c7eca gui=underline
+hi MatchParen guibg=#22262 guifg=#7c7eca gui=underline
+hi MatchParenCur guibg=#22262 guifg=#7c7eca gui=underline
 
 " VIM Tabs
-hi TabLineFill guibg=#2e3541 guifg=white
-hi TabLine guibg=#2e3541 guifg=#50585c
-hi TabLineSel guibg=#29303b guifg=#8bb5c9 gui=bold
+hi TabLineFill guibg=#22262 guifg=white
+hi TabLine guibg=#22262 guifg=#50585c
+hi TabLineSel guibg=#22262 guifg=#8bb5c9 gui=bold
 
-" " VIM Lualine
-" hi  Lualine_a_normal guibg=#1c2022 guifg=#444f54
-" hi  Lualine_b_normal guibg=#1c2022 guifg=#3d464a
-" hi  Lualine_c_normal guibg=#1c2022 guifg=#3d464a
-
-" hi  Lualine_a_insert guibg=#0d8f75 guifg=#003d31
-" hi  Lualine_b_insert guibg=#1c2022 guifg=#3d464a
-" hi  Lualine_c_insert guibg=#1c2022 guifg=#3d464a
-
-" hi lualine_a_inactive guibg=#283f4a guifg=#fff
-" hi lualine_b_inactive guibg=#283f4a guifg=#fff
-" hi lualine_c_inactive guibg=#283f4a guifg=#fff
-
-" hi lualine_a_command cterm=bold gui=bold guifg=#cfcfcf guibg=#96004e
-" hi lualine_b_command guifg=#ad5e87 guibg=#1c2022
-" hi lualine_c_command guifg=#d687b0 guibg=#1c2022
-
-" hi lualine_a_visual cterm=bold gui=bold guifg=#4d1f00 guibg=#d45500
-" hi lualine_b_visual guifg=#c7a569 guibg=#1c2022
-" hi lualine_c_visual guifg=#c7a569 guibg=#1c2022
-
-" hi lualine_a_normal_to_lualine_c_normal guifg=#29414d guibg=#1c2022
-" hi lualine_c_normal_to_lualine_b_normal guifg=#29414d guibg=#1c2022
-" hi lualine_b_normal_to_lualine_a_normal guifg=#29414d guibg=#1c2022
-" hi lualine_a_insert_to_lualine_c_insert guifg=#0d8f75 guibg=#1c2022
-" hi lualine_c_insert_to_lualine_b_insert guifg=#0d8f75  guibg=#1c2022
-" hi lualine_b_insert_to_lualine_a_insert guifg=#0d8f75  guibg=#1c2022
-" hi lualine_a_command_to_lualine_c_command guifg=#96004e guibg=#1c2022
-" hi lualine_c_command_to_lualine_b_command guifg=#96004e guibg=#1c2022
-" hi lualine_b_command_to_lualine_a_command guifg=#96004e guibg=#1c2022
-" hi lualine_a_visual_to_lualine_c_visual guifg=#d45500 guibg=#1c2022
-" hi lualine_c_visual_to_lualine_b_visual guifg= #d45500 guibg=#1c2022
-" hi lualine_b_visual_to_lualine_a_visual guifg=#d45500 guibg=#1c2022
