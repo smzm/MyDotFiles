@@ -1,3 +1,4 @@
+# NORD THEME
 env:
     # TERM: xterm-256color
       Term: alacritty
@@ -41,7 +42,7 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#2e3440'
+    background: '#22262e'
     foreground: '#eeffff'
 
   # Normal colors
