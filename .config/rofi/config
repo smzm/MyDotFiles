@@ -5,7 +5,7 @@
 rofi.color-enabled: true
 
 ! Window:           'background',  'border', 'separator'
-rofi.color-window: argb:CC0a1e16,  #9575cd, argb:ffffffff
+rofi.color-window: argb:CC162129,  #9575cd, argb:ffffffff
 
 !   State:              'bg',       'fg',   'altbg',        'hlbg',         hlfg
 rofi.color-normal: argb:00252936, #ffffff, argb:00252936, argb:009575cd, #ff00ffd0
@@ -18,7 +18,7 @@ rofi.line-margin: 15
 rofi.lines: 3
 rofi.separator-style: none
 rofi.columns: 1
-rofi.font: Roboto 32
+rofi.font: Lekton Nerd Font 32
 rofi.bw: 0
 rofi.eh: 2
 rofi.hide-scrollbar: true
