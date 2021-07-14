@@ -157,9 +157,15 @@ augroup END
 " map Leader+" for wraping a sentences inside () in " == usefull for python
 nnoremap <Leader>' vi)<esc>a"<esc>l%a"<esc>
 
+" gf open in a newtab
+nnoremap gf <C-W>gf
+vnoremap gf <C-W>gf
+
+" <leader>* for match all pattern under cursor
+nnoremap <expr> <leader>* ':%s/'.expand('<cword>').'//gn<CR>``'
 
 
-  " copy (write) highlighted text to clipboard
+" copy (write) highlighted text to clipboard
 autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' |  clip.exe')           
 
 " Switch between tabs with ctrl 
@@ -170,7 +176,6 @@ nnoremap <C-k> :tabnext<CR>
 
 " Disable continuation of comments to the next line
 :set formatoptions-=cro
-nnoremap <Leader><Leader>w :w<CR> 	" Save file just by <Leaedr>w
 
 nnoremap x "_x
 
@@ -185,7 +190,7 @@ nnoremap dw vb"_d
 nmap <C-a> gg<S-v>G
 
 " Save with root permission
-command! W w !sudo tee > /dev/null %
+command! W w !tee %
 
 " Open current directory
 nmap te :tabedit 
