@@ -1,7 +1,7 @@
 #!/bin/bash
 
 fuboTV=$(i3-msg -t get_tree | grep -i -c 'fubo.tv')
-nordVPN_name=$(nmcli -t -f NAME c show | awk -e '/^us.*nordvpn/{print $0}')
+nordVPN_name=$(nmcli -t -f NAME c show | awk -e '/^us.*nordvpn/{print $0; exit}')
 nordVPN_status=$(nmcli -t -f NAME c show --active | awk '/nordvpn/{print "active"}')
 
 if [[ $fuboTV == 0 ]]; then
