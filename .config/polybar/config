@@ -83,7 +83,7 @@ font-1 = SF Mono:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3 
-modules-center = date weather ticker-crypto
+modules-center = fuboTV date weather ticker-crypto 
 modules-right = pulseaudio xkeyboard powermenu 
     
 tray-position = right
@@ -566,3 +566,8 @@ exec = ~/.config/polybar/scripts/ticker-crypto.py
 interval = 300
 
 
+[module/fuboTV]
+type=custom/ipc
+hook-0 = echo "FuboTV  "
+initial=1
+click-left = ~/.config/polybar/scripts/tv.sh
