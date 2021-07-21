@@ -88,7 +88,7 @@ endif
 " Binding F5 to save and run python code inside floaterm window
 :function RunPython()
 	:execute "w"
-	:FloatermNew clear && python3 %:p
+	:FloatermNew clear && python %:p
 :endfunction
 
 nnoremap <F5> :call RunPython()<CR>
