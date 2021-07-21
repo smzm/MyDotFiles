@@ -224,7 +224,7 @@ nmap <C-w><down> :resize -2<CR>
 nnoremap <s-up> :m-2<cr>
 nnoremap <s-down> :m+<cr>
 inoremap <s-up> <cr><esc>:m-2<cr>
-inoremap <s-down> <cr><esc>:m+<cr>
+inoremap <s-down> <cr><esc>
 vnoremap <s-down> :m '>+1<cr>gv=gv
 vnoremap <s-up> :m '<-2<cr>gv=gv
 
