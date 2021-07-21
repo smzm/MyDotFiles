@@ -218,11 +218,3 @@ nmap <C-w><right> :vertical resize +4<CR>
 nmap <C-w><left> :vertical resize -4<CR>
 nmap <C-w><up> :resize +2<CR>
 nmap <C-w><down> :resize -2<CR>
-
-
-
-
-
-
-
-
