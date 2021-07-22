@@ -130,12 +130,17 @@ nnoremap ; :
 
 
 " easily move a line up or down
-nnoremap <s-up> :m-2<cr>
-nnoremap <s-down> :m+<cr>
-inoremap <s-up> <cr><esc>:m-2<cr>
-inoremap <s-down> <cr><esc>
-vnoremap <s-down> :m '>+1<cr>gv=gv
-vnoremap <s-up> :m '<-2<cr>gv=gv
+
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+" For Visually selected text use <<vim-textmanip>> plugin 
+" vnoremap <S-Down> :m '>+1<CR>gv=gv
+" vnoremap <S-UP> :m '<-2<CR>gv=gv
+
+
 
 " For jumping to the end of prantheses and quotes when write a string just
 " with C+e
@@ -218,3 +223,5 @@ nmap <C-w><right> :vertical resize +4<CR>
 nmap <C-w><left> :vertical resize -4<CR>
 nmap <C-w><up> :resize +2<CR>
 nmap <C-w><down> :resize -2<CR>
+
+

@@ -9,7 +9,10 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'easymotion/vim-easymotion'
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
 	" Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
-	Plug 'tpope/vim-fugitive'                       " Git plugin for vim
+    Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
+    Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
+    Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
+    Plug 'tpope/vim-fugitive'                       " Git plugin for vim
 	Plug 'wadackel/vim-dogrun'						" dogrun theme
    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
   	" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -36,9 +39,9 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'folke/lsp-colors.nvim'
 	Plug 'onsails/lspkind-nvim'
     Plug 'nvim-lua/completion-nvim'
-    Plug 'kristijanhusak/defx-git'
-    Plug 'kristijanhusak/defx-icons'
-    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'kristijanhusak/defx-git'
+    " Plug 'kristijanhusak/defx-icons'
+    " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -57,11 +60,8 @@ call plug#end()
 let g:python3_host_prog = expand('/usr/bin/python3.9')
 
 " ========== Theme ==========
-
 colorscheme nord
 source ~/.config/nvim/theme/nordTheme.vim
-
-
 
 
 "---------- Floaterm ----------
@@ -275,9 +275,26 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 
 
-"------------------ indentLine ------------------------
+"----------------------- indentLine --------------------
 " let g:indentLine_color_gui = '#2d3541'
 " let g:indentLine_char_list = ['.']
+
+"------------------------vim-textmanip------------------
+xmap <S-Down> <Plug>(textmanip-move-down)
+xmap <S-UP> <Plug>(textmanip-move-up)
+xmap <S-LEFT> <Plug>(textmanip-move-left)
+xmap <S-RIGHT> <Plug>(textmanip-move-right)
+
+" toggle insert/replace with <F10>
+nmap <F3> <Plug>(textmanip-toggle-mode)
+xmap <F3> <Plug>(textmanip-toggle-mode)
+
+"------------------------ abolish ----------------------
+" change all variants of highlighted text with ctr+r
+vnoremap <C-r> "hy:%Subvert/<C-r>h//gc<left><left><left>
+
+"----------------------- Polyglot ----------------------
+let g:python_highlight_space_errors = 0
 
 
 
@@ -286,25 +303,25 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 map <C-_> gc
 
 
-"----------------------- Semshi -------------------------
-hi semshiSelected guifg=#8ff500 guibg=#262b2e gui=bold
-hi semshiLocal           ctermfg=209 guifg=#ff875f
-hi semshiGlobal          ctermfg=214 guifg=#808080
-hi semshiImported        ctermfg=214 guifg=#e37900 cterm=bold gui=bold
-hi semshiParameter       ctermfg=75  guifg=#e34c00
-hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-hi semshiFree            ctermfg=218 guifg=#db0071
-hi semshiBuiltin         ctermfg=207 guifg=#0088e3
-hi semshiAttribute       ctermfg=49  guifg=#00b58e
-hi semshiSelf            ctermfg=249 guifg=#fc0384
-hi semshiUnresolved      ctermfg=226 guifg=#f5005e cterm=underline gui=underline
+""----------------------- Semshi -------------------------
+"hi semshiSelected guifg=#8ff500 guibg=#262b2e gui=bold
+"hi semshiLocal           ctermfg=209 guifg=#ff875f
+"hi semshiGlobal          ctermfg=214 guifg=#808080
+"hi semshiImported        ctermfg=214 guifg=#e37900 cterm=bold gui=bold
+"hi semshiParameter       ctermfg=75  guifg=#e34c00
+"hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+"hi semshiFree            ctermfg=218 guifg=#db0071
+"hi semshiBuiltin         ctermfg=207 guifg=#0088e3
+"hi semshiAttribute       ctermfg=49  guifg=#00b58e
+"hi semshiSelf            ctermfg=249 guifg=#fc0384
+"hi semshiUnresolved      ctermfg=226 guifg=#f5005e cterm=underline gui=underline
 
-hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-sign define semshiError text=E> texthl=semshiErrorSign
+"hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+"hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+"sign define semshiError text=E> texthl=semshiErrorSign
 
-nmap <silent> <Tab> :Semshi goto name next<CR>
-nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+"nmap <silent> <Tab> :Semshi goto name next<CR>
+"nmap <silent> <S-Tab> :Semshi goto name prev<CR>
 
 
 "--------------------- vim-hexokinase ----------------------
@@ -329,8 +346,6 @@ autocmd FileType html,css EmmetInstall
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
-
-
 
 "--------------------------------------- Compe -------------------------------------
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -366,98 +381,98 @@ endif
 cnoreabbrev g Git
 cnoreabbrev gopen GBrowse
 
-" ----------------------------------- defx ----------------------------------------- 
-" Define mappings
-"cnoreabbrev sf Defx -listed -new
+"" ----------------------------------- defx ----------------------------------------- 
+"" Define mappings
+""cnoreabbrev sf Defx -listed -new
+""      \ -columns=indent:mark:icon:icons:filename:git:size
+""      \ -buffer-name=tab`tabpagenr()`<CR>
+"nnoremap <silent>sf :<C-u>Defx -listed -resume
 "      \ -columns=indent:mark:icon:icons:filename:git:size
-"      \ -buffer-name=tab`tabpagenr()`<CR>
-nnoremap <silent>sf :<C-u>Defx -listed -resume
-      \ -columns=indent:mark:icon:icons:filename:git:size
-      \ -buffer-name=tab`tabpagenr()`
-      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+"      \ -buffer-name=tab`tabpagenr()`
+"      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
+"nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
-autocmd FileType defx call s:defx_my_settings()
-	function! s:defx_my_settings() abort
-	  " Define mappings
-	  nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('open')
-	  nnoremap <silent><buffer><expr> c
-	  \ defx#do_action('copy')
-	  nnoremap <silent><buffer><expr> m
-	  \ defx#do_action('move')
-	  nnoremap <silent><buffer><expr> p
-	  \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> l
-	  \ defx#do_action('open')
-	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('open', 'vsplit')
-	  nnoremap <silent><buffer><expr> P
-	  \ defx#do_action('open', 'pedit')
-	  nnoremap <silent><buffer><expr> o
-	  \ defx#do_action('open_or_close_tree')
-	  nnoremap <silent><buffer><expr> K
-	  \ defx#do_action('new_directory')
-	  nnoremap <silent><buffer><expr> N
-	  \ defx#do_action('new_file')
-	  nnoremap <silent><buffer><expr> M
-	  \ defx#do_action('new_multiple_files')
-	  nnoremap <silent><buffer><expr> C
-	  \ defx#do_action('toggle_columns',
-	  \                'mark:indent:icon:filename:type:size:time')
-	  nnoremap <silent><buffer><expr> S
-	  \ defx#do_action('toggle_sort', 'time')
-	  nnoremap <silent><buffer><expr> d
-	  \ defx#do_action('remove')
-	  nnoremap <silent><buffer><expr> r
-	  \ defx#do_action('rename')
-	  nnoremap <silent><buffer><expr> !
-	  \ defx#do_action('execute_command')
-	  nnoremap <silent><buffer><expr> x
-	  \ defx#do_action('execute_system')
-	  nnoremap <silent><buffer><expr> yy
-	  \ defx#do_action('yank_path')
-	  nnoremap <silent><buffer><expr> .
-	  \ defx#do_action('toggle_ignored_files')
-	  nnoremap <silent><buffer><expr> ;
-	  \ defx#do_action('repeat')
-	  nnoremap <silent><buffer><expr> h
-	  \ defx#do_action('cd', ['..'])
-	  nnoremap <silent><buffer><expr> ~
-	  \ defx#do_action('cd')
-	  nnoremap <silent><buffer><expr> q
-	  \ defx#do_action('quit')
-	  nnoremap <silent><buffer><expr> <Space>
-	  \ defx#do_action('toggle_select') . 'j'
-	  nnoremap <silent><buffer><expr> *
-	  \ defx#do_action('toggle_select_all')
-	  nnoremap <silent><buffer><expr> j
-	  \ line('.') == line('$') ? 'gg' : 'j'
-	  nnoremap <silent><buffer><expr> k
-	  \ line('.') == 1 ? 'G' : 'k'
-	  nnoremap <silent><buffer><expr> <C-l>
-	  \ defx#do_action('redraw')
-	  nnoremap <silent><buffer><expr> <C-g>
-	  \ defx#do_action('print')
-	  nnoremap <silent><buffer><expr> cd
-	  \ defx#do_action('change_vim_cwd')
-	endfunction
+"autocmd FileType defx call s:defx_my_settings()
+"	function! s:defx_my_settings() abort
+"	  " Define mappings
+"	  nnoremap <silent><buffer><expr> <CR>
+"	  \ defx#do_action('open')
+"	  nnoremap <silent><buffer><expr> c
+"	  \ defx#do_action('copy')
+"	  nnoremap <silent><buffer><expr> m
+"	  \ defx#do_action('move')
+"	  nnoremap <silent><buffer><expr> p
+"	  \ defx#do_action('paste')
+"	  nnoremap <silent><buffer><expr> l
+"	  \ defx#do_action('open')
+"	  nnoremap <silent><buffer><expr> E
+"	  \ defx#do_action('open', 'vsplit')
+"	  nnoremap <silent><buffer><expr> P
+"	  \ defx#do_action('open', 'pedit')
+"	  nnoremap <silent><buffer><expr> o
+"	  \ defx#do_action('open_or_close_tree')
+"	  nnoremap <silent><buffer><expr> K
+"	  \ defx#do_action('new_directory')
+"	  nnoremap <silent><buffer><expr> N
+"	  \ defx#do_action('new_file')
+"	  nnoremap <silent><buffer><expr> M
+"	  \ defx#do_action('new_multiple_files')
+"	  nnoremap <silent><buffer><expr> C
+"	  \ defx#do_action('toggle_columns',
+"	  \                'mark:indent:icon:filename:type:size:time')
+"	  nnoremap <silent><buffer><expr> S
+"	  \ defx#do_action('toggle_sort', 'time')
+"	  nnoremap <silent><buffer><expr> d
+"	  \ defx#do_action('remove')
+"	  nnoremap <silent><buffer><expr> r
+"	  \ defx#do_action('rename')
+"	  nnoremap <silent><buffer><expr> !
+"	  \ defx#do_action('execute_command')
+"	  nnoremap <silent><buffer><expr> x
+"	  \ defx#do_action('execute_system')
+"	  nnoremap <silent><buffer><expr> yy
+"	  \ defx#do_action('yank_path')
+"	  nnoremap <silent><buffer><expr> .
+"	  \ defx#do_action('toggle_ignored_files')
+"	  nnoremap <silent><buffer><expr> ;
+"	  \ defx#do_action('repeat')
+"	  nnoremap <silent><buffer><expr> h
+"	  \ defx#do_action('cd', ['..'])
+"	  nnoremap <silent><buffer><expr> ~
+"	  \ defx#do_action('cd')
+"	  nnoremap <silent><buffer><expr> q
+"	  \ defx#do_action('quit')
+"	  nnoremap <silent><buffer><expr> <Space>
+"	  \ defx#do_action('toggle_select') . 'j'
+"	  nnoremap <silent><buffer><expr> *
+"	  \ defx#do_action('toggle_select_all')
+"	  nnoremap <silent><buffer><expr> j
+"	  \ line('.') == line('$') ? 'gg' : 'j'
+"	  nnoremap <silent><buffer><expr> k
+"	  \ line('.') == 1 ? 'G' : 'k'
+"	  nnoremap <silent><buffer><expr> <C-l>
+"	  \ defx#do_action('redraw')
+"	  nnoremap <silent><buffer><expr> <C-g>
+"	  \ defx#do_action('print')
+"	  nnoremap <silent><buffer><expr> cd
+"	  \ defx#do_action('change_vim_cwd')
+"	endfunction
 
-call defx#custom#column('icon', {
-      \ 'directory_icon': '▸',
-      \ 'opened_icon': '▾',
-      \ 'root_icon': ' ',
-      \ })
-call defx#custom#column('git', 'indicators', {
-  \ 'Modified'  : 'M',
-  \ 'Staged'    : '✚',
-  \ 'Untracked' : '✭',
-  \ 'Renamed'   : '➜',
-  \ 'Unmerged'  : '═',
-  \ 'Ignored'   : '☒',
-  \ 'Deleted'   : '✖',
-  \ 'Unknown'   : '?'
-  \ })
+"call defx#custom#column('icon', {
+"      \ 'directory_icon': '▸',
+"      \ 'opened_icon': '▾',
+"      \ 'root_icon': ' ',
+"      \ })
+"call defx#custom#column('git', 'indicators', {
+"  \ 'Modified'  : 'M',
+"  \ 'Staged'    : '✚',
+"  \ 'Untracked' : '✭',
+"  \ 'Renamed'   : '➜',
+"  \ 'Unmerged'  : '═',
+"  \ 'Ignored'   : '☒',
+"  \ 'Deleted'   : '✖',
+"  \ 'Unknown'   : '?'
+"  \ })
 
 " -------------------------------------- Lua ---------------------------------------
 luafile ~/.config/nvim/lua-plugins/lspconfig.lua
@@ -468,3 +483,7 @@ luafile ~/.config/nvim/lua-plugins/telescope.lua
 luafile ~/.config/nvim/lua-plugins/lspcolors.lua
 luafile ~/.config/nvim/lua-plugins/treesitter.lua
 luafile ~/.config/nvim/lua-plugins/webdevicons.lua
+
+
+
+
