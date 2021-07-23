@@ -61,7 +61,7 @@ let g:python3_host_prog = expand('/usr/bin/python3.9')
 
 " ========== Theme ==========
 colorscheme nord
-source ~/.config/nvim/theme/nordTheme.vim
+source ~/.config/nvim/theme/citylight.vim
 
 
 "---------- Floaterm ----------
