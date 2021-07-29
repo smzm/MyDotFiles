@@ -5,12 +5,12 @@ local lualine = require 'lualine'
 
 -- Color table for highlights
 local colors = {
-  bg = '#202328',
+  bg = '#273038',
   fg = '#bbc2cf',
   yellow = '#ECBE7B',
   cyan = '#008080',
   darkblue = '#081633',
-  green = '#98be65',
+  green = '#89b0bb',
   orange = '#FF8800',
   violet = '#a9a1e1',
   magenta = '#c678dd',

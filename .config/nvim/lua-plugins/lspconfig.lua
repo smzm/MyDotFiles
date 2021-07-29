@@ -1,3 +1,5 @@
+require'lspinstall'.setup() -- important
+
 -- keymaps
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -41,6 +43,19 @@ local on_attach = function(client, bufnr)
     -- ]], false)
   -- end
 end
+
+local python_setup = {
+  on_attach = function(client, bufnr)
+        require "lsp_signature".on_attach({
+              bind = true, -- This is mandatory, otherwise border config won't get registered.
+              handler_opts = {
+                border = "single"
+              }
+            })
+  end
+}
+
+
 
 -- Configure lua language server for neovim development
 local lua_settings = {
@@ -91,6 +106,10 @@ local function setup_servers()
     if server == "lua" then
       config.settings = lua_settings
     end
+    if server == "python" then
+      config.filetypes = {"python"};
+      config.settings = python_settings
+    end
     if server == "sourcekit" then
       config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
     end
@@ -109,4 +128,3 @@ require'lspinstall'.post_install_hook = function ()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
-
