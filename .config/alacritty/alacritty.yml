@@ -1,4 +1,3 @@
-# NORD THEME
 env:
     # TERM: xterm-256color
       Term: alacritty
@@ -6,7 +5,7 @@ env:
 # Font configuration (changes require restart)
 font:
   # The size to use.
-  size: 13
+  size: 12
 
   # The normal (roman) font face to use.
   normal:
@@ -42,7 +41,7 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#22262e'
+    background: '#1D252C'
     foreground: '#eeffff'
 
   # Normal colors
