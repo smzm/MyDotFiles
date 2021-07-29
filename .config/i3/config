@@ -13,8 +13,8 @@ set $mod Mod4
 # VARIABLES #
 #-----------#
 # I use those colors at bar and window color setti
-set $bg-color 	         #3c7a6c
-set $inactive-bg-color   #4c575c
+set $bg-color 	         #6a7a96
+set $inactive-bg-color   #20252e
 set $text-color          #ffffff
 set $inactive-text-color #a2a3a3
 set $urgent-bg-color 	 #254cd1
@@ -30,7 +30,7 @@ set $workspace2  ""
 set $workspace3  ""
 set $workspace4  ""
 set $workspace5  ""
-set $workspace6  "UP"
+set $workspace6  "TV"
 set $workspace7  "7"
 set $workspace8  "8"
 set $workspace9  "9"
@@ -51,11 +51,15 @@ for_window [class="telegram_desktop|TelegramDesktop"] floating enable
 
 
 
-workspace $workspace1 output HDMI-1
-workspace $workspace2 output HDMI-1
-workspace $workspace3 output HDMI-1
-workspace $workspace4 output HDMI-1
-workspace $workspace5 output HDMI-1
+
+
+workspace $workspace1 output HDMI-0
+workspace $workspace2 output HDMI-0
+workspace $workspace3 output HDMI-0
+workspace $workspace4 output HDMI-0
+workspace $workspace5 output HDMI-0
+workspace $workspace6 output VGA-0
+
 
 
 #------------#
@@ -78,10 +82,10 @@ gaps inner 8
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color          $bg-color          $text-color          #3b7500
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #3b7500
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #3b7500
-client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #3b7500
+client.focused          $bg-color          $bg-color          $text-color          #Abc4ef
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #Abc4ef
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #Abc4ef
+client.urgent 		    $urgent-bg-color   $urgent-bg-color   $text-color          #Abc4ef
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -341,11 +345,14 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id hsetroot -solid '#e0e0e0'
-exec --no-startup-id hsetroot -solid '#1c2022'
-
+exec --no-startup-id hsetroot -solid '#242d36'
 
 
 # start
 exec alacritty
 exec brave
 exec xbindkeys
+
+
+
+
