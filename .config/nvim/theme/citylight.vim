@@ -92,7 +92,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
 " note that link syntax, to avoid duplicate configuration, doesn't work with the
 " exe compiled formats
 
-hi! Normal         guifg=#B7C5D3 guibg=#22262e
+hi! Normal         guifg=#B7C5D3 guibg=#1D252C
 
 hi! Comment        gui=italic guifg=#41505E guibg=None
 "   *Comment       any comment
@@ -181,17 +181,17 @@ hi! EndOfBuffer    gui=None guifg=#1D252C guibg=None
 "hi! FoldColumn     .s:fmt_none   .s:fg_base0   .s:bg_base02
 "hi! Folded         .s:fmt_undb   .s:fg_base01  .s:bg_base02  .s:sp_base03
 hi! IncSearch      gui=None guifg=None guibg=#707B87
-hi! LineNr         gui=None guifg=#2f333b guibg=None
+hi! LineNr         gui=None guifg=#273038 guibg=None
 hi! MatchParen     gui=None guifg=None guibg=#4e6e99
 "hi! ModeMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
 "hi! MoreMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
 "hi! NonText        .s:fmt_none   .s:fg_base01 .s:bg_none
-hi! Pmenu          gui=None guifg=#B7C5D3 guibg=#15232d
-hi! PmenuSbar      gui=None guifg=#2B3945 guibg=#15232d
-hi! PmenuSel       gui=None guifg=None    guibg=#28323a
+hi! Pmenu          gui=None guifg=#B7C5D3 guibg=#373e4f
+hi! PmenuSbar      gui=None guifg=#2B3945 guibg=#282c36
+hi! PmenuSel       gui=None guifg=None    guibg=#3a449e
 "hi! PmenuThumb     .s:fmt_none   .s:fg_base0  .s:bg_base03
 "hi! Question       .s:fmt_bold   .s:fg_cyan   .s:bg_none
-hi! Search         gui=None guifg=None guibg=#c7ac00
+hi! Search         gui=None guifg=#aded09 guibg=#081703
 
 hi! link SignColumn  Normal
 hi! link FoldColumn  Normal   
@@ -210,7 +210,7 @@ hi! TabLineSel     gui=None guifg=#8bb5c9 guibg=#171d23
 
 hi! TermCursor      gui=None guifg=#008B94 guibg=#008B94
 hi! Title          gui=bold guifg=#70E1E8 guibg=None
-hi! VertSplit      gui=None guifg=#1D252C guibg=None
+hi! VertSplit      gui=None guifg=#2c3842 guibg=None
 hi! Visual         guibg=#343c42
 "hi! VisualNOS      .s:fmt_stnd   .s:fg_none    .s:bg_base02 .s:fmt_revb
 "hi! WarningMsg     .s:fmt_bold   .s:fg_red     .s:bg_none
