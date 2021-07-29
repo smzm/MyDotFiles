@@ -8,14 +8,13 @@ call plug#begin('~/local/share/nvim/plugged')
    	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
-	" Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
+	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
     Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
     Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
     Plug 'tpope/vim-fugitive'                       " Git plugin for vim
 	Plug 'wadackel/vim-dogrun'						" dogrun theme
    	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-  	" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
 	Plug 'mattn/emmet-vim' 							" emmet for vim
@@ -30,6 +29,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
 	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
+    Plug 'shaunsingh/nord.nvim'
     Plug 'sindrets/diffview.nvim'                   "  diff mode 
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -38,20 +38,20 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'glepnir/lspsaga.nvim'
     Plug 'folke/lsp-colors.nvim'
 	Plug 'onsails/lspkind-nvim'
+    " Plug 'ray-x/lsp_signature.nvim'
     Plug 'nvim-lua/completion-nvim'
-    " Plug 'kristijanhusak/defx-git'
-    " Plug 'kristijanhusak/defx-icons'
-    " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-    Plug 'shaunsingh/nord.nvim'
     Plug 'rafamadriz/friendly-snippets'	            " Set of preconfigured snippets for different languages. 
     Plug 'hrsh7th/vim-vsnip'
     Plug 'vimwiki/vimwiki'                        " Personal Wiki for Vim
     Plug 'groenewege/vim-less', { 'for': 'less' }
     Plug 'kabouzeid/nvim-lspinstall'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+
 
 
 call plug#end()
@@ -276,8 +276,8 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 
 "----------------------- indentLine --------------------
-" let g:indentLine_color_gui = '#2d3541'
-" let g:indentLine_char_list = ['.']
+let g:indentLine_color_gui = '#2d3541'
+let g:indentLine_char_list = ['.']
 
 "------------------------vim-textmanip------------------
 xmap <S-Down> <Plug>(textmanip-move-down)
@@ -483,7 +483,5 @@ luafile ~/.config/nvim/lua-plugins/telescope.lua
 luafile ~/.config/nvim/lua-plugins/lspcolors.lua
 luafile ~/.config/nvim/lua-plugins/treesitter.lua
 luafile ~/.config/nvim/lua-plugins/webdevicons.lua
-
-
 
 
