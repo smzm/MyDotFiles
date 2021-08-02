@@ -126,7 +126,6 @@ nnoremap ; :
 
 "Quicker Escaping
 :inoremap jk <esc>
-:inoremap kj <esc>
 
 
 " easily move a line up or down
@@ -223,5 +222,28 @@ nmap <C-w><right> :vertical resize +4<CR>
 nmap <C-w><left> :vertical resize -4<CR>
 nmap <C-w><up> :resize +2<CR>
 nmap <C-w><down> :resize -2<CR>
+
+" Undo Breakpoint
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap ' '<c-g>u
+inoremap " "<c-g>u
+inoremap ( (<c-g>u
+inoremap ) )<c-g>u
+inoremap [ [<c-g>u
+inoremap ] ]<c-g>u
+inoremap { {<c-g>u
+inoremap } }<c-g>u
+inoremap & &<c-g>u
+inoremap = =<c-g>u
+inoremap / /<c-g>u
+
+
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+
 
 

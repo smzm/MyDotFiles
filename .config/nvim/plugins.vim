@@ -37,10 +37,11 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'hrsh7th/nvim-compe'
     Plug 'glepnir/lspsaga.nvim'
     Plug 'folke/lsp-colors.nvim'
+    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 	Plug 'onsails/lspkind-nvim'
     " Plug 'ray-x/lsp_signature.nvim'
     Plug 'nvim-lua/completion-nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+    " Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -362,12 +363,27 @@ nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
 inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
+"------------------------------- toggle-lsp-diagnostics ---------------------------
+lua << EOF
+require'toggle_lsp_diagnostics'.init({ virtual_text = false})
+EOF
+nmap <leader>tlu <Plug>(toggle-lsp-diag-underline)
+nmap <leader>tls <Plug>(toggle-lsp-diag-signs)
+nmap <leader>tlv <Plug>(toggle-lsp-diag-vtext)
+nmap <leader>tlp <Plug>(toggle-lsp-diag-update_in_insert)
 
-" ---------------------------------- Telescope ------------------------------------
-nnoremap <silent> ;f <cmd>Telescope find_files<cr>
-nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
-nnoremap <silent> \\ <cmd>Telescope buffers<cr>
-nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+nmap <leader>tld  <Plug>(toggle-lsp-diag)
+nmap <leader>tldd <Plug>(toggle-lsp-diag-default)
+nmap <leader>tldo <Plug>(toggle-lsp-diag-off)
+nmap <leader>tldf <Plug>(toggle-lsp-diag-on)
+
+
+
+" " ---------------------------------- Telescope ------------------------------------
+" nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+" nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+" nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+" nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 
 " ---------------------------------- Fugitive --------------------------------------
@@ -479,9 +495,8 @@ luafile ~/.config/nvim/lua-plugins/lspconfig.lua
 luafile ~/.config/nvim/lua-plugins/lualine.lua
 luafile ~/.config/nvim/lua-plugins/compe.lua
 luafile ~/.config/nvim/lua-plugins/lspsaga.lua
-luafile ~/.config/nvim/lua-plugins/telescope.lua
+" luafile ~/.config/nvim/lua-plugins/telescope.lua
 luafile ~/.config/nvim/lua-plugins/lspcolors.lua
 luafile ~/.config/nvim/lua-plugins/treesitter.lua
 luafile ~/.config/nvim/lua-plugins/webdevicons.lua
-
 
