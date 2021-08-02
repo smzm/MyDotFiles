@@ -204,9 +204,9 @@ hi! link SpellRare SpellBad
 hi! StatusLine     gui=None guifg=#b7c5d3 guibg=#171d23
 hi! link StatusLineNC StatusLine
 
-hi! TabLine        gui=Bold guifg=#008b94 guibg=#171d23 guisp=#171d23
+hi! TabLine        gui=Bold guifg=#8bb5c9 guibg=#171d23 guisp=#171d23
 hi! TabLineFill    gui=None guifg=white guibg=#171d23 guisp=#171d23
-hi! TabLineSel     gui=None guifg=#8bb5c9 guibg=#171d23
+hi! TabLineSel     gui=None guifg=#008b94 guibg=#171d23
 
 hi! TermCursor      gui=None guifg=#008B94 guibg=#008B94
 hi! Title          gui=bold guifg=#70E1E8 guibg=None
@@ -225,6 +225,7 @@ hi EasyMotionShade guibg=#22262
 hi EasyMotionTarget guibg=#22262 guifg=#Be8500 gui=bold
 
 hi HighlightedyankRegion guibg=#6a7a96 guifg=white
+
 
 hi Terminal        guifg=#B7C5D3 guibg=#171d23
 autocmd TermOpen * setlocal winhighlight=Normal:Terminal
