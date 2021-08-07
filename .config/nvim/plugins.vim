@@ -363,21 +363,6 @@ nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
 inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
-"------------------------------- toggle-lsp-diagnostics ---------------------------
-lua << EOF
-require'toggle_lsp_diagnostics'.init({ virtual_text = false})
-EOF
-nmap <leader>tlu <Plug>(toggle-lsp-diag-underline)
-nmap <leader>tls <Plug>(toggle-lsp-diag-signs)
-nmap <leader>tlv <Plug>(toggle-lsp-diag-vtext)
-nmap <leader>tlp <Plug>(toggle-lsp-diag-update_in_insert)
-
-nmap <leader>tld  <Plug>(toggle-lsp-diag)
-nmap <leader>tldd <Plug>(toggle-lsp-diag-default)
-nmap <leader>tldo <Plug>(toggle-lsp-diag-off)
-nmap <leader>tldf <Plug>(toggle-lsp-diag-on)
-
-
 
 " " ---------------------------------- Telescope ------------------------------------
 " nnoremap <silent> ;f <cmd>Telescope find_files<cr>
@@ -499,4 +484,21 @@ luafile ~/.config/nvim/lua-plugins/lspsaga.lua
 luafile ~/.config/nvim/lua-plugins/lspcolors.lua
 luafile ~/.config/nvim/lua-plugins/treesitter.lua
 luafile ~/.config/nvim/lua-plugins/webdevicons.lua
+
+
+
+"------------------------------- toggle-lsp-diagnostics ---------------------------
+lua << EOF
+require'toggle_lsp_diagnostics'.init({ virtual_text = false})
+EOF
+nmap <leader>tlu <Plug>(toggle-lsp-diag-underline)
+nmap <leader>tls <Plug>(toggle-lsp-diag-signs)
+nmap <leader>tlv <Plug>(toggle-lsp-diag-vtext)
+nmap <leader>tlp <Plug>(toggle-lsp-diag-update_in_insert)
+
+nmap <leader>tld  <Plug>(toggle-lsp-diag)
+nmap <leader>tldd <Plug>(toggle-lsp-diag-default)
+nmap <leader>tldo <Plug>(toggle-lsp-diag-off)
+nmap <leader>tldf <Plug>(toggle-lsp-diag-on)
+
 
