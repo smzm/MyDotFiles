@@ -44,6 +44,15 @@ local on_attach = function(client, bufnr)
   -- end
 end
 
+-- Disable diagnostic in insert mode
+ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- delay update diagnostics
+        update_in_insert = false,
+      }
+    )
+
+
 local python_setup = {
   on_attach = function(client, bufnr)
         require "lsp_signature".on_attach({
@@ -52,6 +61,7 @@ local python_setup = {
                 border = "single"
               }
             })
+        delay_until_save = true 
   end
 }
 
