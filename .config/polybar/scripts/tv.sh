@@ -7,7 +7,7 @@ nordVPN_status=$(nmcli -t -f NAME c show --active | awk '/nordvpn/{print "active
 if [[ $fuboTV == 0 ]]; then
   
     # Run xrandr for enable my Samsung TV screen
-    xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
+    # xrandr --output HDMI-0 --primary --mode 1680x1050 --pos 0x768 --rotate normal --output DVI-0 --off --output VGA-0 --mode 1360x768 --pos 160x0 --rotate normal
 
     if [[ $nordVPN_status != "active" ]]; then
         # Run NordVPN
