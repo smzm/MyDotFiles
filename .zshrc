@@ -164,8 +164,8 @@ alias lcg='lsd --gs'
 alias cl='clear'
 alias cp='cp -i' #Confirm before overwriting
 alias aria='aria2c -x16 -c -k1M -j10 -m16'
-alias vpnup='nmcli connection up de938.nordvpn.com.udp1194'
-alias vpndown='nmcli connection down de938.nordvpn.com.udp1194'
+alias vpnup='nmcli connection up us4960.nordvpn.com.tcp443'
+alias vpndown='nmcli connection down nl716.nordvpn.com.udp1194'
 
 cs(){
     cheat_directory="$HOME/cheatsheets"
@@ -187,4 +187,30 @@ cc(){
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
+
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/smzm/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/smzm/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/smzm/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/smzm/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+export PATH="/opt/VStudio/:$PATH"
+
+
+$HOME/.screenlayout/screen2.sh
 
