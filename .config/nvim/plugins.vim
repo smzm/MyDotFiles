@@ -97,7 +97,12 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlights
-highlight CopilotSuggestion guifg=#555555 guibg=#1a1b26
+highlight CopilotSuggestion guifg=#555555 guibg=#21233b
+
+
+highlight CursorLine guibg=#21233b
+
+
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 
