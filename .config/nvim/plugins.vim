@@ -52,7 +52,8 @@ call plug#end()
 
 
 
-" |||||||||||||||||||||||||||||||||||||||| Theme
+" |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
+
 " Example config in VimScript
 let g:tokyonight_style = "night"
 let g:tokyonight_italic_functions = 1
