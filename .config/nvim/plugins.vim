@@ -41,7 +41,6 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
     Plug 'hrsh7th/nvim-compe'                       " Auto completion Lua plugin for nvim
     Plug 'glepnir/lspsaga.nvim'                     " lsp plugin based on neovim built-in lsp with highly a performant UI
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' " Neovim plugin for toggling the LSP diagnostics.
 	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
     Plug 'rafamadriz/friendly-snippets'	            " Set of preconfigured snippets for different languages. 
@@ -271,9 +270,9 @@ lua << EOF
 -- *************************** LSP Config
 
 -- npm i -g pyright
---require'lspconfig'.pyright.setup{}
+require'lspconfig'.pyright.setup{}
 -- pip install -U jedi-language-server
-require'lspconfig'.jedi_language_server.setup{}
+-- require'lspconfig'.jedi_language_server.setup{}
 
 -- npm install -g vim-language-server
 require'lspconfig'.vimls.setup {}
@@ -317,15 +316,6 @@ vim.o.updatetime = 250
 -- For diagnostics for specific cursor positio
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
-
-vim.diagnostic.config({
-  virtual_text = {
-    source = "always",  -- Or "if_many"
-  },
-  float = {
-    source = "always",  -- Or "if_many"
-  },
-})
 
 
 
