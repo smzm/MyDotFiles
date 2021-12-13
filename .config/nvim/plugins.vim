@@ -52,8 +52,7 @@ call plug#end()
 
 
 
-" |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
-
+" |||||||||||||||||||||||||||||||||||||||| Theme
 " Example config in VimScript
 let g:tokyonight_style = "night"
 let g:tokyonight_italic_functions = 1
@@ -271,8 +270,24 @@ let g:python_highlight_space_errors = 0
 lua << EOF
 -- *************************** LSP Config
 
-require'lspconfig'.pyright.setup{}
+-- npm i -g pyright
+--require'lspconfig'.pyright.setup{}
+-- pip install -U jedi-language-server
+require'lspconfig'.jedi_language_server.setup{}
 
+-- npm install -g vim-language-server
+require'lspconfig'.vimls.setup {}
+
+-- npm i -g vscode-langservers-extracted
+require'lspconfig'.jsonls.setup {}
+require'lspconfig'.html.setup {}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.tailwindcss.setup{}
+
+-- npm install -g typescript typescript-language-server
+require'lspconfig'.tsserver.setup{}
+
+require'lspconfig'.bashls.setup{}
 
 vim.diagnostic.config({
   virtual_text = false,
