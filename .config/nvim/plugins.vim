@@ -97,15 +97,14 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlights
-highlight CopilotSuggestion guifg=#555555 guibg=#21233b
+highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26
 
-
-highlight CursorLine guibg=#21233b
+" Cursor Line highlight
+highlight CursorLine guibg=#1a1b26
 
 
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
-
 " ***************************  Floaterm *************************** 
 let g:floaterm_title='Terminal($1|$2)'
 let g:floaterm_wintype='float'
@@ -388,7 +387,7 @@ vim.o.completeopt = 'menuone,noselect'
       }),
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -518,8 +517,8 @@ local lualine = require 'lualine'
 
 -- Color table for highlights
 local colors = {
-  bg = '#273038',
-  fg = '#bbc2cf',
+  bg = '#1d1f2b',
+  fg = '#414452',
   yellow = '#ECBE7B',
   cyan = '#008080',
   darkblue = '#081633',
@@ -651,7 +650,7 @@ ins_left {
 ins_left {
   'filename',
   condition = conditions.buffer_not_empty,
-  color = {fg = colors.magenta, gui = 'bold'}
+  color = {fg = "#7c5de3", gui = 'bold'}
 }
 
 ins_left {'location'}
@@ -687,7 +686,7 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = {fg = '#ffffff', gui = 'bold'}
+  color = {fg = '#7660bf', gui = 'bold'}
 }
 
 -- Add components to right sections
