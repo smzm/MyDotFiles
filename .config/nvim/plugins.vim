@@ -1,4 +1,4 @@
-" Install LSP Servers. more in lsp-config configuration part of this file.
+" Install LSP Servers. more in <lsp-config> configuration part of this file.
 
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
