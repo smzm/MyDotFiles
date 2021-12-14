@@ -1,3 +1,5 @@
+" Install LSP Servers. more in lsp-config configuration part of this file.
+
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
