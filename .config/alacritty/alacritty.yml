@@ -17,31 +17,31 @@ font:
   bold:
     family: SF Mono
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:
     family: SF Mono
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
     
   # Line Height
   offset:
     x: 0
-    y: 10
+    y: 7
 
 
 window:
   padding:
-    x: 30
-    y: 30
+    x: 40
+    y: 25
 
 
     # Colors (Material Theme)
 colors:
   # Default colors
   primary:
-    background: '#1D252C'
+    background: '#1a1b26'
     foreground: '#eeffff'
 
   # Normal colors
