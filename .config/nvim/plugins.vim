@@ -1,5 +1,3 @@
-" Install LSP Servers. more in <lsp-config> configuration part of this file.
-
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -36,14 +34,19 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
+    Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
+    Plug 'kyazdani42/nvim-tree.lua'                 " A tree plugin for neovim
+
 
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
-    Plug 'glepnir/lspsaga.nvim'                     " lsp plugin based on neovim built-in lsp with highly a performant UI
 	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
+    Plug 'nvim-lua/lsp-status.nvim'
+    Plug 'nvim-lua/diagnostic-nvim'
    
     " Auto Completion
+    Plug 'nvim-lua/completion-nvim'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
@@ -53,6 +56,8 @@ call plug#begin('~/local/share/nvim/plugged')
 
     " Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
+    Plug 'JuliaEditorSupport/julia-vim'
+
 
     " Snippets
     Plug 'hrsh7th/cmp-vsnip'
@@ -98,13 +103,14 @@ highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
-" Github Copilot highlights
+" Github Copilot highlight
 highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26
 
 " Cursor Line highlight
 highlight CursorLine guibg=#1a1b26
 
-
+" Nvim Tree highlight
+highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -120,11 +126,6 @@ let g:floaterm_keymap_prev   = '<F9>'
 let g:floaterm_keymap_next   = '<F10>'
 let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
 
-" run <Floaterm lf> just if ran nvim without any argument
-let g:vimArguments = execute("args")
-if len(g:vimArguments) == 0
-	autocmd VimEnter * FloatermNew --position=center lf  
-endif
 
 " Binding F5 to save and run python code inside floaterm window
 :function RunPython()
@@ -305,33 +306,108 @@ let g:python_highlight_space_errors = 0
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Lua Plugins Configurations
 lua << EOF
 -- *************************** LSP Config
+-- -- npm i -g pyright
+-- -- npm i -g vim-language-server
+-- -- npm i -g vscode-langservers-extracted
+-- -- npm i -g typescript typescript-language-server
 
--- npm i -g pyright
-require'lspconfig'.pyright.setup{
-   settings = {
-      pyright = {
-        capabilities = capabilities,
+
+local nvim_lsp = require "lspconfig"
+local lsp_status = require("lsp-status")
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    lsp_status.register_progress()
+    lsp_status.config(
+        {
+            status_symbol = "LSP ",
+            indicator_errors = "E",
+            indicator_warnings = "W",
+            indicator_info = "I",
+            indicator_hint = "H",
+            indicator_ok = "ok"
+        }
+    )
+
+    require "completion".on_attach(client)
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    -- Mappings.
+    local opts = {noremap = true, silent = true}
+    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+
+    -- Set some keybinds conditional on server capabilities
+    if client.resolved_capabilities.document_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    elseif client.resolved_capabilities.document_range_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end
+
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec([[
+            augroup lsp_document_highlight
+            autocmd! * <buffer>
+            " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            " autocmd CursorHold *.* :lua vim.lsp.diagnostic.show_line_diagnostics()
+            autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 300)
+           augroup END
+        ]],
+            false
+        )
+    else
+        vim.api.nvim_exec([[
+            autocmd!
+            autocmd BufWritePre * Neoformat
+            augroup END
+        ]], false)
+    end
+end
+
+-- Use a loop to conveniently both setup defined servers
+-- and map buffer local keybindings when the language server attaches
+local servers = {
+    "gopls",
+    "dockerls",
+    "tsserver",
+    "bashls",
+    "cmake",
+    "pyright",
+    "rust_analyzer",
+    "clangd",
+    "julials",
+    "vimls",
+    "jsonls",
+    "html",
+    "cssls",
+    "tailwindcss",
+    }
+for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+        on_attach = on_attach,
+        capabilities = lsp_status.capabilities,
         typeCheckingMode = 'off'
-      },
-    },
-}
--- pip install -U jedi-language-server
--- require'lspconfig'.jedi_language_server.setup{}
+    }
+end
 
--- npm install -g vim-language-server
-require'lspconfig'.vimls.setup {}
 
--- npm i -g vscode-langservers-extracted
-require'lspconfig'.jsonls.setup {}
-require'lspconfig'.html.setup {}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.tailwindcss.setup{}
-
--- npm install -g typescript typescript-language-server
-require'lspconfig'.tsserver.setup{}
-
-require'lspconfig'.bashls.setup{}
-
+-- Enable diagnostics
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
@@ -339,13 +415,12 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = false,
 }) 
-
 -- Highlight line number instead of having icons in sign column
 vim.cmd [[
   highlight DiagnosticLineNrError guibg=# guifg=#8a0000 gui=bold
-  highlight DiagnosticLineNrWarn guibg=# guifg=#FFA500 gui=bold
-  highlight DiagnosticLineNrInfo guibg=# guifg=#00FFFF gui=bold
-  highlight DiagnosticLineNrHint guibg=# guifg=#8a6c00 gui=bold
+  highlight DiagnosticLineNrWarn guibg=# guifg=#FFA500 gui=none
+  highlight DiagnosticLineNrInfo guibg=# guifg=#00FFFF 
+  highlight DiagnosticLineNrHint guibg=# guifg=#8a6c00
 
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
   sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
@@ -359,6 +434,9 @@ vim.cmd [[
 vim.o.updatetime = 250
 -- For diagnostics for specific cursor positio
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+
+
+
 
 
 -- *************************** LSP Cmp
@@ -468,6 +546,7 @@ cmp.setup {
     end
   },
 }
+
 
 
 
@@ -652,7 +731,7 @@ ins_left {
 ins_left {
   'filename',
   condition = conditions.buffer_not_empty,
-  color = {fg = "#7c5de3", gui = 'bold'}
+  color = {fg = "#608f91", gui = 'bold'}
 }
 
 ins_left {'location'}
@@ -688,7 +767,7 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = {fg = '#7660bf', gui = 'bold'}
+  color = {fg = '#8677b5', gui = 'bold'}
 }
 
 -- Add components to right sections
@@ -733,5 +812,119 @@ ins_right {
 lualine.setup(config)
 
 
-EOF
 
+
+-- *************************** Bufferline
+require('bufferline').setup {
+  options = {
+    offsets = {
+      { filetype = "NvimTree",
+        text = "File Explorer",
+        highlight = "Directory",
+        text_align = "left"  
+      }
+    }
+  }
+}
+-- Buffer pick functionality
+vim.cmd'nnoremap <silent>gb :BufferLinePick<CR>'
+vim.cmd'nnoremap <silent><C-Right> :BufferLineCycleNext<CR>'
+vim.cmd'nnoremap <silent><C-Left> :BufferLineCyclePrev<CR>'
+
+
+
+-- *************************** NvimTree
+require'nvim-tree'.setup {
+  disable_netrw       = true,
+  hijack_netrw        = true,
+  open_on_setup       = false,
+  ignore_ft_on_setup  = {},
+  auto_close          = false,
+  open_on_tab         = false,
+  hijack_cursor       = false,
+  update_cwd          = false,
+  update_to_buf_dir   = {
+    enable = true,
+    auto_open = true,
+  },
+  diagnostics = {
+    enable = false,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
+  update_focused_file = {
+    enable      = false,
+    update_cwd  = false,
+    ignore_list = {}
+  },
+  system_open = {
+    cmd  = nil,
+    args = {}
+  },
+  filters = {
+    dotfiles = false,
+    custom = {}
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  view = {
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = 'left',
+    auto_resize = false,
+    mappings = {
+      custom_only = false,
+      list = {}
+    },
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes"
+  },
+  trash = {
+    cmd = "trash",
+    require_confirm = true
+  }
+}
+
+-- <C-]> will cd in the directory under the cursor
+-- <C-v> will open the file in a vertical split
+-- <Tab> will open the file as a preview (keeps the cursor in the tree)
+vim.cmd'nnoremap <C-n> :NvimTreeToggle<CR>'
+vim.cmd'nnoremap <C-m> :NvimTreeFocus<CR>'
+vim.cmd[[
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
+]]
+
+
+
+EOF
