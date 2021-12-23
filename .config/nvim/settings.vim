@@ -33,6 +33,7 @@ set wildmode=list:longest,full
 filetype plugin on
 set number
 set autoindent                          " Good auto indent
+set noexpandtab
 set cursorline                          " Enable highlighting of the current line
 "set showtabline=2                       " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
@@ -48,6 +49,7 @@ set foldcolumn=2
 set undofile                             " Maintain undo history between sessions
 set path+=**                             " Finding files - Search down into subfolders
 set exrc
+set termguicolors
 
 augroup remember_folds
 	autocmd!
@@ -105,10 +107,18 @@ set shortmess+=c
 
 " ====================================================== KeyMap
 " Fix indenting visual block
- vmap < <gv
- vmap > >gv
+" for visual mode
+vmap <S-Tab> <gv
+vmap <Tab> >gv
 
-"just use ; for writing command without pressing shift
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+
+" for insert mode
+inoremap <S-Tab> <C-d>
+
+
+  "just use ; for writing command without pressing shift
 nnoremap ; :
 
 " Save file as sudo when no sudo permissions
@@ -197,8 +207,6 @@ command! W w !tee %
 
 " Open current directory
 nmap te :tabedit 
-nmap <S-Tab> :tabprev<Return>
-nmap <Tab> :tabnext<Return>
 
 
 " open splitted tab to a new window
@@ -243,7 +251,6 @@ inoremap / /<c-g>u
 
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
 
 
 
