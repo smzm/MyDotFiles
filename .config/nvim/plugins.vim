@@ -306,14 +306,31 @@ let g:python_highlight_space_errors = 0
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Lua Plugins Configurations
 lua << EOF
 -- *************************** LSP Config
--- -- npm i -g pyright
--- -- npm i -g vim-language-server
--- -- npm i -g vscode-langservers-extracted
--- -- npm i -g typescript typescript-language-server
 
+-- npm i -g pyright
+-- npm install -g vim-language-server
+-- npm i -g vscode-langservers-extracted
+-- npm install -g typescript typescript-language-server
 
 local nvim_lsp = require "lspconfig"
-local lsp_status = require("lsp-status")
+
+require'lspconfig'.pyright.setup{
+   settings = {
+      pyright = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        typeCheckingMode = 'off'
+      },
+    },
+}
+require'lspconfig'.vimls.setup {}
+require'lspconfig'.jsonls.setup {}
+require'lspconfig'.html.setup {}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.bashls.setup{}
+
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
@@ -380,34 +397,8 @@ local on_attach = function(client)
     end
 end
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
-local servers = {
-    "gopls",
-    "dockerls",
-    "tsserver",
-    "bashls",
-    "cmake",
-    "pyright",
-    "rust_analyzer",
-    "clangd",
-    "julials",
-    "vimls",
-    "jsonls",
-    "html",
-    "cssls",
-    "tailwindcss",
-    }
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        capabilities = lsp_status.capabilities,
-        typeCheckingMode = 'off'
-    }
-end
 
 
--- Enable diagnostics
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
@@ -415,12 +406,13 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = false,
 }) 
+
 -- Highlight line number instead of having icons in sign column
 vim.cmd [[
   highlight DiagnosticLineNrError guibg=# guifg=#8a0000 gui=bold
-  highlight DiagnosticLineNrWarn guibg=# guifg=#FFA500 gui=none
-  highlight DiagnosticLineNrInfo guibg=# guifg=#00FFFF 
-  highlight DiagnosticLineNrHint guibg=# guifg=#8a6c00
+  highlight DiagnosticLineNrWarn guibg=# guifg=#FFA500 gui=bold
+  highlight DiagnosticLineNrInfo guibg=# guifg=#00FFFF gui=bold
+  highlight DiagnosticLineNrHint guibg=# guifg=#8a6c00 gui=bold
 
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
   sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
