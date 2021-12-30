@@ -63,6 +63,9 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
 
+    Plug 'MunifTanjim/nui.nvim'
+
+
 call plug#end()
 
 
@@ -916,7 +919,5 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 ]]
-
-
 
 EOF

@@ -251,3 +251,22 @@ inoremap / /<c-g>u
 
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+map <C-L> 20zl " Scroll 20 characters to the right
+map <C-H> 20zh " Scroll 20 characters to the left
+
+
+" Get the height of the current window, and accordingly to its will scroll the screen a quarter of the height
+function! ScrollQuarter(move)
+    let height=winheight(0)
+
+    if a:move == 'up'
+        let key="\<C-Y>"
+    else
+        let key="\<C-E>"
+    endif
+
+    execute 'normal! ' . height/4 . key
+endfunction
+nnoremap <silent> <C-k> :call ScrollQuarter('up')<CR>
+nnoremap <silent> <C-u> :call ScrollQuarter('down')<CR>
