@@ -20,8 +20,9 @@ set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
-set shiftwidth=2
-set tabstop=4
+set shiftwidth=4
+set tabstop=4                           " Set tabstop to 4         
+set softtabstop=4
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set scrolloff=3 			"The number of screen lines to keep above and below the cursor
 set sidescrolloff=5			"The number of screen columns to keep to the left and right of thecursor
@@ -32,10 +33,9 @@ set wildmenu
 set wildmode=list:longest,full
 filetype plugin on
 set number
-set autoindent                          " Good auto indent
-set noexpandtab
+set autoindent                          " copy indent from current line when starting a new line
 set cursorline                          " Enable highlighting of the current line
-"set showtabline=2                       " Always show tabs
+"set showtabline=2                      " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
@@ -270,3 +270,5 @@ function! ScrollQuarter(move)
 endfunction
 nnoremap <silent> <C-k> :call ScrollQuarter('up')<CR>
 nnoremap <silent> <C-u> :call ScrollQuarter('down')<CR>
+
+
