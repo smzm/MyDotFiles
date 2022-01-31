@@ -278,7 +278,7 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== Terminal ====================="
         echo -e " NerdFont(InconsolataLGC) "
-        read -p " SF Mono Font  :::::    [r]un : " ansSFMono
+        read -p " SF Fonts  :::::    [r]un : " ansSFMono
         if [[ $ansSFMono == "r" ]] || [[ $ansSFMono == "R" ]]; then
                 echo -e " \n +++++ Install SF Mono font \n"
                 sudo mkdir -p /usr/share/fonts/SF-Mono/
@@ -287,6 +287,12 @@ mkdir -p ~/tmpInstall
                 cd SF-Mono-Powerline
                 sudo cp -r * /usr/share/fonts/SF-Mono/
                 fc-cache -f -v
+                
+                if [[ $ansOS == "arch" ]];then
+                    echo -e " \n +++++ Installing Apple Fonts ... \n"
+                    sleep 2
+                    yay -S apple-fonts
+                fi
         fi
     clear
 
@@ -391,6 +397,33 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S ack
                 else
                     brew install ack
+                fi
+        fi
+    clear
+
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n ack"
+        read -p " xbindkey  :::::    [r]un: " ansXbindkeys
+        if [[ $ansXbindkeys == "r" ]] || [[ $ansXbindkeys == "R" ]]; then
+                echo -e "\n +++++ install xbindkeys and GUI xbindkeys +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S xbindkeys
+                    yay -S xbindkeys_config-gtk2
+                else
+                    sudo apt-get install -y xbindkeys
+                fi
+        fi
+    clear
+
+        echo " ===================== Terminal ====================="
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n xbindkeys"
+        read -p " ansXdotool  :::::    [r]un: " ansXdotool
+        if [[ $ansXdotool == "r" ]] || [[ $ansXdotool == "R" ]]; then
+                echo -e "\n +++++ install xdotool +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S xdotool
+                else
+                    sudo apt-get install -y xdotool
                 fi
         fi
     clear
