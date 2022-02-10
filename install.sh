@@ -416,7 +416,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n xbindkeys"
+        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n ack\n xbindkeys"
         read -p " ansXdotool  :::::    [r]un: " ansXdotool
         if [[ $ansXdotool == "r" ]] || [[ $ansXdotool == "R" ]]; then
                 echo -e "\n +++++ install xdotool +++++ \n"
@@ -438,7 +438,7 @@ mkdir -p ~/tmpInstall
     clear
 
 
-     if [[ $ansOS == "arch" ]];then
+     if [[ $ansOS == "arch" ]]; then
         echo " ===================== GUI APP ====================="
         read -p " alacritty    :::::    [r]un : " ansAlacritty
         if [[ $ansAlacritty == "r" ]] || [[ $ansAlacritty == "R" ]]; then
@@ -476,6 +476,7 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S xbindkeys
                     yay -S xbindkeys_config-gtk2
                     sudo cp  $dotfiles/.xbindkeysrc ~/.xbindkeysrc 
+                    fi
         fi
     clear
     fi
