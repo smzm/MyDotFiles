@@ -170,7 +170,6 @@ mkdir -p ~/tmpInstall
                 npm config set prefix ~/.np
 
         fi
-        echo -e "\n"
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
