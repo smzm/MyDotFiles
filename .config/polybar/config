@@ -84,7 +84,7 @@ font-1 = SF Mono:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
 modules-left = i3 
-modules-center = fuboTV date weather ;ticker-crypto 
+modules-center = date weather ;ticker-crypto 
 modules-right = pulseaudio xkeyboard powermenu 
     
 tray-position = right
