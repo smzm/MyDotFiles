@@ -31,7 +31,7 @@ call plug#begin('~/local/share/nvim/plugged')
     " UI
 	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
-	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
+	" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
@@ -46,13 +46,17 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-lua/diagnostic-nvim'
    
     " Auto Completion
-    Plug 'nvim-lua/completion-nvim'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'                     " LSP completion plugin for neovim
+    Plug 'hrsh7th/cmp-buffer'                       " Buffer completion
+    Plug 'hrsh7th/cmp-path'                         " Path completion
+    Plug 'hrsh7th/cmp-cmdline'                      " Command line completion
+    Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
     Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+    Plug 'hrsh7th/cmp-calc'                         " Math Calculation completion
+    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'      " Signature help completion
+    Plug 'hrsh7th/cmp-copilot'
+    Plug 'hrsh7th/cmp-emoji'
+    Plug 'kdheepak/cmp-latex-symbols'
 
     " Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
@@ -133,7 +137,7 @@ let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
 " Binding F5 to save and run python code inside floaterm window
 :function RunPython()
 	:execute "w"
-	:FloatermNew clear && python %:p
+	:FloatermNew clear && python3 %:p
 :endfunction
 
 nnoremap <F5> :call RunPython()<CR>
@@ -297,7 +301,7 @@ let g:indentLine_char_list = ['.']
 
 " *************************** vim-hexokinase *************************** 
 " let g:Hexokinase_highlighters = ['backgroundfull']
-let g:Hexokinase_highlighters = ['foregroundfull']
+" let g:Hexokinase_highlighters = ['foregroundfull']
 
 
 
@@ -463,10 +467,19 @@ vim.o.completeopt = 'menuone,noselect'
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
+      ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+      ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
+      { name = 'path' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'calc' },
+      { name = 'cmdline' },
+      { name = 'copilot' },
+      { name = 'emoji' },
+      { name = 'latex_symbols' },
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
@@ -921,3 +934,4 @@ let g:nvim_tree_icons = {
 ]]
 
 EOF
+
