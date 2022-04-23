@@ -477,7 +477,6 @@ vim.o.completeopt = 'menuone,noselect'
       { name = 'nvim_lsp_signature_help' },
       { name = 'calc' },
       { name = 'cmdline' },
-      { name = 'copilot' },
       { name = 'emoji' },
       { name = 'latex_symbols' },
       -- { name = 'luasnip' }, -- For luasnip users.
