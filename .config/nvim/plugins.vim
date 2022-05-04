@@ -1,6 +1,7 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+    Plug 'rose-pine/neovim'
 
     " Utility
     Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
@@ -31,12 +32,11 @@ call plug#begin('~/local/share/nvim/plugged')
     " UI
 	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
-	" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " Show colors
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
     Plug 'kyazdani42/nvim-tree.lua'                 " A tree plugin for neovim
-
+    Plug 'mvllow/modes.nvim'                        " Line Decoration 
 
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
@@ -70,40 +70,44 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'MunifTanjim/nui.nvim'
 
 
+
 call plug#end()
 
 
 
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
-" Example config in VimScript
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+"" Example config in VimScript
+"let g:tokyonight_style = "night"
+"let g:tokyonight_italic_functions = 1
+"let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
+"" Change the "hint" color to the "orange" color, and make the "error" color bright red
+"let g:tokyonight_colors = {
+"  \ 'hint': 'orange',
+"  \ 'error': '#ff0000'
+"\ }
 
-" Load the colorscheme
-colorscheme tokyonight
-
+"" Load the colorscheme
+"colorscheme tokyonight
 
 " cmp Auto Completion highlights
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+
 " blue
 highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+
 " light blue
 highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
+
 " pink
 highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
 highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+
 " front
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
@@ -111,7 +115,9 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlight
-highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26
+" highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
+highlight CopilotSuggestion guifg=#4d4d62 guibg=#2a283e       " For rose-pine-moon
+
 
 " Cursor Line highlight
 highlight CursorLine guibg=#1a1b26
@@ -575,9 +581,10 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "yaml",
     "swift",
-    -- "html",
+    "html",
     "scss",
-    -- "python"
+    "python",
+    "lua"
   },
    incremental_selection = {
     enable = true,
@@ -591,7 +598,6 @@ require'nvim-treesitter.configs'.setup {
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "typescript.tsx", "python" }
 
 
 
@@ -605,7 +611,7 @@ local lualine = require 'lualine'
 
 -- Color table for highlights
 local colors = {
-  bg = '#1d1f2b',
+  bg = '#1b1724',
   fg = '#414452',
   yellow = '#ECBE7B',
   cyan = '#008080',
@@ -839,7 +845,6 @@ vim.cmd'nnoremap <silent><C-Right> :BufferLineCycleNext<CR>'
 vim.cmd'nnoremap <silent><C-Left> :BufferLineCyclePrev<CR>'
 
 
-
 -- *************************** NvimTree
 require'nvim-tree'.setup {
   disable_netrw       = true,
@@ -932,5 +937,70 @@ let g:nvim_tree_icons = {
     \ }
 ]]
 
+
+-- ************************************************ Lua Theme : rose-pine
+--vim.o.background = 'light'
+
+require('rose-pine').setup({
+	---@usage 'main'|'moon'
+	dark_variant = 'main',
+	bold_vert_split = false,
+	dim_nc_background = false,
+	disable_background = false,
+	disable_float_background = false,
+	disable_italics = true,
+	---@usage string hex value or named color from rosepinetheme.com/palette
+	groups = {
+		background = 'base',
+		panel = 'surface',
+		border = 'highlight_med',
+		comment = 'muted',
+		link = 'iris',
+		punctuation = 'subtle',
+
+		error = 'love',
+		hint = 'iris',
+		info = 'foam',
+		warn = 'gold',
+
+		headings = {
+			h1 = 'iris',
+			h2 = 'foam',
+			h3 = 'rose',
+			h4 = 'gold',
+			h5 = 'pine',
+			h6 = 'foam',
+		}
+		-- or set all headings at once
+		-- headings = 'subtle'
+	},
+	-- Change specific vim highlight groups
+	highlight_groups = {
+		ColorColumn = { bg = 'rose' }
+	}
+})
+
+-- set colorscheme after options
+vim.cmd('colorscheme rose-pine')
+
+
+-- *************************** mode
+require('modes').setup({
+  colors = {
+    copy = "#f5c359",
+    delete = "#c75c6a",
+    insert = "#78ccc5",
+    visual = "#9745be",
+  },
+
+  -- Cursorline highlight opacity
+  line_opacity = 0.1,
+
+  -- Highlight cursor
+  set_cursor = true,
+
+  -- Highlight in active window only
+  focus_only = false
+})
 EOF
 
