@@ -328,7 +328,7 @@ lua << EOF
 -- sudo npm i -g awk-language-server
 -- sudo npm i -g dockerfile-language-server-nodejs
 -- sudo npm i -g emmet-ls
--- sudo npm i -g spectral-language-server  (yaml/json)
+-- yarn global add yaml-language-server
 
 local nvim_lsp = require "lspconfig"
 
@@ -352,8 +352,7 @@ require'lspconfig'.bashls.setup{}
 require'lspconfig'.awk_ls.setup{}
 require'lspconfig'.dockerls.setup{}
 require'lspconfig'.emmet_ls.setup{}
-require'lspconfig'.spectral.setup{}
-
+require'lspconfig'.yamlls.setup{}
  
 -- function to attach completion when setting up lsp
 local on_attach = function(client, bufnr)
