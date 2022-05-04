@@ -320,12 +320,18 @@ let g:python_highlight_space_errors = 0
 lua << EOF
 -- *************************** LSP Config
 
--- npm i -g pyright
--- npm install -g vim-language-server
--- npm i -g vscode-langservers-extracted
--- npm install -g typescript typescript-language-server
+-- sudo npm i -g pyright
+-- sudo npm i -g @tailwindcss/language-server
+-- sudo npm i -g vim-language-server
+-- sudo npm i -g vscode-langservers-extracted
+-- sudo npm i -g typescript typescript-language-server
+-- sudo npm i -g awk-language-server
+-- sudo npm i -g dockerfile-language-server-nodejs
+-- sudo npm i -g emmet-ls
+-- sudo npm i -g spectral-language-server  (yaml/json)
 
 local nvim_lsp = require "lspconfig"
+
 
 require'lspconfig'.pyright.setup{
    settings = {
@@ -343,10 +349,14 @@ require'lspconfig'.cssls.setup{}
 require'lspconfig'.tailwindcss.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.bashls.setup{}
+require'lspconfig'.awk_ls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.emmet_ls.setup{}
+require'lspconfig'.spectral.setup{}
 
-
+ 
 -- function to attach completion when setting up lsp
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
     lsp_status.register_progress()
     lsp_status.config(
         {
@@ -358,7 +368,7 @@ local on_attach = function(client)
             indicator_ok = "ok"
         }
     )
-
+ 
     require "completion".on_attach(client)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
