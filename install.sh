@@ -233,8 +233,6 @@ mkdir -p ~/tmpInstall
             if [[ $ansOS == "arch" ]];then
                 sudo pacman -S neovim
                 sudo pacman -S python-pynvim 
-                sudo pacman -S luajit
-                sudo pacman -S tree-sitter
             else
                 brew install neovim --HEAD
             fi
