@@ -212,14 +212,19 @@ mkdir -p ~/tmpInstall
         read -p " [npm][pip] : language-servers |  ::::: [r]un : " ansLS
           if [[ $ansLS == 'r' ]] || [[ $ansLS == "R" ]]; then
             echo -e "+++++ language-servers | "
-                npm install -g pyright
-                npm install -g bash-language-server
-                npm install -g typescript typescript-language-server
-                npm i -g vscode-langservers-extracted
-                npm install -g vim-language-server               
-                pip install jedi  pyenv python-language-server[all]
-                yay -S tailwind-css
-                yay -S vscode-tailwindcss-language-server-bin
+               sudo npm i -g pyright
+               sudo npm i -g @tailwindcss/language-server
+               sudo npm i -g vim-language-server
+               sudo npm i -g vscode-langservers-extracted
+               sudo npm i -g typescript typescript-language-server
+               sudo npm i -g awk-language-server
+               sudo npm i -g dockerfile-language-server-nodejs
+               sudo npm i -g emmet-ls
+               yarn global add yaml-language-server
+               sudo npm install -g bash-language-server
+               pip3 install jedi  pyenv python-language-server[all]
+               yay -S tailwind-css
+               yay -S vscode-tailwindcss-language-server-bin
           fi
         fi
     clear
@@ -238,8 +243,8 @@ mkdir -p ~/tmpInstall
             fi
             python3 -m pip install --user --upgrade pynvim
             sudo pip3 install pynvim --upgrade
-            npm install -g neovim
-            gem install neovim
+            sudo npm install -g neovim
+            sudo gem install neovim
         fi
     clear
 
