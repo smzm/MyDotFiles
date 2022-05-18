@@ -161,6 +161,7 @@ mkdir -p ~/tmpInstall
                 if [[ $ansOS == "arch" ]];then
                     sudo pacman -S nodejs
                     sudo pacman -S npm
+                    sudo pacman -S yarn
                 else
                     sudo apt-get install nodejs
                     sudo apt-get install npm
@@ -222,7 +223,7 @@ mkdir -p ~/tmpInstall
                sudo npm i -g emmet-ls
                yarn global add yaml-language-server
                sudo npm install -g bash-language-server
-               pip3 install jedi  pyenv python-language-server[all]
+               pip install jedi  pyenv python-language-server[all]
                yay -S tailwind-css
                yay -S vscode-tailwindcss-language-server-bin
           fi
