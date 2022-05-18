@@ -234,7 +234,7 @@ mkdir -p ~/tmpInstall
                 sudo pacman -S neovim
                 sudo pacman -S python-pynvim 
             else
-                brew install neovim --HEAD
+                brew install neovim
             fi
             python3 -m pip install --user --upgrade pynvim
             sudo pip3 install pynvim --upgrade
