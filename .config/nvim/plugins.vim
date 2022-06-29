@@ -1,37 +1,40 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
-	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     Plug 'rose-pine/neovim'
 
     " Utility
     Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
-	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
-   	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-  	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
+    Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
+    Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
+    Plug 'tpope/vim-repeat'			    " enable repeating supported plugin maps
     Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
-   	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-   	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
-	Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
-	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
-	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
+    Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
+    Plug 'junegunn/goyo.vim'			    " Distraction-free writing in Vim
+    Plug 'tpope/vim-surround'			    " provides mappings to easily delete, change and add such surroundings in pairs
+    Plug 'rhysd/clever-f.vim'			    " Extended f, F, t and T key mappings for Vim. 
+    Plug '907th/vim-auto-save' 			    " Automatically save changes to disk in Vim
     Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
     Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
-   	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
-   	Plug 'haya14busa/incsearch-easymotion.vim'      
-	Plug 'easymotion/vim-easymotion'
+    Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
+    Plug 'haya14busa/incsearch-easymotion.vim'      
+    Plug 'easymotion/vim-easymotion'
   
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'smzm/hydrovim'
+    
     " HTML and CSS
-	Plug 'mattn/emmet-vim' 							" emmet for vim
-	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
-	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
+    Plug 'mattn/emmet-vim' 			    " emmet for vim
+    Plug 'AndrewRadev/tagalong.vim'		    " Change an HTML(ish) opening tag and take the closing one along as well
+    Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
     
     " Git and Github
     Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
 
     " UI
-	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
-	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
+    Plug 'Yggdroot/indentLine'	            	    " A vim plugin to display the indention
+    Plug 'machakann/vim-highlightedyank'	    " Make the yanked region apparent!
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
@@ -41,7 +44,7 @@ call plug#begin('~/local/share/nvim/plugged')
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
-	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
+    Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
    
@@ -66,10 +69,6 @@ call plug#begin('~/local/share/nvim/plugged')
     " Snippets
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
-
-    Plug 'MunifTanjim/nui.nvim'
-
-
 
 call plug#end()
 
