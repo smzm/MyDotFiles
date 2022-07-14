@@ -948,7 +948,7 @@ let g:nvim_tree_icons = {
 EOF
 
 
--- ************************************************ Lua Theme : rose-pine
+"-- ************************************************ Lua Theme : rose-pine
 " --vim.o.background = 'light'
 
 " require('rose-pine').setup({
