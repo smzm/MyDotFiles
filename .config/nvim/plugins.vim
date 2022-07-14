@@ -1,40 +1,40 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
-    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     Plug 'rose-pine/neovim'
 
     " Utility
     Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
-    Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
-    Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-    Plug 'tpope/vim-repeat'			    " enable repeating supported plugin maps
+	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
+   	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
+  	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
     Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
-    Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-    Plug 'junegunn/goyo.vim'			    " Distraction-free writing in Vim
-    Plug 'tpope/vim-surround'			    " provides mappings to easily delete, change and add such surroundings in pairs
-    Plug 'rhysd/clever-f.vim'			    " Extended f, F, t and T key mappings for Vim. 
-    Plug '907th/vim-auto-save' 			    " Automatically save changes to disk in Vim
+   	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
+   	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
+	Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
+	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
+	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
     Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
     Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
-    Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
-    Plug 'haya14busa/incsearch-easymotion.vim'      
-    Plug 'easymotion/vim-easymotion'
-  
+   	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
+   	Plug 'haya14busa/incsearch-easymotion.vim'      
+	Plug 'easymotion/vim-easymotion'
+
     Plug 'MunifTanjim/nui.nvim'
     Plug 'smzm/hydrovim'
     
     " HTML and CSS
-    Plug 'mattn/emmet-vim' 			    " emmet for vim
-    Plug 'AndrewRadev/tagalong.vim'		    " Change an HTML(ish) opening tag and take the closing one along as well
-    Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
+	Plug 'mattn/emmet-vim' 							" emmet for vim
+	Plug 'AndrewRadev/tagalong.vim'					" Change an HTML(ish) opening tag and take the closing one along as well
+	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'} "live edit html, css, and javascript in vim
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
     
     " Git and Github
     Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
 
     " UI
-    Plug 'Yggdroot/indentLine'	            	    " A vim plugin to display the indention
-    Plug 'machakann/vim-highlightedyank'	    " Make the yanked region apparent!
+	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
+	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
     Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
@@ -44,7 +44,7 @@ call plug#begin('~/local/share/nvim/plugged')
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
-    Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
+	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
    
@@ -77,18 +77,18 @@ call plug#end()
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
 "" Example config in VimScript
-"let g:tokyonight_style = "night"
-"let g:tokyonight_italic_functions = 1
-"let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
 "" Change the "hint" color to the "orange" color, and make the "error" color bright red
-"let g:tokyonight_colors = {
-"  \ 'hint': 'orange',
-"  \ 'error': '#ff0000'
-"\ }
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
 
 "" Load the colorscheme
-"colorscheme tokyonight
+colorscheme tokyonight
 
 " cmp Auto Completion highlights
 " gray
@@ -114,8 +114,8 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlight
-" highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
-highlight CopilotSuggestion guifg=#4d4d62 guibg=#2a283e       " For rose-pine-moon
+highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
+" highlight CopilotSuggestion guifg=#4d4d62 guibg=#2a283e       " For rose-pine-moon
 
 
 " Cursor Line highlight
@@ -945,70 +945,71 @@ let g:nvim_tree_icons = {
     \ }
 ]]
 
+EOF
+
 
 -- ************************************************ Lua Theme : rose-pine
---vim.o.background = 'light'
+" --vim.o.background = 'light'
 
-require('rose-pine').setup({
-	---@usage 'main'|'moon'
-	dark_variant = 'main',
-	bold_vert_split = false,
-	dim_nc_background = false,
-	disable_background = false,
-	disable_float_background = false,
-	disable_italics = true,
-	---@usage string hex value or named color from rosepinetheme.com/palette
-	groups = {
-		background = 'base',
-		panel = 'surface',
-		border = 'highlight_med',
-		comment = 'muted',
-		link = 'iris',
-		punctuation = 'subtle',
+" require('rose-pine').setup({
+" 	---@usage 'main'|'moon'
+" 	dark_variant = 'main',
+" 	bold_vert_split = false,
+" 	dim_nc_background = false,
+" 	disable_background = false,
+" 	disable_float_background = false,
+" 	disable_italics = true,
+" 	---@usage string hex value or named color from rosepinetheme.com/palette
+" 	groups = {
+" 		background = 'base',
+" 		panel = 'surface',
+" 		border = 'highlight_med',
+" 		comment = 'muted',
+" 		link = 'iris',
+" 		punctuation = 'subtle',
 
-		error = 'love',
-		hint = 'iris',
-		info = 'foam',
-		warn = 'gold',
+" 		error = 'love',
+" 		hint = 'iris',
+" 		info = 'foam',
+" 		warn = 'gold',
 
-		headings = {
-			h1 = 'iris',
-			h2 = 'foam',
-			h3 = 'rose',
-			h4 = 'gold',
-			h5 = 'pine',
-			h6 = 'foam',
-		}
-		-- or set all headings at once
-		-- headings = 'subtle'
-	},
-	-- Change specific vim highlight groups
-	highlight_groups = {
-		ColorColumn = { bg = 'rose' }
-	}
-})
+" 		headings = {
+" 			h1 = 'iris',
+" 			h2 = 'foam',
+" 			h3 = 'rose',
+" 			h4 = 'gold',
+" 			h5 = 'pine',
+" 			h6 = 'foam',
+" 		}
+" 		-- or set all headings at once
+" 		-- headings = 'subtle'
+" 	},
+" 	-- Change specific vim highlight groups
+" 	highlight_groups = {
+" 		ColorColumn = { bg = 'rose' }
+" 	}
+" })
 
--- set colorscheme after options
-vim.cmd('colorscheme rose-pine')
+" -- set colorscheme after options
+" vim.cmd('colorscheme rose-pine')
 
 
--- *************************** mode
-require('modes').setup({
-  colors = {
-    copy = "#f5c359",
-    delete = "#c75c6a",
-    insert = "#78ccc5",
-    visual = "#9745be",
-  },
+" -- *************************** mode
+" require('modes').setup({
+"   colors = {
+"     copy = "#f5c359",
+"     delete = "#c75c6a",
+"     insert = "#78ccc5",
+"     visual = "#9745be",
+"   },
 
-  -- Cursorline highlight opacity
-  line_opacity = 0.1,
+"   -- Cursorline highlight opacity
+"   line_opacity = 0.1,
 
-  -- Highlight cursor
-  set_cursor = true,
+"   -- Highlight cursor
+"   set_cursor = true,
 
-  -- Highlight in active window only
-  focus_only = false
-})
-EOF
+"   -- Highlight in active window only
+"   focus_only = false
+" })
 
