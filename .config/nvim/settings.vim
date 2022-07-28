@@ -32,8 +32,9 @@ set smartcase
 set wildmenu
 set wildmode=list:longest,full
 filetype plugin on
-set number
+filetype indent on
 set autoindent                          " copy indent from current line when starting a new line
+set number
 set cursorline                          " Enable highlighting of the current line
 "set showtabline=2                      " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
