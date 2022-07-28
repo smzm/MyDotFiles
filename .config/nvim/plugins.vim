@@ -47,6 +47,7 @@ call plug#begin('~/local/share/nvim/plugged')
 	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
+    Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
    
     " Auto Completion
     Plug 'hrsh7th/cmp-nvim-lsp'                     " LSP completion plugin for neovim
@@ -312,6 +313,18 @@ let g:indentLine_char_list = ['.']
 
 " *************************** Polyglot *************************** 
 let g:python_highlight_space_errors = 0
+
+
+" ************************* Neoformat *************************** 
+" Configure enabled formatters.
+let g:neoformat_enabled_python = ['autopep8']
+
+" run a formatter on save
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
 
 
 
@@ -701,13 +714,13 @@ ins_left {
       n = colors.red,
       i = colors.green,
       v = colors.blue,
-      [''] = colors.blue,
+      [''] = colors.blue,
       V = colors.blue,
       c = colors.magenta,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
-      [''] = colors.orange,
+      [''] = colors.orange,
       ic = colors.yellow,
       R = colors.violet,
       Rv = colors.violet,
@@ -1012,4 +1025,3 @@ EOF
 "   -- Highlight in active window only
 "   focus_only = false
 " })
-
