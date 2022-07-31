@@ -253,8 +253,8 @@ omap / <Plug>(easymotion-tn)
 " EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 
 " Require tpope/vim-repeat to enable dot repeat support
 " Jump to anywhere with only `s{char}{target}`
@@ -319,7 +319,7 @@ let g:python_highlight_space_errors = 0
 " Configure enabled formatters.
 let g:neoformat_enabled_python = ['autopep8']
 
-" run a formatter on save
+" " run a formatter on save
 augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat

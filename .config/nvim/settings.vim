@@ -122,8 +122,6 @@ inoremap <S-Tab> <C-d>
   "just use ; for writing command without pressing shift
 nnoremap ; :
 
-" Save file as sudo when no sudo permissions
- cmap w!! w !sudo tee > /dev/null %
 
 " Shortcutting split navigation
  map <A-h> <C-w>h
@@ -250,8 +248,8 @@ inoremap = =<c-g>u
 inoremap / /<c-g>u
 
 
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+nnoremap <expr> k (v:count > 7 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 7 ? "m'" . v:count : "") . 'j'
 
 map <C-L> 20zl " Scroll 20 characters to the right
 map <C-H> 20zh " Scroll 20 characters to the left
