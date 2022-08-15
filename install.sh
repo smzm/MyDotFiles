@@ -209,11 +209,12 @@ mkdir -p ~/tmpInstall
                 pip install numpy pandas scipy matplotlib opencv-python
         fi
         
-        if [[ $ansOS == "arch" ]]; then
+        
         read -p " [npm][pip] : language-servers |  ::::: [r]un : " ansLS
-          if [[ $ansLS == 'r' ]] || [[ $ansLS == "R" ]]; then
+        if [[ $ansLS == 'r' ]] || [[ $ansLS == "R" ]]; then
             echo -e "+++++ language-servers | "
                sudo npm i -g pyright
+               sudo npm i -D tailwindcss
                sudo npm i -g @tailwindcss/language-server
                sudo npm i -g vim-language-server
                sudo npm i -g vscode-langservers-extracted
@@ -224,9 +225,13 @@ mkdir -p ~/tmpInstall
                yarn global add yaml-language-server
                sudo npm install -g bash-language-server
                pip install jedi  pyenv python-language-server[all]
-               yay -S tailwind-css
-               yay -S vscode-tailwindcss-language-server-bin
-          fi
+               if [[ $ansOS == "arch" ]]; then
+                    yay -S tailwind-css
+                    yay -S vscode-tailwindcss-language-server-bin
+                    yay -S code-minimap
+               else
+                    brew install code-minimap
+               fi
         fi
     clear
 
