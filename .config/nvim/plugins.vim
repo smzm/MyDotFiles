@@ -1,7 +1,8 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-    Plug 'rose-pine/neovim'
+    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+
 
     " Utility
     Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
@@ -19,7 +20,6 @@ call plug#begin('~/local/share/nvim/plugged')
    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
    	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
-
     Plug 'MunifTanjim/nui.nvim'
     Plug 'smzm/hydrovim'
     
@@ -60,7 +60,13 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'      " Signature help completion
     Plug 'hrsh7th/cmp-copilot'
     Plug 'hrsh7th/cmp-emoji'
+    Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'kdheepak/cmp-latex-symbols'
+    Plug 'ray-x/cmp-treesitter'
+
+
+
+
 
     " Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
@@ -70,6 +76,8 @@ call plug#begin('~/local/share/nvim/plugged')
     " Snippets
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
@@ -77,19 +85,33 @@ call plug#end()
 
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
-"" Example config in VimScript
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" TOKYONIGHT
+" "" Example config in VimScript
+" let g:tokyonight_style = "night"
+" let g:tokyonight_italic_functions = 1
+" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" "" Change the "hint" color to the "orange" color, and make the "error" color bright red
+" let g:tokyonight_colors = {
+"   \ 'hint': 'orange',
+"   \ 'error': '#ff0000'
+" \ }
+" "" Load the colorscheme
+" colorscheme tokyonight
 
-"" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
+" OCEAN THEME
+let g:material_theme_style = 'ocean-community'
+let g:material_terminal_italics = 1
+colorscheme material
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+if (has('termguicolors'))
+  set termguicolors
+endif
 
-"" Load the colorscheme
-colorscheme tokyonight
+
+
+
 
 " cmp Auto Completion highlights
 " gray
@@ -115,15 +137,19 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlight
-highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
-" highlight CopilotSuggestion guifg=#4d4d62 guibg=#2a283e       " For rose-pine-moon
+" highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
+highlight CopilotSuggestion guifg=#38384a guibg=#0A0B11     " For material
 
 
 " Cursor Line highlight
-highlight CursorLine guibg=#1a1b26
+highlight CursorLine guibg=#0A0B11
 
 " Nvim Tree highlight
 highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
+
+highlight TSParameter guifg=#ff5370
+highlight TSVariableBuiltin guifg=#ff5370
+highlight TSMethod guifg=#9db0d4
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -132,6 +158,8 @@ let g:floaterm_wintype='float'
 let g:floaterm_width=0.5
 let g:floaterm_height=1.0
 let g:floaterm_position='topright'
+highlight Floaterm guibg=#05060a
+highlight FloatermBorder guibg=#05060a guifg=orange
 
 nnoremap <A-f> :FloatermNew --position=center lf <CR>
 nnoremap <A-t> :FloatermNew<CR>
@@ -143,12 +171,15 @@ let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
 " Binding F5 to save and run python code inside floaterm window
 :function RunPython()
 	:execute "w"
-	:FloatermNew clear && python3 %:p
+	" :FloatermNew clear && python3 %:p
+      :FloatermNew --width=0.5 --name=repl --position=right --wintype=float ipython --no-autoindent
 :endfunction
 
+" xnoremap <F5> :'<,'> FloatermNew FloatermSend <CR>
+     
+xnoremap <F5> :FloatermNew --width=0.5 --name=repl --position=right --wintype=float ipython --no-autoindent <CR>
 nnoremap <F5> :call RunPython()<CR>
 inoremap <F5> <esc> :call RunPython()<CR>
-
 
 
 " *************************** auto-pair *************************** 
@@ -317,13 +348,13 @@ let g:python_highlight_space_errors = 0
 
 " ************************* Neoformat *************************** 
 " Configure enabled formatters.
-let g:neoformat_enabled_python = ['autopep8']
+"let g:neoformat_enabled_python = ['autopep8']
 
 " " run a formatter on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+"augroup fmt
+"  autocmd!
+"  autocmd BufWritePre * undojoin | Neoformat
+"augroup END
 
 
 
@@ -457,7 +488,7 @@ vim.cmd [[
 -- Show line diagnostics automatically in hover window
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 -- For diagnostics for specific cursor positio
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
@@ -470,33 +501,27 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 vim.o.completeopt = 'menuone,noselect'
 
   -- Setup nvim-cmp.
-  local cmp = require'cmp'
+ local cmp = require'cmp'
 
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
       end,
     },
-    mapping = {
-      ['<C-PageUp>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-PageDown>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      -- Accept currently selected item. If none selected, `select` first item.
-      -- Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = false }),
-      ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-      ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    },
+    mapping = cmp.mapping.preset.insert({
+       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+       ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
+       ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+       ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+   }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
@@ -506,7 +531,9 @@ vim.o.completeopt = 'menuone,noselect'
       { name = 'cmdline' },
       { name = 'emoji' },
       { name = 'latex_symbols' },
-      -- { name = 'luasnip' }, -- For luasnip users.
+      { name = 'nvim_lua' },
+      { name = 'luasnip' },
+      { name = 'treesitter' },
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
@@ -514,15 +541,18 @@ vim.o.completeopt = 'menuone,noselect'
     })
   })
 
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+ cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' }
     }
   })
 
+
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
@@ -531,8 +561,7 @@ vim.o.completeopt = 'menuone,noselect'
   })
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
 local kind_icons = {
@@ -583,7 +612,6 @@ cmp.setup {
 
 
 
-
 -- *************************** Treesitter
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -603,8 +631,8 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "swift",
     "html",
-    "scss",
     "python",
+    "scss",
     "lua"
   },
    incremental_selection = {
@@ -662,6 +690,7 @@ local config = {
     component_separators = "",
     section_separators = "",
     theme = {
+      require('material.lualine'),
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
@@ -960,68 +989,3 @@ let g:nvim_tree_icons = {
 
 EOF
 
-
-"-- ************************************************ Lua Theme : rose-pine
-" --vim.o.background = 'light'
-
-" require('rose-pine').setup({
-" 	---@usage 'main'|'moon'
-" 	dark_variant = 'main',
-" 	bold_vert_split = false,
-" 	dim_nc_background = false,
-" 	disable_background = false,
-" 	disable_float_background = false,
-" 	disable_italics = true,
-" 	---@usage string hex value or named color from rosepinetheme.com/palette
-" 	groups = {
-" 		background = 'base',
-" 		panel = 'surface',
-" 		border = 'highlight_med',
-" 		comment = 'muted',
-" 		link = 'iris',
-" 		punctuation = 'subtle',
-
-" 		error = 'love',
-" 		hint = 'iris',
-" 		info = 'foam',
-" 		warn = 'gold',
-
-" 		headings = {
-" 			h1 = 'iris',
-" 			h2 = 'foam',
-" 			h3 = 'rose',
-" 			h4 = 'gold',
-" 			h5 = 'pine',
-" 			h6 = 'foam',
-" 		}
-" 		-- or set all headings at once
-" 		-- headings = 'subtle'
-" 	},
-" 	-- Change specific vim highlight groups
-" 	highlight_groups = {
-" 		ColorColumn = { bg = 'rose' }
-" 	}
-" })
-
-" -- set colorscheme after options
-" vim.cmd('colorscheme rose-pine')
-
-
-" -- *************************** mode
-" require('modes').setup({
-"   colors = {
-"     copy = "#f5c359",
-"     delete = "#c75c6a",
-"     insert = "#78ccc5",
-"     visual = "#9745be",
-"   },
-
-"   -- Cursorline highlight opacity
-"   line_opacity = 0.1,
-
-"   -- Highlight cursor
-"   set_cursor = true,
-
-"   -- Highlight in active window only
-"   focus_only = false
-" })
