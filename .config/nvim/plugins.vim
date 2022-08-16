@@ -20,8 +20,7 @@ call plug#begin('~/local/share/nvim/plugged')
    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
    	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
-    Plug 'MunifTanjim/nui.nvim'
-    Plug 'smzm/hydrovim'
+    Plug 'smzm/hydrovim' | Plug 'MunifTanjim/nui.nvim'
     
     " HTML and CSS
 	Plug 'mattn/emmet-vim' 							" emmet for vim
@@ -40,6 +39,10 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'akinsho/bufferline.nvim'                  " A statusline plugin for neovim  
     Plug 'kyazdani42/nvim-tree.lua'                 " A tree plugin for neovim
     Plug 'mvllow/modes.nvim'                        " Line Decoration 
+    Plug 'stevearc/aerial.nvim'
+    Plug 'wfxr/minimap.vim'
+
+
 
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
@@ -70,7 +73,12 @@ call plug#begin('~/local/share/nvim/plugged')
 
     " Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
+    Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'nvim-treesitter/nvim-tree-docs'
+    Plug 'nvim-treesitter/completion-treesitter'
     Plug 'JuliaEditorSupport/julia-vim'
+    Plug 'RRethy/nvim-treesitter-textsubjects'
+
 
 
     " Snippets
@@ -147,9 +155,11 @@ highlight CursorLine guibg=#0A0B11
 " Nvim Tree highlight
 highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
 
+" Treesitter
 highlight TSParameter guifg=#ff5370
 highlight TSVariableBuiltin guifg=#ff5370
 highlight TSMethod guifg=#9db0d4
+highlight TreesitterContext guibg=#1b1e2c
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -168,9 +178,10 @@ let g:floaterm_keymap_next   = '<F10>'
 let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
 
 
-" Binding F5 to save and run python code inside floaterm window
+"Binding F5 to save and run python code inside floatermncmd t window
 :function RunPython()
 	:execute "w"
+
 	" :FloatermNew clear && python3 %:p
       :FloatermNew --width=0.5 --name=repl --position=right --wintype=float ipython --no-autoindent
 :endfunction
@@ -356,6 +367,44 @@ let g:python_highlight_space_errors = 0
 "  autocmd BufWritePre * undojoin | Neoformat
 "augroup END
 
+
+" *************************** minimap *************************** 
+let g:minimap_width = 4
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_enable_highlight_colorgroup = 1
+let g:minimap_highlight_range = 0
+let g:minimap_cursor_color = 'Tag'
+let g:minimap_range_color = "Tag"
+let g:minimap_base_highlight = 'LineNR'
+let g:minimap_git_colors = 1
+
+:highlight minimapCDA guifg=#184e25 guibg=#0f111a
+:highlight minimapCDAA guifg=#26ad46 guibg=#0f111a
+let g:minimap_diffadd_color="minimapCDA"
+let g:minimap_cursor_diffadd_color= 'minimapCDAA'
+let g:minimap_range_diffadd_color = 'minimapCDAA'
+
+
+:highlight minimapCDR guifg=#75212f guibg=#0f111a
+:highlight minimapCDRR guifg=#c93851 guibg=#0f111a
+let g:minimap_diffremove_color="minimapCDR"
+let g:minimap_cursor_diffremove_color= 'minimapCDRR'
+let g:minimap_range_diffremove_color = 'minimapCDRR'
+
+:highlight minimapCDC guifg=#754b21 guibg=#0f111a
+:highlight minimapCDCC guifg=#d17d2a guibg=#0f111a
+let g:minimap_diff_color="minimapCDC"
+let g:minimap_cursor_diff_color =  'minimapCDCC'
+let g:minimap_range_diff_color = 'minimapCDCC'
+
+function! FloatWindowMinimapHack() abort
+  if winnr() == bufwinnr('-MINIMAP-')
+      exe "wincmd w"
+  endif
+endfunction
+
+autocmd WinEnter * call FloatWindowMinimapHack()
 
 
 
@@ -614,6 +663,7 @@ cmp.setup {
 
 -- *************************** Treesitter
 require'nvim-treesitter.configs'.setup {
+  tree_docs={enable=true},
   highlight = {
     enable = true,
     disable = {},
@@ -635,6 +685,15 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "lua"
   },
+ textsubjects = {
+        enable = true,
+        prev_selection = ',', -- (Optional) keymap to select the previous selection
+        keymaps = {
+            ['.'] = 'textsubjects-smart',
+            [';'] = 'textsubjects-container-outer',
+            ['i;'] = 'textsubjects-container-inner',
+        },
+  },
    incremental_selection = {
     enable = true,
     keymaps = {
@@ -648,9 +707,61 @@ require'nvim-treesitter.configs'.setup {
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
+-- ======Treesitter-context
+require'treesitter-context'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        -- For all filetypes
+        -- Note that setting an entry here replaces all other patterns for this entry.
+        -- By setting the 'default' entry below, you can control which nodes you want to
+        -- appear in the context window.
+        default = {
+            'class',
+            'function',
+            'method',
+            -- 'for', -- These won't appear in the context
+            -- 'while',
+            -- 'if',
+            -- 'switch',
+            -- 'case',
+        },
+        -- Example for a specific filetype.
+        -- If a pattern is missing, *open a PR* so everyone can benefit.
+        --   rust = {
+        --       'impl_item',
+        --   },
+    },
+    exact_patterns = {
+        -- Example for a specific filetype with Lua patterns
+        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+        -- exactly match "impl_item" only)
+        -- rust = true,
+    },
+
+    -- [!] The options below are exposed but shouldn't require your attention,
+    --     you can safely ignore them.
+
+    zindex = 20, -- The Z-index of the context window
+    mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+    separator = nil, -- Separator between context and content. Should be a single character string, like '-'.
+}
 
 
-
+-- ================= aerial.nvim
+require('aerial').setup({
+  on_attach = function(bufnr)
+    -- Toggle the aerial window with <leader>a
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+    -- Jump forwards/backwards with '{' and '}'
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+    -- Jump up the tree with '[[' or ']]'
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+  end
+})
 
 -- *************************** Lualine
 -- Eviline config for lualine
