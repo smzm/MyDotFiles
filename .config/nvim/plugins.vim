@@ -32,7 +32,6 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
 
     " UI
-	Plug 'Yggdroot/indentLine'	            		" A vim plugin to display the indention
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
     Plug 'kyazdani42/nvim-web-devicons'             " lua `fork` of vim-web-devicons for neovim
     Plug 'hoob3rt/lualine.nvim'                     " A blazing fast and easy to configure neovim statusline written in pure lua.
@@ -41,6 +40,9 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'mvllow/modes.nvim'                        " Line Decoration 
     Plug 'stevearc/aerial.nvim'
     Plug 'wfxr/minimap.vim'
+    Plug 'p00f/nvim-ts-rainbow'
+    Plug 'lukas-reineke/indent-blankline.nvim'
+
 
 
 
@@ -94,30 +96,17 @@ call plug#end()
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
 " TOKYONIGHT
-" "" Example config in VimScript
-" let g:tokyonight_style = "night"
-" let g:tokyonight_italic_functions = 1
-" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-" "" Change the "hint" color to the "orange" color, and make the "error" color bright red
-" let g:tokyonight_colors = {
-"   \ 'hint': 'orange',
-"   \ 'error': '#ff0000'
-" \ }
-" "" Load the colorscheme
-" colorscheme tokyonight
-
-" OCEAN THEME
-let g:material_theme_style = 'ocean-community'
-let g:material_terminal_italics = 1
-colorscheme material
-if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-endif
-if (has('termguicolors'))
-  set termguicolors
-endif
-
-
+"" Example config in VimScript
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+"" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+"" Load the colorscheme
+colorscheme tokyonight
 
 
 
@@ -145,21 +134,26 @@ highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlight
-" highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
-highlight CopilotSuggestion guifg=#38384a guibg=#0A0B11     " For material
+highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
 
 
 " Cursor Line highlight
-highlight CursorLine guibg=#0A0B11
+highlight CursorLine guibg=#11121a
 
 " Nvim Tree highlight
 highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
 
 " Treesitter
-highlight TSParameter guifg=#ff5370
-highlight TSVariableBuiltin guifg=#ff5370
-highlight TSMethod guifg=#9db0d4
-highlight TreesitterContext guibg=#1b1e2c
+hi TSVariable guifg=#8e91bd
+hi TreesitterContext guibg=#12131c
+hi rainbowcol1 guifg=#cc7c27 gui=bold
+hi rainbowcol2 guifg=#8e349e gui=bold
+hi rainbowcol3 guifg=#1576d1
+
+
+" Search
+hi Search guibg=#8bbd04 guifg=#002911
+
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -168,8 +162,9 @@ let g:floaterm_wintype='float'
 let g:floaterm_width=0.5
 let g:floaterm_height=1.0
 let g:floaterm_position='topright'
-highlight Floaterm guibg=#05060a
-highlight FloatermBorder guibg=#05060a guifg=orange
+highlight link Floaterm Pmenu
+highlight link FloatermBorder HopNextKey1
+" guibg=#05060a guifg=orange
 
 nnoremap <A-f> :FloatermNew --position=center lf <CR>
 nnoremap <A-t> :FloatermNew<CR>
@@ -341,12 +336,6 @@ autocmd FileType html,css EmmetInstall
 
 
 
-" *************************** indentLine *************************** 
-let g:indentLine_color_gui = '#2d3541'
-let g:indentLine_char_list = ['.']
-
-
-
 " *************************** vim-hexokinase *************************** 
 " let g:Hexokinase_highlighters = ['backgroundfull']
 " let g:Hexokinase_highlighters = ['foregroundfull']
@@ -379,21 +368,21 @@ let g:minimap_range_color = "Tag"
 let g:minimap_base_highlight = 'LineNR'
 let g:minimap_git_colors = 1
 
-:highlight minimapCDA guifg=#184e25 guibg=#0f111a
-:highlight minimapCDAA guifg=#26ad46 guibg=#0f111a
+:highlight minimapCDA guifg=#184e25 guibg=#1a1b26
+:highlight minimapCDAA guifg=#26ad46 guibg=#1a1b26
 let g:minimap_diffadd_color="minimapCDA"
 let g:minimap_cursor_diffadd_color= 'minimapCDAA'
 let g:minimap_range_diffadd_color = 'minimapCDAA'
 
 
-:highlight minimapCDR guifg=#75212f guibg=#0f111a
-:highlight minimapCDRR guifg=#c93851 guibg=#0f111a
+:highlight minimapCDR guifg=#75212f guibg=#1a1b26
+:highlight minimapCDRR guifg=#c93851 guibg=#1a1b26
 let g:minimap_diffremove_color="minimapCDR"
 let g:minimap_cursor_diffremove_color= 'minimapCDRR'
 let g:minimap_range_diffremove_color = 'minimapCDRR'
 
-:highlight minimapCDC guifg=#754b21 guibg=#0f111a
-:highlight minimapCDCC guifg=#d17d2a guibg=#0f111a
+:highlight minimapCDC guifg=#754b21 guibg=#1a1b26
+:highlight minimapCDCC guifg=#d17d2a guibg=#1a1b26
 let g:minimap_diff_color="minimapCDC"
 let g:minimap_cursor_diff_color =  'minimapCDCC'
 let g:minimap_range_diff_color = 'minimapCDCC'
@@ -421,6 +410,7 @@ lua << EOF
 -- sudo npm i -g dockerfile-language-server-nodejs
 -- sudo npm i -g emmet-ls
 -- yarn global add yaml-language-server
+
 
 local nvim_lsp = require "lspconfig"
 
@@ -590,7 +580,7 @@ vim.o.completeopt = 'menuone,noselect'
     })
   })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- Use buffer source for `/` (if you cnabled `native_menu`, this won't work anymore).
  cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -663,6 +653,16 @@ cmp.setup {
 
 -- *************************** Treesitter
 require'nvim-treesitter.configs'.setup {
+  highlight = {
+   },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  },
   tree_docs={enable=true},
   highlight = {
     enable = true,
@@ -771,7 +771,7 @@ local lualine = require 'lualine'
 
 -- Color table for highlights
 local colors = {
-  bg = '#1b1724',
+  bg = '#0d0e1a',
   fg = '#414452',
   yellow = '#ECBE7B',
   cyan = '#008080',
@@ -801,7 +801,6 @@ local config = {
     component_separators = "",
     section_separators = "",
     theme = {
-      require('material.lualine'),
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
@@ -1097,6 +1096,24 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 ]]
+
+-- *************************** indent-blankline
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#252637 gui=nocombine]]
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+    },
+    space_char_highlight_list = {
+       "IndentBlanklineIndent1",
+    },
+}
+
 
 EOF
 
