@@ -44,22 +44,22 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'lukas-reineke/indent-blankline.nvim'
 
 
-
-
     " Language Pack
     Plug 'sheerun/vim-polyglot'                     " A collection of language packs for Vim
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
-	Plug 'onsails/lspkind-nvim'                     " vscode-like pictograms for neovim lsp completion items
+    Plug 'williamboman/mason.nvim'                  " Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
+    Plug 'williamboman/mason-lspconfig.nvim'
+
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
     Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
    
     " Auto Completion
+    Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
     Plug 'hrsh7th/cmp-nvim-lsp'                     " LSP completion plugin for neovim
     Plug 'hrsh7th/cmp-buffer'                       " Buffer completion
     Plug 'hrsh7th/cmp-path'                         " Path completion
     Plug 'hrsh7th/cmp-cmdline'                      " Command line completion
-    Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
     Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
     Plug 'hrsh7th/cmp-calc'                         " Math Calculation completion
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'      " Signature help completion
@@ -68,9 +68,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'kdheepak/cmp-latex-symbols'
     Plug 'ray-x/cmp-treesitter'
-
-
-
+    Plug 'saadparwaiz1/cmp_luasnip'
 
 
     " Syntax highlighting
@@ -80,7 +78,6 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-treesitter/completion-treesitter'
     Plug 'JuliaEditorSupport/julia-vim'
     Plug 'RRethy/nvim-treesitter-textsubjects'
-
 
 
     " Snippets
@@ -107,30 +104,6 @@ let g:tokyonight_colors = {
 \ }
 "" Load the colorscheme
 colorscheme tokyonight
-
-
-
-" cmp Auto Completion highlights
-" gray
-highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-
-" blue
-highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
-highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-
-" light blue
-highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
-highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
-
-" pink
-highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-
-" front
-highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
-highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 
 
 " Github Copilot highlight
@@ -399,110 +372,92 @@ autocmd WinEnter * call FloatWindowMinimapHack()
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Lua Plugins Configurations
 lua << EOF
--- *************************** LSP Config
+-- *************************** LSP Config : Servers
 
--- sudo npm i -g pyright
--- sudo npm i -g @tailwindcss/language-server
--- sudo npm i -g vim-language-server
--- sudo npm i -g vscode-langservers-extracted
--- sudo npm i -g typescript typescript-language-server
--- sudo npm i -g awk-language-server
--- sudo npm i -g dockerfile-language-server-nodejs
--- sudo npm i -g emmet-ls
--- yarn global add yaml-language-server
-
-
-local nvim_lsp = require "lspconfig"
-
-
-require'lspconfig'.pyright.setup{
-   settings = {
-      pyright = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        typeCheckingMode = 'off'
-      },
-    },
-}
-require'lspconfig'.vimls.setup {}
-require'lspconfig'.jsonls.setup {}
-require'lspconfig'.html.setup {}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.tailwindcss.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.awk_ls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.emmet_ls.setup{}
-require'lspconfig'.yamlls.setup{}
- 
--- function to attach completion when setting up lsp
-local on_attach = function(client, bufnr)
-    lsp_status.register_progress()
-    lsp_status.config(
-        {
-            status_symbol = "LSP ",
-            indicator_errors = "E",
-            indicator_warnings = "W",
-            indicator_info = "I",
-            indicator_hint = "H",
-            indicator_ok = "ok"
+require("mason").setup({
+ ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
         }
-    )
- 
-    require "completion".on_attach(client)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    },
+})
+require("mason-lspconfig").setup({
+    ensure_installed = { "pyright",   --pylsp, sourcery, jedi_language_server
+                         "tsserver",
+                         "awk_ls",
+                         "bashls",
+                         "cssmodules_ls",
+                         "dockerls",
+                         "html",
+                         "emmet_ls",
+                         "jsonls",
+                         "sumneko_lua",
+                         "marksman",
+                         "sqls",
+                         "tailwindcss",
+                         "vimls",
+                         "yamlls"},
+                         automatic_installation = true
+})
 
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Mappings.
-    local opts = {noremap = true, silent = true}
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
 
-    -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
 
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
-            augroup lsp_document_highlight
-            autocmd! * <buffer>
-            " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            " autocmd CursorHold *.* :lua vim.lsp.diagnostic.show_line_diagnostics()
-            autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 300)
-           augroup END
-        ]],
-            false
-        )
-    else
-        vim.api.nvim_exec([[
-            autocmd!
-            autocmd BufWritePre * Neoformat
-            augroup END
-        ]], false)
-    end
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = { "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = capabilities
+  }
 end
 
+-- ==================== LSP Config : Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+end
+-- python specific costumizations
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require('lspconfig')['pyright'].setup{
+   on_attach = on_attach,
+   typeCheckingMode = 'off',
+   flags = lsp_flags,
+}
 
 
+-- ====================== LSP : Diagnostic UI
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
@@ -510,7 +465,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = false,
 }) 
-
 -- Highlight line number instead of having icons in sign column
 vim.cmd [[
   highlight DiagnosticLineNrError guibg=# guifg=#8a0000 gui=bold
@@ -527,17 +481,52 @@ vim.cmd [[
 -- Show line diagnostics automatically in hover window
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
-vim.o.updatetime = 50
+vim.o.updatetime = 250
 -- For diagnostics for specific cursor positio
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
 
+-- ====================== Go-to definition in a split window
+local function goto_definition(split_cmd)
+  local util = vim.lsp.util
+  local log = require("vim.lsp.log")
+  local api = vim.api
+
+  -- note, this handler style is for neovim 0.5.1/0.6, if on 0.5, call with function(_, method, result)
+  local handler = function(_, result, ctx)
+    if result == nil or vim.tbl_isempty(result) then
+      local _ = log.info() and log.info(ctx.method, "No location found")
+      return nil
+    end
+
+    if split_cmd then
+      vim.cmd(split_cmd)
+    end
+
+    if vim.tbl_islist(result) then
+      util.jump_to_location(result[1])
+
+      if #result > 1 then
+        util.set_qflist(util.locations_to_items(result))
+        api.nvim_command("copen")
+        api.nvim_command("wincmd p")
+      end
+    else
+      util.jump_to_location(result)
+    end
+  end
+
+  return handler
+end
+
+vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 
 
 
 -- *************************** LSP Cmp
  -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
+
 
   -- Setup nvim-cmp.
  local cmp = require'cmp'
@@ -599,10 +588,6 @@ vim.o.completeopt = 'menuone,noselect'
     })
   })
 
-  -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-
 local kind_icons = {
   Text = "",
   Method = "",
@@ -648,6 +633,26 @@ cmp.setup {
     end
   },
 }
+
+-- Theme Colors to the cmp Menu
+-- gray
+vim.cmd[[ highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080 ]]
+-- blue
+vim.cmd[[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]]
+vim.cmd[[highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6]]
+-- light blue
+vim.cmd[[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]]
+vim.cmd[[highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE]]
+vim.cmd[[highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE]]
+-- pink
+vim.cmd[[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]]
+vim.cmd[[highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0]]
+-- front
+vim.cmd[[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]]
+vim.cmd[[highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4]]
+vim.cmd[[highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4]]
+
+
 
 
 
