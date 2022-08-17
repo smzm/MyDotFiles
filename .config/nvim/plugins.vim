@@ -383,25 +383,11 @@ require("mason").setup({
         }
     },
 })
+local servers = { "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
 require("mason-lspconfig").setup({
-    ensure_installed = { "pyright",   --pylsp, sourcery, jedi_language_server
-                         "tsserver",
-                         "awk_ls",
-                         "bashls",
-                         "cssmodules_ls",
-                         "dockerls",
-                         "html",
-                         "emmet_ls",
-                         "jsonls",
-                         "sumneko_lua",
-                         "marksman",
-                         "sqls",
-                         "tailwindcss",
-                         "vimls",
-                         "yamlls"},
-                         automatic_installation = true
+    ensure_installed = servers,
+    automatic_installation = true
 })
-
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -409,7 +395,6 @@ local lspconfig = require('lspconfig')
 
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities
@@ -460,8 +445,8 @@ require('lspconfig')['pyright'].setup{
 -- ====================== LSP : Diagnostic UI
 vim.diagnostic.config({
   virtual_text = false,
-  signs = true,
-  underline = true,
+  signs = false,
+  underline = false,
   update_in_insert = false,
   severity_sort = false,
 }) 
@@ -674,7 +659,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
   indent = {
-    enable = true,
+    enable = false,
     disable = {},
   },
   ensure_installed = {
@@ -916,14 +901,14 @@ ins_left {'location'}
 
 ins_left {'progress', color = {fg = colors.fg, gui = 'bold'}}
 
-ins_left {
-  'diagnostics',
-  sources = {'nvim_diagnostic'},
-  symbols = {error = ' ', warn = ' ', info = ' '},
-  color_error = colors.red,
-  color_warn = colors.yellow,
-  color_info = colors.cyan
-}
+-- ins_left {
+--   'diagnostics',
+--   sources = {'nvim_lsp'},
+--   symbols = {error = ' ', warn = ' ', info = ' '},
+--   color_error = colors.red,
+--   color_warn = colors.yellow,
+--   color_info = colors.cyan
+-- }
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -1102,7 +1087,7 @@ let g:nvim_tree_icons = {
     \ }
 ]]
 
--- *************************** indent-blankline
+-- *************************** indent-blankline (UI)
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#252637 gui=nocombine]]
 
