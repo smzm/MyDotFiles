@@ -6,7 +6,7 @@ call plug#begin('~/local/share/nvim/plugged')
 
     " Utility
     Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
-	Plug 'jiangmiao/auto-pairs'                     " insert or delete brackets in pair
+    Plug 'windwp/nvim-autopairs'
    	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
   	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
     Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
@@ -160,12 +160,6 @@ xnoremap <F5> :FloatermNew --width=0.5 --name=repl --position=right --wintype=fl
 nnoremap <F5> :call RunPython()<CR>
 inoremap <F5> <esc> :call RunPython()<CR>
 
-
-" *************************** auto-pair *************************** 
-" Jump outside '"({
-if !exists('g:AutoPairsShortcutJump')
-  let g:AutoPairsShortcutJump = ',,'
-endif
 
 
 " *************************** vim-textmanip *************************** 
@@ -468,7 +462,7 @@ vim.cmd [[
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
 -- For diagnostics for specific cursor positio
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+-- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
 
 -- ====================== Go-to definition in a split window
@@ -1104,6 +1098,12 @@ require("indent_blankline").setup {
     },
 }
 
+-- *************************** windwp-nvim-autopairs
+require('nvim-autopairs').setup({
+  disable_in_macro = true,
+  enable_check_bracket_line = true,
+  disable_in_visualblock = true,
+})
 
 EOF
 
