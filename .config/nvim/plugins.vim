@@ -39,7 +39,6 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'kyazdani42/nvim-tree.lua'                 " A tree plugin for neovim
     Plug 'mvllow/modes.nvim'                        " Line Decoration 
     Plug 'stevearc/aerial.nvim'
-    Plug 'wfxr/minimap.vim'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -49,10 +48,9 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'neovim/nvim-lspconfig'                    " Quickstart configurations for the Nvim LSP client
     Plug 'williamboman/mason.nvim'                  " Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
     Plug 'williamboman/mason-lspconfig.nvim'
-
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
-    Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
+    "Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
    
     " Auto Completion
     Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
@@ -61,9 +59,8 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'hrsh7th/cmp-path'                         " Path completion
     Plug 'hrsh7th/cmp-cmdline'                      " Command line completion
     Plug 'Shougo/context_filetype.vim'              " Completion from other opened files
+    Plug 'ray-x/lsp_signature.nvim'
     Plug 'hrsh7th/cmp-calc'                         " Math Calculation completion
-    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'      " Signature help completion
-    Plug 'hrsh7th/cmp-copilot'
     Plug 'hrsh7th/cmp-emoji'
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'kdheepak/cmp-latex-symbols'
@@ -79,12 +76,6 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'JuliaEditorSupport/julia-vim'
     Plug 'RRethy/nvim-treesitter-textsubjects'
 
-
-    " Snippets
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
@@ -108,7 +99,8 @@ colorscheme tokyonight
 
 " Github Copilot highlight
 highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
-
+imap <silent><script><expr> <PageDown> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " Cursor Line highlight
 highlight CursorLine guibg=#11121a
@@ -315,53 +307,13 @@ let g:python_highlight_space_errors = 0
 
 " ************************* Neoformat *************************** 
 " Configure enabled formatters.
-"let g:neoformat_enabled_python = ['autopep8']
+" let g:neoformat_enabled_python = ['autopep8']
 
 " " run a formatter on save
 "augroup fmt
 "  autocmd!
 "  autocmd BufWritePre * undojoin | Neoformat
 "augroup END
-
-
-" *************************** minimap *************************** 
-let g:minimap_width = 4
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-let g:minimap_enable_highlight_colorgroup = 1
-let g:minimap_highlight_range = 0
-let g:minimap_cursor_color = 'Tag'
-let g:minimap_range_color = "Tag"
-let g:minimap_base_highlight = 'LineNR'
-let g:minimap_git_colors = 1
-
-:highlight minimapCDA guifg=#184e25 guibg=#1a1b26
-:highlight minimapCDAA guifg=#26ad46 guibg=#1a1b26
-let g:minimap_diffadd_color="minimapCDA"
-let g:minimap_cursor_diffadd_color= 'minimapCDAA'
-let g:minimap_range_diffadd_color = 'minimapCDAA'
-
-
-:highlight minimapCDR guifg=#75212f guibg=#1a1b26
-:highlight minimapCDRR guifg=#c93851 guibg=#1a1b26
-let g:minimap_diffremove_color="minimapCDR"
-let g:minimap_cursor_diffremove_color= 'minimapCDRR'
-let g:minimap_range_diffremove_color = 'minimapCDRR'
-
-:highlight minimapCDC guifg=#754b21 guibg=#1a1b26
-:highlight minimapCDCC guifg=#d17d2a guibg=#1a1b26
-let g:minimap_diff_color="minimapCDC"
-let g:minimap_cursor_diff_color =  'minimapCDCC'
-let g:minimap_range_diff_color = 'minimapCDCC'
-
-function! FloatWindowMinimapHack() abort
-  if winnr() == bufwinnr('-MINIMAP-')
-      exe "wincmd w"
-  endif
-endfunction
-
-autocmd WinEnter * call FloatWindowMinimapHack()
-
 
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Lua Plugins Configurations
@@ -377,7 +329,7 @@ require("mason").setup({
         }
     },
 })
-local servers = { "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
+local servers = { 'efm',"pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
 require("mason-lspconfig").setup({
     ensure_installed = servers,
     automatic_installation = true
@@ -394,6 +346,7 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
 
 -- ==================== LSP Config : Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -429,12 +382,13 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+
 require('lspconfig')['pyright'].setup{
    on_attach = on_attach,
-   typeCheckingMode = 'off',
+   -- typeCheckingMode = 'off',
    flags = lsp_flags,
 }
-
 
 -- ====================== LSP : Diagnostic UI
 vim.diagnostic.config({
@@ -463,6 +417,9 @@ vim.cmd [[
 vim.o.updatetime = 250
 -- For diagnostics for specific cursor positio
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+
+
+
 
 
 -- ====================== Go-to definition in a split window
@@ -502,27 +459,49 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 
 
 
+
 -- *************************** LSP Cmp
+local kind_icons = {
+Text = "",
+Method = "",
+Function = "",
+Constructor = "",
+Field = "",
+Variable = "",
+Class = "",
+Interface = "",
+Module = "",
+Property = "",
+Unit = "",
+Value = "",
+Enum = "",
+Keyword = "",
+Snippet = "",
+Color = "",
+File = "",
+Reference = "",
+Folder = "",
+EnumMember = "",
+Constant = "",
+Struct = "",
+Event = "",
+Operator = "",
+TypeParameter = ""
+}
+
  -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
 
 
   -- Setup nvim-cmp.
  local cmp = require'cmp'
-
   cmp.setup({
-    snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
-      end,
+  matching = {
+       disallow_fuzzy_matching = false,
     },
     mapping = cmp.mapping.preset.insert({
-       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+       ['<C-S-PageUp>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+       ['<C-S-PageDown>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
@@ -531,24 +510,35 @@ vim.o.completeopt = 'menu,menuone,noselect'
    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
       { name = 'path' },
-      { name = 'nvim_lsp_signature_help' },
       { name = 'calc' },
       { name = 'cmdline' },
       { name = 'emoji' },
       { name = 'latex_symbols' },
       { name = 'nvim_lua' },
-      { name = 'luasnip' },
       { name = 'treesitter' },
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
-    })
+    }),
+    formatting = {
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
+    end
+  },
+    experimental = { ghost_text = true },
   })
 
--- Use buffer source for `/` (if you cnabled `native_menu`, this won't work anymore).
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
  cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -567,51 +557,38 @@ vim.o.completeopt = 'menu,menuone,noselect'
     })
   })
 
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
+-- ********* setup nvim-autopairs and confirm done with cmp 
+require('nvim-autopairs').setup({
+  disable_in_macro = true,
+  enable_check_bracket_line = true,
+  disable_in_visualblock = true,
+})
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp = require("cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+
+
+-- ********* LSP Signature 
+vim.cmd [[ hi Signature gui=bold,italic,underline guifg=#1abc9c ]]
+local signature_config = {
+  hint_enable = false,
+  handler_opts = { border = "double" },
+  max_height = 10,
+  max_width = 10,
+  close_timeout = 100,
+  fix_pos = false,
+  hi_parameter = "Signature",
+  always_trigger = false,
+  padding=' ',
+  toggle_key='<C-s>',
+  move_cursor_key = '<C-S-PageDown>'
 }
-local cmp = require('cmp')
-cmp.setup {
-  formatting = {
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      -- Source
-      vim_item.menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-      return vim_item
-    end
-  },
-}
+
+require("lsp_signature").setup(signature_config, bufnr)
+
+
+
+
 
 -- Theme Colors to the cmp Menu
 -- gray
@@ -995,7 +972,6 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  auto_close          = false,
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
@@ -1098,12 +1074,8 @@ require("indent_blankline").setup {
     },
 }
 
--- *************************** windwp-nvim-autopairs
-require('nvim-autopairs').setup({
-  disable_in_macro = true,
-  enable_check_bracket_line = true,
-  disable_in_visualblock = true,
-})
+-- 
+
 
 EOF
 
