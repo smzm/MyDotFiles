@@ -1,7 +1,7 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+
 
 
     " Utility
@@ -29,7 +29,8 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
     
     " Git and Github
-    Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
+    " Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
+    Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
     " UI
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
@@ -98,9 +99,9 @@ colorscheme tokyonight
 
 
 " Github Copilot highlight
-highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
-imap <silent><script><expr> <PageDown> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
+" imap <silent><script><expr> <PageDown> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
 " Cursor Line highlight
 highlight CursorLine guibg=#11121a
@@ -111,14 +112,16 @@ highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
 " Treesitter
 hi TSVariable guifg=#8e91bd
 hi TreesitterContext guibg=#12131c
-hi rainbowcol1 guifg=#cc7c27 gui=bold
-hi rainbowcol2 guifg=#8e349e gui=bold
-hi rainbowcol3 guifg=#1576d1
+hi rainbowcol1 guifg=#c9a800 gui=bold
+hi rainbowcol2 guifg=#a520c9 gui=bold
+hi rainbowcol3 guifg=#07faf6
 
 
 " Search
 hi Search guibg=#8bbd04 guifg=#002911
 
+" Match Parenthesis
+hi MatchParen guifg=#00ff15
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -461,6 +464,24 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 
 
 -- *************************** LSP Cmp
+-- Tabnine with cmp
+local tabnine = require('cmp_tabnine.config')
+
+tabnine.setup({
+	max_lines = 1000,
+	max_num_results = 30,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = '..',
+	ignored_file_types = { 
+		-- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	},
+	show_prediction_strength = true
+})
+
+
 local kind_icons = {
 Text = "",
 Method = "",
@@ -510,6 +531,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'cmp_tabnine' },
       { name = 'path' },
       { name = 'calc' },
       { name = 'cmdline' },
@@ -529,6 +551,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
+        cmp_tabnine = "[Tabnine]",
         latex_symbols = "[LaTeX]",
       })[entry.source.name]
       return vim_item
