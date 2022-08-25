@@ -211,9 +211,13 @@ require("catppuccin").setup({
       IndentBlanklineContextStart = {fg=colors.maroon, style={"underline"}},
       Search = {bg=colors.sapphire, fg=colors.crust},
       MatchParen = {fg = "#00ff15"},     -- Good for all theme
-      rainbowcol1 = { bg = colors.base, style={"bold"} },
-      rainbowcol2 = { bg = colors.base, style={"bold"} },
-      rainbowcol3 = { bg = colors.base }
+      rainbowcol1 = { bg = "" , style={"bold"} },
+      rainbowcol2 = { bg = "", style={"bold"} },
+      rainbowcol3 = { bg = "" },
+      rainbowcol4 = { bg = "" },
+      rainbowcol5 = { bg = "" },
+      rainbowcol6 = { bg = "" },
+      rainbowcol7 = { bg = "" }
       },
 	color_overrides = {
       mocha = {
@@ -244,7 +248,7 @@ let g:floaterm_wintype='float'
 let g:floaterm_width=0.5
 let g:floaterm_height=1.0
 let g:floaterm_position='topright'
-highlight link Floaterm Pmenu
+highlight link Floaterm EndOfBuffer
 highlight link FloatermBorder HopNextKey1
 " guibg=#05060a guifg=orange
 
