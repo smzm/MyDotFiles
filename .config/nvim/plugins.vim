@@ -1,7 +1,7 @@
 call plug#begin('~/local/share/nvim/plugged')
     " Theme
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-
+    Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 
     " Utility
@@ -40,8 +40,8 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'kyazdani42/nvim-tree.lua'                 " A tree plugin for neovim
     Plug 'mvllow/modes.nvim'                        " Line Decoration 
     Plug 'stevearc/aerial.nvim'
-    Plug 'p00f/nvim-ts-rainbow'
     Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'p00f/nvim-ts-rainbow'                     " Rainbow parentheses for neovim using tree-sitter.
 
 
     " Language Pack
@@ -84,44 +84,158 @@ call plug#end()
 
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
-" TOKYONIGHT
-"" Example config in VimScript
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-"" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
-"" Load the colorscheme
-colorscheme tokyonight
+" " TOKYONIGHT
+" "" Example config in VimScript
+" let g:tokyonight_style = "night"
+" let g:tokyonight_italic_functions = 1
+" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" "" Change the "hint" color to the "orange" color, and make the "error" color bright red
+" let g:tokyonight_colors = {
+"   \ 'hint': 'orange',
+"   \ 'error': '#ff0000'
+" \ }
+" "" Load the colorscheme
+" colorscheme tokyonight
+
+
+
+" =============== THEME : Catppuccin
+lua << EOF
+local ucolors = require "catppuccin.utils.colors"
+local latte = require("catppuccin.palettes").get_palette "latte"
+local frappe = require("catppuccin.palettes").get_palette "frappe"
+local macchiato = require("catppuccin.palettes").get_palette "macchiato"
+local mocha = require("catppuccin.palettes").get_palette "mocha"
+
+-- Catppuccin flavour:  latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "frappe" -- Has to be set in order for empty argument to work
+
+local colors = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
+
+
+require("catppuccin").setup({
+	dim_inactive = {
+		enabled = true,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	transparent_background = false,
+	term_colors = true,
+	compile = {
+		enabled = false,
+		path = vim.fn.stdpath "cache" .. "/catppuccin",
+	},
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
+	},
+	integrations = {
+		treesitter = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
+		coc_nvim = false,
+		lsp_trouble = false,
+		cmp = true,
+		lsp_saga = false,
+		gitgutter = false,
+		gitsigns = false,
+		leap = false,
+		telescope = false,
+		nvimtree = true,
+		neotree = {
+			enabled = false,
+			show_root = true,
+			transparent_panel = false,
+		},
+		dap = {
+			enabled = false,
+			enable_ui = false,
+		},
+		which_key = false,
+		indent_blankline = {
+			enabled = false,
+			colored_indent_levels = false,
+		},
+		dashboard = false,
+		neogit = false,
+		vim_sneak = false,
+		fern = false,
+		barbar = false,
+		bufferline = true,
+		markdown = true,
+		lightspeed = false,
+		ts_rainbow = true,
+		hop = false,
+		notify = false,
+		telekasten = false,
+		symbols_outline = true,
+		mini = false,
+		aerial = true,
+		vimwiki = false,
+		beacon = false,
+		navic = false,
+		overseer = false,
+	},
+-- COLORS : 
+-- rosewater   flamingo   pink	 mauve	 red  maroon	peach	yellow	green	teal	
+-- sky 	sapphire	blue	lavender	text	
+-- subtext1	subtext0	overlay2	overlay1	overlay0
+-- surface2	surface1	surface0	base 	mantle	crust
+
+	custom_highlights = {
+      IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base
+      IndentBlanklineContextChar = {fg=colors.maroon},
+      IndentBlanklineContextStart = {fg=colors.maroon, style={"underline"}},
+      Search = {bg=colors.sapphire, fg=colors.crust},
+      MatchParen = {fg = "#00ff15"},     -- Good for all theme
+      rainbowcol1 = { bg = colors.base, style={"bold"} },
+      rainbowcol2 = { bg = colors.base, style={"bold"} },
+      rainbowcol3 = { bg = colors.base }
+      },
+	color_overrides = {
+      mocha = {
+        }
+      },
+	highlight_overrides = {
+      -- all={}
+      -- latte={}
+      -- frappe={}
+      -- macchiato={}
+      -- mocha = { Comment={fg = mocha.flamingo}}
+      },
+})
+
+vim.cmd [[colorscheme catppuccin]]
+EOF
 
 
 " Github Copilot highlight
 " highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
 " imap <silent><script><expr> <PageDown> copilot#Accept("\<CR>")
 " let g:copilot_no_tab_map = v:true
-
-" Cursor Line highlight
-highlight CursorLine guibg=#11121a
-
-" Nvim Tree highlight
-highlight NvimTreeCursorLine guibg=#2c2936 gui=NONE
-
-" Treesitter
-hi TSVariable guifg=#8e91bd
-hi TreesitterContext guibg=#12131c
-hi rainbowcol1 guifg=#c9a800 gui=bold
-hi rainbowcol2 guifg=#a520c9 gui=bold
-hi rainbowcol3 guifg=#07faf6
-
-
-" Search
-hi Search guibg=#8bbd04 guifg=#002911
-
-" Match Parenthesis
-hi MatchParen guifg=#00ff15
 
 " |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Plugins Configurations
 " ***************************  Floaterm *************************** 
@@ -653,7 +767,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = {},
   },
   ensure_installed = {
@@ -754,19 +868,21 @@ require('aerial').setup({
 local lualine = require 'lualine'
 
 -- Color table for highlights
-local colors = {
-  bg = '#0d0e1a',
-  fg = '#414452',
-  yellow = '#ECBE7B',
-  cyan = '#008080',
-  darkblue = '#081633',
-  green = '#89b0bb',
-  orange = '#FF8800',
-  violet = '#a9a1e1',
-  magenta = '#c678dd',
-  blue = '#51afef',
-  red = '#ec5f67'
-}
+-- local colors = {
+--   bg = '#0d0e1a',
+--   fg = '#414452',
+--   yellow = '#ECBE7B',
+--   cyan = '#008080',
+--   darkblue = '#081633',
+--   green = '#89b0bb',
+--   orange = '#FF8800',
+--   violet = '#a9a1e1',
+--   magenta = '#c678dd',
+--   blue = '#51afef',
+--   red = '#ec5f67'
+-- }
+
+local colors = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 
 local conditions = {
   buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
@@ -784,13 +900,7 @@ local config = {
     -- Disable sections and component separators
     component_separators = "",
     section_separators = "",
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = {c = {fg = colors.fg, bg = colors.bg}},
-      inactive = {c = {fg = colors.fg, bg = colors.bg}}
-    }
+    theme = "catppuccin"
   },
   sections = {
     -- these are to remove the defaults
@@ -824,8 +934,8 @@ local function ins_right(component)
 end
 
 ins_left {
-  function() return '▊' end,
-  color = {fg = colors.blue}, -- Sets highlighting of component
+  function() return '▊▊▊▊▊▊' end,
+  color = {fg = colors.base}, -- Sets highlighting of component
   left_padding = 0 -- We don't need space before this
 }
 
@@ -882,18 +992,27 @@ ins_left {
     if string.len(file) == 0 then return '' end
     return format_file_size(file)
   end,
-  condition = conditions.buffer_not_empty
+  condition = conditions.buffer_not_empty,
+  color = {fg = colors.overlay0, gui = 'italic'}
+}
+
+ins_left {function() return '%=' end}
+
+ins_left{
+  'filetype',
+      colored = true,   -- Displays filetype icon in color if set to true
+      icon_only = true, -- Display only an icon for filetype
 }
 
 ins_left {
   'filename',
   condition = conditions.buffer_not_empty,
-  color = {fg = "#608f91", gui = 'bold'}
+  color = {fg = colors.overlay0 , gui = 'bold'}
 }
 
-ins_left {'location'}
+-- ins_left {'location'}
 
-ins_left {'progress', color = {fg = colors.fg, gui = 'bold'}}
+-- ins_left {'progress', color = {fg = colors.fg, gui = 'bold'}}
 
 -- ins_left {
 --   'diagnostics',
@@ -924,7 +1043,7 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = {fg = '#8677b5', gui = 'bold'}
+  color = {fg = colors.surface1 , gui = 'bold'}
 }
 
 -- Add components to right sections
@@ -939,7 +1058,7 @@ ins_right {
   'fileformat',
   upper = true,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = {fg = colors.green, gui = 'bold'}
+  color = {fg = colors.sky, gui = 'bold'}
 }
 
 ins_right {
@@ -961,7 +1080,7 @@ ins_right {
 
 ins_right {
   function() return '▊' end,
-  color = {fg = colors.blue},
+  color = {fg = colors.base},
   right_padding = 0
 }
 
@@ -1082,22 +1201,30 @@ let g:nvim_tree_icons = {
 
 -- *************************** indent-blankline (UI)
 vim.opt.termguicolors = true
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#252637 gui=nocombine]]
+vim.cmd [[highlight link IndentBlanklineIndent1 SignColumn]]
 
 require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
     space_char_blankline = " ",
     show_current_context = true,
     show_current_context_start = true,
     char_highlight_list = {
-        "IndentBlanklineIndent1",
+      "IndentBlanklineIndent1",
     },
     space_char_highlight_list = {
-       "IndentBlanklineIndent1",
-    },
+     "IndentBlanklineIndent1",
+ },
 }
 
--- 
+
+-- *************************** nvim-ts-rainbow (UI)
+require("nvim-treesitter.configs").setup{
+rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  }
+}
+
 
 
 EOF
