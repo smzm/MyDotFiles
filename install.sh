@@ -494,7 +494,7 @@ done
         read -p " [pip] i3ipc (needed for polybar)    :::::    [r]un : " ansI3ipc
         if [[ $ansI3ipc == "r" ]] || [[ $ansI3ipc == "R" ]]; then
             echo -e "\n +++++ sudo pip install i3ipc \n"
-            sudo pip install i3ipc
+            pip install i3ipc
         fi
     clear
 
