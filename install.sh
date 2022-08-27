@@ -759,7 +759,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils"
-        read -p " sxiv    :::::    [r]un : " ansSxiv
+        read -p " sxiv (Image Viewer)    :::::    [r]un : " ansSxiv
         if [[ $ansSxiv == "r" ]] || [[ $ansSxiv == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S sxiv ... \n"
             sudo pacman -S sxiv
@@ -778,7 +778,7 @@ done
     
          echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx "
-        read -p " hsetroot    :::::    [r]un : " ansHsetroot
+        read -p " hsetroot (compose wallpapers)  :::::    [r]un : " ansHsetroot
         if [[ $ansHsetroot == "r" ]] || [[ $ansHsetroot == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S hsetroot ... \n"
             sudo pacman -S hsetroot
