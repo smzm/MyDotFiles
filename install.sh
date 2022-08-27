@@ -221,6 +221,8 @@ mkdir -p ~/tmpInstall
                sudo npm i -g awk-language-server
                sudo npm i -g dockerfile-language-server-nodejs
                sudo npm i -g emmet-ls
+               sudo npm i -g neovim
+               gem install neovim
                yarn global add yaml-language-server
                sudo npm install -g bash-language-server
                pip install jedi  pyenv python-language-server[all]
