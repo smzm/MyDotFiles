@@ -407,32 +407,8 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-        echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n ack"
-        read -p " xbindkey  :::::    [r]un: " ansXbindkeys
-        if [[ $ansXbindkeys == "r" ]] || [[ $ansXbindkeys == "R" ]]; then
-                echo -e "\n +++++ install xbindkeys and GUI xbindkeys +++++ \n"
-                if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S xbindkeys
-                    yay -S xbindkeys_config-gtk2
-                else
-                    sudo apt-get install -y xbindkeys
-                fi
-        fi
-    clear
 
-        echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags \n ack\n xbindkeys"
-        read -p " ansXdotool  :::::    [r]un: " ansXdotool
-        if [[ $ansXdotool == "r" ]] || [[ $ansXdotool == "R" ]]; then
-                echo -e "\n +++++ install xdotool +++++ \n"
-                if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S xdotool
-                else
-                    sudo apt-get install -y xdotool
-                fi
-        fi
-    clear
+
 
 
         echo " ===================== CheatSheet ====================="
