@@ -236,7 +236,7 @@ mkdir -p ~/tmpInstall
         echo " ===================== nvim ====================="
         read -p " nvim    :::::    [r]un : " ansNvim
         if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
-            echo -e "\n +++++ install neovim nightly +++++  \n"
+            echo -e "\n +++++ install neovim +++++  \n"
             if [[ $ansOS == "arch" ]];then
                 sudo pacman -S neovim
                 sudo pacman -S python-pynvim 
