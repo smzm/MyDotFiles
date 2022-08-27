@@ -192,8 +192,6 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S python
                     sudo pacman -S python-pip
                     
-                    sudo pacman -S python2
-                    sudo pacman -S python2-pip
                 else
                     brew install python
                     echo -e "\n +++++  \n"
