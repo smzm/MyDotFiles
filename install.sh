@@ -227,9 +227,6 @@ mkdir -p ~/tmpInstall
                if [[ $ansOS == "arch" ]]; then
                     yay -S tailwind-css
                     yay -S vscode-tailwindcss-language-server-bin
-                    yay -S code-minimap
-               else
-                    brew install code-minimap
                fi
         fi
     clear
