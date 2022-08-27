@@ -605,7 +605,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy"
-        read -p " redshift    :::::    [r]un : " ansRedshift
+        read -p " redshift(color temperature of your screen)    :::::    [r]un : " ansRedshift
         if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S redshift \n"
             sudo pacman -S redshift
@@ -615,7 +615,7 @@ done
 
         echo " ===================== i3 installation ====================="
         echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift"
-        read -p " udevil    :::::    [r]un : " ansUdevil
+        read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S udevil \n"
             sudo pacman -S udevil
