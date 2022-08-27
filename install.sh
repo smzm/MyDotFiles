@@ -49,8 +49,9 @@ mkdir -p ~/tmpInstall
                 cd yaourt/
                 makepkg -si
 
-                echo -e "\n +++++ installing yay-bin +++++ \n"
-                yaourt -S yay-bin
+                echo -e "\n +++++ installing yay +++++ \n"
+                pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
             fi
     fi
         clear
