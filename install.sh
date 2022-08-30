@@ -43,14 +43,20 @@ mkdir -p ~/tmpInstall
                 git clone https://aur.archlinux.org/package-query.git
                 cd package-query/
                 makepkg -si
+                sleep 2
 
                 cd ~/tmpInstall
                 git clone https://aur.archlinux.org/yaourt.git
                 cd yaourt/
                 makepkg -si
+                sleep 2
 
                 echo -e "\n +++++ installing yay +++++ \n"
-                pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+                cd ~/tmpInstall
+                git clone https://aur.archlinux.org/yay.git 
+                cd yay
+                makepkg -si
+                sleep 2
 
             fi
     fi
