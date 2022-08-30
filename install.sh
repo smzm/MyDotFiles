@@ -37,6 +37,13 @@ mkdir -p ~/tmpInstall
                 echo -e "\n +++++ sudo pacman -S binutils +++++ \n"
                 sudo pacman -S binutils wget
 
+                echo -e "\n +++++ installing yay +++++ \n"
+                cd ~/tmpInstall
+                git clone https://aur.archlinux.org/yay.git 
+                cd yay
+                makepkg -si
+                sleep 2
+
                 echo -e "\n +++++ installing yaourt +++++\n"
                 sudo pacman -S --needed base-devel git wget yajl
                 cd ~/tmpInstall 
@@ -48,13 +55,6 @@ mkdir -p ~/tmpInstall
                 cd ~/tmpInstall
                 git clone https://aur.archlinux.org/yaourt.git
                 cd yaourt/
-                makepkg -si
-                sleep 2
-
-                echo -e "\n +++++ installing yay +++++ \n"
-                cd ~/tmpInstall
-                git clone https://aur.archlinux.org/yay.git 
-                cd yay
                 makepkg -si
                 sleep 2
 
