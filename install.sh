@@ -338,7 +338,6 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd"
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
                 echo -e "\n +++++ install lsd +++++ \n"
