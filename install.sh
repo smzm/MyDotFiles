@@ -35,7 +35,7 @@ mkdir -p ~/tmpInstall
             read -p " install yaourt and yay    :::::    [r]un : " ansYay
             if [[ $ansYay == "r" ]] || [[ $ansYay == "R" ]]; then
                 echo -e "\n +++++ sudo pacman -S binutils +++++ \n"
-                sudo pacman -S binutils
+                sudo pacman -S binutils wget
 
                 echo -e "\n +++++ installing yaourt +++++\n"
                 sudo pacman -S --needed base-devel git wget yajl
@@ -84,6 +84,7 @@ mkdir -p ~/tmpInstall
             fi
         fi
     clear
+    
 
         echo " ===================== ZSH ====================="
         echo -e " zsh"
@@ -93,6 +94,7 @@ mkdir -p ~/tmpInstall
                 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         fi
     clear
+    
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh"
@@ -102,6 +104,7 @@ mkdir -p ~/tmpInstall
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         fi
     clear
+
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting"
@@ -115,6 +118,21 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
+        read -p " zsh-auto-suggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansStarship
+        if [[ $ansStarship == "r"  ]] || [[ $ansStarship == "R" ]]; then
+            echo -e " \n +++++ curl -sS https://starship.rs/install.sh | sh +++++ \n"
+            curl -sS https://starship.rs/install.sh | sh
+            
+            
+            echo "+++++ Copy starship.toml file to home +++++ "
+            cp $dotfiles/.config/starship.toml ~/.config/
+            
+        fi
+    clear
+
+
+        echo " ===================== ZSH ====================="
+        echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions \n starship"
         read -p " Copy .zshrc and .zshenv to home directory    :::::    [r]un : " ansZshrc
         if [[ $ansZshrc == "r" ]] || [[ $ansZshrc == "R" ]]; then
             echo "+++++ Copy .zshrc file to home +++++ "
@@ -272,7 +290,7 @@ mkdir -p ~/tmpInstall
     clear
 
 
-         echo " ===================== Terminal ====================="
+         echo " ===================== Fonts ====================="
         read -p " NerdFont(InconsolataLGC)   :::::    [r]un : " ansNFontInconsolata
         if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
@@ -282,7 +300,7 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-        echo " ===================== Terminal ====================="
+        echo " ===================== Fonts ====================="
         echo -e " NerdFont(InconsolataLGC) "
         read -p " SF Fonts  :::::    [r]un : " ansSFMono
         if [[ $ansSFMono == "r" ]] || [[ $ansSFMono == "R" ]]; then
@@ -302,8 +320,22 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
+
+
+
+        echo " ===================== Fonts ====================="
+        echo -e " NerdFont(InconsolataLGC) "
+        read -p " Font Awesome    :::::    [r]un : " ansFontawesome
+        if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
+            echo -e "\n +++++ yay -S ttf-font-awesome \n"
+            yay -S ttf-font-awesome
+        fi
+    clear
+
+
+
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font"
+        echo -e " lsd"
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
                 echo -e "\n +++++ install lsd +++++ \n"
@@ -316,7 +348,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd"
+        echo -e " lsd"
         read -p " lf   :::::    [r]un : " ansLf
         if [[ $ansLf == "r" ]] || [[ $ansLf == "R" ]]; then
             echo -e "\n +++++ install lf +++++ \n"
@@ -331,7 +363,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono Font \n lsd \n lf "
+        echo -e " lsd \n lf "
         read -p " tmux    :::::    [r]un : " ansTmux
         if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
             echo -e "\n +++++ install tmux +++++ \n"
@@ -351,7 +383,7 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux "
+        echo -e " lsd \n lf \n tmux "
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
                 echo -e "\n +++++ install aria2 +++++ \n"
@@ -364,7 +396,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2"
+        echo -e " lsd \n lf \n tmux \n aria2"
         read -p " broot  :::::    [r]un: " ansBroot
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
                 echo -e "\n +++++ install broot +++++ \n"
@@ -382,7 +414,7 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot"
+        echo -e " lsd \n lf \n tmux \n aria2 \n broot"
         read -p " ctags  :::::    [r]un: " ansCtags
         if [[ $ansCtags == "r" ]] || [[ $ansCtags == "R" ]]; then
                 echo -e "\n +++++ install ctags +++++ \n"
@@ -395,7 +427,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " NerdFont(InconsolataLGC) \n SF Mono font \n lsd \n lf \n tmux \n aria2 \n broot \n ctags"
+        echo -e " lsd \n lf \n tmux \n aria2 \n broot \n ctags"
         read -p " ack  :::::    [r]un: " ansAck
         if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
                 echo -e "\n +++++ install ack +++++ \n"
@@ -483,32 +515,46 @@ clear
 
 
 
-while ! [[ ( "$ansI3" == "y" ) || ( "$ansI3" == "n" ) ]]; do
-    read -p "do you want i3wm packages installation : [y]es - [n]o : " ansI3
+while ! [[ ( "$ansBspwm" == "y" ) || ( "$ansBspwm" == "n" ) ]]; do
+    read -p "do you want bspwm packages installation : [y]es - [n]o : " ansBspwm
     clear
 done
 
-    if [[ $ansI3 == "y" ]]; then
+    if [[ $ansBspwm == "y" ]]; then
 
-        echo " ===================== i3 installation ====================="
-        read -p " [pip] i3ipc (needed for polybar)    :::::    [r]un : " ansI3ipc
-        if [[ $ansI3ipc == "r" ]] || [[ $ansI3ipc == "R" ]]; then
-            echo -e "\n +++++ sudo pip install i3ipc \n"
-            pip install i3ipc
+        echo " ===================== bspwm installation ====================="
+        read -p " bspwm and sxhkd (hotkey needed for bspwm)    :::::    [r]un : " ansBspwmSxhkd
+        if [[ $ansBspwmSxhkd == "r" ]] || [[ $ansBspwmSxhkd == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S bspwm sxhkd \n"
+            sudo pacman -S bspwm sxhkd
+            
+            echo -e "\n +++++ sudo yay -S pulseaudio-ctl (needed for sxhkd) \n"
+            yay -S pulseaudio-ctl 
+            
+            echo -e " \n +++++ Copy bspwm and sxhkd configuration files to .config"
+            cp -r $dotfiles/.config/bspwm $HOME/.config/
+            cp -r $dotfiles/.config/sxhkd $HOME/.config/
         fi
     clear
 
-        ECHO " ===================== i3 installation ====================="
-        echo -e " i3ipc"
-        read -p " Feh (wallpaper)    :::::    [r]un : " ansFeh
-        if [[ $ansFeh == "r" ]] || [[ $ansFeh == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S feh \n"
-            sudo pacman -S feh
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd"
+        read -p " picom (a compositor add features like shadow, opacity, fading, rounding corner and ... )   :::::    [r]un : " ansPicom
+        if [[ $ansPicom == "r" ]] || [[ $ansPicom == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S picom \n"
+            sudo pacman -S picom
+            
+            echo -e " \n +++++ Copy picom configuration files to .config"
+            cp -r $dotfiles/.config/picom $HOME/.config/
+            
+            echo -e " \n +++++ Setting Nvidia proprietary drivers and FullCompositionPipeline : nvidia-settings -a 'AllowFlipping=0'"
+            nvidia-settings -a 'AllowFlipping=0'
+            nvidia-settings --load-config-only
         fi
     clear
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh"
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom"
         read -p " arandr (monitor configuration)    :::::    [r]un : " ansArandr
         if [[ $ansArandr == "r" ]] || [[ $ansArandr == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S arandr \n"
@@ -517,18 +563,8 @@ done
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr"
-        read -p " thunar (file manager)    :::::    [r]un : " ansThunar
-        if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S thunar \n"
-            sudo pacman -S thunar
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar"
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr"
         read -p " rofi (launcher)    :::::    [r]un : " ansRofi
         if [[ $ansRofi == "r" ]] || [[ $ansRofi == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S rofi \n"
@@ -540,51 +576,12 @@ done
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi"
-        read -p " picom (compositor)    :::::   [r]un : " ansPicom
-        if [[ $ansPicom == "r" ]] || [[ $ansPicom == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S picom \n"
-            sudo pacman -S picom
-            cp $dotfiles/.config/picom.conf $HOME/.config/
-        fi
-    clear
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom"
-        read -p " lxappearance    :::::   [r]un : " ansLxappearance
-        if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S lxappearance \n"
-            sudo pacman -S lxappearance
-        fi
-    clear
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance"
-        read -p " pavuControl    :::::    [r]un : " ansPavucontrol
-        if [[ $ansPavucontrol == "r" ]] || [[ $ansPacucontrol == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S pavucontrol \n"
-            sudo pacman -S pavucontrol
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl"
-        read -p " Font Awesome    :::::    [r]un : " ansFontawesome
-        if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
-            echo -e "\n +++++ yay -S ttf-font-awesome \n"
-            yay -S ttf-font-awesome
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome"
-        read -p " polybar    :::::    [r]un : " ansPolybar
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi"
+        read -p " polybar (bar)   :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
             echo -e "\n +++++ yay -S polybar \n"
-           yay -S polybar
+            yay -S polybar
 
             #copy files
             echo -e " \n +++++ Copy polybar configuration "
@@ -593,18 +590,43 @@ done
         fi
     clear
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar"
-        read -p " i3lock-fancy    :::::    [r]un : " ansI3lockFancy
-        if [[ $ansI3lockFancy == "r" ]] || [[ $ansI3lockFancy == "R" ]]; then
-            echo -e "\n +++++ yay -S i3lock-fancy-git \n"
-            yay -S i3lock-fancy-git
+
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar"
+        read -p " dunst (notification manager)    :::::    [r]un : " ansDunst
+        if [[ $ansDunst == "r" ]] || [[ $ansDunst == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S dunst libnotify \n"
+            sudo pacman -S dunst libnotify
+            
+            echo -e " \n +++++ Copy dunst configuration "
+            cp -r $dotfiles/.config/dunst $HOME/.config/
         fi
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy"
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst"
+        read -p " thunar (file manager)    :::::    [r]un : " ansThunar
+        if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S thunar (file manager) \n"
+            sudo pacman -S thunar
+        fi
+    clear
+
+
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar"
+        read -p " lxappearance (GTK+ theme switcher)   :::::   [r]un : " ansLxappearance
+        if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S lxappearance \n"
+            sudo pacman -S lxappearance
+        fi
+    clear
+
+
+
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance"
         read -p " redshift(color temperature of your screen)    :::::    [r]un : " ansRedshift
         if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S redshift \n"
@@ -613,8 +635,9 @@ done
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift"
+        
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
         read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S udevil \n"
@@ -622,8 +645,8 @@ done
         fi
     clear
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil"
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
         read -p " scrot (screenshot)   :::::    [r]un : " ansScrot
         if [[ $ansScrot == "r" ]] || [[ $ansScrot == "R" ]]; then
             echo -e "\n +++++ yay -S scrot \n"
@@ -633,9 +656,10 @@ done
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot"
-        read -p " xclip (clipboard)   :::::    [r]un : " ansXclip
+        
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
+        read -p " xclip (clipboard manager)   :::::    [r]un : " ansXclip
         if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
             echo -e "\n +++++ yay -S xclip \n"
             yay -S xclip
@@ -643,31 +667,9 @@ done
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip"
-        read -p " Background Picture   :::::    [r]un : " ansBackground
-        if [[ $ansBackground == "r" ]] || [[ $ansBackground == "R" ]]; then
-            echo -e "\n +++++ copy Background file to Picture ... \n"
-            cd ~
-            mkdir -p Pictures
-            cp $dotfiles/wall.jpg  $HOME/.config/
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture"
-        read -p " Gnome Calculator    :::::    [r]un : " ansGnomeCalc
-        if [[ $ansGnomeCalc == "r" ]] || [[ $ansGnomeCalc == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S gnome-calculator  \n"
-            sudo pacman -S gnome-calculator
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator"
-        read -p " xfce4 Manager    :::::    [r]un : " ansXfce4Manager
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip"
+        read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
             sudo pacman -S xfce4-power-manager
@@ -675,100 +677,20 @@ done
         fi
     clear
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager"
-        read -p " xautolock   :::::    [r]un : " ansXautolock
-        if [[ $ansXautolock == "r" ]] || [[ $ansXautolock == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S xautolock \n"
-            sudo pacman -S xautolock
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock"
-        read -p " hibernator   :::::    [r]un : " ansHibernator
-        if [[ $ansHibernator == "r" ]] || [[ $ansHibernator == "R" ]]; then
-            echo -e "\n +++++ yay -S hibernator \n"
-            yay -S hibernator
-            sudo hibernator
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator"
-        read -p " clipit   :::::    [r]un : " ansClipit
-        if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
-            echo -e "\n +++++ yay -S clipit \n"
-            yay -S clipit
-        fi
-    clear
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit"
-        read -p " ntp (time)  :::::    [r]un : " ansNTP
-        if [[ $ansNTP == "r" ]] || [[ $ansNTP == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S ntp \n"
-            sudo pacman -S ntp
-            sudo systemctl enable ntpd.service
-            sudo systemctl start ntpd.service
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp"
-        read -p " mediainfo (audio and video information)  :::::    [r]un : " ansMediainfo
-        if [[ $ansMediainfo == "r" ]] || [[ $ansMediainfo == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S mediainfo \n"
-            sudo pacman -S mediainfo
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo"
+        
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S unclutter ... \n"
+            echo -e "\n +++++ sudo pacman -S unclutter (hide/unhide mouse) \n"
             sudo pacman -S unclutter
         fi
     clear
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter"
-        read -p " ntfs-3g (allows accessing NTFS partitions)    :::::    [r]un : " ansNtfs3g
-        if [[ $ansNtfs3g == "r" ]] || [[ $ansNtfs3g == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S ntfs-3g ... \n"
-            sudo pacman -S ntfs-3g
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g"
-        read -p " exfat-utils (allows management of FAT drives)    :::::    [r]un : " ansExfat
-        if [[ $ansExfat == "r" ]] || [[ $ansExfat == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S exfat-utils ... \n"
-            sudo pacman -S exfat-utils
-        fi
-    clear
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils"
-        read -p " sxiv (Image Viewer)    :::::    [r]un : " ansSxiv
-        if [[ $ansSxiv == "r" ]] || [[ $ansSxiv == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S sxiv ... \n"
-            sudo pacman -S sxiv
-    fi
-    clear
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv"
-        read -p " numlockx    :::::    [r]un : " ansNumlockx
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter"
+        read -p " numlockx (Activating numlock on bootup)   :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
             sudo pacman -S numlockx
@@ -776,23 +698,29 @@ done
     clear
 
     
-         echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx "
-        read -p " hsetroot (compose wallpapers)  :::::    [r]un : " ansHsetroot
-        if [[ $ansHsetroot == "r" ]] || [[ $ansHsetroot == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S hsetroot ... \n"
-            sudo pacman -S hsetroot
+        echo " ===================== bspwm installation ====================="
+        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter \n numlockx"
+        read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
+        if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
+            sudo pacman -S nitrogen
+            
+            echo -e "\n +++++ copy Background file to Picture ... \n"
+            cd ~
+            mkdir -p Pictures
+            cp $dotfiles/wall.jpg  $HOME/.config/
         fi
     clear
+    
+    
+            # information of videos and audios
+            sudo pacman -S mediainfo
+            
+            # Allow management of NTFS drives
+            sudo pacman -S ntfs-3g
+            
+            # Allows management of FAT drives
+            sudo pacman -S exfat-utils
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3ipc \n Feh \n arandr \n thunar \n rofi \n picom \n lxappearance \n pavuControl \n Font Awesome \n polybar \n i3lock-fancy \n redshift \n udevil \n scrot \n xclip \n Background Picture \n Gnome Calculator \n xfce4 Manager \n xautolock \n hibernator \n clipit \n ntp \n mediainfo \n unclutter \n ntfs-3g \n exfat-utils \n sxiv \n numlockx \n hsetroot"
-        read -p " i3wm config file copy    :::::    [r]un : " ansI3Config
-        if [[ $ansI3Config == "r" ]] || [[ $ansI3Config == "R" ]]; then
-            echo -e "\n +++++ copy i3wm configuration file ... \n"
-            cp -r $dotfiles/.config/i3  $HOME/.config/
-        fi
-    clear
 fi
 
