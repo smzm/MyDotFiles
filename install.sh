@@ -124,14 +124,14 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
-        read -p " zsh-auto-suggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansStarship
+        read -p " Starship     :::::    r[un] : " ansStarship
         if [[ $ansStarship == "r"  ]] || [[ $ansStarship == "R" ]]; then
             echo -e " \n +++++ curl -sS https://starship.rs/install.sh | sh +++++ \n"
             curl -sS https://starship.rs/install.sh | sh
             
             echo "+++++ Copy starship.toml file to home +++++ "
             cp $dotfiles/.config/starship.toml ~/.config/
-            
+            sleep 2
         fi
     clear
 
