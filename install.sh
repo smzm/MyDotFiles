@@ -195,6 +195,7 @@ mkdir -p ~/tmpInstall
                 npm config set prefix ~/.np
 
         fi
+    clear
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -208,6 +209,7 @@ mkdir -p ~/tmpInstall
             fi
         sudo gem update
         fi
+    clear
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
                 echo -e "\n +++++ install python, pip +++++ \n"
