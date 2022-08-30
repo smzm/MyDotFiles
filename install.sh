@@ -569,7 +569,7 @@ done
             #copy files
             echo -e " \n +++++ Copy polybar configuration "
             cp -r $dotfiles/.config/polybar $HOME/.config/
-            cd .config/polybar/scipts/
+            cd ~/.config/polybar/scripts/
             chmod +x *.sh
 
         fi
@@ -585,7 +585,7 @@ done
             
             echo -e " \n +++++ Copy dunst configuration "
             cp -r $dotfiles/.config/dunst $HOME/.config/
-            cd .config/polybar/scipts/
+            cd ~/.config/polybar/scripts/
             chmod +x *.sh
             
         fi
