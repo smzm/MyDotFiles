@@ -279,8 +279,8 @@ mkdir -p ~/tmpInstall
             
             python3 -m pip install --user --upgrade pynvim
             sudo pip3 install pynvim --upgrade
-            sudo npm install -g neovim
-            sudo gem install neovim
+            npm install -g neovim
+            gem install neovim
         fi
     clear
 
