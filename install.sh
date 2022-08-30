@@ -123,7 +123,6 @@ mkdir -p ~/tmpInstall
             echo -e " \n +++++ curl -sS https://starship.rs/install.sh | sh +++++ \n"
             curl -sS https://starship.rs/install.sh | sh
             
-            
             echo "+++++ Copy starship.toml file to home +++++ "
             cp $dotfiles/.config/starship.toml ~/.config/
             
@@ -176,7 +175,7 @@ mkdir -p ~/tmpInstall
         echo " ===================== Development ====================="
         read -p " node(npm)    :::::    [r]un: " ansNode
         if [[ $ansNode == "r" ]] || [[ $ansNode == "R" ]]; then
-                echo -e "\n +++++ install node +++++ \n"
+                echo -e "\n +++++ install node, npm, yarn +++++ \n"
                 if [[ $ansOS == "arch" ]];then
                     sudo pacman -S nodejs
                     sudo pacman -S npm
@@ -193,7 +192,7 @@ mkdir -p ~/tmpInstall
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
-                echo -e "\n +++++ sudo pacman -S ruby \n"
+                echo -e "\n +++++ install ruby, gem  \n"
                 sudo pacman -S ruby
                 echo "gem: --user-install" >> ~/.gemrc
                 #cp $dotfiles/.profile ~/
@@ -205,7 +204,7 @@ mkdir -p ~/tmpInstall
         fi
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
-                echo -e "\n +++++ install python +++++ \n"
+                echo -e "\n +++++ install python, pip +++++ \n"
                 if [[ $ansOS == "arch" ]];then
                     sudo pacman -S python
                     sudo pacman -S python-pip
@@ -219,11 +218,17 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-        echo " ===================== Development Packages ====================="
-        read -p " [pip] : numpy | pandas | scipy | matplotlib | opencv-python ::::: [r]un : " ansPLS2
+        echo " ===================== My Development Packages ====================="
+        read -p " [pip] : numpy | pandas | scipy | sympy | matplotlib | plotly | jupyter notebook ::::: [r]un : " ansPLS2
         if [[ $ansPLS2 == 'r' ]] || [[ $ansPLS2 == "R" ]]; then
-            echo -e "+++++ pip3 install numpy pandas scipy matplotlib opencv-python"
-                pip install numpy pandas scipy matplotlib opencv-python
+            echo -e "+++++ pip3 install numpy pandas scipy sympy matplotlib plotly"
+                pip install numpy pandas scipy sympy matplotlib plotly 
+                
+                if [[ $ansOS == "arch" ]]; then
+                    sudo pacman -S jupyter-notebook python-ipykernel
+                else 
+                    pip install jupyter
+                fi
         fi
         
         
@@ -231,22 +236,22 @@ mkdir -p ~/tmpInstall
         if [[ $ansLS == 'r' ]] || [[ $ansLS == "R" ]]; then
             echo -e "+++++ language-servers | "
                sudo npm i -g pyright
-               sudo npm i -D tailwindcss
-               sudo npm i -g @tailwindcss/language-server
                sudo npm i -g vim-language-server
                sudo npm i -g vscode-langservers-extracted
                sudo npm i -g typescript typescript-language-server
                sudo npm i -g awk-language-server
                sudo npm i -g dockerfile-language-server-nodejs
                sudo npm i -g emmet-ls
-               sudo npm i -g neovim
-               gem install neovim
+               
                yarn global add yaml-language-server
                sudo npm install -g bash-language-server
-               pip install jedi  pyenv python-language-server[all]
+               pip install jedi pyenv python-language-server[all]
+               
                if [[ $ansOS == "arch" ]]; then
                     yay -S tailwind-css
-                    yay -S vscode-tailwindcss-language-server-bin
+                    yay -S tailwindcss-language-server
+               else 
+                    sudo npm i -g @tailwindcss/language-server
                fi
         fi
     clear
@@ -263,6 +268,7 @@ mkdir -p ~/tmpInstall
             else
                 brew install neovim
             fi
+            
             python3 -m pip install --user --upgrade pynvim
             sudo pip3 install pynvim --upgrade
             sudo npm install -g neovim
@@ -291,7 +297,7 @@ mkdir -p ~/tmpInstall
 
 
          echo " ===================== Fonts ====================="
-        read -p " NerdFont(InconsolataLGC)   :::::    [r]un : " ansNFontInconsolata
+        read -p " InconsolataLGC Nerd Font  :::::    [r]un : " ansNFontInconsolata
         if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
                 sudo mkdir -p /usr/share/fonts/InconsolataLGC
@@ -300,38 +306,27 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-        echo " ===================== Fonts ====================="
-        echo -e " NerdFont(InconsolataLGC) "
-        read -p " SF Fonts  :::::    [r]un : " ansSFMono
-        if [[ $ansSFMono == "r" ]] || [[ $ansSFMono == "R" ]]; then
-                echo -e " \n +++++ Install SF Mono font \n"
-                sudo mkdir -p /usr/share/fonts/SF-Mono/
-                cd ~/tmpInstall/
-                git clone "https://github.com/Twixes/SF-Mono-Powerline.git"
-                cd SF-Mono-Powerline
-                sudo cp -r * /usr/share/fonts/SF-Mono/
-                fc-cache -f -v
-                
-                if [[ $ansOS == "arch" ]];then
-                    echo -e " \n +++++ Installing Apple Fonts ... \n"
-                    sleep 2
+
+        if [[ $ansOS == "arch" ]]; then
+            echo " ===================== Fonts ====================="
+            echo -e " InconsolataLGC Nerd Font "
+            read -p " Apple Fonts  :::::    [r]un : " ansApplefonts
+            if [[ $ansApplefonts == "r" ]] || [[ $ansApplefonts == "R" ]]; then
+                    echo -e " \n +++++ Install Apple fonts : SF Pro | SF Compact | SF Mono | SF Arabic | Newyork \n"
                     yay -S apple-fonts
-                fi
+            fi
+            clear
+
+
+            echo " ===================== Fonts ====================="
+            echo -e " InconsolataLGC Nerd Font \n Apple Fonts"
+            read -p " Font Awesome    :::::    [r]un : " ansFontawesome
+            if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
+                echo -e "\n +++++ yay -S ttf-font-awesome \n"
+                yay -S ttf-font-awesome
+            fi
+            clear
         fi
-    clear
-
-
-
-
-        echo " ===================== Fonts ====================="
-        echo -e " NerdFont(InconsolataLGC) "
-        read -p " Font Awesome    :::::    [r]un : " ansFontawesome
-        if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
-            echo -e "\n +++++ yay -S ttf-font-awesome \n"
-            yay -S ttf-font-awesome
-        fi
-    clear
-
 
 
         echo " ===================== Terminal ====================="
@@ -347,23 +342,9 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-        echo " ===================== Terminal ====================="
-        echo -e " lsd"
-        read -p " lf   :::::    [r]un : " ansLf
-        if [[ $ansLf == "r" ]] || [[ $ansLf == "R" ]]; then
-            echo -e "\n +++++ install lf +++++ \n"
-            if [[ $ansOS == "arch" ]];then
-                yay -S lf
-            else
-                brew install lf
-            fi
-            echo -e "\n +++++ Copy Config files ... +++++ \n"
-            sudo cp -r $dotfiles/.config/lf ~/.config/
-        fi
-    clear
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n lf "
+        echo -e " lsd "
         read -p " tmux    :::::    [r]un : " ansTmux
         if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
             echo -e "\n +++++ install tmux +++++ \n"
@@ -383,7 +364,7 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n lf \n tmux "
+        echo -e " lsd \n tmux "
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
                 echo -e "\n +++++ install aria2 +++++ \n"
@@ -396,8 +377,8 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n lf \n tmux \n aria2"
-        read -p " broot  :::::    [r]un: " ansBroot
+        echo -e " lsd \n tmux \n aria2"
+        read -p " broot (Fuzzy Search + tree + cd)  :::::    [r]un: " ansBroot
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
                 echo -e "\n +++++ install broot +++++ \n"
                 if [[ $ansOS == "arch" ]];then
@@ -414,8 +395,8 @@ mkdir -p ~/tmpInstall
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n lf \n tmux \n aria2 \n broot"
-        read -p " ctags  :::::    [r]un: " ansCtags
+        echo -e " lsd \n tmux \n aria2 \n broot"
+        read -p " ctags (Generates an index file of language objects found in source files) :::::    [r]un: " ansCtags
         if [[ $ansCtags == "r" ]] || [[ $ansCtags == "R" ]]; then
                 echo -e "\n +++++ install ctags +++++ \n"
                 if [[ $ansOS == "arch" ]];then
@@ -427,7 +408,7 @@ mkdir -p ~/tmpInstall
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n lf \n tmux \n aria2 \n broot \n ctags"
+        echo -e " lsd \n tmux \n aria2 \n broot \n ctags"
         read -p " ack  :::::    [r]un: " ansAck
         if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
                 echo -e "\n +++++ install ack +++++ \n"
@@ -440,9 +421,6 @@ mkdir -p ~/tmpInstall
     clear
 
 
-
-
-
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
         if [[ $ansCheatSheet == "r" ]] || [[ $ansCheatSheet == "R" ]]; then
@@ -450,6 +428,7 @@ mkdir -p ~/tmpInstall
             cp -r $dotfiles/bin ~
         fi
     clear
+
 
 
      if [[ $ansOS == "arch" ]]; then
@@ -477,21 +456,12 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
-
-        echo " ===================== GUI APP ====================="
-        echo -e " kitty \n zathura"
-        read -p " Brave    :::::    [r]un : " ansBrave
-        if [[ $ansBrave == "r" ]] || [[ $ansBrave == "R" ]]; then
-            echo -e "\n +++++ install Brave +++++ \n"
-                    yay -S brave-bin
-        fi
-    clear
-    
+  
 
 
         echo " ===================== GUI APP ====================="
-        echo -e " kitty \n zathura \n Brave"
-        read -p " MPV    :::::    [r]un : " ansMpv
+        echo -e " kitty \n zathura "
+        read -p " MPV + xdotool + xbindkeys   :::::    [r]un : " ansMpv
         if [[ $ansMpv == "r" ]] || [[ $ansMpv == "R" ]]; then
             echo -e "\n +++++ install MPV +++++ \n"
                     sudo pacman -S mpv
@@ -534,6 +504,7 @@ done
             echo -e " \n +++++ Copy bspwm and sxhkd configuration files to .config"
             cp -r $dotfiles/.config/bspwm $HOME/.config/
             cp -r $dotfiles/.config/sxhkd $HOME/.config/
+            cp -r $dotfiles/.xinitrc $HOME/
         fi
     clear
 
@@ -582,6 +553,10 @@ done
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
             echo -e "\n +++++ yay -S polybar \n"
             yay -S polybar
+            
+            echo -e "\n +++++ install requirements : Fira Code Nerd Font | python-pywal | cava | wmctrl | pacman-contrib | ttf-font-awesome | jq | bc | \n"
+            sudo pacman -S python-pywal calc jq bc wmctrl
+            yay -S nerd-fonts-fira-code pacman-contrib ttf-font-awesome cava 
 
             #copy files
             echo -e " \n +++++ Copy polybar configuration "
