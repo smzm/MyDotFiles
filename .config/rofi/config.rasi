@@ -1,167 +1,90 @@
 configuration {
-    font: 							"SF Compact Rounded 12";
-    fixed-num-lines: 				true;
-    show-icons: 					false;
-    sidebar-mode: 					true;
-    scroll-method: 					1;
-    window-format: 					"[{w}] ··· {c} ···   {t}";
-    click-to-exit: 					true;
-    combi-hide-mode-prefix: 		false;
-    display-window: 				"";
-    display-windowcd: 				"";
-    display-run: 					"";
-    display-ssh: 					"";
-    display-drun: 					"";
-    display-combi: 					"";
+  display-drun: "  :";
+  display-window: "Windows: ";
+  drun-display-format: "{icon} {name}";
+  modi: "window,run,drun";
+  font: "Fira Code Nerd Font Medium 15";
+  show-icons: true;
+  icon-theme: "Papirus";
 }
 
-@import "colors.rasi"
+@theme "/dev/null"
 
 * {
-    background-color:             	@bg;
+  red      : #be2720;
+  lred     : #e46c67;
+  green    : #67b85d;
+  lgreen   : #94dc8b;
+  yellow   : #cecd6b;
+  lyellow  : #e9e9a3;
+  blue     : #237de1;
+  lblue    : #7cb1ec;
+  magenta  : #936bc8;
+  lmagenta : #b99be2;
+  cyan     : #29adc2;
+  lcyan    : #7cd3e0;
+
+  fg       : #cecfdf;
+  bg       : #17181c;
+
+  disabled : #7c7d87;
+
+  background-color: @bg;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
 }
 
 window {
-    border: 						2px;
-    border-color: 					@bg;
-    border-radius: 					12px;
-    padding: 						8px;
-    width: 							60%;
-    height: 						50%;
-    background-color:               @bg;
-}
-
-prompt {
-    spacing: 						0;
-    border: 						0;
-    text-color: 					@fg;
-}
-
-textbox-prompt-colon {
-    expand: 						false;
-    str: 							" ";
-    margin:							0px 4px 0px 0px;
-    text-color: 					inherit;
-}
-
-entry {
-    spacing:    					0;
-    text-color: 					@fg;
-}
-
-case-indicator {
-    spacing:    					0;
-    text-color: 					@fg;
-}
-
-inputbar {
-    spacing:    					0px;
-    text-color: 					@fg;
-    padding:    					10px;
-    children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-
-mainbox {
-    border: 						0px;
-    border-color: 					@ac;
-    padding: 						40;
-}
-
-listview {
-    lines:							10;
-    columns:						3;
-    fixed-height: 					0;
-    border: 						0px;
-    border-color: 					@ac;
-    spacing: 						10px;
-    scrollbar: 						false;
-    padding: 						40px 0px 0px;
-}
-
-element-text, element-icon {
-    background-color: #00000000;
-    text-color:       inherit;
+  width: 30%;
+  padding: 12;
 }
 
 element {
-    border: 						0px;
-    padding: 						1px;
-}
-element normal.normal {
-    background-color: 				@bg;
-    text-color:       				@fg;
-}
-element normal.urgent {
-    background-color: 				@bg;
-    text-color:       				@red;
-}
-element normal.active {
-    background-color: 				@bg;
-    text-color:       				@green;
-}
-element selected.normal {
-    background-color: 				@bg;
-    text-color:       				@ac;
-}
-element selected.urgent {
-    background-color: 				@bg;
-    text-color:       				@red;
-}
-element selected.active {
-    background-color: 				@bg;
-    text-color:       				@ac;
-}
-element alternate.normal {
-    background-color: 				@bg;
-    text-color:       				@fg;
-}
-element alternate.urgent {
-    background-color: 				@bg;
-    text-color:       				@fg;
-}
-element alternate.active {
-    background-color: 				@bg;
-    text-color:       				@fg;
+  padding: 8;
+  text-color: @fg;
+  border-radius: 8px;
 }
 
-sidebar {
-    border:       					0px;
-    border-color: 					@bg;
-    border-radius: 					20px;
+element selected {
+  text-color: @bg;
+  background-image: linear-gradient(#7cb1ec, #e46c67);
 }
 
-button {
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin: 						5px;
-    padding: 						5px;
-    text-color: 					@fg;
-    border: 						0px;
-    border-radius: 					20px;
-    border-color: 					@fg;
+element-text {
+  background-color: #00000000;
+  text-color: inherit;
+  vertical-align: 0.5;
 }
 
-button selected {
-    text-color: 					@fg;
-    border: 						3px;
-    border-radius: 					20px;
-    border-color: 					@ac;
+element-icon {
+  size: 40;
 }
 
-scrollbar {
-    width:        					4px;
-    border:       					0px;
-    handle-color: 					@fg;
-    handle-width: 					8px;
-    padding:      					0;
+entry {
+  background-color: @bg;
+  padding: 12;
+  text-color: @fg;
+
+  margin-bottom: 50;
 }
 
-message {
-    border: 						0px;
-    border-color: 					@ac;
-    padding: 						1px;
+prompt {
+  background-color: @bg;
+  padding: 12;
+  text-color: @fg;
+
+  margin-bottom: 50;
 }
 
-textbox {
-    text-color: 					@fg;
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
 }
