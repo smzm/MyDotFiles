@@ -505,6 +505,7 @@ done
             cp -r $dotfiles/.config/bspwm $HOME/.config/
             cp -r $dotfiles/.config/sxhkd $HOME/.config/
             cp -r $dotfiles/.xinitrc $HOME/
+            cp -r $dotfiles/.Xresources $HOME/
         fi
     clear
 
@@ -687,6 +688,10 @@ done
     clear
     
     
+      echo " ===================== bspwm installation ====================="
+        echo -e " miscellaneous :  "
+        read -p " mediainfo | ntfs-3g | exfat-utils   :::::    [r]un : " ansMic
+        if [[ $ansMic == "r" ]] || [[ $ansMic == "R" ]]; then
             # information of videos and audios
             sudo pacman -S mediainfo
             
@@ -695,6 +700,7 @@ done
             
             # Allows management of FAT drives
             sudo pacman -S exfat-utils
+        fi
 
 
 fi
