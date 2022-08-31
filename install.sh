@@ -524,7 +524,7 @@ done
             sudo pacman -S picom
             
             echo -e " \n +++++ Copy picom configuration files to .config"
-            cp -r $dotfiles/.config/picom $HOME/.config/
+            cp $dotfiles/.config/picom.conf $HOME/.config/
             
             echo -e " \n +++++ Setting Nvidia proprietary drivers and FullCompositionPipeline : nvidia-settings -a 'AllowFlipping=0'"
             nvidia-settings -a 'AllowFlipping=0'
