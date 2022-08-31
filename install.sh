@@ -520,8 +520,8 @@ done
         echo -e " bspwm \n sxhkd"
         read -p " picom (a compositor add features like shadow, opacity, fading, rounding corner and ... )   :::::    [r]un : " ansPicom
         if [[ $ansPicom == "r" ]] || [[ $ansPicom == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S picom \n"
-            sudo pacman -S picom
+            echo -e "\n +++++ yay -S picom-jonaburg-git (another fork of picom with blur ) \n"
+            yay -S picom-jonaburg-git
             
             echo -e " \n +++++ Copy picom configuration files to .config"
             cp $dotfiles/.config/picom.conf $HOME/.config/
