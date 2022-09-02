@@ -403,19 +403,37 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== Terminal ====================="
         echo -e " lsd \n tmux \n aria2 \n broot"
-        read -p " ctags (Generates an index file of language objects found in source files) :::::    [r]un: " ansCtags
-        if [[ $ansCtags == "r" ]] || [[ $ansCtags == "R" ]]; then
-                echo -e "\n +++++ install ctags +++++ \n"
+        read -p " ripgrep (A search tool that combines the usability of ag with the raw speed of grep) :::::    [r]un: " ansRg
+        if [[ $ansRg == "r" ]] || [[ $ansRg == "R" ]]; then
+                echo -e "\n +++++ install ripgrep +++++ \n"
                 if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S ctags
+                    # https://github.com/BurntSushi/ripgrep
+                    # example : rg -i def  --->  search def in files
+                    sudo pacman -S ripgrep
                 else
-                    brew install ctags
+                    brew install ripgrep
                 fi
         fi
     clear
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot \n ctags"
+        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep"
+        read -p " peco (Simplistic interactive filtering tool) :::::    [r]un: " ansPeco
+        if [[ $ansPeco == "r" ]] || [[ $ansPeco == "R" ]]; then
+                echo -e "\n +++++ install peco +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    # https://github.com/peco/peco
+                    # example : rg -i def | peco 
+                    sudo pacman -S peco
+                else
+                    brew install peco
+                fi
+        fi
+    clear
+
+
+        echo " ===================== Terminal ====================="
+        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco"
         read -p " ack  :::::    [r]un: " ansAck
         if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
                 echo -e "\n +++++ install ack +++++ \n"
@@ -427,6 +445,20 @@ mkdir -p ~/tmpInstall
         fi
     clear
 
+
+        echo " ===================== Terminal ====================="
+        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack"
+        read -p " lostfiles (Find orphaned files not owned by any Arch packages)   :::::    [r]un: " ansLostfiles
+        if [[ $ansLostfiles == "r" ]] || [[ $ansLostfiles == "R" ]]; then
+                echo -e "\n +++++ install lostfiles +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S lostfiles
+                else
+                    brew install lostfiles
+                fi
+        fi
+    clear
+    
 
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
@@ -712,6 +744,10 @@ done
             
             # Allows management of FAT drives
             sudo pacman -S exfat-utils
+            
+            # A better fuzzy finder for terminal | github.com/jhawthorn/fzy
+            sudo pacman -S fzy
+
         fi
 
 
