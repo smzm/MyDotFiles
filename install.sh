@@ -459,6 +459,21 @@ mkdir -p ~/tmpInstall
         fi
     clear
     
+            echo " ===================== Terminal ====================="
+        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles"
+        read -p " gh (The GitHub for command line)   :::::    [r]un: " ansGithubcli
+        if [[ $ansGithubcli == "r" ]] || [[ $ansGithubcli == "R" ]]; then
+                echo -e "\n +++++ install gh +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    # https://cli.github.com/
+                    sudo pacman -S github-cli
+                else
+                    brew install gh
+                fi
+                gh auth login
+        fi
+    clear
+    
 
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
