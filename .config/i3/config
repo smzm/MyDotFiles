@@ -24,18 +24,14 @@ set $focused_border      #DDB6F2
 
 
 # Set Theme colors
-# Class                 border             backgr. text       indic.               child_border
-#client.focused          $bg-color          $bg-color          $text-color          #Abc4ef
+# Class                  border             backgr. text       indic.               child_border
+client.focused           #644ED6            #0E0F19            #ffffff              #644ED6   #644ED6
+client.unfocused         #29272E            #0E0F19            #ffffff              #161616   #161616
+client.focused_inactive  #466060            #0E0F19 #ffffff    #466060              #466060
+client.urgent    	     $urgent-bg-color   $urgent-bg-color   $text-color          #Abc4ef
 #client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #Abc4ef
-#client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #Abc4ef
 #client.placeholder      #000000            #0c0c0c            #ffffff              #000000 
 #client.background       #2B2C2B
-   
-
-client.focused          #644ED6 #0E0F19 #ffffff #644ED6 #644ED6
-client.unfocused        #29272E #0E0F19 #ffffff #161616 #161616
-client.focused_inactive #466060 #0E0F19 #ffffff #466060 #466060
-client.urgent    	     $urgent-bg-color   $urgent-bg-color   $text-color          #Abc4ef
 
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -301,10 +297,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -335,9 +331,11 @@ bindsym $mod+m bar mode toggle
 #bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 #bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 #bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+# Desktop screenshot ==> PrintScreen
+bindsym --release Print --no-startup-id exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -m -e 'xclip -selection c -t image/png < $f'"
+# Selection screenshot ==> Shift + PrintScreen
+bindsym --release Shift+Print --no-startup-id exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
 
 ################################################################################################
@@ -399,6 +397,7 @@ for_window [urgent=latest] focus
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec_always --no-startup-id ff-theme-util
+exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id nitrogen --restore; 
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -409,8 +408,11 @@ exec --no-startup-id xautolock -time 20 -locker blurlock
 exec --no-startup-id unclutter
 exec --no-startup-id numlockx &
 exec --no-startup-id clipit
+exec --no-startup-id redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "devmon --no-gui"
+
+
 
 # Start Polybar
 exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
@@ -422,10 +424,4 @@ exec_always --no-startup-id dunst &
 exec_always --no-startup-id picom --config ~/.config/picom.conf & 
 
 # exec_always --no-startup-id xborders
-
-
-
-
-
-
 
