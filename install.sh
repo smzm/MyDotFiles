@@ -167,7 +167,7 @@ mkdir -p ~/tmpInstall
                     brew install gcc
         fi
         
-
+clear
 
         echo " ===================== Development ====================="
         read -p " node(npm)    :::::    [r]un: " ansNode
