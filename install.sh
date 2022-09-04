@@ -293,7 +293,8 @@ mkdir -p ~/tmpInstall
                        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
             echo "\n +++++ Copy .nvim file +++++ \n"
-            sudo cp -r $dotfiles/.config/nvim ~/.config/
+            mkdir -p $HOME/.config/nvim
+            cp -r $dotfiles/.config/nvim/* ~/.config/nvim/
 
             clear
             echo  -e "\n run (:PlugInstall) in nvim"
