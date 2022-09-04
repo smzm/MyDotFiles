@@ -620,7 +620,7 @@ done
             
             echo -e "\n +++++ install requirements : Fira Code Nerd Font | python-pywal | cava | wmctrl | pacman-contrib | ttf-font-awesome | jq | bc | \n"
             sudo pacman -S python-pywal calc jq bc wmctrl
-            yay -S nerd-fonts-fira-code pacman-contrib cava 
+            yay -S nerd-fonts-fira-code pacman-contrib cava ttf-indic-otf
             
             # Install feather font
             mkdir -p $HOME/.fonts
