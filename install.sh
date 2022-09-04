@@ -562,10 +562,7 @@ done
         if [[ $ansI3gap == "r" ]] || [[ $ansI3gap == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S i3  \n"
             sudo pacman -S i3 python-i3ipc
-            
-            echo -e "\n +++++ sudo yay -S pulseaudio-ctl \n"
-            yay -S pulseaudio-ctl 
-            
+                      
             echo -e " \n +++++ Copy i3 configuration files to .config"
             cp -r $dotfiles/.config/i3 $HOME/.config/
             cp -r $dotfiles/.Xresources $HOME/
