@@ -167,15 +167,6 @@ mkdir -p ~/tmpInstall
                     brew install gcc
         fi
         
-        read -p " tldr    :::::    [r]un : " ansTldr
-        if [[ $ansTldr == "r" ]] || [[ $ansTldr == "R" ]]; then
-                if [[ $ansOS == "arch" ]];then
-                    sudo pacman -S tldr
-                else
-                    brew install tldr
-                fi
-        fi
-    clear
 
 
         echo " ===================== Development ====================="
@@ -192,7 +183,7 @@ mkdir -p ~/tmpInstall
                 fi
                 echo "config npm to install without sudo "
                 mkdir ~/.npm
-                npm config set prefix ~/.np
+                npm config set prefix ~/.npm
 
         fi
     clear
@@ -294,7 +285,7 @@ mkdir -p ~/tmpInstall
 
             echo "\n +++++ Copy .nvim file +++++ \n"
             mkdir -p $HOME/.config/nvim
-            cp -r $dotfiles/.config/nvim/* ~/.config/nvim/
+            yes | cp -rf $dotfiles/.config/nvim/* ~/.config/nvim/
 
             clear
             echo  -e "\n run (:PlugInstall) in nvim"
@@ -376,7 +367,7 @@ mkdir -p ~/tmpInstall
             read -p " Copy .tmux.conf to Home ?    :::::    [r]un : " ansCopyTmux
             if [[ $ansCopyTmux == "r" ]] || [[ $ansCopyTmux == "R" ]]; then
                 echo "\n +++++ Copy .tmux.conf file to home +++++ \n"
-                sudo cp $dotfiles/.tmux.conf ~
+                yes | cp -rf $dotfiles/.tmux.conf ~/
             fi
         fi
     clear
@@ -408,7 +399,8 @@ mkdir -p ~/tmpInstall
 
                 echo -e "\n +++++ copy config files ... +++++ \n"
                 sleep 2
-                sudo cp -r $dotfiles/.config/broot ~/.config/
+                mkdir -p ~/.config/broot
+                yes | cp -rf $dotfiles/.config/broot/* ~/.config/broot/
         fi
     clear
 
@@ -471,7 +463,7 @@ mkdir -p ~/tmpInstall
         fi
     clear
     
-            echo " ===================== Terminal ====================="
+        echo " ===================== Terminal ====================="
         echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles"
         read -p " gh (The GitHub for command line)   :::::    [r]un: " ansGithubcli
         if [[ $ansGithubcli == "r" ]] || [[ $ansGithubcli == "R" ]]; then
@@ -486,6 +478,17 @@ mkdir -p ~/tmpInstall
         fi
     clear
     
+    echo " ===================== Terminal ====================="
+    echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles \n gh"
+     read -p " tldr    :::::    [r]un : " ansTldr
+        if [[ $ansTldr == "r" ]] || [[ $ansTldr == "R" ]]; then
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S tldr
+                else
+                    brew install tldr
+                fi
+        fi
+    clear
 
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
@@ -504,7 +507,8 @@ mkdir -p ~/tmpInstall
             echo -e "\n +++++ install kitty +++++ \n"
                     sudo pacman -S kitty
             echo -e "\n +++++ copy /kitty to ~/.config/ +++++"
-                    sudo cp -r $dotfiles/.config/kitty ~/.config/
+                    mkdir ~/.config/kitty
+                    yes | cp -rf $dotfiles/.config/kitty/* ~/.config/kitty/
                     sleep 3
         fi
     clear
@@ -517,7 +521,8 @@ mkdir -p ~/tmpInstall
             echo -e "\n +++++ install zathura +++++ \n"
                     sudo pacman -S zathura
                     echo -e "\n +++++ copy /zathura to ~/.config/ +++++"
-                    sudo cp -r $dotfiles/.config/zathura ~/.config/
+                    mkdir -p ~/.config/zathura
+                    yes | cp -rf $dotfiles/.config/zathura* ~/.config/zathura
                     sleep 3
         fi
     clear
@@ -533,13 +538,13 @@ mkdir -p ~/tmpInstall
                     sudo pacman -S mpv
             echo -e "\n copy input.conf file to the ~/.config/mpv"
                     mkdir ~/.config/mpv/
-                    sudo cp -r $dotfiles/.config/mpv/ ~/.config/
+                    yes | cp -rf $dotfiles/.config/mpv/* ~/.config/mpv/
                     sleep 3
                     if [[ $ansOS == "arch" ]];then
                     sudo pacman -S xdotool
                     sudo pacman -S xbindkeys
                     yay -S xbindkeys_config-gtk2
-                    sudo cp  $dotfiles/.xbindkeysrc ~/.xbindkeysrc 
+                    yes | cp -rf $dotfiles/.xbindkeysrc ~/.xbindkeysrc 
                     fi
         fi
     clear
@@ -565,8 +570,8 @@ done
             sudo pacman -S i3 python-i3ipc
                       
             echo -e " \n +++++ Copy i3 configuration files to .config"
-            cp -r $dotfiles/.config/i3 $HOME/.config/
-            cp -r $dotfiles/.Xresources $HOME/
+            yes | cp -rf $dotfiles/.config/i3 $HOME/.config/
+            yes | cp -rf $dotfiles/.Xresources $HOME/
         fi
     clear
 
@@ -604,7 +609,7 @@ done
             sudo pacman -S rofi
 
             echo -e " \n +++++ Copy rofi configuration files "
-            cp -r $dotfiles/.config/rofi $HOME/.config/
+            yes | cp -rf $dotfiles/.config/rofi $HOME/.config/
         fi
     clear
 
@@ -622,17 +627,16 @@ done
             
             # Install feather font
             mkdir -p $HOME/.fonts
-            sudo cp $dotfiels/.fonts/ $HOME/.fonts/
+            yes | cp -rf $dotfiels/.fonts/* $HOME/.fonts/
             fc-cache -fv
             
             sleep 2
 
             # copy files
             echo -e " \n +++++ Copy polybar configuration "
-            cp -r $dotfiles/.config/polybar $HOME/.config/
+            yes | cp -rf $dotfiles/.config/polybar $HOME/.config/
             cd ~/.config/polybar/scripts/
-            sudo chmod +x *.sh
-            
+            sudo chmod +xwr *.sh
 
         fi
     clear
@@ -646,9 +650,9 @@ done
             sudo pacman -S dunst libnotify
             
             echo -e " \n +++++ Copy dunst configuration "
-            cp -r $dotfiles/.config/dunst $HOME/.config/
+            yes | cp -rf $dotfiles/.config/dunst $HOME/.config/
             cd ~/.config/polybar/scripts/
-            sudo chmod +x *.sh
+            sudo chmod +xwr *.sh
             
         fi
     clear
