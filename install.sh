@@ -124,7 +124,7 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting \n zsh-auto-suggestions"
-        read -p " Starship     :::::    r[un] : " ansStarship
+        read -p " starship     :::::    r[un] : " ansStarship
         if [[ $ansStarship == "r"  ]] || [[ $ansStarship == "R" ]]; then
             echo -e " \n +++++ curl -sS https://starship.rs/install.sh | sh +++++ \n"
             curl -sS https://starship.rs/install.sh | sh
