@@ -3,6 +3,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $alt Mod1
 
 #############################
 ###       Appearance      ###
@@ -234,7 +235,7 @@ bindsym $mod+Ctrl+Left workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2 
+bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -337,6 +338,9 @@ bindsym --release Print --no-startup-id exec "scrot ~/screenshots/$(date --iso-8
 # Selection screenshot ==> Shift + PrintScreen
 bindsym --release Shift+Print --no-startup-id exec "scrot ~/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
+bindsym $alt+u exec "pulseaudio-ctl up 5"
+bindsym $alt+d exec "pulseaudio-ctl down 5"
+bindsym $alt+m exec "pulseaudio-ctl mute"
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -355,14 +359,16 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
+set $ws1 
+set $ws2 
+set $ws3 
+set $ws4 
+set $ws5 
+set $ws6 
+set $ws7 
+set $ws8 
+
+
 
 
 #############################
