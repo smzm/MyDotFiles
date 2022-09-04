@@ -550,36 +550,34 @@ clear
 
 
 
-while ! [[ ( "$ansBspwm" == "y" ) || ( "$ansBspwm" == "n" ) ]]; do
-    read -p "do you want bspwm packages installation : [y]es - [n]o : " ansBspwm
+while ! [[ ( "$ansI3" == "y" ) || ( "$ansI3" == "n" ) ]]; do
+    read -p "do you want i3 packages installation : [y]es - [n]o : " ansI3
     clear
 done
 
     if [[ $ansBspwm == "y" ]]; then
 
-        echo " ===================== bspwm installation ====================="
-        read -p " bspwm and sxhkd (hotkey needed for bspwm)    :::::    [r]un : " ansBspwmSxhkd
-        if [[ $ansBspwmSxhkd == "r" ]] || [[ $ansBspwmSxhkd == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S bspwm sxhkd \n"
-            sudo pacman -S bspwm sxhkd
+        echo " ===================== i3 installation ====================="
+        read -p " i3    :::::    [r]un : " ansI3gap
+        if [[ $ansI3gap == "r" ]] || [[ $ansI3gap == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S i3  \n"
+            sudo pacman -S i3 python-i3ipc
             
-            echo -e "\n +++++ sudo yay -S pulseaudio-ctl (needed for sxhkd) \n"
+            echo -e "\n +++++ sudo yay -S pulseaudio-ctl \n"
             yay -S pulseaudio-ctl 
             
-            echo -e " \n +++++ Copy bspwm and sxhkd configuration files to .config"
-            cp -r $dotfiles/.config/bspwm $HOME/.config/
-            cp -r $dotfiles/.config/sxhkd $HOME/.config/
-            cp -r $dotfiles/.xinitrc $HOME/
+            echo -e " \n +++++ Copy i3 configuration files to .config"
+            cp -r $dotfiles/.config/i3 $HOME/.config/
             cp -r $dotfiles/.Xresources $HOME/
         fi
     clear
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd"
         read -p " picom (a compositor add features like shadow, opacity, fading, rounding corner and ... )   :::::    [r]un : " ansPicom
         if [[ $ansPicom == "r" ]] || [[ $ansPicom == "R" ]]; then
             echo -e "\n +++++ yay -S picom-jonaburg-git (another fork of picom with blur ) \n"
-            yay -S picom-jonaburg-git
+            yay -S picom-ibhagwan-git
             
             echo -e " \n +++++ Copy picom configuration files to .config"
             cp $dotfiles/.config/picom.conf $HOME/.config/
@@ -590,7 +588,7 @@ done
         fi
     clear
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom"
         read -p " arandr (monitor configuration)    :::::    [r]un : " ansArandr
         if [[ $ansArandr == "r" ]] || [[ $ansArandr == "R" ]]; then
@@ -600,7 +598,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr"
         read -p " rofi (launcher)    :::::    [r]un : " ansRofi
         if [[ $ansRofi == "r" ]] || [[ $ansRofi == "R" ]]; then
@@ -613,7 +611,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi"
         read -p " polybar (bar)   :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
@@ -642,7 +640,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar"
         read -p " dunst (notification manager)    :::::    [r]un : " ansDunst
         if [[ $ansDunst == "r" ]] || [[ $ansDunst == "R" ]]; then
@@ -658,7 +656,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst"
         read -p " thunar (file manager)    :::::    [r]un : " ansThunar
         if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
@@ -668,7 +666,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar"
         read -p " lxappearance (GTK+ theme switcher)   :::::   [r]un : " ansLxappearance
         if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
@@ -679,7 +677,7 @@ done
 
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance"
         read -p " redshift(color temperature of your screen)    :::::    [r]un : " ansRedshift
         if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
@@ -690,7 +688,7 @@ done
 
 
         
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
         read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
@@ -699,7 +697,7 @@ done
         fi
     clear
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
         read -p " scrot (screenshot)   :::::    [r]un : " ansScrot
         if [[ $ansScrot == "r" ]] || [[ $ansScrot == "R" ]]; then
@@ -711,7 +709,7 @@ done
 
 
         
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
         read -p " xclip (clipboard manager)   :::::    [r]un : " ansXclip
         if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
@@ -721,7 +719,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip"
         read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
@@ -732,7 +730,7 @@ done
     clear
 
         
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
@@ -742,7 +740,7 @@ done
     clear
 
 
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter"
         read -p " numlockx (Activating numlock on bootup)   :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
@@ -752,7 +750,7 @@ done
     clear
 
     
-        echo " ===================== bspwm installation ====================="
+        echo " ===================== i3 installation ====================="
         echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter \n numlockx"
         read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
         if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
@@ -766,7 +764,7 @@ done
     clear
     
     
-      echo " ===================== bspwm installation ====================="
+      echo " ===================== i3 installation ====================="
         echo -e " miscellaneous :  "
         read -p " mediainfo | ntfs-3g | exfat-utils   :::::    [r]un : " ansMic
         if [[ $ansMic == "r" ]] || [[ $ansMic == "R" ]]; then
