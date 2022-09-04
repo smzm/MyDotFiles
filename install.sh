@@ -335,6 +335,17 @@ mkdir -p ~/tmpInstall
             fi
             clear
         fi
+        
+        echo " ===================== Fonts ====================="
+            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome"
+            read -p " update /etc/fonts/local.conf    :::::    [r]un : " ansLocalconf
+            if [[ $ansLocalconf == "r" ]] || [[ $ansLocalconf == "R" ]]; then
+                echo -e "\n +++++ copy local.conf \n"
+                sudo cp $dotfiles/local.conf /etc/fonts/local.conf
+                fc-cache
+            fi
+            clear
+        fi
 
 
         echo " ===================== Terminal ====================="
