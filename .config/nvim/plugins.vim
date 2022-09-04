@@ -30,7 +30,6 @@ call plug#begin('~/local/share/nvim/plugged')
     
     " Git and Github
     " Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
-    Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
     " UI
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
@@ -582,24 +581,6 @@ vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 
 
 -- *************************** LSP Cmp
--- Tabnine with cmp
-local tabnine = require('cmp_tabnine.config')
-
-tabnine.setup({
-	max_lines = 1000,
-	max_num_results = 30,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = '..',
-	ignored_file_types = { 
-		-- default is not to ignore
-		-- uncomment to ignore in lua:
-		-- lua = true
-	},
-	show_prediction_strength = true
-})
-
-
 local kind_icons = {
 Text = "",
 Method = "",
@@ -649,7 +630,6 @@ vim.o.completeopt = 'menu,menuone,noselect'
    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'cmp_tabnine' },
       { name = 'path' },
       { name = 'calc' },
       { name = 'cmdline' },
@@ -1121,10 +1101,6 @@ require'nvim-tree'.setup {
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
   diagnostics = {
     enable = false,
     icons = {
@@ -1157,7 +1133,6 @@ require'nvim-tree'.setup {
     height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {}
