@@ -244,13 +244,15 @@ clear
                
                yarn global add yaml-language-server
                sudo npm install -g bash-language-server
-               pip install jedi pyenv python-language-server[all]
+               pip install jedi python-language-server[all]
                
                if [[ $ansOS == "arch" ]]; then
                     yay -S tailwind-css
                     yay -S tailwindcss-language-server
+                    sudo pacman -S pyenv
                else 
                     sudo npm i -g @tailwindcss/language-server
+                    brew install pyenv
                fi
         fi
     clear
