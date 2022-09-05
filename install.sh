@@ -339,7 +339,6 @@ clear
                 fc-cache
             fi
             clear
-        fi
 
 
         echo " ===================== Terminal ====================="
@@ -563,7 +562,7 @@ while ! [[ ( "$ansI3" == "y" ) || ( "$ansI3" == "n" ) ]]; do
     clear
 done
 
-    if [[ $ansBspwm == "y" ]]; then
+    if [[ $ansI3 == "y" ]]; then
 
         echo " ===================== i3 installation ====================="
         read -p " i3    :::::    [r]un : " ansI3gap
@@ -578,7 +577,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd"
+        echo -e " i3"
         read -p " picom (a compositor add features like shadow, opacity, fading, rounding corner and ... )   :::::    [r]un : " ansPicom
         if [[ $ansPicom == "r" ]] || [[ $ansPicom == "R" ]]; then
             echo -e "\n +++++ yay -S picom-jonaburg-git (another fork of picom with blur ) \n"
@@ -594,7 +593,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom"
+        echo -e " i3 \n picom"
         read -p " arandr (monitor configuration)    :::::    [r]un : " ansArandr
         if [[ $ansArandr == "r" ]] || [[ $ansArandr == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S arandr \n"
@@ -604,7 +603,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr"
+        echo -e " i3 \n picom \n arandr"
         read -p " rofi (launcher)    :::::    [r]un : " ansRofi
         if [[ $ansRofi == "r" ]] || [[ $ansRofi == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S rofi \n"
@@ -617,7 +616,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi"
+        echo -e " i3 \n picom \n arandr \n rofi"
         read -p " polybar (bar)   :::::    [r]un : " ansPolybar
         if [[ $ansPolybar == "r" ]] || [[ $ansPolybar == "R" ]]; then
             echo -e "\n +++++ yay -S polybar \n"
@@ -645,7 +644,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar"
         read -p " dunst (notification manager)    :::::    [r]un : " ansDunst
         if [[ $ansDunst == "r" ]] || [[ $ansDunst == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S dunst libnotify \n"
@@ -661,7 +660,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst"
         read -p " thunar (file manager)    :::::    [r]un : " ansThunar
         if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S thunar (file manager) \n"
@@ -671,7 +670,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar"
         read -p " lxappearance (GTK+ theme switcher)   :::::   [r]un : " ansLxappearance
         if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S lxappearance \n"
@@ -682,7 +681,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance"
         read -p " redshift(color temperature of your screen)    :::::    [r]un : " ansRedshift
         if [[ $ansRedshift == "r" ]] || [[ $ansRedshift == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S redshift \n"
@@ -693,7 +692,7 @@ done
 
         
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
         read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S udevil \n"
@@ -702,7 +701,7 @@ done
     clear
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
         read -p " scrot (screenshot)   :::::    [r]un : " ansScrot
         if [[ $ansScrot == "r" ]] || [[ $ansScrot == "R" ]]; then
             echo -e "\n +++++ yay -S scrot \n"
@@ -714,7 +713,7 @@ done
 
         
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
         read -p " xclip (clipboard manager)   :::::    [r]un : " ansXclip
         if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
             echo -e "\n +++++ yay -S xclip \n"
@@ -724,7 +723,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip"
         read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
@@ -735,7 +734,7 @@ done
 
         
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S unclutter (hide/unhide mouse) \n"
@@ -745,7 +744,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter"
         read -p " numlockx (Activating numlock on bootup)   :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
@@ -755,7 +754,7 @@ done
 
     
         echo " ===================== i3 installation ====================="
-        echo -e " bspwm \n sxhkd \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter \n numlockx"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter \n numlockx"
         read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
         if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
             sudo pacman -S nitrogen
