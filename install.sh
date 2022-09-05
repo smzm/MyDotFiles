@@ -328,7 +328,6 @@ clear
                 yay -S ttf-font-awesome
             fi
             clear
-        fi
         
             echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome"
@@ -349,7 +348,8 @@ clear
             fi
             clear
         fi
-        
+    fi
+
         echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn \n noto fonts emoji"
             read -p " update /etc/fonts/local.conf    :::::    [r]un : " ansLocalconf
