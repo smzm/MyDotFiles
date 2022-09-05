@@ -728,7 +728,7 @@ done
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
             sudo pacman -S xfce4-power-manager
-            sudo pacman -S xfce4-settings
+            #sudo pacman -S xfce4-settings
         fi
     clear
 
