@@ -330,13 +330,33 @@ clear
             clear
         fi
         
-        echo " ===================== Fonts ====================="
+            echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome"
+            read -p " VazirMatn   :::::    [r]un : " ansVazir
+            if [[ $ansVazir == "r" ]] || [[ $ansVazir == "R" ]]; then
+                echo -e "\n +++++ yay -S vazirmatn-fonts \n"
+                yay -S vazirmatn-fonts
+            fi
+            clear
+        fi
+        
+                    echo " ===================== Fonts ====================="
+            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \nttf-font-awesome \n Vazirmatn"
+            read -p " noto font emoji    :::::    [r]un : " ansNotoemoji
+            if [[ $ansNotoemoji == "r" ]] || [[ $ansNotoemoji == "R" ]]; then
+                echo -e "\n +++++ yay -S noto-fonts-emoji \n"
+                yay -S noto-fonts-emoji
+            fi
+            clear
+        fi
+        
+        echo " ===================== Fonts ====================="
+            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn \n noto fonts emoji"
             read -p " update /etc/fonts/local.conf    :::::    [r]un : " ansLocalconf
             if [[ $ansLocalconf == "r" ]] || [[ $ansLocalconf == "R" ]]; then
                 echo -e "\n +++++ copy local.conf \n"
                 sudo cp $dotfiles/local.conf /etc/fonts/local.conf
-                fc-cache
+                fc-cache -v
             fi
             clear
 
