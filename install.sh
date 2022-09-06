@@ -714,7 +714,7 @@ done
         read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S udevil \n"
-            sudo pacman -S udevil
+            yay -S udevil
         fi
     clear
 
