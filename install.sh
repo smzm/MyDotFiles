@@ -526,7 +526,7 @@ clear
             echo -e "\n +++++ install kitty +++++ \n"
                     sudo pacman -S kitty
             echo -e "\n +++++ copy /kitty to ~/.config/ +++++"
-                    mkdir ~/.config/kitty
+                    mkdir -p ~/.config/kitty
                     yes | cp -rf $dotfiles/.config/kitty/* ~/.config/kitty/
                     sleep 3
         fi
