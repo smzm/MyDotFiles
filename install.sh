@@ -646,7 +646,7 @@ done
             
             # Install feather font
             mkdir -p $HOME/.fonts
-            yes | cp -rf $dotfiels/.fonts/* $HOME/.fonts/
+            yes | cp -rf $dotfiles/.fonts/* $HOME/.fonts/
             fc-cache -fv
             
             sleep 2
