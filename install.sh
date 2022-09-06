@@ -4,7 +4,7 @@ dotfiles=`echo $PWD`
 mkdir -p ~/tmpInstall
 
 
-    clear
+clear
     echo " ===================== pre installation ====================="
     while ! [[ ( "$ansOS" == "arch" ) || ( "$ansOS" == "deb" ) ]]; do
         echo "For proper installation, type one ? "
@@ -26,7 +26,7 @@ mkdir -p ~/tmpInstall
                 sudo apt-get install -y build-essential
             fi
         fi
-    clear
+    echo -e "\n \n"
 
 
     if [[ $ansOS == "arch" ]]; then
@@ -60,7 +60,7 @@ mkdir -p ~/tmpInstall
 
             fi
     fi
-        clear
+        echo -e "\n \n"
 
 
 
@@ -89,7 +89,7 @@ mkdir -p ~/tmpInstall
                 read -p " Please reboot system and continue installation in zsh " notImportant
             fi
         fi
-    clear
+    echo -e "\n \n"
     
 
         echo " ===================== ZSH ====================="
@@ -99,7 +99,7 @@ mkdir -p ~/tmpInstall
                 echo -e "\n +++++ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" +++++ \n"
                 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         fi
-    clear
+    echo -e "\n \n"
     
 
         echo " ===================== ZSH ====================="
@@ -109,7 +109,7 @@ mkdir -p ~/tmpInstall
             echo -r "\n +++++ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting +++++ \n"
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== ZSH ====================="
@@ -119,7 +119,7 @@ mkdir -p ~/tmpInstall
             echo -e " \n +++++ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions +++++ \n"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== ZSH ====================="
@@ -133,7 +133,7 @@ mkdir -p ~/tmpInstall
             cp $dotfiles/.config/starship.toml ~/.config/
             sleep 2
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== ZSH ====================="
@@ -146,7 +146,7 @@ mkdir -p ~/tmpInstall
             echo -e "\n Restart terminal and continue installation."
             sleep 2
         fi
-    clear
+    echo -e "\n \n"
 
 
 
@@ -167,7 +167,7 @@ mkdir -p ~/tmpInstall
                     brew install gcc
         fi
         
-clear
+echo -e "\n \n"
 
         echo " ===================== Development ====================="
         read -p " node(npm)    :::::    [r]un: " ansNode
@@ -186,7 +186,7 @@ clear
                 npm config set prefix ~/.npm
 
         fi
-    clear
+    echo -e "\n \n"
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -200,7 +200,7 @@ clear
             fi
         sudo gem update
         fi
-    clear
+    echo -e "\n \n"
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
                 echo -e "\n +++++ install python, pip +++++ \n"
@@ -215,7 +215,7 @@ clear
                     pip3 install pynvim jedi
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== My Development Packages ====================="
         read -p " [pip] : numpy | pandas | scipy | sympy | matplotlib | plotly | jupyter notebook ::::: [r]un : " ansPLS2
@@ -255,7 +255,7 @@ clear
                     brew install pyenv
                fi
         fi
-    clear
+    echo -e "\n \n"
 
 
 # Vim
@@ -275,7 +275,7 @@ clear
             npm install -g neovim
             gem install neovim
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== nvim ====================="
         echo " nvim"
@@ -289,13 +289,13 @@ clear
             mkdir -p $HOME/.config/nvim
             yes | cp -rf $dotfiles/.config/nvim/* ~/.config/nvim/
 
-            clear
+            echo -e "\n \n"
             echo  -e "\n run (:PlugInstall) in nvim"
             sleep 2
             nvim
-            clear
+            echo -e "\n \n"
         fi
-    clear
+    echo -e "\n \n"
 
 
          echo " ===================== Fonts ====================="
@@ -306,7 +306,7 @@ clear
                 sudo wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataLGC/Regular/complete/Inconsolata%20LGC%20Nerd%20Font%20Complete.ttf" -P /usr/share/fonts/InconsolataLGC/
                 fc-cache -f -v
         fi
-    clear
+    echo -e "\n \n"
 
 
         if [[ $ansOS == "arch" ]]; then
@@ -317,7 +317,7 @@ clear
                     echo -e " \n +++++ Install Apple fonts : SF Pro | SF Compact | SF Mono | SF Arabic | Newyork \n"
                     yay -S apple-fonts
             fi
-            clear
+            echo -e "\n \n"
 
 
             echo " ===================== Fonts ====================="
@@ -327,7 +327,7 @@ clear
                 echo -e "\n +++++ yay -S ttf-font-awesome \n"
                 yay -S ttf-font-awesome
             fi
-            clear
+            echo -e "\n \n"
         
             echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome"
@@ -336,7 +336,7 @@ clear
                 echo -e "\n +++++ yay -S vazirmatn-fonts \n"
                 yay -S vazirmatn-fonts
             fi
-            clear
+            echo -e "\n \n"
         
                     echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn"
@@ -345,7 +345,7 @@ clear
                 echo -e "\n +++++ yay -S noto-fonts-emoji \n"
                 yay -S noto-fonts-emoji
             fi
-            clear
+            echo -e "\n \n"
     fi
 
         echo " ===================== Fonts ====================="
@@ -356,7 +356,7 @@ clear
                 sudo cp $dotfiles/local.conf /etc/fonts/local.conf
                 fc-cache -v
             fi
-            clear
+            echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -369,7 +369,7 @@ clear
                     brew install lsd
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -389,7 +389,7 @@ clear
                 yes | cp -rf $dotfiles/.tmux.conf ~/
             fi
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -403,7 +403,7 @@ clear
                     brew install aria2 
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== Terminal ====================="
         echo -e " lsd \n tmux \n aria2"
@@ -421,7 +421,7 @@ clear
                 mkdir -p ~/.config/broot
                 yes | cp -rf $dotfiles/.config/broot/* ~/.config/broot/
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -437,7 +437,7 @@ clear
                     brew install ripgrep
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== Terminal ====================="
         echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep"
@@ -452,7 +452,7 @@ clear
                     brew install peco
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -466,7 +466,7 @@ clear
                     brew install ack
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
@@ -480,7 +480,7 @@ clear
                     brew install lostfiles
                 fi
         fi
-    clear
+    echo -e "\n \n"
     
         echo " ===================== Terminal ====================="
         echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles"
@@ -495,7 +495,7 @@ clear
                 fi
                 gh auth login
         fi
-    clear
+    echo -e "\n \n"
     
     echo " ===================== Terminal ====================="
     echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles \n gh"
@@ -507,7 +507,7 @@ clear
                     brew install tldr
                 fi
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== CheatSheet ====================="
         read -p " CheatSheet    :::::    [r]un : " ansCheatSheet
@@ -515,7 +515,7 @@ clear
             echo -e "\n +++++ copy /bin to home +++++"
             cp -r $dotfiles/bin ~
         fi
-    clear
+    echo -e "\n \n"
 
 
 
@@ -530,7 +530,7 @@ clear
                     yes | cp -rf $dotfiles/.config/kitty/* ~/.config/kitty/
                     sleep 3
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== GUI APP ====================="
@@ -544,7 +544,7 @@ clear
                     yes | cp -rf $dotfiles/.config/zathura* ~/.config/zathura
                     sleep 3
         fi
-    clear
+    echo -e "\n \n"
 
   
 
@@ -566,22 +566,22 @@ clear
                     yes | cp -rf $dotfiles/.xbindkeysrc ~/.xbindkeysrc 
                     fi
         fi
-    clear
+    echo -e "\n \n"
     fi
 
 rm -rf ~/tmpInstall
 
-clear
+echo -e "\n \n"
 
 
 
 while ! [[ ( "$ansI3" == "y" ) || ( "$ansI3" == "n" ) ]]; do
     read -p "do you want i3 packages installation : [y]es - [n]o : " ansI3
-    clear
+    echo -e "\n \n"
 done
 
     if [[ $ansI3 == "y" ]]; then
-
+        clear
         echo " ===================== i3 installation ====================="
         read -p " i3    :::::    [r]un : " ansI3gap
         if [[ $ansI3gap == "r" ]] || [[ $ansI3gap == "R" ]]; then
@@ -592,7 +592,7 @@ done
             yes | cp -rf $dotfiles/.config/i3 $HOME/.config/
             yes | cp -rf $dotfiles/.Xresources $HOME/
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== i3 installation ====================="
         echo -e " i3"
@@ -608,7 +608,7 @@ done
             nvidia-settings -a 'AllowFlipping=0'
             nvidia-settings --load-config-only
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom"
@@ -617,7 +617,7 @@ done
             echo -e "\n +++++ sudo pacman -S arandr \n"
             sudo pacman -S arandr
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -630,7 +630,7 @@ done
             echo -e " \n +++++ Copy rofi configuration files "
             yes | cp -rf $dotfiles/.config/rofi $HOME/.config/
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -658,7 +658,7 @@ done
             sudo chmod +xwr *.sh
 
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -674,7 +674,7 @@ done
             sudo chmod +xwr *.sh
             
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -684,7 +684,7 @@ done
             echo -e "\n +++++ sudo pacman -S thunar (file manager) \n"
             sudo pacman -S thunar
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -694,7 +694,7 @@ done
             echo -e "\n +++++ sudo pacman -S lxappearance \n"
             sudo pacman -S lxappearance
         fi
-    clear
+    echo -e "\n \n"
 
 
 
@@ -705,7 +705,7 @@ done
             echo -e "\n +++++ sudo pacman -S redshift \n"
             sudo pacman -S redshift
         fi
-    clear
+    echo -e "\n \n"
 
 
         
@@ -716,7 +716,7 @@ done
             echo -e "\n +++++ sudo pacman -S udevil \n"
             yay -S udevil
         fi
-    clear
+    echo -e "\n \n"
 
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
@@ -726,7 +726,7 @@ done
             mkdir -p $HOME/screenshots
             yay -S scrot
         fi
-    clear
+    echo -e "\n \n"
 
 
         
@@ -737,7 +737,7 @@ done
             echo -e "\n +++++ yay -S xclip \n"
             yay -S xclip
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -748,7 +748,7 @@ done
             sudo pacman -S xfce4-power-manager
             #sudo pacman -S xfce4-settings
         fi
-    clear
+    echo -e "\n \n"
 
         
         echo " ===================== i3 installation ====================="
@@ -758,7 +758,7 @@ done
             echo -e "\n +++++ sudo pacman -S unclutter (hide/unhide mouse) \n"
             sudo pacman -S unclutter
         fi
-    clear
+    echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
@@ -768,7 +768,7 @@ done
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
             sudo pacman -S numlockx
         fi
-    clear
+    echo -e "\n \n"
 
     
         echo " ===================== i3 installation ====================="
@@ -782,7 +782,7 @@ done
             mkdir -p Pictures
             cp $dotfiles/wall.jpg  $HOME/.config/
         fi
-    clear
+    echo -e "\n \n"
     
     
       echo " ===================== i3 installation ====================="
