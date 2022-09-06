@@ -104,7 +104,7 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh"
-        read -p " zsh-syntax-highlighting : [https://github.com/zsh-users/zsh-syntax-highlighting]    :::::    r[un] : " ansSyntaxH
+        read -p " zsh-syntax-highlighting : [https://github.com/zsh-users/zsh-syntax-highlighting]    :::::    [r]un : " ansSyntaxH
         if [[ $ansSyntaxH == "r"  ]] || [[ $ansSyntaxH == "R" ]]; then
             echo -r "\n +++++ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting +++++ \n"
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -114,7 +114,7 @@ mkdir -p ~/tmpInstall
 
         echo " ===================== ZSH ====================="
         echo -e " zsh \n oh-my-zsh \n zsh-syntax-highlighting"
-        read -p " zsh-auto-suggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    r[un] : " ansAutoS
+        read -p " zsh-auto-suggestions : [https://github.com/zsh-users/zsh-autosuggestions]    :::::    [r]un : " ansAutoS
         if [[ $ansAutoS == "r"  ]] || [[ $ansAutoS == "R" ]]; then
             echo -e " \n +++++ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions +++++ \n"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
