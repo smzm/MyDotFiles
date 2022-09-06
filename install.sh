@@ -337,7 +337,6 @@ clear
                 yay -S vazirmatn-fonts
             fi
             clear
-        fi
         
                     echo " ===================== Fonts ====================="
             echo -e " InconsolataLGC Nerd Font \n Apple Fonts \nttf-font-awesome \n Vazirmatn"
@@ -347,7 +346,6 @@ clear
                 yay -S noto-fonts-emoji
             fi
             clear
-        fi
     fi
 
         echo " ===================== Fonts ====================="
