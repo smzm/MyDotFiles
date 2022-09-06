@@ -339,7 +339,7 @@ clear
             clear
         
                     echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \nttf-font-awesome \n Vazirmatn"
+            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn"
             read -p " noto font emoji    :::::    [r]un : " ansNotoemoji
             if [[ $ansNotoemoji == "r" ]] || [[ $ansNotoemoji == "R" ]]; then
                 echo -e "\n +++++ yay -S noto-fonts-emoji \n"
