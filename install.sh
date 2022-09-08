@@ -713,7 +713,7 @@ done
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
         read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
         if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S udevil \n"
+            echo -e "\n +++++ yay -S udevil \n"
             yay -S udevil
         fi
     echo -e "\n \n"
