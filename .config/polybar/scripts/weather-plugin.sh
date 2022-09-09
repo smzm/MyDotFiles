@@ -4,6 +4,7 @@
 
 # API settings ________________________________________________________________
 
+#http://api.openweathermap.org/
 APIKEY="03bcbfb227e89bf2ffdae40d84d5aa5c"
 CITY_NAME='Mashhad'
 COUNTRY_CODE='IR'
@@ -87,7 +88,15 @@ DISPLAY_LABEL="yes"
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-sleep 3
+sleep 15
+
+# ONLINE=`ping -q -w 1 -c 1 google.com &>/dev/null && echo 1 || echo 0`
+# while [[ $ONLINE -ne 1 ]]
+# do
+#     sleep 5
+#     ONLINE=`ping -q -w 1 -c 1 google.com &>/dev/null && echo 1 || echo 0`
+# done
+        
 
 if [[ "$COLOR_TEXT" != "" ]]; then
     COLOR_TEXT_BEGIN="%{F$COLOR_TEXT}"
@@ -107,8 +116,8 @@ URL="api.openweathermap.org/data/2.5/weather?appid=$APIKEY$UNIT_URL&lang=$LANG&q
 function getData {
     ERROR=0
     # For logging purposes
-    # echo " " >> "$HOME/.weather.log"
-    # echo `date`" ################################" >> "$HOME/.weather.log"
+    echo " " >> "$HOME/.weather.log"
+     echo `date`" ################################" >> "$HOME/.weather.log"
     RESPONSE=`curl -s $URL`
     if [[ "$1" = "-d" ]]; then
         echo $RESPONSE
