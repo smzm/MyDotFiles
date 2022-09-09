@@ -804,6 +804,8 @@ done
             # xcolor : a color picker 
             sudo pacman -S xcolor
 
+            # Fluent Reader
+            yay -S fluent-reader
         fi
 
 
