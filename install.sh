@@ -732,10 +732,10 @@ done
         
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
-        read -p " xclip (clipboard manager)   :::::    [r]un : " ansXclip
+        read -p " xclip (clipboard manager) and clipit   :::::    [r]un : " ansXclip
         if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
-            echo -e "\n +++++ yay -S xclip \n"
-            yay -S xclip
+            echo -e "\n +++++ yay -S xclip clipit \n"
+            yay -S xclip clipit
         fi
     echo -e "\n \n"
 
