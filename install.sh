@@ -800,6 +800,9 @@ done
             
             # A better fuzzy finder for terminal | github.com/jhawthorn/fzy
             sudo pacman -S fzy
+            
+            # xcolor : a color picker 
+            sudo pacman -S xcolor
 
         fi
 
