@@ -804,8 +804,14 @@ done
             # xcolor : a color picker 
             sudo pacman -S xcolor
 
+            # conky : system monitor
+            sudo pacman -S conky
+            yes | cp -rf $dotfiles/.config/conky $HOME/.config/
+
             # Fluent Reader
             yay -S fluent-reader
+            
+            
         fi
 
 
