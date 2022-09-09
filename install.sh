@@ -732,16 +732,16 @@ done
         
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot"
-        read -p " xclip (clipboard manager) and clipit   :::::    [r]un : " ansXclip
-        if [[ $ansXclip == "r" ]] || [[ $ansXclip == "R" ]]; then
-            echo -e "\n +++++ yay -S xclip clipit \n"
-            yay -S xclip clipit
+        read -p " clipit (clipboard manager)    :::::    [r]un : " ansClipit
+        if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
+            echo -e "\n +++++ yay -S clipit \n"
+            yay -S clipit
         fi
     echo -e "\n \n"
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit"
         read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
         if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
@@ -752,7 +752,7 @@ done
 
         
         echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
         if [[ $ansUnclutter == "r" ]] || [[ $ansUnclutter == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S unclutter (hide/unhide mouse) \n"
@@ -762,7 +762,7 @@ done
 
 
         echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager \n unclutter"
         read -p " numlockx (Activating numlock on bootup)   :::::    [r]un : " ansNumlockx
         if [[ $ansNumlockx == "r" ]] || [[ $ansNumlockx == "R" ]]; then
             echo -e "\n +++++ sudo pacman -S systemd-numlockontty ... \n"
@@ -772,7 +772,7 @@ done
 
     
         echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n xclip \n xfce4-power-manager \n unclutter \n numlockx"
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager \n unclutter \n numlockx"
         read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
         if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
             sudo pacman -S nitrogen
