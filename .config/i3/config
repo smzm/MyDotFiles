@@ -370,7 +370,6 @@ set $ws8 
 
 
 
-
 #############################
 ###  Startup Applications ###
 #############################
@@ -379,7 +378,7 @@ set $ws8 
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+assign [class="qv2ray"] $ws2
 
 # Open specific applications in floating mode
 # for_window [title="File Transfer*"] floating enable
@@ -389,10 +388,10 @@ set $ws8 
 # for_window [class="Lxappearance"] floating enable sticky enable border normal
 # for_window [class="Manjaro-hello"] floating enable
 # for_window [class="Manjaro Settings Manager"] floating enable border normal
-# for_window [class="Nitrogen"] floating enable sticky enable border normal
 # for_window [class="Pamac-manager"] floating enable
 # for_window [class="Skype"] floating enable border normal
- for_window [class="Pavucontrol"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Pavucontrol"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -418,6 +417,7 @@ exec --no-startup-id redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "devmon --no-gui"
 
+exec xrandr --auto
 
 
 # Start Polybar
@@ -428,6 +428,4 @@ exec_always --no-startup-id dunst &
 
 # Start picom composition
 exec_always --no-startup-id picom --config ~/.config/picom.conf & 
-
-# exec_always --no-startup-id xborders
 
