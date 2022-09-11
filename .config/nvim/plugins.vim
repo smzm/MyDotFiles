@@ -107,14 +107,14 @@ local macchiato = require("catppuccin.palettes").get_palette "macchiato"
 local mocha = require("catppuccin.palettes").get_palette "mocha"
 
 -- Catppuccin flavour:  latte, frappe, macchiato, mocha
-vim.g.catppuccin_flavour = "frappe" -- Has to be set in order for empty argument to work
+vim.g.catppuccin_flavour = "mocha" -- Has to be set in order for empty argument to work
 
 local colors = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 
 
 require("catppuccin").setup({
 	dim_inactive = {
-		enabled = true,
+		enabled = false,
 		shade = "dark",
 		percentage = 0.15,
 	},
@@ -205,18 +205,21 @@ require("catppuccin").setup({
 -- surface2	surface1	surface0	base 	mantle	crust
 
 	custom_highlights = {
-      IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base
+      --IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base : ferappe
+      IndentBlanklineIndent1 = {fg = "#262638" },    -- slightly brighter than base : Mocha
       IndentBlanklineContextChar = {fg=colors.maroon},
       IndentBlanklineContextStart = {fg=colors.maroon, style={"underline"}},
       Search = {bg=colors.sapphire, fg=colors.crust},
       MatchParen = {fg = "#00ff15"},     -- Good for all theme
-      rainbowcol1 = { bg = "" , style={"bold"} },
+      rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
       rainbowcol2 = { bg = "", style={"bold"} },
       rainbowcol3 = { bg = "" },
       rainbowcol4 = { bg = "" },
       rainbowcol5 = { bg = "" },
       rainbowcol6 = { bg = "" },
-      rainbowcol7 = { bg = "" }
+      rainbowcol7 = { bg = "" },
+      BufferLineBackground = {bg = colors.mantle},
+      BufferLineFill = {bg = colors.mantle},
       },
 	color_overrides = {
       mocha = {
@@ -247,8 +250,8 @@ let g:floaterm_wintype='float'
 let g:floaterm_width=0.5
 let g:floaterm_height=1.0
 let g:floaterm_position='topright'
-highlight link Floaterm EndOfBuffer
-highlight link FloatermBorder HopNextKey1
+highlight link Floaterm StatusLine
+highlight link FloatermBorder StatusLine
 " guibg=#05060a guifg=orange
 
 nnoremap <A-f> :FloatermNew --position=center lf <CR>
