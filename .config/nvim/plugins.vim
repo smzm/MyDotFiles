@@ -20,7 +20,7 @@ call plug#begin('~/local/share/nvim/plugged')
    	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
    	Plug 'haya14busa/incsearch-easymotion.vim'      
 	Plug 'easymotion/vim-easymotion'
-    Plug 'smzm/hydrovim' | Plug 'MunifTanjim/nui.nvim'
+    Plug '~/hydrovim' | Plug 'MunifTanjim/nui.nvim'
     
     " HTML and CSS
 	Plug 'mattn/emmet-vim' 							" emmet for vim
@@ -206,7 +206,7 @@ require("catppuccin").setup({
 
 	custom_highlights = {
       --IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base : ferappe
-      IndentBlanklineIndent1 = {fg = "#262638" },    -- slightly brighter than base : Mocha
+      IndentBlanklineIndent1 = {fg = "#3a3c4b" },    -- slightly brighter than base : Mocha
       IndentBlanklineContextChar = {fg=colors.maroon},
       IndentBlanklineContextStart = { style={"underline"}},
       Search = {bg=colors.sapphire, fg=colors.crust},
