@@ -1,5 +1,5 @@
 #!/bin/bash
-sleep 5
+sleep 10
 IP=`curl -w "\n" -s https://api.ipify.org`
 country=`geoiplookup "$IP" | awk 'BEGIN{FS=":"}; {print $2}' | awk 'BEGIN{FS=","}; {gsub(/[[:blank:]]/,""); print $1}'`
 #flag=`jq '.[] | select(.iso=='"$country"') .flag' ~/country.json 2> /dev/null` 
