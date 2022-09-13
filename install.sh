@@ -807,6 +807,9 @@ done
             # xcolor : a color picker 
             sudo pacman -S xcolor
 
+            # A simple, fast and elegant image viewer program
+            sudo pacman -S viewnior
+            
             # conky : system monitor
             sudo pacman -S conky
             yes | cp -rf $dotfiles/.config/conky $HOME/.config/
