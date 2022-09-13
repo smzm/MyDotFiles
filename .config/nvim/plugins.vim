@@ -10,7 +10,6 @@ call plug#begin('~/local/share/nvim/plugged')
    Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
    Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
    Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
-   Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
    Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
    Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
    Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
@@ -20,6 +19,7 @@ call plug#begin('~/local/share/nvim/plugged')
    Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
    Plug 'haya14busa/incsearch-easymotion.vim'      
    Plug 'easymotion/vim-easymotion'
+   Plug 'terrortylor/nvim-comment'
    Plug 'smzm/hydrovim' | Plug 'MunifTanjim/nui.nvim'
     
     " HTML and CSS
@@ -1208,6 +1208,18 @@ rainbow = {
 }
 
 
+-- *************************** nvim-comment 
+require('nvim_comment').setup(
+{
+  -- Ignore Empty Lines for comment and uncomment
+   comment_empty = false,
+  -- Visual/Operator mapping left hand side
+  line_mapping = "<leader>cl",
+  operator_mapping = "<leader>c",
+})
+
+
 
 EOF
+
 
