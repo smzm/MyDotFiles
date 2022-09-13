@@ -359,6 +359,25 @@ echo -e "\n \n"
             echo -e "\n \n"
 
 
+
+        echo " ===================== Terminal ====================="
+        read -p " trash-cli    :::::    [r]un : " ansTrashcli
+        if [[ $ansTrashcli == "r" ]] || [[ $ansTrashcli == "R" ]]; then
+                echo -e "\n +++++ install trash-cli +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S trash-cli
+                else
+                    sudo apt install trash-cli
+                fi
+                sudo mkdir --parent /.Trash
+                sudo chmod a+rw /.Trash
+                sudo chmod +t /.Trash
+        fi
+    echo -e "\n \n"
+
+
+
+    
         echo " ===================== Terminal ====================="
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
