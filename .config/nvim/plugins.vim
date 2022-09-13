@@ -203,10 +203,8 @@ require("catppuccin").setup({
 -- surface2	surface1	surface0	base 	mantle	crust
 
 	custom_highlights = {
-      --IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base : ferappe
-      IndentBlanklineIndent1 = {fg = "#3a3c4b" },      -- slightly brighter than base : Mocha
-      IndentBlanklineContextChar = {fg=colors.maroon},
-      IndentBlanklineContextStart = { style={"underline"}},
+      IndentBlanklineContextChar = {fg=colors.peach},
+      IndentBlanklineContextStart = {style={"underline"}},
       Search = { bg=colors.sapphire, fg=colors.crust },
       MatchParen = {fg = "#00ff15"},     -- Good for all theme
       rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
@@ -217,7 +215,7 @@ require("catppuccin").setup({
       rainbowcol6 = { bg = "" },
       rainbowcol7 = { bg = "" },
       BufferLineFill = { bg = colors.base },
-      TreesitterContext = {bg= colors.base, fg=colors.crust, style={"bold"}}
+      TreesitterContext = {bg= colors.base, style={"bold"}}
       },
 	color_overrides = {
       mocha = {
@@ -226,9 +224,13 @@ require("catppuccin").setup({
 	highlight_overrides = {
       -- all={}
       -- latte={}
-      -- frappe={}
       -- macchiato={}
-      -- mocha = { Comment={fg = mocha.flamingo}}
+      frappe={
+         IndentBlanklineIndent1 = {fg = "#36394f" }
+      },
+      mocha = {
+         IndentBlanklineIndent1 = {fg = "#3a3c4b" }
+         }
       },
 })
 
