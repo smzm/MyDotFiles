@@ -4,23 +4,23 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 
-    " Utility
-    Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
-    Plug 'windwp/nvim-autopairs'
-   	Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
-  	Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
-    Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
-   	Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
-   	Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
-	Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
-	Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
-	Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
-    Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
-    Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
-   	Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
-   	Plug 'haya14busa/incsearch-easymotion.vim'      
-	Plug 'easymotion/vim-easymotion'
-    Plug '~/hydrovim' | Plug 'MunifTanjim/nui.nvim'
+   " Utility
+   Plug 'voldikss/vim-floaterm'                    " Use terminal as a floating/popup window in neovim.
+   Plug 'windwp/nvim-autopairs'
+   Plug 'alvan/vim-closetag'                       " Auto close (X)HTML tags
+   Plug 'tpope/vim-repeat'				            " enable repeating supported plugin maps
+   Plug 't9md/vim-textmanip'                       " Move selected lines or block area to specified direction
+   Plug 'tpope/vim-commentary'                     " comment and uncomment stuff out
+   Plug 'junegunn/goyo.vim'			            " Distraction-free writing in Vim
+   Plug 'tpope/vim-surround'						" provides mappings to easily delete, change and add such surroundings in pairs
+   Plug 'rhysd/clever-f.vim'						" Extended f, F, t and T key mappings for Vim. 
+   Plug '907th/vim-auto-save' 						" Automatically save changes to disk in Vim
+   Plug 'tpope/vim-abolish'                        " easily search for, substitute, and abbreviate multiple variants of a word
+   Plug 'haya14busa/incsearch.vim'                 " Improved incremental searching for Vim 
+   Plug 'haya14busa/incsearch-fuzzy.vim'           " incremantal fuzzy search extension for incsearch.vim
+   Plug 'haya14busa/incsearch-easymotion.vim'      
+   Plug 'easymotion/vim-easymotion'
+   Plug 'smzm/hydrovim' | Plug 'MunifTanjim/nui.nvim'
     
     " HTML and CSS
 	Plug 'mattn/emmet-vim' 							" emmet for vim
@@ -29,7 +29,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'Valloric/MatchTagAlways'                  " A Vim plugin that always highlights the enclosing html/xml tags
     
     " Git and Github
-    " Plug 'github/copilot.vim'                       " Neovim plugin for GitHub Copilot
+    " Plug 'github/copilot.vim'                     " Neovim plugin for GitHub Copilot
 
     " UI
 	Plug 'machakann/vim-highlightedyank'			" Make the yanked region apparent!
@@ -50,7 +50,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
-    "Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
+   "Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
    
     " Auto Completion
     Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
@@ -70,13 +70,11 @@ call plug#begin('~/local/share/nvim/plugged')
 
     " Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Nvim Treesitter configurations and abstraction layer
-    Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'nvim-treesitter/nvim-treesitter-context'                " Show code context
     Plug 'nvim-treesitter/nvim-tree-docs'
     Plug 'nvim-treesitter/completion-treesitter'
     Plug 'JuliaEditorSupport/julia-vim'
     Plug 'RRethy/nvim-treesitter-textsubjects'
-
-
 call plug#end()
 
 
@@ -206,10 +204,10 @@ require("catppuccin").setup({
 
 	custom_highlights = {
       --IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base : ferappe
-      IndentBlanklineIndent1 = {fg = "#3a3c4b" },    -- slightly brighter than base : Mocha
+      IndentBlanklineIndent1 = {fg = "#3a3c4b" },      -- slightly brighter than base : Mocha
       IndentBlanklineContextChar = {fg=colors.maroon},
       IndentBlanklineContextStart = { style={"underline"}},
-      Search = {bg=colors.sapphire, fg=colors.crust},
+      Search = { bg=colors.sapphire, fg=colors.crust },
       MatchParen = {fg = "#00ff15"},     -- Good for all theme
       rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
       rainbowcol2 = { bg = "", style={"bold"} },
@@ -218,8 +216,8 @@ require("catppuccin").setup({
       rainbowcol5 = { bg = "" },
       rainbowcol6 = { bg = "" },
       rainbowcol7 = { bg = "" },
-      BufferLineBackground = {bg = colors.mantle},
-      BufferLineFill = {bg = colors.mantle},
+      BufferLineFill = { bg = colors.base },
+      TreesitterContext = {bg= colors.base, fg=colors.crust, style={"bold"}}
       },
 	color_overrides = {
       mocha = {
@@ -258,7 +256,7 @@ nnoremap <A-f> :FloatermNew --position=center lf <CR>
 nnoremap <A-t> :FloatermNew<CR>
 let g:floaterm_keymap_prev   = '<F9>'
 let g:floaterm_keymap_next   = '<F10>'
-let g:floaterm_keymap_toggle = '<F12>'				" Start with Floaterm and lf command
+let g:floaterm_keymap_toggle = '<F12>'		" Start with Floaterm and lf command
 
 
 "Binding F5 to save and run python code inside floatermncmd t window
@@ -452,7 +450,7 @@ require("mason").setup({
         }
     },
 })
-local servers = { 'efm',"pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
+local servers = { "efm", "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
 require("mason-lspconfig").setup({
     ensure_installed = servers,
     automatic_installation = true
