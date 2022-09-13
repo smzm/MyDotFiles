@@ -183,8 +183,8 @@ autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents,
 " Switch between tabs with ctrl 
 nnoremap <C-Left> :tabprevious<CR>                                                                            
 nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-j> :tabprevious<CR>                                                                            
-nnoremap <C-k> :tabnext<CR>
+nnoremap <C-j> 22jzz
+nnoremap <C-k> 22kzz
 
 " Disable continuation of comments to the next line
 :set formatoptions-=cro
@@ -202,7 +202,8 @@ nnoremap dw vb"_d
 nmap <C-a> gg<S-v>G
 
 " Save with root permission
-command! W w !tee %
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 
 " Open current directory
 nmap te :tabedit 

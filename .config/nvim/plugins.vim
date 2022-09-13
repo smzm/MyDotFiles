@@ -21,6 +21,7 @@ call plug#begin('~/local/share/nvim/plugged')
    Plug 'easymotion/vim-easymotion'
    Plug 'terrortylor/nvim-comment'
    Plug 'smzm/hydrovim' | Plug 'MunifTanjim/nui.nvim'
+   Plug 'lambdalisue/suda.vim'
     
     " HTML and CSS
 	Plug 'mattn/emmet-vim' 							" emmet for vim
