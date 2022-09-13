@@ -208,7 +208,7 @@ require("catppuccin").setup({
       --IndentBlanklineIndent1 = {fg = "#36394f" },    -- slightly brighter than base : ferappe
       IndentBlanklineIndent1 = {fg = "#262638" },    -- slightly brighter than base : Mocha
       IndentBlanklineContextChar = {fg=colors.maroon},
-      IndentBlanklineContextStart = {fg=colors.maroon, style={"underline"}},
+      IndentBlanklineContextStart = { style={"underline"}},
       Search = {bg=colors.sapphire, fg=colors.crust},
       MatchParen = {fg = "#00ff15"},     -- Good for all theme
       rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
