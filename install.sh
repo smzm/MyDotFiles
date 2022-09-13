@@ -372,6 +372,7 @@ echo -e "\n \n"
                 sudo mkdir --parent /.Trash
                 sudo chmod a+rw /.Trash
                 sudo chmod +t /.Trash
+                (crontab -l ; echo "@daily $(which trash-empty) 30") | crontab -
         fi
     echo -e "\n \n"
 
@@ -379,6 +380,7 @@ echo -e "\n \n"
 
     
         echo " ===================== Terminal ====================="
+        echo -e " trash-cli "
         read -p " lsd    :::::    [r]un : " ansLSD
         if [[ $ansLSD == "r" ]] || [[ $ansLSD == "R" ]]; then
                 echo -e "\n +++++ install lsd +++++ \n"
@@ -392,7 +394,7 @@ echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd "
+        echo -e " trash-cli \n lsd "
         read -p " tmux    :::::    [r]un : " ansTmux
         if [[ $ansTmux == "r" ]] || [[ $ansTmux == "R" ]]; then
             echo -e "\n +++++ install tmux +++++ \n"
@@ -412,7 +414,7 @@ echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux "
+        echo -e " trash-cli \n lsd \n tmux "
         read -p " aria2 (download manager)   :::::    [r]un: " ansAria2
         if [[ $ansAria2 == "r" ]] || [[ $ansAria2 == "R" ]]; then
                 echo -e "\n +++++ install aria2 +++++ \n"
@@ -425,7 +427,7 @@ echo -e "\n \n"
     echo -e "\n \n"
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2"
+        echo -e " trash-cli \n lsd \n tmux \n aria2"
         read -p " broot (Fuzzy Search + tree + cd)  :::::    [r]un: " ansBroot
         if [[ $ansBroot == "r" ]] || [[ $ansBroot == "R" ]]; then
                 echo -e "\n +++++ install broot +++++ \n"
@@ -444,7 +446,7 @@ echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot"
+        echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot"
         read -p " ripgrep (A search tool that combines the usability of ag with the raw speed of grep) :::::    [r]un: " ansRg
         if [[ $ansRg == "r" ]] || [[ $ansRg == "R" ]]; then
                 echo -e "\n +++++ install ripgrep +++++ \n"
@@ -459,7 +461,7 @@ echo -e "\n \n"
     echo -e "\n \n"
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep"
+        echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot \n ripgrep"
         read -p " peco (Simplistic interactive filtering tool) :::::    [r]un: " ansPeco
         if [[ $ansPeco == "r" ]] || [[ $ansPeco == "R" ]]; then
                 echo -e "\n +++++ install peco +++++ \n"
@@ -475,7 +477,7 @@ echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco"
+        echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot \n ripgrep \n peco"
         read -p " ack  :::::    [r]un: " ansAck
         if [[ $ansAck == "r" ]] || [[ $ansAck == "R" ]]; then
                 echo -e "\n +++++ install ack +++++ \n"
@@ -489,7 +491,7 @@ echo -e "\n \n"
 
 
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack"
+        echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack"
         read -p " lostfiles (Find orphaned files not owned by any Arch packages)   :::::    [r]un: " ansLostfiles
         if [[ $ansLostfiles == "r" ]] || [[ $ansLostfiles == "R" ]]; then
                 echo -e "\n +++++ install lostfiles +++++ \n"
@@ -502,7 +504,7 @@ echo -e "\n \n"
     echo -e "\n \n"
     
         echo " ===================== Terminal ====================="
-        echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles"
+        echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles"
         read -p " gh (The GitHub for command line)   :::::    [r]un: " ansGithubcli
         if [[ $ansGithubcli == "r" ]] || [[ $ansGithubcli == "R" ]]; then
                 echo -e "\n +++++ install gh +++++ \n"
@@ -517,7 +519,7 @@ echo -e "\n \n"
     echo -e "\n \n"
     
     echo " ===================== Terminal ====================="
-    echo -e " lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles \n gh"
+    echo -e " trash-cli \n lsd \n tmux \n aria2 \n broot \n ripgrep \n peco \n ack \n lostfiles \n gh"
      read -p " tldr    :::::    [r]un : " ansTldr
         if [[ $ansTldr == "r" ]] || [[ $ansTldr == "R" ]]; then
                 if [[ $ansOS == "arch" ]];then
