@@ -145,6 +145,8 @@ alias lcg='lsd --gs'
 alias cl='clear'
 alias cp='cp -i' #Confirm before overwriting
 alias aria='aria2c -x16 -c -k1M -j10 -m16'
+alias rm='trash-put'
+alias rmdir='trash-put'
 
 cs(){
     cheat_directory="$HOME/cheatsheets"
@@ -165,3 +167,4 @@ cc(){
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
+
