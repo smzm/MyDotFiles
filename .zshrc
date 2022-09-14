@@ -129,14 +129,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+cc(){
+    cc.sh $1
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias ls='lsd --group-dirs=first'
 alias la='lsd -a'
@@ -148,23 +146,4 @@ alias aria='aria2c -x16 -c -k1M -j10 -m16'
 alias rm='trash-put'
 alias rmdir='trash-put'
 
-cs(){
-    cheat_directory="$HOME/cheatsheets"
-    if [ -d $cheat_directory ]; then
-        ~/cheatsheets/wikiScript.sh
-    else
-        echo "Please clone cheatsheets repository in $HOME"
-        echo "      https -->   git clone https://github.com/smzm/cheatsheets.git"
-        echo "      ssh   -->   ssh git@github.com:smzm/cheatsheets.git"
-
-    fi
-}
-
-cc(){
-    cc.sh $1
-}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 eval "$(starship init zsh)"
-
