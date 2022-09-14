@@ -563,7 +563,7 @@ echo -e "\n \n"
                     echo -e "\n +++++ copy /zathura to ~/.config/ +++++"
                     mkdir -p ~/.config/zathura
                     yes | cp -rf $dotfiles/.config/zathura* ~/.config/zathura
-                    zathura-pdf-mupdf 
+                    sudo pacman -S zathura-pdf-mupdf 
                     sleep 3
         fi
     echo -e "\n \n"
