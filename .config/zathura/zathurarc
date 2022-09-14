@@ -1,1 +1,8 @@
 include catppuccin-mocha
+
+# Enable copy to clipboard
+set selection-clipboard clipboard
+
+# Side-by-side mode : Press d to toggle side-by-side mode.
+map D set "first-page-column 1:1"
+map <C-d> set "first-page-column 1:2"
