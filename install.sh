@@ -298,20 +298,18 @@ echo -e "\n \n"
     echo -e "\n \n"
 
 
+    if [[ $ansOS == "arch" ]]; then
          echo " ===================== Fonts ====================="
-        read -p " InconsolataLGC Nerd Font  :::::    [r]un : " ansNFontInconsolata
-        if [[ $ansNFontInconsolata == "r" ]] || [[ $ansNFontInconsolata == "R" ]]; then
+        read -p " Nerd Fonts (Inconsolata, FiraCode)   :::::    [r]un : " ansNFont
+        if [[ $ansNFont == "r" ]] || [[ $ansNFont == "R" ]]; then
                 echo -e " \n +++++ Install inconsolaLGC Font \n"
-                sudo mkdir -p /usr/share/fonts/InconsolataLGC
-                sudo wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataLGC/Regular/complete/Inconsolata%20LGC%20Nerd%20Font%20Complete.ttf" -P /usr/share/fonts/InconsolataLGC/
-                fc-cache -f -v
+                yay -S nerd-fonts-inconsolata nerd-fonts-fira-code
         fi
-    echo -e "\n \n"
+            echo -e "\n \n"
 
 
-        if [[ $ansOS == "arch" ]]; then
             echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font "
+            echo -e " Nerd Font "
             read -p " Apple Fonts  :::::    [r]un : " ansApplefonts
             if [[ $ansApplefonts == "r" ]] || [[ $ansApplefonts == "R" ]]; then
                     echo -e " \n +++++ Install Apple fonts : SF Pro | SF Compact | SF Mono | SF Arabic | Newyork \n"
@@ -321,7 +319,7 @@ echo -e "\n \n"
 
 
             echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font \n Apple Fonts"
+            echo -e " Nerd Font \n Apple Fonts"
             read -p " Font Awesome    :::::    [r]un : " ansFontawesome
             if [[ $ansFontawesome == "r" ]] || [[ $ansFontawesome == "R" ]]; then
                 echo -e "\n +++++ yay -S ttf-font-awesome \n"
@@ -330,7 +328,7 @@ echo -e "\n \n"
             echo -e "\n \n"
         
             echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome"
+            echo -e " Nerd Font \n Apple Fonts \n ttf-font-awesome"
             read -p " VazirMatn   :::::    [r]un : " ansVazir
             if [[ $ansVazir == "r" ]] || [[ $ansVazir == "R" ]]; then
                 echo -e "\n +++++ yay -S vazirmatn-fonts \n"
@@ -339,7 +337,7 @@ echo -e "\n \n"
             echo -e "\n \n"
         
                     echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn"
+            echo -e " Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn"
             read -p " noto font emoji    :::::    [r]un : " ansNotoemoji
             if [[ $ansNotoemoji == "r" ]] || [[ $ansNotoemoji == "R" ]]; then
                 echo -e "\n +++++ yay -S noto-fonts-emoji \n"
@@ -349,7 +347,7 @@ echo -e "\n \n"
     fi
 
         echo " ===================== Fonts ====================="
-            echo -e " InconsolataLGC Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn \n noto fonts emoji"
+            echo -e " Nerd Font \n Apple Fonts \n ttf-font-awesome \n Vazirmatn \n noto fonts emoji"
             read -p " update /etc/fonts/local.conf    :::::    [r]un : " ansLocalconf
             if [[ $ansLocalconf == "r" ]] || [[ $ansLocalconf == "R" ]]; then
                 echo -e "\n +++++ copy local.conf \n"
@@ -664,7 +662,7 @@ done
             
             echo -e "\n +++++ install requirements : Fira Code Nerd Font | python-pywal | cava | wmctrl | pacman-contrib | ttf-font-awesome | jq | bc | \n"
             sudo pacman -S python-pywal calc jq bc wmctrl geoip
-            yay -S nerd-fonts-fira-code pacman-contrib cava ttf-indic-otf 
+            yay -S pacman-contrib cava ttf-indic-otf 
             echo -e "\n Installing spotify and sptlrx(sync lyric) \n you need copy cookie in sptlrx config file"
             yay -S spotify sptlrx-bin
             sptlrx
