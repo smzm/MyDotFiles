@@ -136,6 +136,18 @@ cc(){
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+cs(){
+   cheat_directory="$HOME/cheatsheets"  # <=========== CHANGE THIS IF NEEDED
+   if [ -d $cheat_directory ]; then
+       ~/cheatsheets/wikiScript.sh
+   else
+       echo "Please clone cheatsheets repository in $HOME"
+       echo "      https -->   git clone https://github.com/smzm/cheatsheets.git" 
+       echo "      ssh   -->   ssh git@github.com:smzm/cheatsheets.git"
+       
+   fi
+}
+
 alias ls='lsd --group-dirs=first'
 alias la='lsd -a'
 alias lla='lsd -la'
