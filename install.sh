@@ -563,6 +563,7 @@ echo -e "\n \n"
                     echo -e "\n +++++ copy /zathura to ~/.config/ +++++"
                     mkdir -p ~/.config/zathura
                     yes | cp -rf $dotfiles/.config/zathura* ~/.config/zathura
+                    zathura-pdf-mupdf 
                     sleep 3
         fi
     echo -e "\n \n"
@@ -731,7 +732,6 @@ done
         fi
     echo -e "\n \n"
 
-
         
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
@@ -741,6 +741,7 @@ done
             yay -S udevil
         fi
     echo -e "\n \n"
+
 
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
