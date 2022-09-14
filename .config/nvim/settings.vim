@@ -183,6 +183,8 @@ autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents,
 " Switch between tabs with ctrl 
 nnoremap <C-Left> :tabprevious<CR>                                                                            
 nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>                                                                            
+nnoremap <C-l> :tabnext<CR>
 nnoremap <C-j> 22jzz
 nnoremap <C-k> 22kzz
 
@@ -201,13 +203,8 @@ nnoremap dw vb"_d
 " Select all
 nmap <C-a> gg<S-v>G
 
-" Save with root permission
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
-
 " Open current directory
 nmap te :tabedit 
-
 
 " open splitted tab to a new window
 nnoremap ww <C-w>T 
@@ -226,10 +223,10 @@ map wk <C-w>k
 map wj <C-w>j
 map wl <C-w>l
 " Resize window
-nmap <C-w><right> :vertical resize +4<CR>
-nmap <C-w><left> :vertical resize -4<CR>
-nmap <C-w><up> :resize +2<CR>
-nmap <C-w><down> :resize -2<CR>
+nmap <A-right> :vertical resize +4<CR>
+nmap <A-left> :vertical resize -4<CR>
+nmap <A-up> :resize +2<CR>
+nmap <A-down> :resize -2<CR>
 
 " Undo Breakpoint
 inoremap , ,<c-g>u
