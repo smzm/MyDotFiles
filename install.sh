@@ -153,7 +153,7 @@ clear
         echo " ===================== Brew ====================="
         read -p " brew installation    :::::    [r]un : " ansBrew
         if [[ $ansBrew == "r" ]] || [[ $ansBrew == "R" ]]; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"    
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             echo -e "\n +++++ add Homebrew’s location to your $PATH... +++++ \n"
             export PATH="/usr/local/bin:$PATH"
             
