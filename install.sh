@@ -807,6 +807,18 @@ done
         fi
     echo -e "\n \n"
     
+        echo " ===================== i3 installation ====================="
+        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager \n unclutter \n numlockx \n nitrogen"
+        read -p " imwheel (Mouse wheel settings up)   :::::    [r]un : " ansImwheel
+        if [[ $ansImwheel == "r" ]] || [[ $ansImwheel == "R" ]]; then
+        
+            sudo pacman -S imwheel
+            
+            echo -e "\n +++++ copy .imwheelrc  to the \$HOME ... \n"
+            cp $dotfiles/.imwheelrc  $HOME/
+        fi
+    echo -e "\n \n"
+    
     
       echo " ===================== i3 installation ====================="
         echo -e " miscellaneous :  "
