@@ -388,9 +388,6 @@ assign [class="qv2ray"] $ws3
 # for_window [class="Galculator"] floating enable border pixel 1
 # for_window [title="i3_help"] floating enable sticky enable border normal
 # for_window [class="Lightdm-settings"] floating enable
-# for_window [class="Lxappearance"] floating enable sticky enable border normal
-# for_window [class="Manjaro-hello"] floating enable
-# for_window [class="Manjaro Settings Manager"] floating enable border normal
 # for_window [class="Skype"] floating enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
@@ -440,6 +437,5 @@ exec_always --no-startup-id picom --config ~/.config/picom.conf &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id pamac-tray
 exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
