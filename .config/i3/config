@@ -13,25 +13,14 @@ set $alt Mod1
 #for_window [class="^.*"] border pixel 10
 
 
-### Define Colors
-set $bg-color 	         #1E1E2E
-set $inactive-bg-color   #20252e
-set $text-color          #ffffff
-set $inactive-text-color #a2a3a3
-set $urgent-bg-color 	 #254cd1
-set $unfocused_border    #DDB6F2
-set $focused_border      #DDB6F2
-
-
-
 # Set Theme colors
-# Class                  border             backgr. text       indic.               child_border
-client.focused           #644ED6            #0E0F19            #ffffff              #644ED6   #644ED6
-client.unfocused         #29272E            #0E0F19            #ffffff              #161616   #161616
-client.focused_inactive  #466060            #0E0F19 #ffffff    #466060              #466060
-client.urgent    	     $urgent-bg-color   $urgent-bg-color   $text-color          #Abc4ef
-#client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #Abc4ef
-#client.placeholder      #000000            #0c0c0c            #ffffff              #000000 
+# Class                  border             backgr. text       indic.        child_border
+client.focused           #644ED6            #0E0F19            #d1d1d1       #644ED6   #644ED6
+client.unfocused         #29272E            #0E0F19            #525252       #161616   #161616
+client.focused_inactive  #466060            #0E0F19            #919191       #466060   #466060
+client.urgent    	     #254cd1            #254cd1            #ffffff       #Abc4ef
+#client.focused_inactive #20252e            #a2a3a3            #a2a3a3       #Abc4ef
+#client.placeholder      #000000            #0c0c0c            #ffffff       #000000 
 #client.background       #2B2C2B
 
 
