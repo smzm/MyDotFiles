@@ -114,6 +114,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Show directory without background color 
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -159,3 +162,8 @@ alias rm='trash-put'
 alias rmdir='trash-put'
 
 eval "$(starship init zsh)"
+
+export BROWSER=/usr/bin/google-chrome-stable
+
+
+
