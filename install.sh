@@ -434,11 +434,6 @@ echo -e "\n \n"
                 else
                     brew install broot               
                 fi
-
-                echo -e "\n +++++ copy config files ... +++++ \n"
-                sleep 2
-                mkdir -p ~/.config/broot
-                yes | cp -rf $dotfiles/.config/broot/* ~/.config/broot/
         fi
     echo -e "\n \n"
 
