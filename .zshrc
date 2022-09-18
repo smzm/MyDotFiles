@@ -142,7 +142,7 @@ cc(){
 cs(){
    cheat_directory="$HOME/cheatsheets"  # <=========== CHANGE THIS IF NEEDED
    if [ -d $cheat_directory ]; then
-       ~/cheatsheets/wikiScript.sh
+       $cheat_directory/wikiScript.sh
    else
        echo "Please clone cheatsheets repository in $HOME"
        echo "      https -->   git clone https://github.com/smzm/cheatsheets.git" 
