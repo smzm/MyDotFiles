@@ -197,14 +197,14 @@ rm ~/.icons/macOSMonterey.tar.gz
 
 read -p "If you have any partion swap for enabling hibernate type [y]  : " anshibernate
 if [[ $anshibernate == "y" ]] || [[ $anshibernate == "Y" ]]; then
-sudo blkid | grep swap | awk 'BEGIN{FS="UUID="};{print $2}' | awk 'BEGIN{FS="\""}; {print $2}' | xargs echo |xargs -I {} sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ resume=UUID={}"/' /etc/default/grub grub-mkconfig -o /boot/grub/grub.cfg
- sudo sed -i '/^HOOKS=/,/)/s/)$/ resume)/' /etc/mkinitcpio.conf
+ sudo blkid | grep swap | awk 'BEGIN{FS="UUID="};{print $2}' | awk 'BEGIN{FS="\""}; {print $2}' | xargs echo |xargs -I {} sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ resume=UUID={}"/' /etc/default/grub grub-mkconfig -o /boot/grub/grub.cfg
+ sudo sed -i '/^HOOKS=/ s/)$/ resume)/' /etc/mkinitcpio.conf
  sudo mkinitcpio -P
 fi
 
 
 # nvidia
-sudo 
+sudo sed -i '/^MODULES=(.*/ s/)$/ nvidia)/' /etc/mkinitcpio.conf
 
 
 # ============== POST INSTALLATION
@@ -212,4 +212,4 @@ echo "set cookies from open.spotify.com in .config/sptlrx/config.yam"
 echo "\n"
 echp "autostart configuration for openvpn3 needed"
 
-jupyter
+# jupyter
