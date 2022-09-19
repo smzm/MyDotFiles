@@ -18,7 +18,6 @@ makepkg -si
 yay --save --nocleanmenu --nodiffmenu
 
 
-
 # yay packages
 yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji
 
@@ -46,7 +45,6 @@ npm config set prefix ~/.npm
 # ruby config
 echo "gem: --user-install" >> ~/.gemrc
 sudo gem update
-
 
 # PIP, NPM, YARN
 pip install numpy pandas scipy sympy matplotlib plotly jedi python-language-server[all]
