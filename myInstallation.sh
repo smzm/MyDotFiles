@@ -6,7 +6,7 @@ mkdir -p ~/tmpInstall
 
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S base-devel git wget yajl curl binutils zsh nodejs npm yarn ruby python python-pip jupyter-notebook python-ipykernel pyenv neovim python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky --noconfirm
+sudo pacman -S base-devel git wget yajl curl binutils zsh nodejs npm yarn ruby python python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky --noconfirm
 
 
 # YAY
@@ -141,3 +141,16 @@ yes | cp -rf $dotfiles/.config/conky $HOME/.config/
 
 
 rm -rf ~/tmpInstall
+
+
+# Disable IPV6
+nmcli -t -f NAME,TIMESTAMP con | sort -t: -nk2 | tail -n1 | cut -d: -f1 | xargs -I {} nmcli connection modify {} ipv6.method "disabled"
+
+# comment ipv6 hosts
+sed -i 's/^[[:space:]]*::/#::/' /etc/hosts
+
+# Pacman.conf configuration
+sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf
+sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads=5/g' /etc/pacman.conf
+
+
