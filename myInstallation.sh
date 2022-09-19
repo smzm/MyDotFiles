@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'run this file from your shell : sudo su ... '
+echo 'run this file from your shell, (NOT IN ROOT SHELL): sudo su [username] '
 
 
 
