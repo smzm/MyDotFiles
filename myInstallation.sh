@@ -217,5 +217,11 @@ if [[ `id -u` -ne 0 ]]; then
  echp "autostart configuration for openvpn3 needed"
 
 
+echo 'pacman packages installed :'
 sudo pacman -Q git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3-gaps python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
+
+echo '\n \n'
+echo 'yay packages installed :'
+yay -Q xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor qv2ray openvpn3 google-chrome visual-studio-code-bin 
+
 fi
