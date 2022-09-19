@@ -6,7 +6,7 @@ mkdir -p ~/tmpInstall
 
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S base-devel git wget yajl curl binutils zsh nodejs npm yarn ruby python python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky --noconfirm
+sudo pacman -S base-devel git wget yajl curl binutils zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky --noconfirm
 
 
 # YAY
