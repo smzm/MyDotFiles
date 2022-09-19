@@ -187,6 +187,8 @@ echo -e "\n \n"
 
         fi
     echo -e "\n \n"
+    
+    
         read -p " ruby(gem)    :::::    [r]un : " ansRuby
         if [[ $ansRuby == "r" ]] || [[ $ansRuby == "R" ]]; then
             if [[ $ansOS == "arch" ]]; then
@@ -199,8 +201,10 @@ echo -e "\n \n"
                 sudo apt install -y ruby-full
             fi
         sudo gem update
-        fi
+        fi       
     echo -e "\n \n"
+    
+    
         read -p " python3(pip)    :::::    [r]un : " ansPip
         if [[ $ansPip == "r" ]] || [[ $ansPip == "R" ]]; then
                 echo -e "\n +++++ install python, pip +++++ \n"
@@ -216,6 +220,21 @@ echo -e "\n \n"
                 fi
         fi
     echo -e "\n \n"
+    
+    
+    
+        read -p " Rust(cargo)    :::::    [r]un : " ansRust
+        if [[ $ansRust == "r" ]] || [[ $ansRust == "R" ]]; then
+                echo -e "\n +++++ install Rust +++++ \n"
+                if [[ $ansOS == "arch" ]];then
+                    sudo pacman -S rust
+                else
+                    brew install rust
+                fi
+        fi
+    echo -e "\n \n"
+    
+    
 
         echo " ===================== My Development Packages ====================="
         read -p " [pip] : numpy | pandas | scipy | sympy | matplotlib | plotly | jupyter notebook ::::: [r]un : " ansPLS2
@@ -264,7 +283,7 @@ echo -e "\n \n"
         if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
             echo -e "\n +++++ install neovim +++++  \n"
             if [[ $ansOS == "arch" ]];then
-                sudo pacman -S neovim
+                sudo pacman -S neovim xclip
                 sudo pacman -S python-pynvim 
             else
                 brew install neovim
@@ -837,7 +856,7 @@ done
         read -p " clipit (clipboard manager)    :::::    [r]un : " ansClipit
         if [[ $ansClipit == "r" ]] || [[ $ansClipit == "R" ]]; then
             echo -e "\n +++++ yay -S clipit \n"
-            yay -S clipit
+            yay -S clipit 
         fi
     echo -e "\n \n"
 
