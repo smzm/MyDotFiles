@@ -283,7 +283,7 @@ echo -e "\n \n"
         if [[ $ansNvim == "r" ]] || [[ $ansNvim == "R" ]]; then
             echo -e "\n +++++ install neovim +++++  \n"
             if [[ $ansOS == "arch" ]];then
-                sudo pacman -S neovim xclip
+                sudo pacman -S neovim xclip luarocks
                 sudo pacman -S python-pynvim 
             else
                 brew install neovim
