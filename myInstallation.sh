@@ -13,6 +13,17 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S base-devel git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
 
 
+
+# dnscrypt-proxy : It's need to run before installing yay packages
+sudo cp -f $dotfiles/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+# change /etc/resolve.conf
+sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"
+sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"
+sudo chattr +i /etc/resolv.conf
+# enable systemctl :  dnscrypt-procy
+sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy
+
+
 # YAY
 cd ~/tmpInstall
 git clone https://aur.archlinux.org/yay.git 
@@ -178,16 +189,15 @@ tar xvf ~/.icons/macOSMonterey.tar.gz
 rm ~/.icons/macOSMonterey.tar.gz
 
 
-# dnscrypt-proxy
-sudo cp -f $dotfiles/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-# change /etc/resolve.conf
-sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"
-sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"
-sudo chattr +i /etc/resolv.conf
-# enable systemctl :  dnscrypt-procy
-sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy
+# openvpn3
 
 
 
 
-
+==============
+gh
+neovim
+spltrx
+openvpn3 auto start
+swap 
+hibernate
