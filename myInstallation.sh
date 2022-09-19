@@ -213,7 +213,7 @@ sudo sed -i '/^MODULES=(.*/ s/)$/ nvidia)/' /etc/mkinitcpio.conf
 
 
 # ============== POST INSTALLATION
-echo "set cookies from open.spotify.com in .config/sptlrx/config.yam"
+echo "set cookies from open.spotify.com in .config/sptlrx/config.yaml"
 echo "\n"
 echp "autostart configuration for openvpn3 needed"
 
