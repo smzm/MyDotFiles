@@ -9,7 +9,7 @@ if [[ `id -u` -ne 0 ]]; then
 
 
  sudo pacman -Syu --noconfirm
- sudo pacman -S git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3-gaps python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
+ sudo pacman -S git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura zathura-pdf-mupdf mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3-gaps python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
 
 
 
@@ -112,7 +112,7 @@ if [[ `id -u` -ne 0 ]]; then
  # Zathura
  mkdir -p ~/.config/zathura
  yes | cp -rf $dotfiles/.config/zathura/* ~/.config/zathura
- sudo pacman -S zathura-pdf-mupdf 
+  
 
  # MPV
  mkdir ~/.config/mpv/
@@ -218,7 +218,7 @@ if [[ `id -u` -ne 0 ]]; then
 
 
 echo 'pacman packages installed :'
-sudo pacman -Q git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3-gaps python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
+sudo pacman -Q git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura zathura-pdf-mupdf mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3-gaps python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
 
 echo '\n \n'
 echo 'yay packages installed :'
