@@ -153,4 +153,4 @@ sed -i 's/^[[:space:]]*::/#::/' /etc/hosts
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads=5/g' /etc/pacman.conf
 
-
+ whoami | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-user=.*/autologin-user={}/' /etc/lightdm/lightdm.conf
