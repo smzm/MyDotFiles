@@ -10,7 +10,7 @@ mkdir -p ~/tmpInstall
 
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S base-devel git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy --noconfirm
+sudo pacman -S base-devel git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy v2ray --noconfirm
 
 
 # YAY
@@ -23,7 +23,7 @@ yay --save --nocleanmenu --nodiffmenu
 
 
 # yay packages
-yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor
+yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor qv2ray openvpn3
 
 
 # ZSH config
@@ -164,9 +164,11 @@ sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#greeter-session=.*$/greeter-session=lightdm
 whoami | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-user=.*/autologin-user={}/' /etc/lightdm/lightdm.conf
 echo $DESKTOP_SESSION | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-session=.*$/autologin-session={}/' /etc/lightdm/lightdm.conf
 
-# enable systemctl :  lightdm , bluetooth
+# enable systemctl :  lightdm 
 sudo systemctl enable lightdm.service 
 sudo systemctl enable bluetooth.service
+
+# enable systemctl :  bluetooth
 sudo systemctl start sshd.service ; sudo systemctl enable sshd.service
 
 # Apple_cursor
@@ -174,5 +176,18 @@ mkdir -p ~/.icons
 wget https://github.com/ful1e5/apple_cursor/releases/latest/download/macOSMonterey.tar.gz -P ~/.icons
 tar xvf ~/.icons/macOSMonterey.tar.gz
 rm ~/.icons/macOSMonterey.tar.gz
+
+
+# dnscrypt-proxy
+sudo cp -f $dotfiles/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+# change /etc/resolve.conf
+sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"
+sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"
+sudo chattr +i /etc/resolv.conf
+# enable systemctl :  dnscrypt-procy
+sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy
+
+
+
 
 
