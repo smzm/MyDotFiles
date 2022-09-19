@@ -1,10 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-read -p "This file should run in your shell. what is your username  : " ansUsername
-sudo su $ansUsername
 
-if (whoami == $ansUsername)
-
+if [[ "$EUID" -ne 0 ]]; then
 
  # ================================= DONT USE THIS FILE FOR INSTALLATION 
  dotfiles=`echo $PWD`
