@@ -15,7 +15,7 @@ clear
         if [[ $ansUU == "r" ]]||[[ $ansUU == "R" ]]; then
             if [[ $ansOS == "arch" ]];then
                 echo -e "\n +++++ sudo pacman -Syu +++++ \n"
-                sudo pacman -Syu
+                sudo pacman -Syu --noconfirm
 
             elif [[ $ansOS == "deb" ]];then
                 echo -e "\n +++++ sudo apt-get upgrade +++++ \n +++++ sudo apt-get update +++++ \n"
@@ -582,7 +582,120 @@ echo -e "\n \n"
                     fi
         fi
     echo -e "\n \n"
-    fi
+    
+    
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys)"
+        read -p " thunar (file manager)    :::::    [r]un : " ansThunar
+        if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S thunar (file manager) \n"
+            sudo pacman -S thunar
+        fi
+    echo -e "\n \n"
+
+
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar"
+        read -p " lxappearance (GTK+ theme switcher)   :::::   [r]un : " ansLxappearance
+        if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S lxappearance \n"
+            sudo pacman -S lxappearance
+        fi
+    echo -e "\n \n"
+
+        
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar \n lxappearance"
+        read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
+        if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
+            sudo pacman -S xfce4-power-manager
+            sudo pacman -S xfce4-settings
+        fi
+    echo -e "\n \n"
+    
+    
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar \n lxappearance \n xfce4-power-manager"
+        read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
+        if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
+            sudo pacman -S nitrogen
+            
+            echo -e "\n +++++ copy Background file to Picture ... \n"
+            cd ~
+            mkdir -p Pictures
+            cp $dotfiles/wall.jpg  $HOME/.config/
+        fi
+    echo -e "\n \n"
+    
+    
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar \n lxappearance \n xfce4-power-manager \n nitrogen"
+        read -p " Viewnior (Image viewer)   :::::    [r]un : " ansViewnior
+        if [[ $ansViewnior == "r" ]] || [[ $ansViewnior == "R" ]]; then
+            # A simple, fast and elegant image viewer program
+            sudo pacman -S viewnior
+        fi
+    echo -e "\n \n"
+    
+
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar \n lxappearance \n xfce4-power-manager \n nitrogen \n viewnior"
+        read -p " fluent-reader (rss reader)   :::::    [r]un : " ansFluentreader
+        if [[ $ansFluentreader == "r" ]] || [[ $ansFluentreader == "R" ]]; then
+            # Fluent Reader
+            yay -S fluent-reader
+        fi
+    echo -e "\n \n"
+
+
+
+        echo " ===================== GUI APP ====================="
+        echo -e " kitty \n zathura \n mpv(xdotool+xbindkeys) \n thunar \n lxappearance \n xfce4-power-manager \n nitrogen \n viewnior \n fluent-reader" 
+        read -p " Copy config file (~/.config/mimeapps.list) and (~/.config/gtk-3.0/settings.ini)  :::::    [r]un : " ansGuiconfig
+        if [[ $ansGuiconfig == "r" ]] || [[ $ansGuiconfig == "R" ]]; then
+            cp $dotfiles/.config/mimeapps.list $HOME/.config/
+            sudo pacman -S --noconfirm gtk3 
+            yes | cp -rf $dotfiles/.config/gtk-3.0 $HOME/.config/
+        fi
+    echo -e "\n \n"
+        
+        
+fi
+    
+    
+        echo " ===================== Drivers ====================="
+        read -p " udevil (devmon)    :::::    [r]un : " ansUdevil
+        if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
+            echo -e "\n +++++ yay -S udevil \n"
+            yay -S udevil
+        fi
+    echo -e "\n \n"
+    
+
+        echo " ===================== Drivers ====================="
+        echo -e " udevil"
+        read -p " ntfs-3g    :::::    [r]un : " ansNtfs
+        if [[ $ansNtfs == "r" ]] || [[ $ansNtfs == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S ntfs-3g \n"
+            # Allow management of NTFS drives
+            sudo pacman -S ntfs-3g
+        fi
+    echo -e "\n \n"
+
+
+        echo " ===================== Drivers ====================="
+        echo -e " udevil \n ntfs-3g"
+        read -p "     :::::    [r]un : " ansExfat
+        if [[ $ansExfat == "r" ]] || [[ $ansExfat == "R" ]]; then
+            echo -e "\n +++++ sudo pacman -S exfat-utils \n"
+            # Allows management of exFAT drives
+            sudo pacman -S exfat-utils
+        fi
+    echo -e "\n \n"
+
+
+
 
 rm -rf ~/tmpInstall
 
@@ -695,26 +808,6 @@ done
     echo -e "\n \n"
 
 
-        echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst"
-        read -p " thunar (file manager)    :::::    [r]un : " ansThunar
-        if [[ $ansThunar == "r" ]] || [[ $ansThunar == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S thunar (file manager) \n"
-            sudo pacman -S thunar
-        fi
-    echo -e "\n \n"
-
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar"
-        read -p " lxappearance (GTK+ theme switcher)   :::::   [r]un : " ansLxappearance
-        if [[ $ansLxappearance == "r" ]] || [[ $ansLxappearance == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S lxappearance \n"
-            sudo pacman -S lxappearance
-        fi
-    echo -e "\n \n"
-
-
 
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance"
@@ -726,15 +819,6 @@ done
     echo -e "\n \n"
 
         
-        echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift"
-        read -p " udevil(Mount and unmount without password)    :::::    [r]un : " ansUdevil
-        if [[ $ansUdevil == "r" ]] || [[ $ansUdevil == "R" ]]; then
-            echo -e "\n +++++ yay -S udevil \n"
-            yay -S udevil
-        fi
-    echo -e "\n \n"
-
 
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil"
@@ -757,18 +841,7 @@ done
         fi
     echo -e "\n \n"
 
-
-        echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit"
-        read -p " xfce4 Manager (Power management/Suspend and hibernate)  :::::    [r]un : " ansXfce4Manager
-        if [[ $ansXfce4Manager == "r" ]] || [[ $ansXfce4Manager == "R" ]]; then
-            echo -e "\n +++++ sudo pacman -S xfce4-power-manager  \n +++++ sudo pacman -S xfce4-settings"
-            sudo pacman -S xfce4-power-manager
-            #sudo pacman -S xfce4-settings
-        fi
-    echo -e "\n \n"
-
-        
+       
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager"
         read -p " unclutter (hides an inactive mouse)   :::::    [r]un : " ansUnclutter
@@ -789,18 +862,6 @@ done
     echo -e "\n \n"
 
     
-        echo " ===================== i3 installation ====================="
-        echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager \n unclutter \n numlockx"
-        read -p " nitrogen (set background picture)   :::::    [r]un : " ansNitrogen
-        if [[ $ansNitrogen == "r" ]] || [[ $ansNitrogen == "R" ]]; then
-            sudo pacman -S nitrogen
-            
-            echo -e "\n +++++ copy Background file to Picture ... \n"
-            cd ~
-            mkdir -p Pictures
-            cp $dotfiles/wall.jpg  $HOME/.config/
-        fi
-    echo -e "\n \n"
     
         echo " ===================== i3 installation ====================="
         echo -e " i3 \n picom \n arandr \n rofi \n polybar \n dunst \n thunar \n lxappearance \n redshift \n udevil \n scrot \n clipit \n xfce4-power-manager \n unclutter \n numlockx \n nitrogen"
@@ -821,30 +882,18 @@ done
         if [[ $ansMic == "r" ]] || [[ $ansMic == "R" ]]; then
             # information of videos and audios
             sudo pacman -S mediainfo
-            
-            # Allow management of NTFS drives
-            sudo pacman -S ntfs-3g
-            
-            # Allows management of FAT drives
-            sudo pacman -S exfat-utils
-            
+                     
             # A better fuzzy finder for terminal | github.com/jhawthorn/fzy
             sudo pacman -S fzy
             
             # xcolor : a color picker 
             sudo pacman -S xcolor
 
-            # A simple, fast and elegant image viewer program
-            sudo pacman -S viewnior
-            
             # conky : system monitor
             sudo pacman -S conky
             yes | cp -rf $dotfiles/.config/conky $HOME/.config/
+           
 
-            # Fluent Reader
-            yay -S fluent-reader
-            
-            
         fi
 
 
