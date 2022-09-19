@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo 'run this file from your shell, (NOT IN ROOT SHELL): sudo su [username] '
+read -p "This file should run in your shell. what is your username  : " ansUsername
+sudo su ansUsername
 
 
 
