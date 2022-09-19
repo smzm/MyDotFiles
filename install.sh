@@ -247,6 +247,9 @@ echo -e "\n \n"
                 else 
                     pip install jupyter
                 fi
+                
+                mkdir -p ~/.jupyter/custom/
+                sudo cp -rf $dotfiles/.jupyter/custom/* ~/.jupyter/custom/                
         fi
         
         
