@@ -385,6 +385,7 @@ for_window [class="viewnior|Viewnior"] floating enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="kitty"] border pixel 4
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -392,8 +393,7 @@ for_window [urgent=latest] focus
 #focus_follows_mouse no
 
 # Autostart applications
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gome-authentication-agent-1   # JUST FOR MANJARO 
-exec --no-startup-id blueman-applet
+ exec --no-startup-id blueman-applet
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id nitrogen --restore; 
 exec --no-startup-id nm-applet
@@ -408,7 +408,8 @@ exec --no-startup-id redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.8
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "devmon --no-gui"
 exec xrandr --auto
-exec_always --no-startup-id imwheel &
+exec_always --no-startup-id imwheel
+
 
 # Start Polybar
 exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
@@ -418,3 +419,4 @@ exec_always --no-startup-id dunst &
 
 # Start picom composition
 exec_always --no-startup-id picom --config ~/.config/picom.conf & 
+
