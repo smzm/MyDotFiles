@@ -1,12 +1,16 @@
 #!/bin/bash
 
+echo 'run this file from your shell : sudo su ... '
+
+
+
 # ================================= DONT USE THIS FILE FOR INSTALLATION 
 dotfiles=`echo $PWD`
 mkdir -p ~/tmpInstall
 
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S base-devel git wget yajl curl binutils lightdm lightdm-gtk-greeter zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky --noconfirm
+sudo pacman -S base-devel git wget yajl curl binutils lightdm lightdm-gtk-greeter openssh zsh nodejs npm yarn ruby python rust python-pip jupyter-notebook python-ipykernel pyenv neovim xclip python-pynvim trash-cli lsd tmux aria2 broot ripgrep peco ack lostfiles github-cli tldr kitty zathura mpv xbindkeys xdotool thunar lxappearance xfce4-power-manager xfce4-settings nitrogen viewnior gtk3 ntfs-3g exfat-utils i3 python-i3ipc arandr rofi python-pywal calc jq bc wmctrl geoip dunst libnotify redshift imwheel numlockx unclutter unclutter fzy mediainfo xcolor conky pulseaudio pulseaudio-alsa pulseaudio-equalizer pulseaudio-jack pulseaudio-bluetooth alsa-utils alsa-firmware pavucontrol bluez bluez-utils unrar unzip tar xarchiver htop wine lib32-gnutls mtpfs gvfs-mtp gvfs-gphoto2 dnscrypt-proxy --noconfirm
 
 
 # YAY
@@ -19,7 +23,7 @@ yay --save --nocleanmenu --nodiffmenu
 
 
 # yay packages
-yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji
+yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor
 
 
 # ZSH config
@@ -153,4 +157,22 @@ sed -i 's/^[[:space:]]*::/#::/' /etc/hosts
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads.*/ParallelDownloads=5/g' /etc/pacman.conf
 
+# Lightdm greeter settings
+sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#greeter-session=.*$/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+
+# Lightdm auto login
 whoami | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-user=.*/autologin-user={}/' /etc/lightdm/lightdm.conf
+echo $DESKTOP_SESSION | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-session=.*$/autologin-session={}/' /etc/lightdm/lightdm.conf
+
+# enable systemctl :  lightdm , bluetooth
+sudo systemctl enable lightdm.service 
+sudo systemctl enable bluetooth.service
+sudo systemctl start sshd.service ; sudo systemctl enable sshd.service
+
+# Apple_cursor
+mkdir -p ~/.icons
+wget https://github.com/ful1e5/apple_cursor/releases/latest/download/macOSMonterey.tar.gz -P ~/.icons
+tar xvf ~/.icons/macOSMonterey.tar.gz
+rm ~/.icons/macOSMonterey.tar.gz
+
+
