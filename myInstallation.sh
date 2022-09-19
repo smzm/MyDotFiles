@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 
-if [[ "$EUID" -ne 0 ]]; then
+if [[ `id -u` -ne 0 ]]; then
 
  # ================================= DONT USE THIS FILE FOR INSTALLATION 
  dotfiles=`echo $PWD`
