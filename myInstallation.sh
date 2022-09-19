@@ -34,7 +34,7 @@ yay --save --nocleanmenu --nodiffmenu
 
 
 # yay packages
-yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor qv2ray openvpn3
+yay -S xbindkeys_config-gtk2 fluent-reader udevil tailwind-css tailwindcss-language-server picom-ibhagwan-git polybar pacman-contrib cava ttf-indic-otf spotify sptlrx-bin scrot clipit nerd-fonts-inconsolata nerd-fonts-fira-code apple-fonts ttf-font-awesome vazirmatn-fonts noto-fonts-emoji pulseaudio-ctl bottles jmtpfs flat-remix flatplat-blue-theme apple_cursor qv2ray openvpn3 google-chrome visual-studio-code-bin 
 
 
 # ZSH config
@@ -77,6 +77,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 mkdir -p $HOME/.config/nvim
 yes | cp -rf $dotfiles/.config/nvim/* ~/.config/nvim/
 
+# neovim
+neovim
+
+
 # Fonts Config
 sudo cp $dotfiles/local.conf /etc/fonts/local.conf
 # Install feather font
@@ -95,6 +99,7 @@ sudo chmod +t /.Trash
 yes | cp -rf $dotfiles/.tmux.conf ~/
 
 # gh
+sudo systemctl start sshd.service ; sudo systemctl enable sshd.service
 gh auth login
 
 # bin
@@ -177,10 +182,11 @@ echo $DESKTOP_SESSION | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autolog
 
 # enable systemctl :  lightdm 
 sudo systemctl enable lightdm.service 
-sudo systemctl enable bluetooth.service
+
 
 # enable systemctl :  bluetooth
-sudo systemctl start sshd.service ; sudo systemctl enable sshd.service
+sudo systemctl enable bluetooth.service
+
 
 # Apple_cursor
 mkdir -p ~/.icons
@@ -195,9 +201,10 @@ rm ~/.icons/macOSMonterey.tar.gz
 
 
 ==============
-gh
-neovim
-spltrx
-openvpn3 auto start
+echo "set cookies from open.spotify.com in .config/sptlrx/config.yam"
+echo "\n"
+echp "autostart configuration for openvpn3 needed"
+
 swap 
 hibernate
+jupyter
