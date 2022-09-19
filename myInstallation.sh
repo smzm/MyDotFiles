@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -p "This file should run in your shell. what is your username  : " ansUsername
-sudo su ansUsername
+sudo su $ansUsername
 
 
 
