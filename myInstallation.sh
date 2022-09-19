@@ -209,7 +209,7 @@ fi
 
 
 # nvidia
-sudo sed -i '/^MODULES=(.*/ s/)$/ nvidia)/' /etc/mkinitcpio.conf
+sudo sed -i '/^MODULES=(.*/ s/)$/ i915 nvidia)/' /etc/mkinitcpio.conf
 
 
 # ============== POST INSTALLATION
