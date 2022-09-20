@@ -28,7 +28,7 @@ if missing:
 
 
 # # ===== Get path of dotfiles directory
-# dotfiles_path = os.popen('echo $PWD').read().rstrip()
+dotfiles_path = os.popen('echo $PWD').read().rstrip()
 
 # # ===== Update pacman packages
 # run('sudo pacman -Syu --noconfirm', shell=True)
@@ -60,6 +60,7 @@ if missing:
 #  "xclip",
 #  "python-pynvim",
 #  "trash-cli",
+#  "cronie",
 #  "lsd",
 #  "tmux",
 #  "aria2",
@@ -262,7 +263,7 @@ if missing:
 # os.system('mkdir -p ~/.npm')
 # os.system('npm config set prefix ~/.npm')
 
-# ===== Python packages
+# # ===== Python packages
 # python_packages_list = ['numpy', 'pandas', 'scipy', 'sympy', 'matplotlib', 'plotly', 'python-language-server', 'pynvim']
 # python_package = [
 #   inquirer.Checkbox('interest',
@@ -279,7 +280,7 @@ if missing:
 #     for package in python_package_answers['interest']:
 #         run(f'pip install {package}' --upgrade, shell=True) 
 
-# ===== Npm packages
+# # ===== Npm packages
 # npm_packages_list = ['pyright', 'vim-language-server', 'vscode-langservers-extracted', 'typescript', 'typescript-language-server', 'awk-language-server', 'dockerfile-language-server-nodejs', 'emmet-ls', 'bash-language-server', 'yaml-language-server', 'neovim']
 # npm_package = [
 #   inquirer.Checkbox('interest',
@@ -298,25 +299,66 @@ if missing:
 
 
 
-# ===== Neovim Installation
-# VIM-PLUG
- sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
- mkdir -p $HOME/.config/nvim
- yes | cp -rf $dotfiles/.config/nvim/* ~/.config/nvim/
+# # ===== Neovim Installation
+# # VIM-PLUG
+# os.system("sh -c 'curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+# os.system("mkdir -p $HOME/.config/nvim")
+# os.system(f"yes | cp -rf {dotfiles_path}/.config/nvim/* ~/.config/nvim/")
+# os.system('nvim +"PlugInstall --sync" +qa')
+
+
+# # ===== Font Configuration
+# os.system(f'sudo cp {dotfiles_path}/local.conf /etc/fonts/local.conf')
+# # Install feather font
+# os.system('mkdir -p $HOME/.fonts')
+# os.system(f'yes | cp -rf {dotfiles_path}/.fonts/* $HOME/.fonts/')
+# os.system('fc-cache -fv')
 
 
 
-# ===== Font Configuration
-# ===== Trash-cli configuration
-# ===== Tmux configuration
-# ===== Gh configuration
-# ===== bin
-# ===== Kitty configuration
-# ===== Zathura configuration
+# # ===== Trash-cli configuration
+# os.system('sudo mkdir -p --parent /.Trash')
+# os.system('sudo chmod a+rw /.Trash')
+# os.system('sudo chmod +t /.Trash')
+# if not run('crontab -l | grep "trash-empty"', shell=True, stdout=DEVNULL, stderr=STDOUT) :
+#     os.system('(crontab -l ; echo "@daily $(which trash-empty) 30") | crontab -')
+
+# # ===== Tmux configuration
+# run(f'yes | cp -rf {dotfiles_path}/.tmux.conf ~/', shell=True, stdout=DEVNULL)
+
+# # ===== Gh configuration
+# run('sudo systemctl start sshd.service ; sudo systemctl enable sshd.service', shell=True, stdout=DEVNULL)
+# # os.system('gh auth login')
+
+# # ===== bin
+# run(f'yes | cp -rf {dotfiles_path}/bin ~', shell=True, stdout=DEVNULL)
+
+# # ===== Kitty configuration
+# run('mkdir -p ~/.config/kitty', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.config/kitty/* ~/.config/kitty/', shell=True, stdout=DEVNULL)
+
+# # ===== Zathura configuration
+# run('mkdir -p ~/.config/zathura', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.config/zathura/* ~/.config/zathura', shell=True, stdout=DEVNULL)
+
 # ===== Mpv configuration
+run('mkdir -p ~/.config/mpv/', shell=True, stdout=DEVNULL)
+run(f'yes | cp -rf {dotfiles_path}/.config/mpv/* ~/.config/mpv/', shell=True, stdout=DEVNULL)
+run(f'yes | cp -rf {dotfiles_path}/.xbindkeysrc ~/.xbindkeysrc', shell=True, stdout=DEVNULL)
+
 # ===== Nitrogen configuration
+run('mkdir -p ~/Pictures', shell=True, stdout=DEVNULL)
+run(f'cp {dotfiles_path}/wall.jpg  $HOME/.config/', shell=True, stdout=DEVNULL)
+
 # ===== GTK-3.0 configuration
+run('mkdir -p ~/.config/gtk-3.0/', shell=True, stdout=DEVNULL)
+run(f'yes | cp -rf {dotfiles_path}/.config/gtk-3.0 $HOME/.config/', shell=True, stdout=DEVNULL)
+
+
 # ===== I3 configuration
+run(f'yes | cp -rf {dotfiles_path}/.config/i3 $HOME/.config/', shell=True, stdout=DEVNULL)
+run(f'yes | cp -rf {dotfiles_path}/.Xresources $HOME/', shell=True, stdout=DEVNULL)
+
 # ===== Picom configuration
 # ===== Rofi configuration
 # ===== Polybar configuration
