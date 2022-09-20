@@ -134,6 +134,7 @@ pacman_list = [
 ]
 
 
+os.system('clear')
 
 pacman_packages_q =[
         inquirer.Checkbox('interest',
@@ -207,6 +208,9 @@ aur_list = [
 'google-chrome',
 'visual-studio-code-bin',
 ]
+
+os.system('clear')
+
 aur_packages_q =[
         inquirer.Checkbox('interest',
         message="What packages do you want to install ? ", 
