@@ -213,7 +213,7 @@ os.system('clear')
 
 aur_packages_q =[
         inquirer.Checkbox('interest',
-        message="What packages do you want to install ? ", 
+        message="What aur packages do you want to install ? ", 
         choices=["ALL ⬇️", *aur_list],
         )]
 aur_packages_answers = inquirer.prompt(aur_packages_q)
@@ -268,6 +268,9 @@ if not zsh_is_runned :
 # ===== Node configuration
 os.system('mkdir -p ~/.npm')
 os.system('npm config set prefix ~/.npm')
+
+
+os.system('echo "\n"')
 
 # ===== Python packages
 python_packages_list = ['numpy', 'pandas', 'scipy', 'sympy', 'matplotlib', 'plotly', 'python-language-server', 'pynvim']
