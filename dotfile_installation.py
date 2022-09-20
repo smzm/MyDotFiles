@@ -263,7 +263,7 @@ if missing:
 # os.system('npm config set prefix ~/.npm')
 
 # ===== Python packages
-# python_packages_list = ['numpy', 'pandas', 'scipy', 'sympy', 'matplotlib', 'plotly', 'jedi', 'python-language-server']
+# python_packages_list = ['numpy', 'pandas', 'scipy', 'sympy', 'matplotlib', 'plotly', 'python-language-server', 'pynvim']
 # python_package = [
 #   inquirer.Checkbox('interest',
 #                     message="Install python packages : ",
@@ -274,31 +274,38 @@ if missing:
 
 # if 'ALL ⬇️' in python_package_answers['interest'] : 
 #     for package in python_packages_list:
-#         run(f'pip install {package}', shell=True) if not (run('pip list | grep {package}', shell=True, stdout=DEVNULL, stderr=STDOUT)) else rprint(f':thumbs_up: [bold green] {package} [/bold green]is installed.')
+#         run(f'pip install {package} --upgrade', shell=True) 
 # else :
 #     for package in python_package_answers['interest']:
-#         run(f'pip install {package}', shell=True) if not (run('pip list | grep {package}', shell=True, stdout=DEVNULL, stderr=STDOUT)) else rprint(f':thumbs_up: [bold green] {package} [/bold green]is installed.')
+#         run(f'pip install {package}' --upgrade, shell=True) 
 
 # ===== Npm packages
-npm_packages_list = ['pyright', 'vim-language-server', 'vscode-langservers-extracted', 'typescript', 'typescript-language-server', 'awk-language-server', 'dockerfile-language-server-nodejs', 'emmet-ls', 'bash-language-server']
-npm_package = [
-  inquirer.Checkbox('interest',
-                    message="Install npm packages : ",
-                    choices=['ALL ⬇️', *npm_packages_list],
-                    ),
-]
-npm_package_answers = inquirer.prompt(npm_package)
+# npm_packages_list = ['pyright', 'vim-language-server', 'vscode-langservers-extracted', 'typescript', 'typescript-language-server', 'awk-language-server', 'dockerfile-language-server-nodejs', 'emmet-ls', 'bash-language-server', 'yaml-language-server', 'neovim']
+# npm_package = [
+#   inquirer.Checkbox('interest',
+#                     message="Install npm packages : ",
+#                     choices=['ALL ⬇️', *npm_packages_list],
+#                     ),
+# ]
+# npm_package_answers = inquirer.prompt(npm_package)
 
-if 'ALL ⬇️' in pnpm_package_answers['interest'] : 
-    for package in npm_packages_list:
-        run(f'npm install -g {package}', shell=True) if not (run('npm list -g --depth=0 | grep {package}', shell=True, stdout=DEVNULL, stderr=STDOUT)) else rprint(f':thumbs_up: [bold green] {package} [/bold green]is installed.')
-else :
-    for package in npm_package_answers['interest']:
-        run(f'npm install -g {package}', shell=True) if not (run('npm list -g --depth=0 | grep {package}', shell=True, stdout=DEVNULL, stderr=STDOUT)) else rprint(f':thumbs_up: [bold green] {package} [/bold green]is installed.')
+# if 'ALL ⬇️' in npm_package_answers['interest'] : 
+#     for package in npm_packages_list:
+#         run(f'npm install -g {package}', shell=True) 
+# else :
+#     for package in npm_package_answers['interest']:
+#         run(f'npm install -g {package}', shell=True) 
 
 
-# ===== Yarn packages
+
 # ===== Neovim Installation
+# VIM-PLUG
+ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+ mkdir -p $HOME/.config/nvim
+ yes | cp -rf $dotfiles/.config/nvim/* ~/.config/nvim/
+
+
+
 # ===== Font Configuration
 # ===== Trash-cli configuration
 # ===== Tmux configuration
