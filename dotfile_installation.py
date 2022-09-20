@@ -42,6 +42,8 @@ dotfiles_path = os.popen('echo $PWD').read().rstrip()
 #  "yajl",
 #  "curl",
 #  "binutils",
+#  "network-manager-applet",
+#  "networkmanager-openvpn",
 #  "lightdm",
 #  "lightdm-gtk-greeter", 
 #  "openssh", 
@@ -138,14 +140,14 @@ dotfiles_path = os.popen('echo $PWD').read().rstrip()
 #         message="What packages do you want to install ? ", 
 #         choices=["ALL ⬇️", *pacman_list],
 #         )]
-# packages = inquirer.prompt(pacman_packages_q)
+# pacman_packages_answers = inquirer.prompt(pacman_packages_q)
 
-# if 'ALL ⬇️' in packages['interest'] : 
+# if 'ALL ⬇️' in pacman_packages_answers['interest'] : 
 #     rprint("[bold blue] Installing all packages...")
 #     os.system(f'sudo pacman -S {" ".join(pacman_list)} --needed --noconfirm')
 # else : 
 #     rprint("[italic salmon1] Installing selected packages...")
-#     selected_pacman_packages = ' '.join(packages['interest'])
+#     selected_pacman_packages = ' '.join(pacman_packages_answers['interest'])
 #     os.system(f'sudo pacman -S {selected_pacman_packages} --needed --noconfirm')
 
 
@@ -210,14 +212,14 @@ dotfiles_path = os.popen('echo $PWD').read().rstrip()
 #         message="What packages do you want to install ? ", 
 #         choices=["ALL ⬇️", *aur_list],
 #         )]
-# packages = inquirer.prompt(aur_packages_q)
+# aur_packages_answers = inquirer.prompt(aur_packages_q)
 
-# if 'ALL ⬇️' in packages['interest'] : 
+# if 'ALL ⬇️' in aur_packages_answers['interest'] : 
 #     rprint("[bold blue] Installing all packages...")
 #     os.system(f'paru -S {" ".join(aur_list)} --needed --noconfirm')
 # else : 
 #     rprint("[italic salmon1] Installing selected packages...")
-#     selected_aur_packages = ' '.join(packages['interest'])
+#     selected_aur_packages = ' '.join(aur_packages_answers['interest'])
 #     os.system(f'paru -S {selected_aur_packages} --needed --noconfirm')
 
 
@@ -308,7 +310,7 @@ dotfiles_path = os.popen('echo $PWD').read().rstrip()
 
 
 # # ===== Font Configuration
-# os.system(f'sudo cp {dotfiles_path}/local.conf /etc/fonts/local.conf')
+# os.system(f'sudo cp {dotfiles_path}/etc/local.conf /etc/fonts/local.conf')
 # # Install feather font
 # os.system('mkdir -p $HOME/.fonts')
 # os.system(f'yes | cp -rf {dotfiles_path}/.fonts/* $HOME/.fonts/')
@@ -341,39 +343,110 @@ dotfiles_path = os.popen('echo $PWD').read().rstrip()
 # run('mkdir -p ~/.config/zathura', shell=True, stdout=DEVNULL)
 # run(f'yes | cp -rf {dotfiles_path}/.config/zathura/* ~/.config/zathura', shell=True, stdout=DEVNULL)
 
-# ===== Mpv configuration
-run('mkdir -p ~/.config/mpv/', shell=True, stdout=DEVNULL)
-run(f'yes | cp -rf {dotfiles_path}/.config/mpv/* ~/.config/mpv/', shell=True, stdout=DEVNULL)
-run(f'yes | cp -rf {dotfiles_path}/.xbindkeysrc ~/.xbindkeysrc', shell=True, stdout=DEVNULL)
+# # ===== Mpv configuration
+# run('mkdir -p ~/.config/mpv/', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.config/mpv/* ~/.config/mpv/', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.xbindkeysrc ~/.xbindkeysrc', shell=True, stdout=DEVNULL)
 
-# ===== Nitrogen configuration
-run('mkdir -p ~/Pictures', shell=True, stdout=DEVNULL)
-run(f'cp {dotfiles_path}/wall.jpg  $HOME/.config/', shell=True, stdout=DEVNULL)
+# # ===== Nitrogen configuration
+# run('mkdir -p ~/Pictures', shell=True, stdout=DEVNULL)
+# run(f'cp {dotfiles_path}/wall.jpg  $HOME/.config/', shell=True, stdout=DEVNULL)
 
-# ===== GTK-3.0 configuration
-run('mkdir -p ~/.config/gtk-3.0/', shell=True, stdout=DEVNULL)
-run(f'yes | cp -rf {dotfiles_path}/.config/gtk-3.0 $HOME/.config/', shell=True, stdout=DEVNULL)
+# # ===== GTK-3.0 configuration
+# # run('mkdir -p ~/.config/gtk-3.0/', shell=True, stdout=DEVNULL)
+# # run(f'yes | cp -rf {dotfiles_path}/.config/gtk-3.0 $HOME/.config/', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.config/mimeapps.list $HOME/.config/', shell=True, stdout=DEVNULL)
+
+# # ===== I3 configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/i3 $HOME/.config/', shell=True, stdout=DEVNULL)
+# run(f'yes | cp -rf {dotfiles_path}/.Xresources $HOME/', shell=True, stdout=DEVNULL)
+
+# # ===== Picom configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/picom.conf $HOME/.config/', shell=True, stdout=DEVNULL)
+
+# # ===== Rofi configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/rofi $HOME/.config/', shell=True, stdout=DEVNULL)
+
+# # ===== Polybar configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/polybar $HOME/.config/', shell=True, stdout=DEVNULL)
+# run('cd ~/.config/polybar/scripts/ ; sudo chmod +xwr *.sh', shell=True, stdout=DEVNULL)
+
+# # ===== Dunst configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/dunst $HOME/.config/', shell=True, stdout=DEVNULL)
+# run('cd ~/.config/polybar/scripts/ ; sudo chmod +xwr *.sh', shell=True, stdout=DEVNULL)
+
+# # ===== Scrot configuration
+# run('mkdir -p $HOME/screenshots', shell=True, stdout=DEVNULL)
 
 
-# ===== I3 configuration
-run(f'yes | cp -rf {dotfiles_path}/.config/i3 $HOME/.config/', shell=True, stdout=DEVNULL)
-run(f'yes | cp -rf {dotfiles_path}/.Xresources $HOME/', shell=True, stdout=DEVNULL)
-
-# ===== Picom configuration
-# ===== Rofi configuration
-# ===== Polybar configuration
-# ===== Dunst configuration
-# ===== Scrot configuration
-# ===== Imwheel configuration
-# ===== Conky configuration
-# ===== Disable IPv6 in NetworkManager
-# ===== Pacman configuration
-# ===== Lightdm configuration
-# ===== Appearance 
-# ===== Jupyter configuration
+# # ===== Imwheel configuration
+# run(f'yes | cp -rf {dotfiles_path}/.imwheelrc  $HOME/', shell=True, stdout=DEVNULL)
 
 
+# # ===== Conky configuration
+# run(f'yes | cp -rf {dotfiles_path}/.config/conky $HOME/.config/', shell=True, stdout=DEVNULL)
 
 
+# # ===== Disable IPv6 in NetworkManager
+# run('nmcli -t -f NAME,TIMESTAMP con | sort -t: -nk2 | tail -n1 | cut -d: -f1 | xargs -I {} nmcli connection modify {} ipv6.method "disabled"', shell=True, stdout=DEVNULL)
+# run("sudo sed -i 's/^[[:space:]]*::/#::/' /etc/hosts", shell=True, stdout=DEVNULL)
+
+# # ===== Pacman configuration
+# run("sudo sed -i -e 's/^#Color/Color/g' /etc/pacman.conf", shell=True, stdout=DEVNULL)
+# run("sudo sed -i 's/^#ParallelDownloads.*/ParallelDownloads=5/g' /etc/pacman.conf", shell=True, stdout=DEVNULL)
+
+# # ===== Lightdm configuration
+# run("sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#greeter-session=.*$/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
+# run("whoami | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-user=.*/autologin-user={}/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
+# run("echo $DESKTOP_SESSION | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-session=.*$/autologin-session={}/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
+# run('sudo systemctl enable lightdm.service', shell=True, stdout=DEVNULL)
+
+# # ===== Bluetooth 
+# run('sudo systemctl enable bluetooth.service', shell=True, stdout=DEVNULL)
 
 
+# # ===== Jupyter configuration
+# run('mkdir -p ~/.jupyter/custom/', shell=True, stdout=DEVNULL)
+# run(f'yes | sudo cp -rf {dotfiles_path}/.jupyter/custom/* ~/.jupyter/custom/', shell=True, stdout=DEVNULL)
+
+
+# # ===== Appearance 
+# # Apple_cursor
+# run('mkdir -p ~/.icons', shell=True, stdout=DEVNULL)
+# run('wget https://github.com/ful1e5/apple_cursor/releases/latest/download/macOSMonterey.tar.gz -P ~/.icons', shell=True, stdout=DEVNULL)
+# run('tar xvf ~/.icons/macOSMonterey.tar.gz', shell=True, stdout=DEVNULL)
+# run('rm ~/.icons/macOSMonterey.tar.gz', shell=True, stdout=DEVNULL)
+
+
+# # ===== Hibernate
+# hibernate_q = [
+#   inquirer.List('hibernate',
+#                 message="Do you have any partion swap for enabling hibernate ? ",
+#                 choices=['Yes', 'No'],
+#             ),
+# ]
+# hibernate_answers = inquirer.prompt(hibernate_q)
+
+# if (hibernate_answers['hibernate'] == 'Yes') : 
+#     run('sudo blkid | grep \'swap\' | grep -o \'[[:space:]]UUID="[a-zA-Z0-9\-]*"\' | grep -o \'[a-zA-Z0-9\-]*\' | tail -n1 | xargs echo | xargs -I {} sudo sed -i \'/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ resume=UUID={}"/\' /etc/default/grub', shell=True, stdout=DEVNULL)
+#     run("sudo sed -i '/^HOOKS=/ s/)$/ resume)/' /etc/mkinitcpio.conf", shell=True, stdout=DEVNULL)
+#     run("sudo grub-mkconfig -o /boot/grub/grub.cfg", shell=True)
+#     run("sudo mkinitcpio -P", shell=True)
+# else :
+#     pass 
+
+# # ===== Check
+# rprint('[bold green] pacman packages installed :')
+# if 'ALL ⬇️' in pacman_packages_answers['interest'] : 
+#     os.system(f'sudo pacman -Q {" ".join(pacman_list)}')
+# else : 
+#     selected_pacman_packages = ' '.join(pacman_packages_answers['interest'])
+#     os.system(f'sudo pacman -Q {selected_pacman_packages}')
+
+
+# rprint('[bold green] yay packages installed :')
+# if 'ALL ⬇️' in aur_packages_answers['interest'] : 
+#     os.system(f'paru -Q {" ".join(aur_list)}')
+# else : 
+#     selected_aur_packages = ' '.join(aur_packages_answers['interest'])
+#     os.system(f'paru -Q {selected_aur_packages}')
