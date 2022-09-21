@@ -129,7 +129,7 @@ pacman_list = [
 
 pacman_packages_q =[
         inquirer.Checkbox('interest',
-        message="What packages do you want to install ? ", 
+        message="What packages do you want to install [SELECT WITH SPACE]? ", 
         choices=["ALL ⬇️", *pacman_list],
         )]
 pacman_packages_answers = inquirer.prompt(pacman_packages_q)
