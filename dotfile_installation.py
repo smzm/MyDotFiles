@@ -20,13 +20,6 @@ if missing:
 
 
 
-# ===== Get user name
-# username_q = [inquirer.Text('name', message="What's your username ? ")]
-# username = inquirer.prompt(username_q)
-
-os.system('clear')
-
-
 # ===== Get path of dotfiles directory
 dotfiles_path = os.popen('echo $PWD').read().rstrip()
 
@@ -134,8 +127,6 @@ pacman_list = [
 ]
 
 
-os.system('clear')
-
 pacman_packages_q =[
         inquirer.Checkbox('interest',
         message="What packages do you want to install ? ", 
@@ -145,22 +136,11 @@ pacman_packages_answers = inquirer.prompt(pacman_packages_q)
 
 if 'ALL ⬇️' in pacman_packages_answers['interest'] : 
     rprint("[bold blue] Installing all packages...")
-    os.system(f'sudo pacman -S {" ".join(pacman_list)} --needed --noconfirm')
+    os.system(f'sudo pacman -S {" ".join(pacman_list)} --noconfirm')
 else : 
     rprint("[italic salmon1] Installing selected packages...")
     selected_pacman_packages = ' '.join(pacman_packages_answers['interest'])
-    os.system(f'sudo pacman -S {selected_pacman_packages} --needed --noconfirm')
-
-
-# ===== Install and Configure DOH (DNS OVER HTTPS)
-os.system(f"sudo cp -f {dotfiles_path}/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml")
-# change /etc/resolve.conf
-os.system('sudo chattr -i /etc/resolv.conf')
-os.system('sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"')
-os.system('sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"')
-os.system('sudo chattr +i /etc/resolv.conf')
-os.system('sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy')
-os.system('sudo systemctl restart NetworkManager')
+    os.system(f'sudo pacman -S {selected_pacman_packages} --noconfirm')
 
 
 # ===== Install paru
@@ -209,7 +189,6 @@ aur_list = [
 'visual-studio-code-bin',
 ]
 
-os.system('clear')
 
 aur_packages_q =[
         inquirer.Checkbox('interest',
@@ -220,11 +199,11 @@ aur_packages_answers = inquirer.prompt(aur_packages_q)
 
 if 'ALL ⬇️' in aur_packages_answers['interest'] : 
     rprint("[bold blue] Installing all packages...")
-    os.system(f'paru -S {" ".join(aur_list)} --needed --noconfirm')
+    os.system(f'paru -S {" ".join(aur_list)} --noconfirm')
 else : 
     rprint("[italic salmon1] Installing selected packages...")
     selected_aur_packages = ' '.join(aur_packages_answers['interest'])
-    os.system(f'paru -S {selected_aur_packages} --needed --noconfirm')
+    os.system(f'paru -S {selected_aur_packages} --noconfirm')
 
 
 
@@ -441,6 +420,19 @@ if (hibernate_answers['hibernate'] == 'Yes') :
     run("sudo mkinitcpio -P", shell=True)
 else :
     pass 
+
+
+
+# ===== Install and Configure DOH (DNS OVER HTTPS)
+os.system(f"sudo cp -f {dotfiles_path}/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml")
+# change /etc/resolve.conf
+os.system('sudo chattr -i /etc/resolv.conf')
+os.system('sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"')
+os.system('sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"')
+os.system('sudo chattr +i /etc/resolv.conf')
+os.system('sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy')
+os.system('sudo systemctl restart NetworkManager')
+
 
 # ===== Check
 rprint('[bold green] pacman packages installed :')
