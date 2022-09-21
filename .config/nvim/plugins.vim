@@ -455,7 +455,7 @@ require("mason").setup({
         }
     },
 })
-local servers = { "efm", "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
+local servers = { "pyright", "tsserver", "awk_ls", "bashls" , "cssmodules_ls", "dockerls", "html", "emmet_ls", "jsonls", "sumneko_lua", "marksman", "sqls", "tailwindcss", "vimls", "yamlls"}
 require("mason-lspconfig").setup({
     ensure_installed = servers,
     automatic_installation = true
