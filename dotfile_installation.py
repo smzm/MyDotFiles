@@ -429,3 +429,11 @@ if 'ALL ⬇️' in aur_packages_answers['interest'] :
 else : 
     selected_aur_packages = ' '.join(aur_packages_answers['interest'])
     os.system(f'paru -Q {selected_aur_packages}')
+
+
+
+# After:
+# sptlrx with spotify
+# xappearance
+# xfce4 power manager 
+# Nvidia --> add to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub : "omodeset i915.modeset=0"
