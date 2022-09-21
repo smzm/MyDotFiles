@@ -1,23 +1,15 @@
 import os
 import sys
+import re
 import subprocess
 from subprocess import call, run, Popen, DEVNULL, STDOUT, PIPE
-import re
-from sys import stderr, stdout
+None if run('pip list | grep "inquirer"',shell=True) else run('pip install inquirer', shell=True)
+None if run('pip list | grep "rich"',shell=True) else run('pip install rich', shell=True)
+
 import inquirer
 from rich.console import Console
 console = Console()
 from rich import print as rprint
-import pkg_resources
-
-# Installl modules needed 
-required = {'mutagen', 'gTTS'}
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
-if missing:
-    python = sys.executable
-    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
-
 
 
 # ===== Get path of dotfiles directory
@@ -117,7 +109,6 @@ pacman_list = [
  "tar",
  "xarchiver",
  "htop",
- "wine",
  "lib32-gnutls",
  "mtpfs",
  "gvfs-mtp" ,
@@ -130,12 +121,13 @@ pacman_list = [
 pacman_packages_q =[
         inquirer.Checkbox('interest',
         message="What packages do you want to install [SELECT WITH SPACE]? ", 
-        choices=["ALL ⬇️", *pacman_list],
+        choices=['ALL ⬇️', *pacman_list],
         )]
 pacman_packages_answers = inquirer.prompt(pacman_packages_q)
 
 if 'ALL ⬇️' in pacman_packages_answers['interest'] : 
     rprint("[bold blue] Installing all packages...")
+    rprint(f'sudo pacman -S {" ".join(pacman_list)}  --noconfirm')
     os.system(f'sudo pacman -S {" ".join(pacman_list)} --noconfirm')
 else : 
     rprint("[italic salmon1] Installing selected packages...")
@@ -158,7 +150,6 @@ else :
 
 aur_list = [
 'xbindkeys_config-gtk2',
-'fluent-reader',
 'udevil',
 'tailwind-css',
 'tailwindcss-language-server',
@@ -186,7 +177,6 @@ aur_list = [
 'qv2ray',
 'openvpn3',
 'google-chrome',
-'visual-studio-code-bin',
 ]
 
 
@@ -208,41 +198,29 @@ else :
 
 
 # ===== ZSH configuration
-run('sudo usermod -s /usr/bin/zsh $(whoami)', shell=True, stdout=DEVNULL, stderr=STDOUT)
-run('sudo chsh -s $(which zsh)', shell=True, stdout=DEVNULL, stderr=STDOUT)
-
 # OH-MY-ZSH
 if run('',  shell=True).returncode == 0 :
-    rprint(':thumbs_up: [bold light_pink3] oh-my-zsh is installed.')
+        rprint(':thumbs_up: [bold light_pink3] oh-my-zsh is installed.')
 else : 
-    os.system('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
-
-# zsh-syntax-highlighting
-if run('test -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/', shell=True).returncode==0 :
-    rprint(':thumbs_up: [bold light_pink3] zsh-syntax-highlighting installed')
-else : 
-    os.system('git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting')
-
-# zsh-auto-suggestions
-if run('test -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/', shell=True).returncode==0:
-    rprint(':thumbs_up: [bold light_pink3] zsh-auto-suggestions is installed.')
-else : 
-    os.system('git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions')
-
-# Starship
-starship_check = run('starship --version',shell=True, stdout=PIPE, stderr=STDOUT)
-if starship_check.returncode == 127 :
-    os.system('curl -sS https://starship.rs/install.sh | sh')
-    # if starship was not installed
-else :
-    rprint(':thumbs_up: [bold light_pink3] Starship is installed.')
-
-# zshrc 
-os.system(f'cp {dotfiles_path}/.zshrc {dotfiles_path}/.zshenv ~')
-zsh_is_runned = run('ps -eo pid,user,stat,comm | grep zsh', shell=True, stdout=PIPE, stderr=DEVNULL)
-if not zsh_is_runned : 
-    os.system('zsh')
-
+        os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+        #  zsh-syntax-highlighting
+        os.system('git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting')
+        #  zsh-auto-suggestions
+        os.system('git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions')
+        #  fzf
+        os.system('git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install')
+        os.system('chsh -s $(which zsh)')
+        #  Starship
+        starship_check = run('starship --version',shell=True, stdout=PIPE, stderr=STDOUT)
+        if starship_check.returncode == 127 :
+                os.system('curl -sS https://starship.rs/install.sh | sh')
+                os.system(f'cp {dotfiles_path}/.config/starship.toml ~/.config/')
+        # if starship was not installed
+        else :
+                rprint(':thumbs_up: [bold light_pink3] Starship is installed.')
+        # zshrc 
+        os.system(f'cp {dotfiles_path}/.zshrc {dotfiles_path}/.zshenv ~')
+        run('source ~/.zshrc', shell=True, stderr=DEVNULL, stdout=DEVNULL)
 
 # ===== Node configuration
 os.system('mkdir -p ~/.npm')
@@ -382,6 +360,8 @@ run("sudo sed -i -e 's/^#Color/Color/g' /etc/pacman.conf", shell=True, stdout=DE
 run("sudo sed -i 's/^#ParallelDownloads.*/ParallelDownloads=5/g' /etc/pacman.conf", shell=True, stdout=DEVNULL)
 
 # ===== Lightdm configuration
+run('sudo groupadd -r autologin', shell=True)
+run('whoami | xargs -I {}  sudo gpasswd -a {} autologin', shell=True)
 run("sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#greeter-session=.*$/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
 run("whoami | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-user=.*/autologin-user={}/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
 run("echo $DESKTOP_SESSION | xargs -I {} sudo sed -i '/^\[Seat:\*\]$/,/\[/s/^#autologin-session=.*$/autologin-session={}/' /etc/lightdm/lightdm.conf", shell=True, stdout=DEVNULL)
