@@ -192,7 +192,7 @@ aur_list = [
 
 aur_packages_q =[
         inquirer.Checkbox('interest',
-        message="What aur packages do you want to install ? ", 
+        message="What aur packages do you want to install [SELECT WITH SPACE] ? ", 
         choices=["ALL ⬇️", *aur_list],
         )]
 aur_packages_answers = inquirer.prompt(aur_packages_q)
@@ -255,7 +255,7 @@ os.system('echo "\n"')
 python_packages_list = ['numpy', 'pandas', 'scipy', 'sympy', 'matplotlib', 'plotly', 'python-language-server', 'pynvim']
 python_package = [
   inquirer.Checkbox('interest',
-                    message="Install python packages : ",
+                    message="Install python packages [SELECT WITH SPACE] : ",
                     choices=['ALL ⬇️', *python_packages_list],
                     ),
 ]
@@ -272,7 +272,7 @@ else :
 npm_packages_list = ['pyright', 'vim-language-server', 'vscode-langservers-extracted', 'typescript', 'typescript-language-server', 'awk-language-server', 'dockerfile-language-server-nodejs', 'emmet-ls', 'bash-language-server', 'yaml-language-server', 'neovim']
 npm_package = [
   inquirer.Checkbox('interest',
-                    message="Install npm packages : ",
+                    message="Install npm packages [SELECT WITH SPACE] : ",
                     choices=['ALL ⬇️', *npm_packages_list],
                     ),
 ]
