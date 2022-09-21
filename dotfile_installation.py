@@ -379,10 +379,10 @@ run(f'yes | sudo cp -rf {dotfiles_path}/.jupyter/custom/* ~/.jupyter/custom/', s
 # ===== Appearance 
 # Apple_cursor
 run('mkdir -p ~/.icons', shell=True, stdout=DEVNULL)
-run('wget https://github.com/ful1e5/apple_cursor/releases/latest/download/macOSMonterey.tar.gz -P ~/.icons', shell=True, stdout=DEVNULL)
+run('wget https://github.com/ful1e5/apple_cursor/releases/latest/download/macOSMonterey.tar.gz -P ~/.icons/', shell=True, stdout=DEVNULL)
 run('tar xvf ~/.icons/macOSMonterey.tar.gz', shell=True, stdout=DEVNULL)
 run('rm ~/.icons/macOSMonterey.tar.gz', shell=True, stdout=DEVNULL)
-
+run(f'mkdir -p ~/.config/gtk-3.0 ; yes | sudo cp -rf {dotfiles_path}/.config/gtk-3.0/* ~/.config/gtk-3.0/')
 
 # ===== Hibernate
 hibernate_q = [
