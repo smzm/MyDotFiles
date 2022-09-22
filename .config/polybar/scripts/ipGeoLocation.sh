@@ -7,4 +7,6 @@ if [[ ! $IP == "" ]] ;then
     # flag=`jq '.[] | select(.iso=='"$country"') .flag' ~/country.json 2> /dev/null` 
     # clean_flag=`echo "$flag" | awk '{gsub(/"/, "", $0) ; print $0}'`
     echo "$country"
+else
+    echo "Offline"
 fi
