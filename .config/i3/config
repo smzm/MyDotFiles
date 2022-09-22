@@ -143,7 +143,7 @@ bindsym $mod+y border pixel 4
 
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return  exec kitty ; split horizontal
 
 # kill focused window
 bindsym $mod+q kill
@@ -309,7 +309,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+#bindsym $mod+m bar mode toggle
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -393,7 +393,7 @@ for_window [urgent=latest] focus
 #focus_follows_mouse no
 
 # Autostart applications
- exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id nitrogen --restore; 
 exec --no-startup-id nm-applet
