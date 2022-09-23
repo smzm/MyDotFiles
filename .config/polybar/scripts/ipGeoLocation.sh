@@ -1,5 +1,5 @@
-#sleep 15
 #!/bin/bash
+sleep 15
 
 IP=`curl -w "\n" -s https://api.ipify.org`
 if [[ ! $IP == "" ]] ;then
