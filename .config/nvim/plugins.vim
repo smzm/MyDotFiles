@@ -54,7 +54,9 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
    "Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
-   
+    Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
+
+
     " Auto Completion
     Plug 'hrsh7th/nvim-cmp'                         " Nvim completion
     Plug 'hrsh7th/cmp-nvim-lsp'                     " LSP completion plugin for neovim
@@ -69,6 +71,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'kdheepak/cmp-latex-symbols'
     Plug 'ray-x/cmp-treesitter'
     Plug 'saadparwaiz1/cmp_luasnip'
+
 
 
     " Syntax highlighting
@@ -413,11 +416,12 @@ vnoremap <C-r> "hy:%Subvert/<C-r>h//gc<left><left><left>
 
 " *************************** Emmet *************************** 
 " Redefine trigger key : remap the default <C-Y> leader
-let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered
+let g:user_emmet_leader_key='.'  " >>> (,) still needs to be entered : .,
 
 "Enable just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
 
 
 
@@ -619,6 +623,8 @@ TypeParameter = ""
 vim.o.completeopt = 'menu,menuone,noselect'
 
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
   -- Setup nvim-cmp.
  local cmp = require'cmp'
   cmp.setup({
@@ -643,9 +649,15 @@ vim.o.completeopt = 'menu,menuone,noselect'
       { name = 'latex_symbols' },
       { name = 'nvim_lua' },
       { name = 'treesitter' },
+      { name = 'luasnip' },
     }, {
       { name = 'buffer' },
     }),
+    snippet = {
+      expand = function(args)
+        require'luasnip'.lsp_expand(args.body)
+      end
+    },
     formatting = {
     format = function(entry, vim_item)
       -- Kind icons
@@ -655,7 +667,6 @@ vim.o.completeopt = 'menu,menuone,noselect'
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
-        cmp_tabnine = "[Tabnine]",
         latex_symbols = "[LaTeX]",
       })[entry.source.name]
       return vim_item
@@ -663,7 +674,6 @@ vim.o.completeopt = 'menu,menuone,noselect'
   },
     experimental = { ghost_text = true },
   })
-
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
  cmp.setup.cmdline('/', {
