@@ -161,9 +161,5 @@ alias aria='aria2c -x16 -c -k1M -j10 -m16'
 alias rm='trash-put'
 alias rmdir='trash-put'
 
-eval "$(starship init zsh)"
-
-export BROWSER=/usr/bin/google-chrome-stable
-
 
 
