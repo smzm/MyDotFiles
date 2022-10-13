@@ -267,7 +267,7 @@ else :
 
 # ===== Neovim Installation
 # VIM-PLUG
-os.system("sh -c 'curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+os.system("sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
 os.system("mkdir -p $HOME/.config/nvim")
 os.system(f"yes | cp -rf {dotfiles_path}/.config/nvim/* ~/.config/nvim/")
 os.system('nvim +"PlugInstall --sync" +qa')
