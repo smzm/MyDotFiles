@@ -466,7 +466,7 @@ require("mason-lspconfig").setup({
 })
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require('lspconfig')
 
 
@@ -1146,7 +1146,6 @@ require'nvim-tree'.setup {
   },
   view = {
     width = 30,
-    height = 30,
     hide_root_folder = false,
     side = 'left',
     mappings = {
@@ -1234,5 +1233,4 @@ require('nvim_comment').setup(
 
 
 EOF
-
 
