@@ -54,7 +54,7 @@ call plug#begin('~/local/share/nvim/plugged')
     Plug 'nvim-lua/lsp-status.nvim'
     Plug 'nvim-lua/diagnostic-nvim'
    "Plug 'sbdchd/neoformat'                         " A vim plugin to format code using Neoformat
-    Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
+    Plug 'L3MON4D3/LuaSnip'
 
 
     " Auto Completion
