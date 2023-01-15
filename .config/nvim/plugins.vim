@@ -90,199 +90,6 @@ call plug#end()
 
 
 
-" |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
-" " TOKYONIGHT
-" "" Example config in VimScript
-" let g:tokyonight_style = "night"
-" let g:tokyonight_italic_functions = 1
-" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-" "" Change the "hint" color to the "orange" color, and make the "error" color bright red
-" let g:tokyonight_colors = {
-"   \ 'hint': 'orange',
-"   \ 'error': '#ff0000'
-" \ }
-" "" Load the colorscheme
-" colorscheme tokyonight
-
-
-
-" " =============== THEME : Catppuccin
-" lua << EOF
-" local ucolors = require "catppuccin.utils.colors"
-" local latte = require("catppuccin.palettes").get_palette "latte"
-" local frappe = require("catppuccin.palettes").get_palette "frappe"
-" local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-" local mocha = require("catppuccin.palettes").get_palette "mocha"
-
-" -- Catppuccin flavour:  latte, frappe, macchiato, mocha
-" vim.g.catppuccin_flavour = "mocha" -- Has to be set in order for empty argument to work
-
-" local colors = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
-
-
-" require("catppuccin").setup({
-" 	dim_inactive = {
-" 		enabled = false,
-" 		shade = "dark",
-" 		percentage = 0.15,
-" 	},
-" 	transparent_background = false,
-" 	term_colors = true,
-" 	compile = {
-" 		enabled = false,
-" 		path = vim.fn.stdpath "cache" .. "/catppuccin",
-" 	},
-" 	styles = {
-" 		comments = { "italic" },
-" 		conditionals = { "italic" },
-" 		loops = {},
-" 		functions = {},
-" 		keywords = {},
-" 		strings = {},
-" 		variables = {},
-" 		numbers = {},
-" 		booleans = {},
-" 		properties = {},
-" 		types = {},
-" 		operators = {},
-" 	},
-" 	integrations = {
-" 		treesitter = true,
-" 		native_lsp = {
-" 			enabled = true,
-" 			virtual_text = {
-" 				errors = { "italic" },
-" 				hints = { "italic" },
-" 				warnings = { "italic" },
-" 				information = { "italic" },
-" 			},
-" 			underlines = {
-" 				errors = { "underline" },
-" 				hints = { "underline" },
-" 				warnings = { "underline" },
-" 				information = { "underline" },
-" 			},
-" 		},
-" 		coc_nvim = false,
-" 		lsp_trouble = false,
-" 		cmp = true,
-" 		lsp_saga = false,
-" 		gitgutter = false,
-" 		gitsigns = false,
-" 		leap = false,
-" 		telescope = false,
-" 		nvimtree = true,
-" 		neotree = {
-" 			enabled = false,
-" 			show_root = true,
-" 			transparent_panel = false,
-" 		},
-" 		dap = {
-" 			enabled = false,
-" 			enable_ui = false,
-" 		},
-" 		which_key = false,
-" 		indent_blankline = {
-" 			enabled = false,
-" 			colored_indent_levels = false,
-" 		},
-" 		dashboard = false,
-" 		neogit = false,
-" 		vim_sneak = false,
-" 		fern = false,
-" 		barbar = false,
-" 		bufferline = true,
-" 		markdown = true,
-" 		lightspeed = false,
-" 		ts_rainbow = true,
-" 		hop = false,
-" 		notify = false,
-" 		telekasten = false,
-" 		symbols_outline = true,
-" 		mini = false,
-" 		aerial = true,
-" 		vimwiki = false,
-" 		beacon = false,
-" 		navic = false,
-" 		overseer = false,
-" 	},
-" -- COLORS : 
-" -- rosewater   flamingo   pink	 mauve	 red  maroon	peach	yellow	green	teal	
-" -- sky 	sapphire	blue	lavender	text	
-" -- subtext1	subtext0	overlay2	overlay1	overlay0
-" -- surface2	surface1	surface0	base 	mantle	crust
-
-" 	custom_highlights = {
-"       IndentBlanklineContextChar = {fg=colors.peach},
-"       IndentBlanklineContextStart = {style={"underline"}},
-"       Search = { bg=colors.sapphire, fg=colors.crust },
-"       MatchParen = {fg = "#00ff15"},     -- Good for all theme
-"       rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
-"       rainbowcol2 = { bg = "", style={"bold"} },
-"       rainbowcol3 = { bg = "" },
-"       rainbowcol4 = { bg = "" },
-"       rainbowcol5 = { bg = "" },
-"       rainbowcol6 = { bg = "" },
-"       rainbowcol7 = { bg = "" },
-"       BufferLineFill = { bg = colors.base },
-"       TreesitterContext = {bg= colors.base, style={"bold"}}
-"       },
-" 	color_overrides = {
-"       mocha = {
-"         }
-"       },
-" 	highlight_overrides = {
-"       -- all={}
-"       -- latte={}
-"       -- macchiato={}
-"       frappe={
-"          IndentBlanklineIndent1 = {fg = "#36394f" }
-"       },
-"       mocha = {
-"          IndentBlanklineIndent1 = {fg = "#3a3c4b" }
-"          }
-"       },
-" })
-
-" vim.cmd [[colorscheme catppuccin]]
-" EOF
-
-
-# https://github.com/Yazeed1s/minimal.nvim
-let g:minimal_italic_functions = 1
-let g:minimal_italic_comments = 1
-let g:minimal_transparent_background = 0
-colorscheme minimal " for minimal Theme
-hi MatchParen guibg=# guifg=#fcba03 gui=bold
-hi Search guibg=#819e00 guifg=#ded6ff gui=bold
-hi TreesitterContext guibg=#1e2026
-hi IndentBlanklineContextChar guibg=# guifg=#b8c730
-hi IndentBlanklineContextStart guibg=#  guifg=#b8c730 gui=bold
-hi IndentBlanklineIndent1 guibg=# guifg=#24262e
-
-hi BufferLineFill guibg=#
-hi BufferLineFill guibg=#
-hi rainbowcol1 guibg=# guifg=#b8c730
-hi rainbowcol2 guibg=#
-hi rainbowcol3 guibg=#
-hi rainbowcol4 guibg=#
-hi rainbowcol5 guibg=#
-hi rainbowcol6 guibg=#
-hi rainbowcol7 guibg=#
-hi FoldColumn guibg=#
-hi Special guifg=#e6678d
-hi SignColumn guibg=# guifg=#2d3038
-hi Constant guifg=#e0e0e0
-hi Operator guifg=#e6acbd
-hi Identifier guifg=#a7a9b0
-hi String guifg=#00ba85
-hi Function guifg=#91d987
-hi Delimiter guifg=#8a8a8a
-hi Conditional guifg=#ceabff gui=bold
-hi Repeat guifg=#ceabff gui=bold
-
-
-
 " Github Copilot highlight
 " highlight CopilotSuggestion guifg=#38384a guibg=#1a1b26     " For tokynight
 " imap <silent><script><expr> <PageDown> copilot#Accept("\<CR>")
@@ -1272,4 +1079,197 @@ require('nvim_comment').setup(
 
 
 EOF
+
+
+
+" |||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Theme
+" " TOKYONIGHT
+" "" Example config in VimScript
+" let g:tokyonight_style = "night"
+" let g:tokyonight_italic_functions = 1
+" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" "" Change the "hint" color to the "orange" color, and make the "error" color bright red
+" let g:tokyonight_colors = {
+"   \ 'hint': 'orange',
+"   \ 'error': '#ff0000'
+" \ }
+" "" Load the colorscheme
+" colorscheme tokyonight
+
+
+
+" " =============== THEME : Catppuccin
+" lua << EOF
+" local ucolors = require "catppuccin.utils.colors"
+" local latte = require("catppuccin.palettes").get_palette "latte"
+" local frappe = require("catppuccin.palettes").get_palette "frappe"
+" local macchiato = require("catppuccin.palettes").get_palette "macchiato"
+" local mocha = require("catppuccin.palettes").get_palette "mocha"
+
+" -- Catppuccin flavour:  latte, frappe, macchiato, mocha
+" vim.g.catppuccin_flavour = "mocha" -- Has to be set in order for empty argument to work
+
+" local colors = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
+
+
+" require("catppuccin").setup({
+" 	dim_inactive = {
+" 		enabled = false,
+" 		shade = "dark",
+" 		percentage = 0.15,
+" 	},
+" 	transparent_background = false,
+" 	term_colors = true,
+" 	compile = {
+" 		enabled = false,
+" 		path = vim.fn.stdpath "cache" .. "/catppuccin",
+" 	},
+" 	styles = {
+" 		comments = { "italic" },
+" 		conditionals = { "italic" },
+" 		loops = {},
+" 		functions = {},
+" 		keywords = {},
+" 		strings = {},
+" 		variables = {},
+" 		numbers = {},
+" 		booleans = {},
+" 		properties = {},
+" 		types = {},
+" 		operators = {},
+" 	},
+" 	integrations = {
+" 		treesitter = true,
+" 		native_lsp = {
+" 			enabled = true,
+" 			virtual_text = {
+" 				errors = { "italic" },
+" 				hints = { "italic" },
+" 				warnings = { "italic" },
+" 				information = { "italic" },
+" 			},
+" 			underlines = {
+" 				errors = { "underline" },
+" 				hints = { "underline" },
+" 				warnings = { "underline" },
+" 				information = { "underline" },
+" 			},
+" 		},
+" 		coc_nvim = false,
+" 		lsp_trouble = false,
+" 		cmp = true,
+" 		lsp_saga = false,
+" 		gitgutter = false,
+" 		gitsigns = false,
+" 		leap = false,
+" 		telescope = false,
+" 		nvimtree = true,
+" 		neotree = {
+" 			enabled = false,
+" 			show_root = true,
+" 			transparent_panel = false,
+" 		},
+" 		dap = {
+" 			enabled = false,
+" 			enable_ui = false,
+" 		},
+" 		which_key = false,
+" 		indent_blankline = {
+" 			enabled = false,
+" 			colored_indent_levels = false,
+" 		},
+" 		dashboard = false,
+" 		neogit = false,
+" 		vim_sneak = false,
+" 		fern = false,
+" 		barbar = false,
+" 		bufferline = true,
+" 		markdown = true,
+" 		lightspeed = false,
+" 		ts_rainbow = true,
+" 		hop = false,
+" 		notify = false,
+" 		telekasten = false,
+" 		symbols_outline = true,
+" 		mini = false,
+" 		aerial = true,
+" 		vimwiki = false,
+" 		beacon = false,
+" 		navic = false,
+" 		overseer = false,
+" 	},
+" -- COLORS : 
+" -- rosewater   flamingo   pink	 mauve	 red  maroon	peach	yellow	green	teal	
+" -- sky 	sapphire	blue	lavender	text	
+" -- subtext1	subtext0	overlay2	overlay1	overlay0
+" -- surface2	surface1	surface0	base 	mantle	crust
+
+" 	custom_highlights = {
+"       IndentBlanklineContextChar = {fg=colors.peach},
+"       IndentBlanklineContextStart = {style={"underline"}},
+"       Search = { bg=colors.sapphire, fg=colors.crust },
+"       MatchParen = {fg = "#00ff15"},     -- Good for all theme
+"       rainbowcol1 = { bg = "" , fg="#9e3a94", style={"bold"} },
+"       rainbowcol2 = { bg = "", style={"bold"} },
+"       rainbowcol3 = { bg = "" },
+"       rainbowcol4 = { bg = "" },
+"       rainbowcol5 = { bg = "" },
+"       rainbowcol6 = { bg = "" },
+"       rainbowcol7 = { bg = "" },
+"       BufferLineFill = { bg = colors.base },
+"       TreesitterContext = {bg= colors.base, style={"bold"}}
+"       },
+" 	color_overrides = {
+"       mocha = {
+"         }
+"       },
+" 	highlight_overrides = {
+"       -- all={}
+"       -- latte={}
+"       -- macchiato={}
+"       frappe={
+"          IndentBlanklineIndent1 = {fg = "#36394f" }
+"       },
+"       mocha = {
+"          IndentBlanklineIndent1 = {fg = "#3a3c4b" }
+"          }
+"       },
+" })
+
+" vim.cmd [[colorscheme catppuccin]]
+" EOF
+
+
+" https://github.com/Yazeed1s/minimal.nvim
+let g:minimal_italic_functions = 1
+let g:minimal_italic_comments = 1
+let g:minimal_transparent_background = 0
+colorscheme minimal " for minimal Theme
+hi MatchParen guibg=# guifg=#fcba03 gui=bold
+hi Search guibg=#819e00 guifg=#ded6ff gui=bold
+hi TreesitterContext guibg=#1e2026
+hi IndentBlanklineContextChar guibg=# guifg=#b8c730
+hi IndentBlanklineContextStart guibg=#  guifg=#b8c730 gui=bold
+hi IndentBlanklineIndent1 guibg=# guifg=#24262e
+
+hi BufferLineFill guibg=#
+hi BufferLineFill guibg=#
+hi rainbowcol1 guibg=# guifg=#b8c730
+hi rainbowcol2 guibg=#
+hi rainbowcol3 guibg=#
+hi rainbowcol4 guibg=#
+hi rainbowcol5 guibg=#
+hi rainbowcol6 guibg=#
+hi rainbowcol7 guibg=#
+hi FoldColumn guibg=#
+hi Special guifg=#e6678d
+hi SignColumn guibg=# guifg=#2d3038
+hi Constant guifg=#e0e0e0
+hi Operator guifg=#e6acbd
+hi Identifier guifg=#a7a9b0
+hi String guifg=#00ba85
+hi Function guifg=#91d987
+hi Delimiter guifg=#8a8a8a
+hi Conditional guifg=#ceabff gui=bold
+hi Repeat guifg=#ceabff gui=bold
 
