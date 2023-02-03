@@ -89,7 +89,6 @@ pacman_list = [
  "imwheel",
  "numlockx",
  "unclutter",
- "unclutter",
  "fzy",
  "mediainfo",
  "xcolor",
@@ -109,12 +108,10 @@ pacman_list = [
  "tar",
  "xarchiver",
  "htop",
- "lib32-gnutls",
  "mtpfs",
  "gvfs-mtp" ,
  "gvfs-gphoto2",
  "dnscrypt-proxy",
- "v2ray",
 ]
 
 
