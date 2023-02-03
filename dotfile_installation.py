@@ -1,3 +1,7 @@
+# First Install Python, python-pip, and python pacakges : inquirer, rich
+# sudo pacman -S python python-pip 
+# pip install inquirer rich
+
 import os
 import sys
 import re
