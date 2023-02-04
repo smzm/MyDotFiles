@@ -1184,7 +1184,7 @@ while len(not_installed_packages_pacman) > 0 :
 
 
 # # After In Arch:
-# # sptlrx with spotify
+ # sptlrx with spotify --> [https://github.com/raitonoberu/sptlrx] -- sptlrx -c <cookie> -- check ~/.config/sptlrx/config.yaml -- use spotify app
 # # xappearance
 # # xfce4 power manager 
 # # Nvidia --> add to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub : "omodeset i915.modeset=0"
