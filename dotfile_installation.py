@@ -299,8 +299,8 @@ else :
     rprint('[italic yellow] Installing paru...')
     os.system('sudo pacman -S --needed base-devel')
     os.system('cd ~ ; git clone https://aur.archlinux.org/paru.git')
-    os.system('cd paru ; makepkg -si')
-    os.system('cd ~ ; rm -rf paru')
+    os.system('cd ~/paru ; makepkg -si')
+    os.system('rm -rf ~/paru')
    
         
     
