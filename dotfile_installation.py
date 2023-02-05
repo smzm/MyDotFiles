@@ -72,7 +72,7 @@ if useradd_answer['interest'] == 'Yes' :
     if os_answers['interest'] == 'WSL':
         subprocess.run('groupadd sudo', shell=True)
         subprocess.run('echo export EDITOR=vim >> ~/.bashrc', shell=True)
-        subprocess.run('source ~/.bashrc', shell=True)
+        subprocess.run('source .bashrc', shell=True)
 
         # Get the username
         username_q = [inquirer.Text("interest", message="What's your username?")]
@@ -81,6 +81,8 @@ if useradd_answer['interest'] == 'Yes' :
         subprocess.run(f"useradd -m -G wheel,sudo -s /bin/bash {username_answer['interest']}", shell=True)
         subprocess.run('sed -i \'/^#.*%wheel ALL=(ALL:ALL) ALL/s/^#//\' /etc/sudoers', shell=True)
         subprocess.run(f"passwd {username_answer['interest']}", shell=True)
+        subprocess.run(f"su {username_answer['interest']}", shell=True)
+        subprocess.run(f"cd /home/{username_answer['interest']}", shell=True)
 
 
 
@@ -321,17 +323,17 @@ while len(not_installed_packages_pacman) > 0 :
 
 
 
-
 # ===== Arch community packages : Paru
 paru_check = run('paru --version', shell=True, stdout=PIPE, stderr=STDOUT)
 if paru_check.returncode == 0 : 
     rprint(':thumbs_up: [bold light_pink3] paru is installed.')
 # If paru was not installed
 else :
-    run('sudo pacman -S --needed base-devel',shell=True)
-    run('cd ; git clone https://aur.archlinux.org/paru.git', shell=True)
-    run('cd paru;  makepkg -si', shell=True)
-    run('cd; rm -rf paru', shell=True)
+    rprint('[italic yellow] Installing paru...')
+    os.system('sudo pacman -S --needed base-devel')
+    os.system('cd ~ ; git clone https://aur.archlinux.org/paru.git')
+    os.system('cd paru ; makepkg -si')
+    os.system('cd ~ ; rm -rf paru')
    
         
     
