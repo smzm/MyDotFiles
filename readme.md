@@ -48,7 +48,8 @@ git clone https://github.com/smzm/mydotfiles.git
 
 - ### 5. Install through `dotfile_installation.py`
 ```bash
-cd mydotfiles ; python dotfile_installation.py
+cd mydotfiles
+python dotfile_installation.py
 ```
 
 - ### 6. Setting ArchLinux as default WSL
