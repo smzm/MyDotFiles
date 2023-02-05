@@ -7,7 +7,7 @@ Download latest jetbrains font from [here](https://github.com/ryanoasis/nerd-fon
 
 
 ### 2. Config `settings.json`
-In **windows terminal** and go to the settings and select `Open JSON file`.
+In **windows terminal** go to the settings and select `Open JSON file`.
 
 #### Add color scheme : 
 ```json
