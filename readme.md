@@ -48,7 +48,7 @@ git clone https://github.com/smzm/mydotfiles.git
 
 - ### 5. Install through `dotfile_installation.py`
 ```bash
-cd mydotfiles
+cd mydotfiles   # You must first change directory to 'mydotfiles' and then run the python code to work properly.
 python dotfile_installation.py
 ```
 
