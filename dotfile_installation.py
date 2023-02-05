@@ -288,8 +288,6 @@ while len(not_installed_packages_pacman) > 0 :
 
 
 
-
-
 # ===== Arch community packages : Paru
 paru_check = run('paru --version', shell=True, stdout=PIPE, stderr=STDOUT)
 if paru_check.returncode == 0 : 
@@ -301,7 +299,6 @@ else :
     os.system('cd ~ ; git clone https://aur.archlinux.org/paru.git')
     os.system('cd ~/paru ; makepkg -si')
     os.system('cd ~ ; rm -rf paru')
-   
         
     
 # ===== Install aur packages
@@ -653,32 +650,27 @@ zsh_config_answer = inquirer.prompt(zsh_config)
 if zsh_config_answer['interest'] == "Yes" : 
     rprint('[bold italic] ZSH Configuration : ')
     # OH-MY-ZSH
-    zsh_result = subprocess.run("which zsh", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if zsh_result.returncode == 0:
-            rprint(':thumbs_up: [bold light_pink3] zsh is installed.')
-    else : 
-            # OH-MY-ZSH
-            os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-            #  zsh-syntax-highlighting
-            os.system('git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting')
-            #  zsh-auto-suggestions
-            os.system('git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions')
-            #  fzf
-            os.system('git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install')
-            os.system('chsh -s $(which zsh)')
-            #  Starship
-            starship_result = run('starship --version',shell=True, stdout=PIPE, stderr=STDOUT)
-            if starship_result.returncode == 0 :
-                    # os.system('curl -sS https://starship.rs/install.sh | sh')
-                    os.system(f'cp {dotfiles_path}/.config/starship.toml ~/.config/')
-            # if starship was not installed
-            else :
-                    rprint(':thumbs_down: [bold light_pink3] Starship is not installed.')
-            
-            # zshrc 
-            subprocess.run(f'cp {dotfiles_path}/.zshrc {dotfiles_path}/.zshenv ~', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            subprocess.run('source ~/.zshrc', shell=True, stderr=DEVNULL, stdout=DEVNULL)
-
+    os.system('sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+    #  zsh-syntax-highlighting
+    os.system('git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting')
+    #  zsh-auto-suggestions
+    os.system('git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions')
+    #  fzf
+    os.system('git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install')
+    os.system('chsh -s $(which zsh)')
+    #  Starship
+    starship_result = run('starship --version',shell=True, stdout=PIPE, stderr=STDOUT)
+    if starship_result.returncode == 0 :
+            # os.system('curl -sS https://starship.rs/install.sh | sh')
+            os.system(f'yes | cp -rf {dotfiles_path}/.config/starship.toml ~/.config/')
+    # if starship was not installed
+    else :
+            rprint(':thumbs_down: [bold light_pink3] Starship is not installed.')
+    
+    # zshrc 
+    os.system(f'yes | cp -rf {dotfiles_path}/.zshrc ~/')
+    os.system(f'yes | cp -rf {dotfiles_path}/.zshenv ~/')
+    os.system('source ~/.zshrc')
 
 subprocess.run("clear", shell=True)
 
@@ -1137,7 +1129,6 @@ if doh_check :
         os.system('sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"')
         os.system('sudo chattr +i /etc/resolv.conf')
         os.system('sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy')
-        os.system('sudo systemctl restart NetworkManager')
         print('\n')
 
 else : 
@@ -1152,7 +1143,7 @@ if bin_config_answer['interest'] == "Yes" :
     subprocess.run("clear", shell=True) 
     run(f'yes | cp -rf {dotfiles_path}/bin ~', shell=True, stdout=DEVNULL)
 
-
+import time
 # ===== WSLU
 if os_answers['interest'] == "WSL" : 
     wslu_config = [inquirer.List('interest', message="Do you want to use wslu", choices=['Yes', 'No'])]
@@ -1160,12 +1151,12 @@ if os_answers['interest'] == "WSL" :
 
     if wslu_config_answer['interest'] == "Yes" : 
         subprocess.run("clear", shell=True)
-        subprocess.run('wget https://pkg.wslutiliti.es/public.key',shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run('pacman-key --add public.key',shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run('pacman-key --lsign-key A2861ABFD897DD37', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run('echo -e "\n[wslutilities]\nServer = https://pkg.wslutiliti.es/arch/" >> /etc/pacman.conf', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run('sudo pacman -Sy --noconfirm && sudo pacman -S wslu --noconfirm', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
+        os.system('wget https://pkg.wslutiliti.es/public.key')
+        os.system('sudo pacman-key --add public.key')
+        os.system('sudo pacman-key --lsign-key A2861ABFD897DD37')
+        os.system('sudo sh -c \'echo -e "\n[wslutilities]\nServer = https://pkg.wslutiliti.es/arch/" >> /etc/pacman.conf\'')
+        os.system('sudo pacman -Sy --noconfirm && sudo pacman -S wslu --noconfirm')
+        time.sleep(3)
 
 
 
