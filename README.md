@@ -7,7 +7,11 @@ Support _debian_ and _arch_ based linux.
 
 #### Refresh Pacman GPG keys:
 ```shell
-pacman-key --init; pacman-key --populate ; pacman-key --refresh-keys ; pacman -Sy archlinux-keyring ; sudo pacman -Syu --noconfirm
+pacman-key --init
+pacman-key --populate
+pacman-key --refresh-keys
+pacman -Sy archlinux-keyring
+pacman -Syu --noconfirm
 ```
 
 #### Add user
