@@ -57,3 +57,5 @@ Just run `wsl --set-default Arch` in windows command shell.
 - ### 7. Setting default user in `Arch` 
 To setting default user in windows command shell got to the arch direcctory and run : `Arch.exe config --default-user <username>`
 
+- ### 8. Config Windows Terminal [optional]
+Config you windows terminal settings like [this](./windowsTerminal/readme.md)
