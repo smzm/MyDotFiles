@@ -33,10 +33,12 @@ su <username> ; cd ~
 ```shell
 sudo pacman -S python python-pip git --npconfirm --needed
 git clone https://github.com/smzm/mydotfiles.git
-cd mydotfiles ; python dotfile_installation.py
 ```
 
 #### 4. Install through `dotfile_installation.py`
+```bash
+cd mydotfiles ; python dotfile_installation.py
+```
 
 #### 5. Setting ArchLinux as default WSL
 Just run `wsl --set-default Arch` in windows command shell.
