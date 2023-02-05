@@ -46,7 +46,7 @@ if reflector_answer['interest'] == 'Yes' :
     subprocess.run('sudo pacman -S reflector rsync curl --noconfirm --needed', shell=True)
     subprocess.run('sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak', shell=True)
     rprint(f"\n[italic yellow] Rating mirrors in {country_answer['interest']}...\n")
-    subprocess.run(f"reflector -c '{country_answer['interest']}' --sort rate --save /etc/pacman.d/mirrorlist", shell=True)
+    subprocess.run(f"sudo reflector -c '{country_answer['interest']}' --sort rate --save /etc/pacman.d/mirrorlist", shell=True)
 
 
 # ===== Update pacman packages
