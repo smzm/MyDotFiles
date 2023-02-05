@@ -182,17 +182,16 @@ In **windows terminal** go to the settings and select `Open JSON file`.
     {
         "defaults": {
         
-  "colorScheme": "xcad",
-            "font": 
-            {
-                "face": "InconsolataLGC Nerd Font",
-                "weight": "light"
-            },
-            "historySize": 12000,
-            "intenseTextStyle": "bright",
-            "opacity": 95,
-            "padding": "8",
-            "useAcrylic": true
+                "colorScheme": "xcad",
+                 "font": {
+                        "face": "InconsolataLGC Nerd Font",
+                        "weight": "light"
+                 },
+                 "historySize": 12000,
+                 "intenseTextStyle": "bright",
+                 "opacity": 95,
+                 "padding": "8",
+                 "useAcrylic": true
         
         },
 
