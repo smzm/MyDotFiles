@@ -17,7 +17,7 @@ and Use `dotfile_installation.py` file for installing programms and dotfiles.
 
 ## Installing in `WSL` :
 - ### 1. Install ArchWsl 
-Download [yuk7/ArchWSL](https://github.com/yuk7/ArchWSL) installer zip, pick a folder (for example, c:\archlinux) for Arch Linux and run `arch.exe` in that folder.
+Download [yuk7/ArchWSL](https://github.com/yuk7/ArchWSL) installer zip, pick a folder and run `arch.exe` in that folder.
 
 - ### 2. Refresh Pacman GPG keys:
 ```bash
