@@ -35,20 +35,9 @@ subprocess.run("clear", shell=True)
 
 
 
-if os_answers['interest'] == 'Arch':
-        subprocess.run('sudo pacman -Syu --noconfirm', shell=True)
-elif os_answers['interest'] == 'WSL':
-    refreshkey_q = [inquirer.List('interest', message="Do you want to refresh pacman keys",choices=["Yes", "No"])]
-    refreshkey_answer = inquirer.prompt(refreshkey_q)
-    if refreshkey_answer['interest'] == 'Yes' : 
-        subprocess.run('pacman-key --init', shell=True)
-        subprocess.run('pacman-key --populate', shell=True)
-        subprocess.run('pacman-key --refresh-keys', shell=True)
-        subprocess.run('pacman -Sy archlinux-keyring', shell=True)
-    subprocess.run('sudo pacman -Syu --noconfirm', shell=True)
 
 
-# ===== Update pacman packages
+# ===== Update pacman mirrorlist 
 reflector_q = [inquirer.List('interest', message="Do you want to update pacman mirrorlist",choices=["Yes", "No"])]
 reflector_answer = inquirer.prompt(reflector_q)
 if reflector_answer['interest'] == 'Yes' : 
@@ -60,30 +49,8 @@ if reflector_answer['interest'] == 'Yes' :
     subprocess.run(f"reflector -c '{country_answer['interest']}' --sort rate --save /etc/pacman.d/mirrorlist", shell=True)
 
 
-
-
-
-
-
-# ===== Create User
-useradd_q = [inquirer.List('interest', message="Do you want to add a new user",choices=["Yes", "No"])]
-useradd_answer = inquirer.prompt(useradd_q)
-if useradd_answer['interest'] == 'Yes' : 
-    if os_answers['interest'] == 'WSL':
-        subprocess.run('groupadd sudo', shell=True)
-        subprocess.run('echo export EDITOR=vim >> ~/.bashrc', shell=True)
-        subprocess.run('source .bashrc', shell=True)
-
-        # Get the username
-        username_q = [inquirer.Text("interest", message="What's your username?")]
-        username_answer = inquirer.prompt(username_q)
-
-        subprocess.run(f"useradd -m -G wheel,sudo -s /bin/bash {username_answer['interest']}", shell=True)
-        subprocess.run('sed -i \'/^#.*%wheel ALL=(ALL:ALL) ALL/s/^#//\' /etc/sudoers', shell=True)
-        subprocess.run(f"passwd {username_answer['interest']}", shell=True)
-        subprocess.run(f"su {username_answer['interest']}", shell=True)
-        subprocess.run(f"cd /home/{username_answer['interest']}", shell=True)
-
+# ===== Update pacman packages
+subprocess.run('sudo pacman -Syu --noconfirm', shell=True)
 
 
 
