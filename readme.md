@@ -31,7 +31,7 @@ pacman -Syyu --noconfirm
 - ### 3. Add user
 ```shell
 groupadd sudo
-sed -i \'/^#.*%wheel ALL=(ALL:ALL) ALL/s/^#//\' /etc/sudoers
+sed -i '/^#.*%wheel ALL=(ALL:ALL) ALL/s/^#//' /etc/sudoers
 ```
 ```shell
 useradd -m -G wheel,sudo -s /bin/bash <username>
