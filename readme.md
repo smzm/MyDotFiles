@@ -8,7 +8,7 @@ sudo pacman -S python python-pip git --noconfirm --needed
 git clone https://github.com/smzm/mydotfiles.git
 ```
 
-and Use `dotfile_installation.py` file for installing programms and dotfiles.
+and Use `dotfile_installation.py` python file for installing programms and dotfiles.
 
 
 <br>
