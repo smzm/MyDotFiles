@@ -152,7 +152,7 @@ if os_answers['interest'] == 'Arch' :
     "dnscrypt-proxy",
     "v2ray",
     "ttf-firacode-nerd",
-    
+    "starship"
     ]
         
 elif os_answers['interest'] == 'WSL' : 
