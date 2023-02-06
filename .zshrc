@@ -133,10 +133,6 @@ export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 # export ARCHFLAGS="-arch x86_64"
 
 
-cc(){
-    cc.sh $1
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 cs(){
