@@ -330,8 +330,8 @@ bindsym $mod+9 exec --no-startup-id blurlock
 bindsym Print exec --no-startup-id i3-scrot
 bindsym Shift+Print --release exec --no-startup-id i3-scrot -s
 
-bindsym $alt+u exec "pulseaudio-ctl up 5"
-bindsym $alt+d exec "pulseaudio-ctl down 5"
+bindsym $alt+k exec "pulseaudio-ctl up 5"
+bindsym $alt+j exec "pulseaudio-ctl down 5"
 bindsym $alt+m exec "pulseaudio-ctl mute"
 
 ################################################################################################
@@ -380,7 +380,7 @@ assign [class="qv2ray"] $ws3
 # for_window [class="Skype"] floating enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="mpv"] floating enable
+for_window [class="mpv"] border pixel 4
 for_window [class="viewnior|Viewnior"] floating enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
@@ -390,16 +390,12 @@ for_window [class="kitty"] border pixel 4
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-#focus_follows_mouse no
-
 # Autostart applications
 exec --no-startup-id blueman-applet
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id nitrogen --restore; 
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-# exec_always --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 20 -locker blurlock
 exec --no-startup-id unclutter
 exec --no-startup-id numlockx &
@@ -409,10 +405,7 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "devmon --no-gui"
 exec xrandr --auto
 exec_always --no-startup-id imwheel
-
-
-# Start Polybar
-exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id xbindkeys
 
 # Start dunst (Notification Manager)
 exec_always --no-startup-id dunst &
@@ -420,3 +413,5 @@ exec_always --no-startup-id dunst &
 # Start picom composition
 exec_always --no-startup-id picom --config ~/.config/picom.conf & 
 
+# Start Polybar
+exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
