@@ -380,12 +380,14 @@ assign [class="qv2ray"] $ws3
 # for_window [class="Skype"] floating enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="mpv"] border pixel 4
+for_window [class="mpv"] floating enable border pixel 4
 for_window [class="viewnior|Viewnior"] floating enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="kitty"] border pixel 4
+for_window [class="google-chrome|Google-chrome"] border pixel 4
+for_window [class="code|Code"] border pixel 4
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
