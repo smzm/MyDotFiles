@@ -189,6 +189,7 @@ elif os_answers['interest'] == 'WSL' :
         "unzip",
         "tar",
         "dnscrypt-proxy",
+        "gnome-keyring"
     ]
 
 
