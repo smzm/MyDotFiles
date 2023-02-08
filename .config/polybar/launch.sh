@@ -6,7 +6,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Wait multiple seconds to i3 load completly
-sleep 5
+sleep 2
 
 polybar main --config=~/.config/polybar/config.ini &
 polybar bottom  --config=~/.config/polybar/config.ini &
