@@ -1137,13 +1137,6 @@ else :
     rprint('[red italic] dnscrypt-proxy is not installed.\n')
 
 
-# ===== bin
-bin_config = [inquirer.List('interest', message="Install bin directory", choices=['Yes', 'No'])]
-bin_config_answer = inquirer.prompt(bin_config)
-
-if bin_config_answer['interest'] == "Yes" : 
-    subprocess.run("clear", shell=True) 
-    run(f'yes | cp -rf {dotfiles_path}/bin ~', shell=True, stdout=DEVNULL)
 
 import time
 # ===== WSLU
