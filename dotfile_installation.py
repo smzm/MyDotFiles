@@ -153,7 +153,8 @@ if os_answers['interest'] == 'Arch' :
     "v2ray",
     "ttf-firacode-nerd",
     "starship",
-    "gnome-keyring"
+    "gnome-keyring",
+    "inter-font",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
