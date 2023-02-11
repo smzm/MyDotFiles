@@ -322,7 +322,7 @@ if os_answers['interest'] == 'Arch' :
     'sptlrx-bin',
     'scrot',
     'clipit',
-    'nerd-fonts-inconsolata',
+    'ttf-poppins',
     'apple-fonts',
     'ttf-font-awesome',
     'vazirmatn-fonts',
