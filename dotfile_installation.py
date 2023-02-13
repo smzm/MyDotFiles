@@ -995,7 +995,7 @@ if os_answers['interest'] == "Arch" :
         
         if scrot_config_answer['interest'] == "Yes" : 
             subprocess.run("clear", shell=True)
-            run('mkdir -p $HOME/screenshots', shell=True, stdout=DEVNULL)
+            run('mkdir -p $HOME/.screenshots', shell=True, stdout=DEVNULL)
     else : 
         rprint('[red italic] scrot is not installed.\n')
         
