@@ -321,7 +321,7 @@ if os_answers['interest'] == 'Arch' :
     'ttf-indic-otf',
     'spotify',
     'sptlrx-bin',
-    'scrot',
+    'i3-scrot',
     'clipit',
     'ttf-poppins',
     'apple-fonts',
