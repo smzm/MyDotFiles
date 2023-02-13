@@ -155,6 +155,7 @@ if os_answers['interest'] == 'Arch' :
     "starship",
     "gnome-keyring",
     "inter-font",
+    "usbutils"
     ]
         
 elif os_answers['interest'] == 'WSL' : 
