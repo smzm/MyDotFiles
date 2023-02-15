@@ -11,6 +11,8 @@ cd mydotfiles     # always run the script from this directory
 
 and Use `dotfile_installation.py` python file for installing programms and dotfiles.
 
+![image](https://user-images.githubusercontent.com/39596095/218994625-8f830085-2c39-4e53-bfc7-29f761d72e21.png)
+
 
 <br>
 <br>
