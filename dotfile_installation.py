@@ -193,6 +193,8 @@ elif os_answers['interest'] == 'WSL' :
         "unzip",
         "tar",
         "dnscrypt-proxy",
+        "lf",
+        "unarchiver",
     ]
 
 
@@ -775,6 +777,28 @@ if os_answers['interest'] == "Arch" :
     else :
         rprint(':thumbs_down: [red italic] tmux is not installed.\n')
 
+
+
+# ===== lf configuration
+lf_check = subprocess.run('lf --version', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).returncode == 0
+if lf_check : 
+        rprint(':thumbs_up: [green] lf is installed.')
+
+        lf_config = [
+        inquirer.List('interest',
+                            message="Install lf configurations",
+                            choices=['Yes', 'No'],
+                            ),
+        ]
+        lf_config_answer = inquirer.prompt(lf_config)
+        
+        if lf_config_answer['interest'] == "Yes" : 
+            subprocess.run("clear", shell=True)
+            run(f'mkdir -p ~/.config/lf', shell=True, stdout=DEVNULL)
+            run(f'yes | cp -rf {dotfiles_path}/.config/lf/* ~/.config/lf/', shell=True, stdout=DEVNULL)
+
+    else :
+        rprint(':thumbs_down: [red italic] lf is not installed.\n')
 
         
 
