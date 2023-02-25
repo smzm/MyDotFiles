@@ -338,7 +338,8 @@ if os_answers['interest'] == 'Arch' :
     'apple_cursor',
     'openvpn3',
     "ttf-poppins",
-    "nerd-fonts-inter"
+    "nerd-fonts-inter",
+    "i3exit",
     ]
 elif os_answers['interest'] == 'WSL' : 
     # ===== Install aur packages : WSL
