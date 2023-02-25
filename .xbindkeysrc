@@ -29,9 +29,9 @@
 
 
 
-keystate_numlock = enable
-keystate_scrolllock = enable
-keystate_capslock = enable
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
 
 
 
@@ -65,5 +65,20 @@ keystate_capslock = enable
     m:0x14 + c:104
     Control+Mod2 + KP_Enter 
 
-#
+#Pause Spotify
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+    m:0x10 + c:127
+    Mod2 + Pause 
+
+#Next Track Spotify
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+    m:0x18 + c:86
+    Alt+Mod2 + KP_Add 
+
+#Previous Track Spotify
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+    m:0x18 + c:82
+    Alt+Mod2 + KP_Subtract 
+
+#You can always use these tools to create new keybinding : xprop, xev, xdotool, xbindkey_config(GUI)
 # End of xbindkeys configuration
