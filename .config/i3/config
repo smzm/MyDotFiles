@@ -350,15 +350,14 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 
-set $ws2 
-set $ws3 
-set $ws4 
-set $ws5 
-set $ws6 
-set $ws7 
-set $ws8 
-
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:
+set $ws7 7:
+set $ws8 8:
 
 
 #############################
@@ -369,7 +368,7 @@ set $ws8 
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
-assign [class="qv2ray"] $ws3
+assign [class="code|Code"] $ws2
 # cannot use assign for Spotify
 for_window [class="spotify|Spotify"] move workspace $ws3
 
