@@ -1272,4 +1272,3 @@ EOF
 " hi Delimiter guifg=#8a8a8a
 " hi Conditional guifg=#ceabff gui=bold
 " hi Repeat guifg=#ceabff gui=bold
-
