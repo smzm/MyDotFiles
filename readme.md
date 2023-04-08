@@ -55,6 +55,8 @@ cd mydotfiles   # You must first change directory to 'mydotfiles' and then run t
 python dotfile_installation.py
 ```
 
+> After running `dotfile_installation.py` if you don't have needed packages script install it automatically but you will encounter with an `NameError` about `inquirer` package. to resolve the issue run script again with `python dotfile_installation.py`.
+
 - ### 6. Setting ArchLinux as default WSL
 Just run `wsl --set-default Arch` in windows command shell.
 
