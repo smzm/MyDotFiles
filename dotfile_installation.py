@@ -798,8 +798,8 @@ if lf_check :
             run(f'mkdir -p ~/.config/lf', shell=True, stdout=DEVNULL)
             run(f'yes | cp -rf {dotfiles_path}/.config/lf/* ~/.config/lf/', shell=True, stdout=DEVNULL)
 
-    else :
-        rprint(':thumbs_down: [red italic] lf is not installed.\n')
+else :
+    rprint(':thumbs_down: [red italic] lf is not installed.\n')
 
         
 
