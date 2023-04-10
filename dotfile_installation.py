@@ -195,6 +195,7 @@ elif os_answers['interest'] == 'WSL' :
         "dnscrypt-proxy",
         "lf",
         "unarchiver",
+        "xdg-utils"
     ]
 
 
