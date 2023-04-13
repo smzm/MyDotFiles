@@ -73,7 +73,7 @@ If you’re using WSL 0.67.6 and above (see `wsl --version`), systemd is nativel
 systemd=true
 ```
 
-- ### DNS Settings
+- ### 10. DNS Settings
 1. Disable regenrating `reslvconf` in `/etc/wsl.conf` :
 ```conf
 [network]
