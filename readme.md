@@ -66,7 +66,7 @@ To setting default user in windows command shell got to the arch direcctory and 
 - ### 8. Config Windows Terminal [optional]
 Config you windows terminal settings like [this](./windowsTerminal/readme.md)
 
-- ### 9. enable systemd
+- ### 9. Enable systemd
 If you’re using WSL 0.67.6 and above (see `wsl --version`), systemd is natively supported. To enable it, edit `/etc/wsl.conf` and then restart the distro.
 ```conf
 [boot]
@@ -74,3 +74,15 @@ systemd=true
 ```
 
 - ### DNS Settings
+1. Disable regenrating `reslvconf` in `/etc/wsl.conf` :
+```conf
+[network]
+generateResolvConf = false
+```
+
+2. Create a file with the name : `/etc/systemd/resolved.conf.d/10-cloudflare.conf`
+```conf
+DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+```
+and restart and enable `resolved` : 
+`sudo systemctl restart systemd-resolved.service`
