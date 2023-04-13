@@ -65,3 +65,12 @@ To setting default user in windows command shell got to the arch direcctory and 
 
 - ### 8. Config Windows Terminal [optional]
 Config you windows terminal settings like [this](./windowsTerminal/readme.md)
+
+- ### 9. enable systemd
+If you’re using WSL 0.67.6 and above (see `wsl --version`), systemd is natively supported. To enable it, edit `/etc/wsl.conf` and then restart the distro.
+```conf
+[boot]
+systemd=true
+```
+
+- ### DNS Settings
