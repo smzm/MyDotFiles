@@ -86,3 +86,12 @@ DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
 ```
 and restart `resolved` : 
 `sudo systemctl restart systemd-resolved.service`
+
+<br>
+<br>
+
+## Neovim installation 
+After installing Neovim : 
+
+For `pylsp` : 
+- open `~/.local/share/nvim/mason/packages/python-lsp-server/venv/pyvenv.cfg` and set `include-system-site-packages = true `
