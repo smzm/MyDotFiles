@@ -3,8 +3,8 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-        style = 'night',
-        transparent = true,
+        style = 'moon',
+        transparent = false,
         lualine_bold = true,
         terminal_colors = true,
         on_highlights = function(hl, c)
@@ -36,6 +36,18 @@ return {
                 bg = c.bg_dark,
                 fg = c.bg_dark,
             }
+            -- hl.DiagnosticVirtualTextWarn = {
+            --   bg = "NONE"
+            -- }
+            -- hl.DiagnosticVirtualTextError = {
+            --   bg = "NONE"
+            -- }
+            -- hl.DiagnosticVirtualTextHint = {
+            --   bg = "NONE"
+            -- }
+            -- hl.DiagnosticVirtualTextInfo = {
+            --   bg = "NONE"
+            -- }
         end,
     },
     config = function(_, opts)

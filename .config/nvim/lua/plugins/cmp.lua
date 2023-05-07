@@ -147,6 +147,7 @@ return {
                 { name = 'buffer' },
                 { name = 'async_path' },
                 { name = 'calc' },
+                { name = 'crates' },
             },
             confirm_opts = {
                 behavior = cmp.ConfirmBehavior.Replace,
