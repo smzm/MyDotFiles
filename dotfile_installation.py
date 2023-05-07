@@ -156,7 +156,8 @@ if os_answers['interest'] == 'Arch' :
     "starship",
     "gnome-keyring",
     "inter-font",
-    "usbutils"
+    "usbutils",
+    "lldb",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
@@ -195,7 +196,8 @@ elif os_answers['interest'] == 'WSL' :
         "dnscrypt-proxy",
         "lf",
         "unarchiver",
-        "xdg-utils"
+        "xdg-utils",
+        "lldb",
     ]
 
 
