@@ -61,8 +61,7 @@ map("n", "<M-j>", ":resize -1<CR>", opts)
 -- Buffer navigation
 map("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
-map("n", "[b", ":BufferLineCyclePrev<CR>", opts)
-map("n", "]b", ":BufferLineCycleNext<CR>", opts)
+map("n", "[b", ":BufferLineCyclePrev<CR>", opts) map("n", "]b", ":BufferLineCycleNext<CR>", opts)
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", opts)
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", opts)
 
@@ -157,4 +156,24 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
+
+-- Rust(cargo.toml) : Update Crates
+vim.keymap.set("n", "<leader>rcu", function()
+  require("crates").upgrade_all_crates()
+end, { desc = "Update All crates"})
+
+
+-- Rust Debugging
+-- Toggle Breakpoint
+map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle Breakpoint" })
+map("n", "<leader>dbs", "<cmd> RustDebuggables <CR>", { desc = "Open Panel" })
+map("n", "<leader>dbo", "<cmd> DapStepOver <CR>", { desc = "Dap Step Over" })
+
+-- Debugger Panel
+vim.keymap.set("n", "<leader>dbp", function()
+  local widgets = require('dap.ui.widgets')
+  local sidebar = widgets.sidebar(widgets.scopes)
+  sidebar.open()
+end, { desc = "Open Debugger Panel"})
 
