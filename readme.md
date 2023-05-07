@@ -93,5 +93,5 @@ and restart `resolved` :
 ## Neovim installation 
 After installing Neovim : 
 
-For `pylsp` : 
+For importing pip packages in `pylsp` : 
 - open `~/.local/share/nvim/mason/packages/python-lsp-server/venv/pyvenv.cfg` and set `include-system-site-packages = true `
