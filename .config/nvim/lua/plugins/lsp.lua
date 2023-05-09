@@ -135,6 +135,7 @@ return {
           float = {
             source = "always",  -- Or "if_many"
           },
+          update_in_insert = true,
         })
 
         -- Show Signs instead of letters : to affect disable lsp-lines.lua
