@@ -126,6 +126,7 @@ return {
         -- vim.o.updatetime = 250
         -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
+
         -- ==> Show diagnostic inline text :
         vim.diagnostic.config({
           virtual_text = {
@@ -135,7 +136,7 @@ return {
           float = {
             source = "always",  -- Or "if_many"
           },
-          update_in_insert = true,
+          update_in_insert = false,
         })
 
         -- Show Signs instead of letters : to affect disable lsp-lines.lua
