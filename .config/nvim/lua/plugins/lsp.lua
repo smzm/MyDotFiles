@@ -129,15 +129,17 @@ return {
 
         -- ==> Show diagnostic inline text :
         vim.diagnostic.config({
-          virtual_text = {
-            prefix = '●', -- Could be '■', '▎', 'x'
-          },
+          virtual_text = false,
+          --{
+          -- prefix = '●', -- Could be '■', '▎', 'x'
+          --},
           severity_sort = true,
           float = {
             source = "always",  -- Or "if_many"
           },
           update_in_insert = false,
         })
+
 
         -- Show Signs instead of letters : to affect disable lsp-lines.lua
         local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -146,6 +148,9 @@ return {
           vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
+        vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#52577d", bg = bg })
+        vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#52577d", bg = bg })
+        vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#52577d", bg = bg })
 
 
 
