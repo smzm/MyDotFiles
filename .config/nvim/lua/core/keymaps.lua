@@ -17,6 +17,7 @@ map('n', '<esc>', ":nohlsearch<CR>", {silent = true})
 
 -- delete single character without copying into register
 map('n', 'x', '"_x', opts)
+map('v', 'x', '"_x', opts)
 
 
 -- (;) as (:)
