@@ -34,7 +34,7 @@ opt.showmode = false
 
 -- Set relative line numbers
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.numberwidth = 4
 
 -- Tab config
