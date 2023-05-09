@@ -36,18 +36,18 @@ return {
                 bg = c.bg_dark,
                 fg = c.bg_dark,
             }
-            -- hl.DiagnosticVirtualTextWarn = {
-            --   bg = "NONE"
-            -- }
+            hl.DiagnosticVirtualTextWarn = {
+              bg = "NONE"
+            }
             -- hl.DiagnosticVirtualTextError = {
             --   bg = "NONE"
             -- }
-            -- hl.DiagnosticVirtualTextHint = {
-            --   bg = "NONE"
-            -- }
-            -- hl.DiagnosticVirtualTextInfo = {
-            --   bg = "NONE"
-            -- }
+            hl.DiagnosticVirtualTextHint = {
+              bg = "NONE"
+            }
+            hl.DiagnosticVirtualTextInfo = {
+              bg = "NONE"
+            }
         end,
     },
     config = function(_, opts)
