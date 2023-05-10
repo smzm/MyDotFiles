@@ -3,6 +3,7 @@ local g = vim.g
 
 
 vim.o.signcolumn = "yes"
+
 -- Cursor highlighting
 opt.cursorline = true
 opt.cursorcolumn = false
@@ -92,6 +93,10 @@ opt.lazyredraw = true
 
 -- Have the statusline only display at the bottom
 opt.laststatus = 3
+
+-- Disable continuation comments in next line
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
 -- Disable certain builtins
 g.loaded_netrw = 1
