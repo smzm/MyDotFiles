@@ -35,7 +35,7 @@ return {
 				nls.builtins.formatting.fixjson,
 				nls.builtins.formatting.isort,
 				nls.builtins.formatting.black.with({
-					extra_args = { "--line-length=120" },
+					extra_args = { "--line-length=350" },
 				}),
 			}
 			nls.setup({
