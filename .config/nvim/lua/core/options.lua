@@ -96,15 +96,6 @@ opt.laststatus = 3
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
--- Autosave on BufLeave and FocusLost
-vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
-	callback = function()
-		if vim.bo.modified and not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
-			vim.api.nvim_command("silent update")
-		end
-	end,
-})
-
 -- Disable certain builtins
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
