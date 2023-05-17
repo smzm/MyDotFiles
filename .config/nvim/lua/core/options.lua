@@ -1,7 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
-
 vim.o.signcolumn = "yes"
 
 -- Cursor highlighting
@@ -25,10 +24,10 @@ opt.breakindent = true
 
 -- Make terminal support truecolor
 opt.termguicolors = true
-opt.background = 'dark'
+opt.background = "dark"
 
 -- Make neovim use the system clipboard
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 
 -- Disable old vim status
 opt.showmode = false
@@ -49,16 +48,15 @@ opt.tabstop = 2
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.foldcolumn = '1'
+opt.foldcolumn = "1"
 
 -- Decrease update time
 opt.timeoutlen = 500
 opt.updatetime = 200
 
-
 -- backspace
 -- allow backspace on indent, end of line or insert mode start position
-opt.backspace = 'indent,eol,start'
+opt.backspace = "indent,eol,start"
 
 -- Disable swapfile
 opt.swapfile = false
@@ -67,7 +65,7 @@ opt.swapfile = false
 opt.undofile = true
 
 -- cmp config
-opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Always show tabline
 opt.showtabline = 2
@@ -98,6 +96,15 @@ opt.laststatus = 3
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
+-- Autosave on BufLeave and FocusLost
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+	callback = function()
+		if vim.bo.modified and not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+			vim.api.nvim_command("silent update")
+		end
+	end,
+})
+
 -- Disable certain builtins
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -121,5 +128,3 @@ g.loaded_fzf = 1
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_python3_provider = 0
-
-
