@@ -35,7 +35,7 @@ return {
 				nls.builtins.formatting.fixjson,
 				nls.builtins.formatting.isort,
 				nls.builtins.formatting.black.with({
-					extra_args = { "--line-length=350" },
+					extra_args = { "--line-length=200" },
 				}),
 			}
 			nls.setup({
@@ -44,7 +44,7 @@ return {
 					if client.supports_method("textDocument/formatting") then
 						-- Issue between auto-save and null-ls : undo history
 						vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
-							vim.lsp.buf.formatting(bufnr)
+							vim.lsp.buf.format({ bufnr = bufnr })
 						end, {})
 						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 						vim.api.nvim_create_autocmd("BufWritePre", {
