@@ -3,10 +3,10 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Remove trailing whitespaces
-autocmd("BufWritePre", {
-	pattern = "",
-	command = "%s/\\s\\+$//e",
-})
+-- autocmd("BufWritePre", {
+-- 	pattern = "",
+-- 	command = "%s/\\s\\+$//e",
+-- })
 
 -- Highlight text on yank
 augroup("YankHighlight", { clear = true })
