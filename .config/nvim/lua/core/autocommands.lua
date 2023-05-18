@@ -88,7 +88,7 @@ autocmd("BufReadPost", {
 	end,
 })
 
--- Auto Save when Terminal opened
+-- Auto Save when insert leave
 autocmd({ "InsertLeave" }, {
 	group = augroup("auto_save", { clear = true }),
 	callback = function()
