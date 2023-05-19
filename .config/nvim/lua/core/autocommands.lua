@@ -90,6 +90,7 @@ autocmd("BufReadPost", {
 
 -- Auto Save when insert leave
 autocmd({ "InsertLeave" }, {
+	buffer = bufnr,
 	group = augroup("auto_save", { clear = true }),
 	callback = function()
 		local curbuf = vim.api.nvim_get_current_buf()
@@ -98,9 +99,7 @@ autocmd({ "InsertLeave" }, {
 		end
 
 		vim.cmd([[silent! update]])
-
 		vim.lsp.buf.format({
-			bufnr = bufnr,
 			filter = function(_client)
 				return _client.name == "null-ls"
 			end,
