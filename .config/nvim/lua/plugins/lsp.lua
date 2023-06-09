@@ -35,7 +35,7 @@ return {
 				nls.builtins.formatting.fixjson,
 				nls.builtins.formatting.isort,
 				nls.builtins.formatting.black.with({
-					extra_args = { "--line-length=200" },
+					extra_args = { "--line-length=150" },
 				}),
 			}
 			nls.setup({
@@ -77,7 +77,7 @@ return {
 			{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
 			{ "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
 			{ "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
-			{ "K", vim.lsp.buf.hover, desc = "Hover" },
+			-- { "K", vim.lsp.buf.hover, desc = "Hover" },
 			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
 			{ "<leader>r", vim.lsp.buf.rename, desc = "Rename" },
 		},
