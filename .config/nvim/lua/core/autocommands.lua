@@ -89,7 +89,7 @@ autocmd("BufReadPost", {
 })
 
 -- Auto Save when insert leave
-autocmd({ "InsertLeave" }, {
+autocmd({ "InsertLeave", "TermOpen" }, {
 	buffer = bufnr,
 	group = augroup("auto_save", { clear = true }),
 	callback = function()

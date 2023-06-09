@@ -1,6 +1,14 @@
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
+-- Move Faster
+map("n", "<S-j>", "10j", opts)
+map("n", "<S-k>", "10k", opts)
+
+-- Tab line forward and backward in normal mode
+map("n", "<Tab>", ">gv", opts)
+map("n", "<S-Tab>", "<", opts)
+
 -- use jk to exit insert mode
 map("i", "jk", "<ESC>", opts)
 
@@ -19,8 +27,8 @@ map("v", "x", '"_x', opts)
 map("n", ";", ":", opts)
 
 -- increment/decrement numbers
-map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
-map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+map("n", "+", "<C-a>", { desc = "Increment number" })
+map("n", "-", "<C-x>", { desc = "Decrement number" })
 
 -- select all
 map("n", "<C-a>", "gg<S-v>G", opts)
@@ -48,12 +56,10 @@ map("n", "<M-k>", ":resize +1<CR>", opts)
 map("n", "<M-j>", ":resize -1<CR>", opts)
 
 -- Buffer navigation
-map("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
-map("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 map("n", "[b", ":BufferLineCyclePrev<CR>", opts)
 map("n", "]b", ":BufferLineCycleNext<CR>", opts)
--- map("n", "<Tab>", ":BufferLineCycleNext<CR>", opts)
--- map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", opts)
+map("n", "<C-PageUp>", ":BufferLineCyclePrev<CR>", opts)
+map("n", "<C-PageDown>", ":BufferLineCycleNext<CR>", opts)
 
 -- Move lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", opts)
