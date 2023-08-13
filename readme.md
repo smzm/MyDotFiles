@@ -24,10 +24,10 @@ Download [yuk7/ArchWSL](https://github.com/yuk7/ArchWSL) installer zip, pick a f
 
 - ### 2. Refresh Pacman GPG keys:
 ```bash
-pacman-key --init
-pacman-key --populate
-pacman-key --refresh-keys
-pacman -Sy archlinux-keyring
+sudo pacman-key --init
+sudo pacman-key --populate
+# sudo pacman-key --refresh-keys
+sudo pacman -Sy archlinux-keyring
 pacman -Syyu --noconfirm
 ```
 
