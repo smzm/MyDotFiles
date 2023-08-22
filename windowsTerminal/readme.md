@@ -28,7 +28,7 @@ In **windows terminal** go to the settings and select `Open JSON file`.
             "cursorColor": "#FFFFFF",
             "cyan": "#28B9FF",
             "foreground": "#F1F1F1",
-            "green": "#7129FF",
+            "green": "#d335ff",
             "name": "xcad",
             "purple": "#2883FF",
             "red": "#A52AFF",
