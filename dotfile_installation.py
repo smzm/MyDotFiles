@@ -158,6 +158,7 @@ if os_answers['interest'] == 'Arch' :
     "inter-font",
     "usbutils",
     "lldb",
+    "ttf-jetbrains-mono",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
@@ -339,10 +340,11 @@ if os_answers['interest'] == 'Arch' :
     'flat-remix',
     'flatplat-blue-theme',
     'apple_cursor',
-    'openvpn3',
-    "ttf-poppins",
-    "nerd-fonts-inter",
-    "i3exit",
+    'ttf-poppins',
+    'nerd-fonts-inter',
+    'i3exit',
+    'google-chrome',
+        
     ]
 elif os_answers['interest'] == 'WSL' : 
     # ===== Install aur packages : WSL
