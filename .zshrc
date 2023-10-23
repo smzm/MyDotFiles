@@ -95,7 +95,7 @@ plugins=(git
     themes
     colorize
     web-search
-    vi-mode
+    # vi-mode
     transfer
     safe-paste
     scd
