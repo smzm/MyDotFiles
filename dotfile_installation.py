@@ -321,7 +321,7 @@ if os_answers['interest'] == 'Arch' :
     'udevil',
     'tailwind-css',
     'tailwindcss-language-server',
-    'picom-allusive',
+    'picom',
     'polybar',
     'pacman-contrib',
     'cava',
