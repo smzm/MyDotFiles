@@ -165,6 +165,7 @@ if os_answers['interest'] == 'Arch' :
 elif os_answers['interest'] == 'WSL' : 
     # ===== Install pacman packages : WSL
     pacman_list = [
+        "i3-exit",
         "base-devel",
         "binutils",
         "pkgconf",
