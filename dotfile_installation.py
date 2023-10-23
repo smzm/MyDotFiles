@@ -159,6 +159,7 @@ if os_answers['interest'] == 'Arch' :
     "usbutils",
     "lldb",
     "ttf-jetbrains-mono",
+    "blueman",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
