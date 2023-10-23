@@ -8,18 +8,11 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-calc",
-		{
-			"L3MON4D3/LuaSnip",
-			build = "make install_jsregexp",
-			version = "v1.*",
-		},
 		"rafamadriz/friendly-snippets",
 	},
 	event = "InsertEnter",
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
-		require("luasnip.loaders.from_vscode").lazy_load()
 
 		local check_backspace = function()
 			local col = vim.fn.col(".") - 1
@@ -143,7 +136,6 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lua" },
-				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "async_path" },
 				{ name = "calc" },
