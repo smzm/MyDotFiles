@@ -3,7 +3,7 @@
 bluetooth_print() {
     bluetoothctl | grep --line-buffered 'Device\|#' | while read -r REPLY; do
       if [ "$(bluetoothctl info | grep 'Connected')" ]; then
-            printf '  '
+            # printf '  '
 
             devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
             counter=0
