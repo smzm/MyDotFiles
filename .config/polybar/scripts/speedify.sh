@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# First Of All run these commands to set configuration
 # speedify_cli headercompression on
 # speedify_cli encryption on 
 # speedify_cli esni on 
@@ -9,6 +11,7 @@
 # speedify_cli packetaggr on 
 # speedify_cli transport udp 
 # speedify_cli dns 1.1.1.1
+# speedify_cli startupconnect on
 
 state=$(speedify_cli state | jq -r .state)
 server="#no-oslo-2"
