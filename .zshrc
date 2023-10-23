@@ -155,6 +155,12 @@ alias cl='clear'
 alias cp='cp -i' #Confirm before overwriting
 alias aria='aria2c -x16 -c -k1M -j10 -m16'
 
+alias rmt='trash-put'
+alias emt='trash-empty'
+alias lit='trash-list'
+alias rst='trash-restore'
+alias rmft='trash-rm'
+
 # ============================ Starship
 # Fix Interop Error that randomly occurs in vscode terminal when using WSL2
 fix_wsl2_interop() {
