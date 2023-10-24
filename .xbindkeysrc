@@ -37,49 +37,43 @@
 
 #seekForward
 "xdotool search --class mpv key Right"
-    m:0x14 + c:85
-    Control+Mod2 + KP_Right 
+    m:0x18 + c:114
+    Alt+Mod2 + Right 
 
 #seekBackward
 "xdotool search --class mpv key Left"
-    m:0x14 + c:83
-    Control+Mod2 + KP_Left 
+    m:0x18 + c:113
+    Alt+Mod2 + Left 
 
 #volumeUp
 "xdotool search --class mpv key k"
-    m:0x14 + c:80
-    Control+Mod2 + KP_Up 
+    m:0x18 + c:111
+    Alt+Mod2 + Up 
 
 #volumeDown
 "xdotool search --class mpv key j"
-    m:0x14 + c:88
-    Control+Mod2 + KP_Down 
+    m:0x18 + c:116
+    Alt+Mod2 + Down 
 
 #pause
 "xdotool search --class mpv key space"
-    m:0x14 + c:84
-    Control+Mod2 + KP_Begin 
+    m:0x18 + c:65
+    Alt+Mod2 + space 
 
-#Fullscreen
-"xdotool search --class mpv key f"
-    m:0x14 + c:104
-    Control+Mod2 + KP_Enter 
-
-#Pause Spotify
 #"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 "if pgrep -x spotify > /dev/null ; then dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause ;else  spotify ;fi"
     m:0x10 + c:127
-    Mod2 + Pause 
+    Alt+Mod2 + Pause 
 
 #Next Track Spotify
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-    m:0x18 + c:86
-    Alt+Mod2 + KP_Add 
+    m:0x18 + c:117
+    Alt+Mod2 + Next 
 
 #Previous Track Spotify
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-    m:0x18 + c:82
-    Alt+Mod2 + KP_Subtract 
+    m:0x18 + c:112
+    Alt+Mod2 + Prior 
 
-#You can always use these tools to create new keybinding : xprop, xev, xdotool, xbindkey_config(GUI)
+#
 # End of xbindkeys configuration
