@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# First Of All run these commands to set configuration
 # speedify_cli headercompression on
 # speedify_cli encryption on 
 # speedify_cli esni on 
@@ -11,10 +9,8 @@
 # speedify_cli packetaggr on 
 # speedify_cli transport udp 
 # speedify_cli dns 1.1.1.1
-# speedify_cli startupconnect on
 
 state=$(speedify_cli state | jq -r .state)
-server="#no-oslo-2"
 
 speedify_print() {
   if [ "$state" == "CONNECTED" ] ; then
@@ -30,13 +26,19 @@ speedify_toggle() {
     speedify_cli disconnect
   elif [ "$state" == "LOGGED_IN" ] ; then
     echo "CONNECTING..."
-    speedify_cli connect last
+    speedify_cli connect "$1"
   fi
 }
 
 case "$1" in
     --toggle)
-        speedify_toggle
+        speedify_toggle "last"
+        ;;
+    --us)
+        speedify_toggle "us-nyc-69"
+        ;;
+    --no) 
+        speedify_toggle "no-oslo-2"
         ;;
     *)
         speedify_print
