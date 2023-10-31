@@ -4,6 +4,7 @@
 # speedify_cli esni on 
 # speedify_cli mode speed 
 # speedify_cli streaming domains add youtube.com
+# speedify_cli streamingbypass service disable
 # speedify_cli streamingbypass domains add downloadly.ir
 # speedify_cli jumbo on
 # speedify_cli packetaggr on 
@@ -39,6 +40,9 @@ case "$1" in
         ;;
     --no) 
         speedify_toggle "no-oslo-2"
+        ;;
+    --closest)
+        speedify_toggle "closest"
         ;;
     *)
         speedify_print
