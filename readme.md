@@ -19,6 +19,7 @@ and Use `dotfile_installation.py` python file for installing programms and dotfi
 
 
 ## Installing in `WSL` :
+- WSL installation guide for [yuk7/ArchWSL](https://github.com/yuk7/ArchWSL)
 - ### 1. Install ArchWsl 
   - Update wsl in windows : `wsl.exe --update`
   - Download [yuk7/ArchWSL](https://github.com/yuk7/ArchWSL) installer zip, pick a folder and run `arch.exe` in that folder.
