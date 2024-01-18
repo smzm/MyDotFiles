@@ -390,6 +390,7 @@ for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="kitty"] border pixel 4
 for_window [class="google-chrome|Google-chrome"] border pixel 4  split h
 for_window [class="code|Code"] border pixel 4
+for_window [class="Windscribe"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -419,3 +420,6 @@ exec_always --no-startup-id picom --config ~/.config/picom.conf &
 
 # Start Polybar
 exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
+
+# Switch between farsi and english with alt + shift
+exec_always --no-startup-id setxkbmap -layout us,ir -option grp:alt_shift_toggle
