@@ -718,17 +718,18 @@ else :
 
 
 
-# ===== Font Configuration
+# ===== Font and language Configuration
 if os_answers['interest'] == "Arch" : 
     font_config = [
     inquirer.List('interest',
-                    message="Install font configurations",
+                    message="Install font and language configurations",
                     choices=['Yes', 'No'],
                 ),
     ]
     font_config_answer = inquirer.prompt(font_config)
     if font_config_answer['interest'] == "Yes" : 
         os.system(f'sudo cp {dotfiles_path}/etc/local.conf /etc/fonts/local.conf')
+        os.system(f'sudo cp {dotfiles_path}/etc/00-keyboard.conf /etc/X11/xorg.conf.d/')
         # Install feather font
         os.system('mkdir -p $HOME/.fonts')
         os.system(f'yes | cp -rf {dotfiles_path}/.fonts/* $HOME/.fonts/')
