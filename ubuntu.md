@@ -11,6 +11,8 @@ sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev librea
 ## Install zsh and  Set zsh as default shell
 ```bash
 sudo apt install zsh -y
+```
+```bash
 chsh -s $(which zsh)
 ```
 
@@ -27,5 +29,7 @@ sudo apt install nodejs npm python pip -y
 ## install Bun
 ```bash
 npm install -g npm@latest
+```
+```bash
 curl -fsSL https://bun.sh/install | bash
 ```
