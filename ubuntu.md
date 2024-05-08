@@ -1,31 +1,30 @@
-# Get upgrades
+## Get upgrades
 ```bash
 sudo apt upgrade -y
 ```
 
-# Install dependencies
+## Install dependencies
 ```bash
 sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev procps file git wget unzip
 ```
 
-# Install zsh and  Set zsh as default shell
-
+## Install zsh and  Set zsh as default shell
 ```bash
 sudo apt install zsh -y
 chsh -s $(which zsh)
 ```
 
-# Install oh-my-zsh
+## Install oh-my-zsh
 ```bash
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
-# Install basics softwares
+## Install basics softwares
 ```bash
 sudo apt install nodejs npm python pip -y
 ```
 
-# install Bun
+## install Bun
 ```bash
 npm install -g npm@latest
 curl -fsSL https://bun.sh/install | bash
