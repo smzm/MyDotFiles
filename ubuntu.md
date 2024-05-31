@@ -41,7 +41,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install
 
 ## Install basics softwares
 ```bash
-sudo apt install nodejs npm python pip -y
+sudo apt install nodejs npm python pip ruby -y
 ```
 
 ## install Bun
