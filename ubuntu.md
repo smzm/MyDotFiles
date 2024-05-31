@@ -28,6 +28,11 @@ sudo apt install nodejs npm python pip -y
 
 ## install Bun
 ```bash
+mkdir -p ~/.npm
+npm config set prefix ~/.npm
+npm install -g npm@latest
+```
+```bash
 npm install -g npm@latest
 ```
 ```bash
