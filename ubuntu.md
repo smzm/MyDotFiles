@@ -33,8 +33,5 @@ npm config set prefix ~/.npm
 npm install -g npm@latest
 ```
 ```bash
-npm install -g npm@latest
-```
-```bash
 curl -fsSL https://bun.sh/install | bash
 ```
