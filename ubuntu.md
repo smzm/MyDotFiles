@@ -35,3 +35,8 @@ npm install -g npm@latest
 ```bash
 curl -fsSL https://bun.sh/install | bash
 ```
+
+## Install npm packages 
+```bash
+npm install pyright vim-language-server vscode-langservers-extracted typescript typescript-language-server awk-language-server dockerfile-language-server-nodejs emmet-ls bash-language-server yaml-language-server neovim
+```
