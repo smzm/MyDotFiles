@@ -21,6 +21,12 @@ chsh -s $(which zsh)
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
+
+## Install Brew
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## Install basics softwares
 ```bash
 sudo apt install nodejs npm python pip -y
@@ -40,3 +46,4 @@ curl -fsSL https://bun.sh/install | bash
 ```bash
 npm install pyright vim-language-server vscode-langservers-extracted typescript typescript-language-server awk-language-server dockerfile-language-server-nodejs emmet-ls bash-language-server yaml-language-server neovim
 ```
+
