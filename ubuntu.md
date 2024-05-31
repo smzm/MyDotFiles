@@ -40,6 +40,11 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+## Installing packages by brew
+```bash
+brew install lsd neovim
+```
+
 ## Install basics softwares
 ```bash
 sudo apt install nodejs npm python pip ruby -y
