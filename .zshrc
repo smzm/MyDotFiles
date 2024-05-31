@@ -10,6 +10,9 @@ export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 # bun completions
 [ -s "/home/rodd/.bun/_bun" ] && source "/home/rodd/.bun/_bun"
 
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
