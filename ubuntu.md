@@ -65,3 +65,7 @@ curl -fsSL https://bun.sh/install | bash
 npm install pyright vim-language-server vscode-langservers-extracted typescript typescript-language-server awk-language-server dockerfile-language-server-nodejs emmet-ls bash-language-server yaml-language-server neovim
 ```
 
+## Install Nvidia Cuda toolkit
+```bash
+sudo apt install nvidia-cuda-toolkit
+```
