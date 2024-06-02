@@ -69,3 +69,11 @@ npm install pyright vim-language-server vscode-langservers-extracted typescript 
 ```bash
 sudo apt install nvidia-cuda-toolkit
 ```
+
+<br>
+<hr>
+
+## Install tmux
+```bash
+sudo apt install tmux
+```
