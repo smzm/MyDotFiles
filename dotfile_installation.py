@@ -780,7 +780,8 @@ if os_answers['interest'] == "Arch" :
         
         if tmux_config_answer['interest'] == "Yes" : 
             subprocess.run("clear", shell=True)
-            run(f'yes | cp -rf {dotfiles_path}/.tmux.conf ~/', shell=True, stdout=DEVNULL)
+            tmux_dir = subprocess.run('mkdir -p ~/.config/tmux', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            run(f'yes | cp -rf {dotfiles_path}/.config/tmux ~/.config/tmux/', shell=True, stdout=DEVNULL)
 
     else :
         rprint(':thumbs_down: [red italic] tmux is not installed.\n')
@@ -882,7 +883,7 @@ if os_answers['interest'] == "Arch" :
 
 
 
-# ===== Mpv configuration
+# ===== mpv configuration
 if os_answers['interest'] == "Arch" : 
     mpv_check = subprocess.run('mpv --version', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).returncode == 0
 
