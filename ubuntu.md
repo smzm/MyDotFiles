@@ -81,3 +81,9 @@ sudo apt install tmux
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+- Copy `.tmux.conf` in HOME directory
+- Install plugins
+```bash
+tmux 
+```
+- Press `prefix(ctrl+a) + I` (capital i, as in Install) to fetch the plugin.
