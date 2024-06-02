@@ -77,3 +77,7 @@ sudo apt install nvidia-cuda-toolkit
 ```bash
 sudo apt install tmux
 ```
+- Install TMP-plugins manager
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
