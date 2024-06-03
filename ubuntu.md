@@ -86,4 +86,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```bash
 tmux 
 ```
-- Press `prefix(ctrl+a) + I` (capital i, as in Install) to fetch the plugin.
+- Press `prefix + I` (capital i, as in Install) to fetch the plugin.
