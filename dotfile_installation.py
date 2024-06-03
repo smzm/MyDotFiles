@@ -781,7 +781,9 @@ if os_answers['interest'] == "Arch" :
         if tmux_config_answer['interest'] == "Yes" : 
             subprocess.run("clear", shell=True)
             tmux_dir = subprocess.run('mkdir -p ~/.config/tmux', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            run(f'yes | cp -rf {dotfiles_path}/.config/tmux ~/.config/tmux/', shell=True, stdout=DEVNULL)
+            run(f'yes | cp -rf {dotfiles_path}/.config/tmux ~/.config/', shell=True, stdout=DEVNULL)
+            os.system('git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm')
+
 
     else :
         rprint(':thumbs_down: [red italic] tmux is not installed.\n')
