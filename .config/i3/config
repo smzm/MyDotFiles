@@ -143,7 +143,8 @@ bindsym $mod+y border pixel 4
 
 
 # start a terminal
-bindsym $mod+Return  exec kitty ; split horizontal
+#bindsym $mod+Return  exec kitty ; split horizontal
+bindsym $mod+Return  exec warp-terminal ; split horizontal
 
 # kill focused window
 bindsym $mod+q kill
@@ -420,3 +421,6 @@ exec_always --no-startup-id picom --config ~/.config/picom.conf &
 
 # Start Polybar
 exec_always --no-startup-id  $HOME/.config/polybar/launch.sh &
+
+# Auto mount removable media
+exec --no-startup-id udiskie &
