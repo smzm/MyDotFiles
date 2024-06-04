@@ -80,9 +80,6 @@ opt.sidescrolloff = 5
 -- Disable wrapping
 opt.wrap = false
 
--- Enable list
-opt.list = true
-
 -- Fill chars
 opt.fillchars = [[vert:|,horiz:-,eob: ]]
 
@@ -95,27 +92,3 @@ opt.laststatus = 3
 -- Disable continuation comments in next line
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
-
--- Disable certain builtins
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_netrwFileHandlers = 1
-g.loaded_gzip = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_2html_plugin = 1
-g.loaded_logipat = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_tutor_mode_plugin = 1
-g.loaded_fzf = 1
-
--- Disable provider warnings in the healthcheck
-g.loaded_node_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_python3_provider = 0
