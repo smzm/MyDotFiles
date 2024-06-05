@@ -162,6 +162,7 @@ if os_answers['interest'] == 'Arch' :
     "blueman",
     "udisks2",
     "udiskie",
+    "python-pytorch-cuda"
     ]
         
 elif os_answers['interest'] == 'WSL' : 
