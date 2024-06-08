@@ -42,7 +42,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ; ~/.fzf/install
 
 ## Installing packages by brew
 ```bash
-brew install lsd neovim
+brew install lsd neovim gh
 ```
 
 ## Install basics softwares
