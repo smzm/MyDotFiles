@@ -47,7 +47,7 @@ brew install lsd neovim
 
 ## Install basics softwares
 ```bash
-sudo apt install nodejs npm python pip ruby -y
+sudo apt install nodejs npm python3 python3-pip ruby -y
 ```
 
 ## install Bun
