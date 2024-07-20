@@ -103,7 +103,7 @@ if os_answers['interest'] == 'Arch' :
     "mpv",
     "xbindkeys",
     "xdotool",
-    "thunar",
+    "nemo",
     "lxappearance",
     "xfce4-power-manager",
     "xfce4-settings",
