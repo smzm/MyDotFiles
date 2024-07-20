@@ -349,7 +349,7 @@ if os_answers['interest'] == 'Arch' :
     'ttf-poppins',
     'i3exit',
     'google-chrome',
-        
+    'visual-studio-code-bin',
     ]
 elif os_answers['interest'] == 'WSL' : 
     # ===== Install aur packages : WSL
