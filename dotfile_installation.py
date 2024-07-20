@@ -205,6 +205,7 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
+        "inter-font"
     ]
 
 
@@ -347,7 +348,6 @@ if os_answers['interest'] == 'Arch' :
     'flatplat-blue-theme',
     'apple_cursor',
     'ttf-poppins',
-    'nerd-fonts-inter',
     'i3exit',
     'google-chrome',
         
