@@ -164,7 +164,7 @@ if os_answers['interest'] == 'Arch' :
     "udiskie",
     "python-pytorch-cuda",
     "ollama-cuda",
-    "whisper-git",
+    "inter-font",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
@@ -205,7 +205,6 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
-        "inter-font"
     ]
 
 
