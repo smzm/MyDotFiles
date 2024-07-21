@@ -151,7 +151,6 @@ if os_answers['interest'] == 'Arch' :
     "gvfs-mtp" ,
     "gvfs-gphoto2",
     "dnscrypt-proxy",
-    "v2ray",
     "ttf-firacode-nerd",
     "starship",
     "gnome-keyring",
@@ -165,6 +164,7 @@ if os_answers['interest'] == 'Arch' :
     "python-pytorch-cuda",
     "ollama-cuda",
     "inter-font",
+    "obsidian",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
