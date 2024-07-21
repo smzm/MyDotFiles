@@ -168,6 +168,8 @@ if os_answers['interest'] == 'Arch' :
     "docker",
     "docker-compose",
     "telegram-desktop",
+    "uv",
+    "ruff",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
