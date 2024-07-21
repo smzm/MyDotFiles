@@ -165,6 +165,9 @@ if os_answers['interest'] == 'Arch' :
     "ollama-cuda",
     "inter-font",
     "obsidian",
+    "docker",
+    "docker-compose",
+    "telegram-desktop",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
