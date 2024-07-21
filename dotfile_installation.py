@@ -326,7 +326,8 @@ subprocess.run("clear", shell=True)
 if os_answers['interest'] == 'Arch' : 
     # ===== Install aur packages : Arch
     aur_list = [
-    'xbindkeys_config-gtk2',
+    #'xbindkeys_config-gtk2',
+    #'clipit',
     'udevil',
     'tailwind-css',
     'tailwindcss-language-server',
@@ -337,8 +338,7 @@ if os_answers['interest'] == 'Arch' :
     'ttf-indic-otf',
     'spotify',
     'sptlrx-bin',
-    'i3-scrot',
-    'clipit',
+    'i3-scrot',    
     'ttf-poppins',
     'apple-fonts',
     'ttf-font-awesome',
