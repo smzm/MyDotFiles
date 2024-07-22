@@ -1082,20 +1082,19 @@ if os_answers['interest'] == "Arch" :
 
 
 
-# ===== Disable IPv6 in NetworkManager
+# ===== Docker Configuration
 if os_answers['interest'] == "Arch" : 
-    networkmanager_check = subprocess.run('NetworkManager --version', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).returncode == 0
-    if networkmanager_check : 
-        rprint(':thumbs_up: [green] NetworkManager is installed.')
-        ipv6_config = [inquirer.List('interest', message="Disable ipv6 in NetworkManager", choices=['Yes', 'No'])]
-        ipv6_config_answer = inquirer.prompt(ipv6_config)
+    docker_check = subprocess.run('sudo docker --version', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).returncode == 0
+    if docker_check : 
+        rprint(':thumbs_up: [green] Docker is installed.')
+        docker_config = [inquirer.List('interest', message="Configure Docker to run commands without sudo permission", choices=['Yes', 'No'])]
+        docker_config_answer = inquirer.prompt(docker_config)
 
-        if ipv6_config_answer['interest'] == "Yes" : 
+        if docker_config_answer['interest'] == "Yes" : 
             subprocess.run("clear", shell=True)
-            run('nmcli -t -f NAME,TIMESTAMP con | sort -t: -nk2 | tail -n1 | cut -d: -f1 | xargs -I {} nmcli connection modify {} ipv6.method "disabled"', shell=True, stdout=DEVNULL)
-            run("sudo sed -i 's/^[[:space:]]*::/#::/' /etc/hosts", shell=True, stdout=DEVNULL)
+            run('sudo groupadd docker && sudo usermod -aG docker $(whoami) && newgrp docker', shell=True, stdout=DEVNULL)
     else : 
-        rprint('[red italic] NetworkManager is not installed.\n')
+        rprint('[red italic] Docker is not installed.\n')
         
     
     
