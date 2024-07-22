@@ -399,11 +399,9 @@ exec --no-startup-id blueman-applet
 exec_always "setxkbmap -model pc104 -layout us,ir, -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id nitrogen --restore;
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xautolock -time 20 -locker blurlock
 exec --no-startup-id unclutter
 exec --no-startup-id numlockx &
-exec --no-startup-id clipit
 exec --no-startup-id redshift -l 36.2605:59.6168 -t 6500:5000 -b 1.0:0.9
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "devmon --no-gui"
