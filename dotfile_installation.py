@@ -105,8 +105,6 @@ if os_answers['interest'] == 'Arch' :
     "xdotool",
     "nemo",
     "lxappearance",
-    "xfce4-power-manager",
-    "xfce4-settings",
     "nitrogen",
     "viewnior",
     "gtk3",
