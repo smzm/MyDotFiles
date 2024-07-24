@@ -148,7 +148,6 @@ if os_answers['interest'] == 'Arch' :
     "mtpfs",
     "gvfs-mtp" ,
     "gvfs-gphoto2",
-    "dnscrypt-proxy",
     "ttf-firacode-nerd",
     "starship",
     "gnome-keyring",
@@ -300,6 +299,28 @@ while len(not_installed_packages_pacman) > 0 :
         break
 
 
+
+
+# ===== Install dnsmasq and 403Online
+doh_config = [inquirer.List('interest', message="Install dnsmasq and 403.Online", choices=['Yes', 'No'])]
+doh_config_answer = inquirer.prompt(doh_config)
+
+if doh_config_answer['interest'] == "Yes" : 
+    subprocess.run("clear", shell=True)
+    pacman_result = subprocess.run(f'sudo pacman -S dnsmasq --noconfirm', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if pacman_result.returncode == 0 : 
+        os.system(f"sudo cp -f {dotfiles_path}/etc/dnsmasq.conf /etc/dnsmasq.conf")
+        os.system('sudo systemctl start dnsmasq ; sudo systemctl enable dnsmasq')
+        
+        # remove /etc/resolve.conf
+        os.system('sudo chattr -i /etc/resolv.conf')
+        os.system('sudo rm -rf /etc/resolv.conf')
+        os.system("sudo grep -qxF '[main]' /etc/NetworkManager/NetworkManager.conf || echo -e '[main]\ndns=dnsmasq' | sudo tee -a /etc/NetworkManager/NetworkManager.conf")
+        os.system('sudo systemctl restart NetworkManager')
+        
+        print('\n')
+else : 
+    rprint('[red italic] dnsmasq could not installed.\n')
 
 
 
@@ -1156,28 +1177,6 @@ if os_answers['interest'] == "Arch" :
         subprocess.run("sudo mkinitcpio -P", shell=True)
         print('\n')
 
-
-
-# ===== Install and Configure DOH (DNS OVER HTTPS)
-doh_check = subprocess.run('dnscrypt-proxy --version', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).returncode == 0
-if doh_check : 
-    rprint(':thumbs_up: [green] dnscrypt-proxy is installed.')
-    doh_config = [inquirer.List('interest', message="Install dnscrypt-proxy configuration", choices=['Yes', 'No'])]
-    doh_config_answer = inquirer.prompt(doh_config)
-
-    if doh_config_answer['interest'] == "Yes" : 
-        subprocess.run("clear", shell=True)
-        os.system(f"sudo cp -f {dotfiles_path}/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml")
-        # change /etc/resolve.conf
-        os.system('sudo chattr -i /etc/resolv.conf')
-        os.system('sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"')
-        os.system('sudo sh -c "echo options edns0 single-request-reopen >> /etc/resolv.conf"')
-        os.system('sudo chattr +i /etc/resolv.conf')
-        os.system('sudo systemctl start dnscrypt-proxy ; sudo systemctl enable dnscrypt-proxy')
-        print('\n')
-
-else : 
-    rprint('[red italic] dnscrypt-proxy is not installed.\n')
 
 
 
