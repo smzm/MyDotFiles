@@ -310,6 +310,7 @@ if doh_config_answer['interest'] == "Yes" :
     pacman_result = subprocess.run(f'sudo pacman -S dnsmasq --noconfirm', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if pacman_result.returncode == 0 : 
         os.system(f"sudo cp -f {dotfiles_path}/etc/dnsmasq.conf /etc/dnsmasq.conf")
+        os.system('sudo systemctl disable systemd-resolved ; sudo systemctl stop systemd-resolved')
         os.system('sudo systemctl start dnsmasq ; sudo systemctl enable dnsmasq')
         
         # remove /etc/resolve.conf
