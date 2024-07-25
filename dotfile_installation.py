@@ -102,6 +102,7 @@ if os_answers['interest'] == 'Arch' :
     "zathura-pdf-mupdf",
     "mpv",
     "xbindkeys",
+    "xorg-xev",
     "xdotool",
     "nemo",
     "lxappearance",
