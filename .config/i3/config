@@ -327,9 +327,10 @@ bindsym --release Print exec "scrot 'scrot-%Y-%m-%d_%h-%m-%s_$wx$h.png' -e 'mv $
 # Selection screenshot ==> Shift + PrintScreen
 bindsym --release Shift+Print exec "scrot --select 'scrot-%Y-%m-%d_%h-%m-%s_$wx$h_snip.png' -e 'mv $f ~/.screenshots/ && xclip -t image/png ~/.screenshots/$f -sel clip'"
 
-bindsym $alt+k exec "pulseaudio-ctl up 5"
-bindsym $alt+j exec "pulseaudio-ctl down 5"
-bindsym $alt+m exec "pulseaudio-ctl mute"
+# bindsym $alt+Next exec "pulseaudio-ctl up 5"
+bindsym Ctrl+Shift+k exec "pulseaudio-ctl up 5"
+bindsym Ctrl+Shift+j exec "pulseaudio-ctl down 5"
+bindsym Ctrl+Shift+m exec "pulseaudio-ctl mute"
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -366,7 +367,7 @@ set $ws8 8:
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
-assign [class="code|Code"] $ws2
+# assign [class="code|Code"] $ws2
 # cannot use assign for Spotify
 for_window [class="spotify|Spotify"] move workspace $ws4
 
@@ -378,7 +379,7 @@ for_window [class="spotify|Spotify"] move workspace $ws4
 # for_window [class="Skype"] floating enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="mpv"] floating enable border pixel 4 resize set 1800 1350 
+for_window [class="mpv"] floating enable border pixel 4 resize set 2400 1800
 for_window [class="mpv"] move position center
 for_window [class="telegram-desktop|TelegramDesktop"] floating enable border pixel 4
 for_window [class="viewnior|Viewnior"] floating enable
@@ -408,6 +409,7 @@ exec_always --no-startup-id "devmon --no-gui"
 exec xrandr --auto
 exec_always --no-startup-id imwheel
 exec_always --no-startup-id xbindkeys
+exec_always --no-startup-id xset dpms 1200 3600 5400
 
 # Start dunst (Notification Manager)
 exec_always --no-startup-id dunst &
