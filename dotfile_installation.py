@@ -208,6 +208,7 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
+        "emoji-keyboard-appimage"
     ]
 
 
