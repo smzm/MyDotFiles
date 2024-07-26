@@ -144,7 +144,6 @@ if os_answers['interest'] == 'Arch' :
     "unrar",
     "unzip",
     "tar",
-    "xarchiver",
     "htop",
     "mtpfs",
     "gvfs-mtp" ,
@@ -208,7 +207,8 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
-        "emoji-keyboard-appimage"
+        "emoji-keyboard-appimage",
+        "p7zip-gui",
     ]
 
 
