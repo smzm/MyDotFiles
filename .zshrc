@@ -165,6 +165,9 @@ alias emt='trash-empty'
 alias lit='trash-list'
 alias rst='trash-restore'
 alias rmft='trash-rm'
+alias yt='yt-dlp -f "bestvideo[height=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4 --add-chapters -c'
+alias ytcookie='yt-dlp --cookies-from-browser chrome -f "bestvideo[height=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4 --add-chapters -c'
+
 
 # Enable and disable venv in python dierctory automatically
 function cd() {
