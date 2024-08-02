@@ -167,7 +167,6 @@ if os_answers['interest'] == 'Arch' :
     "telegram-desktop",
     "uv",
     "ruff",
-    "clipgrab",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
