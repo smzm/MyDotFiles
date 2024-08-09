@@ -410,7 +410,6 @@ exec xrandr --auto
 exec_always --no-startup-id imwheel
 exec_always --no-startup-id xbindkeys
 exec_always --no-startup-id xset dpms 1200 3600 5400
-exec_always --no-startup-id bash -c "nohup sudo /home/rodd/.config/hiddify/hiddify.sh > /dev/null 2>&1 &"
 
 # Start dunst (Notification Manager)
 exec_always --no-startup-id dunst &
