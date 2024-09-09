@@ -167,6 +167,8 @@ if os_answers['interest'] == 'Arch' :
     "telegram-desktop",
     "uv",
     "ruff",
+    "emoji-keyboard-appimage",
+    "p7zip-gui",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
@@ -207,8 +209,6 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
-        "emoji-keyboard-appimage",
-        "p7zip-gui",
     ]
 
 
