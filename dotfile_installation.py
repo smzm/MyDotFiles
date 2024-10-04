@@ -200,7 +200,6 @@ elif os_answers['interest'] == 'WSL' :
         "aria2",
         "ack",
         "tldr",
-        "mpv",
         "unrar",
         "unzip",
         "tar",
