@@ -167,8 +167,7 @@ if os_answers['interest'] == 'Arch' :
     "telegram-desktop",
     "uv",
     "ruff",
-    "emoji-keyboard-appimage",
-    "p7zip-gui",
+    "file-roller",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
@@ -208,6 +207,7 @@ elif os_answers['interest'] == 'WSL' :
         "unarchiver",
         "xdg-utils",
         "lldb",
+
     ]
 
 
@@ -375,6 +375,7 @@ if os_answers['interest'] == 'Arch' :
     'ttf-poppins',
     'i3exit',
     'visual-studio-code-bin',
+    'emoji-keyboard-bin',
     ]
 elif os_answers['interest'] == 'WSL' : 
     # ===== Install aur packages : WSL
