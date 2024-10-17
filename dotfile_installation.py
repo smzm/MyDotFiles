@@ -374,7 +374,6 @@ if os_answers['interest'] == 'Arch' :
     'apple_cursor',
     'ttf-poppins',
     'i3exit',
-    'google-chrome',
     'visual-studio-code-bin',
     ]
 elif os_answers['interest'] == 'WSL' : 
