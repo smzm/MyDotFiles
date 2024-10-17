@@ -160,6 +160,7 @@ if os_answers['interest'] == 'Arch' :
     "udiskie",
     "python-pytorch-cuda",
     "ollama-cuda",
+    "yt-dlp",
     "inter-font",
     "obsidian",
     "docker",
