@@ -88,7 +88,6 @@ return {
 		config = function()
 			local lsp_servers = {
 				"lua_ls",
-				"clangd",
 				"marksman",
 				"pyright",
 				"dockerls",
@@ -98,7 +97,7 @@ return {
 				"emmet_ls",
 				"html",
 				"jsonls",
-				"tsserver",
+				"ts_ls",
 				"taplo",
 			}
 
