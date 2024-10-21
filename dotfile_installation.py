@@ -169,6 +169,8 @@ if os_answers['interest'] == 'Arch' :
     "uv",
     "ruff",
     "file-roller",
+    "ocrdesktop",
+    "tesseract-data-eng",
     ]
         
 elif os_answers['interest'] == 'WSL' : 
