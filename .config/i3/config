@@ -344,6 +344,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 
 bindsym --release Ctrl+Shift+c exec "xcolor | xclip -selection clipboard"
+bindsym --release Ctrl+Shift+t exec "ocrdesktop"
 ################################################################################################
 
 
