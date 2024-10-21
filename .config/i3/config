@@ -141,7 +141,8 @@ bindsym $mod+y border pixel 4
 
 # start a terminal
 #bindsym $mod+Return  exec kitty ; split horizontal
-bindsym $mod+Return  exec warp-terminal ; split horizontal
+#bindsym $mod+Return  exec warp-terminal ; split horizontal
+bindsym $mod+Return exec warp-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -341,6 +342,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
+
+bindsym --release Ctrl+Shift+c exec "xcolor | xclip -selection clipboard"
 ################################################################################################
 
 
