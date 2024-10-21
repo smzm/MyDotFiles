@@ -18,7 +18,7 @@ and Use `dotfile_installation.py` python file for installing programms and dotfi
 <br>
 
 
-## Installing in `WSL` :
+# Installing in `WSL` :
 - [WSL installation guide for yuk7/ArchWSL](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 - ### 1. Install ArchWsl 
   - Update wsl in windows : `wsl.exe --update`
@@ -100,3 +100,28 @@ After installing Neovim :
 
 For importing pip packages in `pylsp` : 
 - open `~/.local/share/nvim/mason/packages/python-lsp-server/venv/pyvenv.cfg` and set `include-system-site-packages = true `
+
+
+<br>
+<br>
+
+## Autostart programs when reboot
+- Add to the `/etc/systemd/system/vpn.service` :
+```
+[Unit]
+Description=vpn
+After=network-online.target
+Wants=network-online.target
+
+
+[Service]
+ExecStart=/home/rodd/Desktop/vpn.sh
+Environment=DISPLAY=:0
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
+```
+- run `sudo systemctl daemon-reload` and `sudo systemctl enable vpn.service`
+- If your service could not access to the display create `~/.xprofile` and add `xhost +SI:localuser:root` to it to give access the root user to display manager.
